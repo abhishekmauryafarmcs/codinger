@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\coding_web\temp\67ace9c3914d8\solution.py", line 2, in <module>
+    num1 = int(input("enter num1"))
+ValueError: invalid literal for int() with base 10: '2 3'

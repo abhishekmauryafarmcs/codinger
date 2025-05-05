@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\coding_web\temp\67a21b62a343f\solution.py", line 14, in <module>
+    sum_of_two_numbers()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\xampp\htdocs\coding_web\temp\67a21b62a343f\solution.py", line 5, in sum_of_two_numbers
+    num1, num2 = map(int, input().split())  # Read two integers from input, separated by space
+                          ~~~~~^^
+EOFError: EOF when reading a line

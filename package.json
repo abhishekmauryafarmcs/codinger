@@ -1,0 +1,15 @@
+{
+  "name": "coding_web",
+  "version": "1.0.0",
+  "description": "Coding contest platform",
+  "main": "tunnel.js",
+  "scripts": {
+    "tunnel": "node tunnel.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "localtunnel": "^2.0.2"
+  }
+}

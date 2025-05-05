@@ -1,0 +1,4 @@
+../temp/67a7200860072/solution.cpp: In function 'int main()':
+../temp/67a7200860072/solution.cpp:6:10: error: 'a' was not declared in this scope
+     cin>>a;
+          ^

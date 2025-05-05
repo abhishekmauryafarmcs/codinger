@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\coding_web\temp\67ace9c0c4eda\solution.py", line 2, in <module>
+    num1 = int(input("enter num1"))
+               ~~~~~^^^^^^^^^^^^^^
+EOFError: EOF when reading a line

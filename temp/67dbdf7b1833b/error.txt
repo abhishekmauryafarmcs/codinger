@@ -1,0 +1,4 @@
+  File "C:\xampp\htdocs\coding_web\temp\67dbdf7b1833b\solution.py", line 4
+    return a+b
+    ^^^^^^^^^^
+SyntaxError: 'return' outside function
