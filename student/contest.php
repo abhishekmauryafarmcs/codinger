@@ -679,6 +679,23 @@ int main() {
                             `;
                         });
                         
+                        // Add a note about hidden test cases with count if available
+                        if (data.hidden_test_cases_count > 0) {
+                            testCasesHTML += `
+                                <div class="alert alert-info mt-3">
+                                    <i class="bi bi-info-circle"></i> 
+                                    <small>Note: There ${data.hidden_test_cases_count === 1 ? 'is' : 'are'} ${data.hidden_test_cases_count} hidden test ${data.hidden_test_cases_count === 1 ? 'case' : 'cases'} that will also be used to evaluate your solution.</small>
+                                </div>
+                            `;
+                        } else {
+                            testCasesHTML += `
+                                <div class="alert alert-info mt-3">
+                                    <i class="bi bi-info-circle"></i> 
+                                    <small>Note: There may be additional hidden test cases that will be used to evaluate your solution.</small>
+                                </div>
+                            `;
+                        }
+                        
                         testCasesContainer.innerHTML = testCasesHTML;
                     } else if (data.using_legacy) {
                         // Fall back to legacy display

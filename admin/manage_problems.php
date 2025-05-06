@@ -27,8 +27,8 @@ $has_memory_limit = columnExists($conn, 'problems', 'memory_limit');
 
 $order_by = $has_created_at ? "ORDER BY created_at DESC" : "ORDER BY id DESC";
 
-// Fetch problems that are not assigned to any contest (problem bank)
-$stmt = $conn->prepare("SELECT * FROM problems WHERE contest_id IS NULL " . $order_by);
+// Fetch ALL problems, not just unassigned ones
+$stmt = $conn->prepare("SELECT * FROM problems " . $order_by);
 $stmt->execute();
 $problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_problem'])) {
             }
             
             // Reload problems
-            $stmt = $conn->prepare("SELECT * FROM problems WHERE contest_id IS NULL " . $order_by);
+            $stmt = $conn->prepare("SELECT * FROM problems " . $order_by);
             $stmt->execute();
             $problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
@@ -207,8 +207,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
     $filter_category = $has_category ? trim($_GET['filter_category'] ?? '') : '';
     $filter_difficulty = $has_difficulty ? trim($_GET['filter_difficulty'] ?? '') : '';
     
-    // Build query with filters
-    $query = "SELECT * FROM problems WHERE contest_id IS NULL";
+    // Build query with filters - removed the contest_id IS NULL condition
+    $query = "SELECT * FROM problems WHERE 1=1";
     $params = [];
     $types = "";
     
@@ -242,16 +242,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
     $problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
-// Delete a problem
+// Delete a problem - allow deletion of any problem, not just unassigned ones
 if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     $problem_id = (int)$_GET['delete'];
-    $stmt = $conn->prepare("DELETE FROM problems WHERE id = ? AND contest_id IS NULL");
+    $stmt = $conn->prepare("DELETE FROM problems WHERE id = ?");
     $stmt->bind_param("i", $problem_id);
     
     if ($stmt->execute() && $stmt->affected_rows > 0) {
         $success = "Problem deleted successfully";
         // Reload problems
-        $stmt = $conn->prepare("SELECT * FROM problems WHERE contest_id IS NULL " . $order_by);
+        $stmt = $conn->prepare("SELECT * FROM problems " . $order_by);
         $stmt->execute();
         $problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     } else {
@@ -320,6 +320,15 @@ $total_problems = count($problems);
             padding: 2px 8px;
             border-radius: 12px;
             font-size: 0.75rem;
+        }
+        .contest-badge {
+            display: inline-block;
+            margin-top: 8px;
+            background-color: #5e17eb;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
         }
         pre {
             background-color: #f8f9fa;
@@ -528,11 +537,32 @@ $total_problems = count($problems);
                                                         <span><i class="bi bi-code-square"></i> <?php echo ucfirst(htmlspecialchars($problem['problem_type'])); ?></span>
                                                     <?php endif; ?>
                                                 </div>
-                                                
+
+                                                <!-- Add contest information outside the problem-stats div -->
+                                                <?php if ($problem['contest_id']): 
+                                                    $contest_stmt = $conn->prepare("SELECT title FROM contests WHERE id = ?");
+                                                    $contest_stmt->bind_param("i", $problem['contest_id']);
+                                                    $contest_stmt->execute();
+                                                    $contest_result = $contest_stmt->get_result();
+                                                    if ($contest_data = $contest_result->fetch_assoc()): ?>
+                                                        <div class="contest-badge mt-2">
+                                                            <i class="bi bi-trophy"></i> Assigned to: <?php echo htmlspecialchars($contest_data['title']); ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                <?php else: ?>
+                                                    <div class="contest-badge mt-2" style="background-color: #28a745;">
+                                                        <i class="bi bi-check-circle"></i> Available
+                                                    </div>
+                                                <?php endif; ?>
+
                                                 <div class="mt-3">
                                                     <button class="btn btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#problem<?php echo $problem['id']; ?>">
                                                         View Details
                                                     </button>
+                                                    
+                                                    <a href="edit_problem.php?id=<?php echo $problem['id']; ?>" class="btn btn-sm btn-warning">
+                                                        Edit
+                                                    </a>
                                                     
                                                     <a href="?delete=<?php echo $problem['id']; ?>" class="btn btn-sm btn-danger delete-btn" onclick="return confirm('Are you sure you want to delete this problem?');">
                                                         Delete

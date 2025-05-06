@@ -27,11 +27,25 @@ function tableExists($conn, $table) {
 // Initialize response array
 $response = [
     'visible_test_cases' => [],
-    'using_legacy' => false
+    'using_legacy' => false,
+    'hidden_test_cases_count' => 0 // Add count of hidden test cases
 ];
 
 // Get test cases from test_cases table if it exists
 if (tableExists($conn, 'test_cases')) {
+    // Get count of hidden test cases
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) as hidden_count FROM test_cases 
+        WHERE problem_id = ? AND is_visible = 0
+    ");
+    $stmt->bind_param("i", $problem_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $response['hidden_test_cases_count'] = (int)$row['hidden_count'];
+    }
+    
+    // Get visible test cases
     $stmt = $conn->prepare("
         SELECT input, expected_output FROM test_cases 
         WHERE problem_id = ? AND is_visible = 1

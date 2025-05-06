@@ -25,7 +25,7 @@ $form_data = [
 
 // Get all existing problems from the database
 $all_problems = [];
-$stmt = $conn->prepare("SELECT id, title, description, input_format, output_format, constraints, sample_input, sample_output, points FROM problems WHERE contest_id IS NULL");
+$stmt = $conn->prepare("SELECT id, title, description, input_format, output_format, constraints, sample_input, sample_output, points FROM problems");
 $stmt->execute();
 $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
@@ -187,6 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Contest - Codinger</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <style>
         .tab-pane {
@@ -344,7 +345,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                                     <div class="row mt-3">
                                         <div class="col-12">
                                             <h4>Select Problems</h4>
-                                            <p>Choose problems from the existing problem bank to include in this contest.</p>
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <p class="mb-0">Choose problems from the existing problem bank to include in this contest.</p>
+                                                <a href="manage_problems.php?action=add" class="btn btn-primary btn-sm">
+                                                    <i class="bi bi-plus-circle"></i> Create New Problem
+                                                </a>
+                                            </div>
+                                            
+                                            <div class="alert alert-info mb-4">
+                                                <h6><i class="bi bi-info-circle"></i> Problem Selection Guide</h6>
+                                                <ul class="mb-0">
+                                                    <li><strong>Available Problems:</strong> Problems with a white background can be selected for this contest.</li>
+                                                    <li><strong>Selected Problems:</strong> Problems with a green background are selected for this contest.</li>
+                                                </ul>
+                                            </div>
                                             
                                             <?php if (empty($all_problems)): ?>
                                                 <div class="alert alert-warning">

@@ -77,8 +77,8 @@ try {
     $stmt->bind_param("i", $contest_id);
     $stmt->execute();
 
-    // Delete problems
-    $stmt = $conn->prepare("DELETE FROM problems WHERE contest_id = ?");
+    // Preserve problems by just removing their association with this contest
+    $stmt = $conn->prepare("UPDATE problems SET contest_id = NULL WHERE contest_id = ?");
     $stmt->bind_param("i", $contest_id);
     $stmt->execute();
 
