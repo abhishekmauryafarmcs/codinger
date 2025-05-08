@@ -26,16 +26,23 @@ async function startTunnel() {
         });
 
         // Modify the URL to point to your specific directory
-        const baseUrl = tunnel.url;
-        const appUrl = baseUrl + '/coding_web';
+        const baseUrl = "http://localhost";
+        const appUrl = baseUrl + '/codinger';
+        const tunnelUrl = tunnel.url + '/codinger';
 
         console.log('\n✅ Connection successful!');
         console.log('\n🚀 Your website is now available at:');
         console.log(appUrl);
+        console.log('\n🌐 Public Tunnel URL:');
+        console.log(tunnelUrl);
         console.log('\nℹ️  Main URLs:');
         console.log('   📁 Website Root:', appUrl);
         console.log('   🔐 Admin Panel:', appUrl + '/admin');
         console.log('   👤 Login Page:', appUrl + '/login.php');
+        console.log('\n🌍 Public URLs:');
+        console.log('   📁 Website Root:', tunnelUrl);
+        console.log('   🔐 Admin Panel:', tunnelUrl + '/admin');
+        console.log('   👤 Login Page:', tunnelUrl + '/login.php');
         console.log('\nℹ️  Press Ctrl+C to stop the tunnel\n');
 
         let isConnected = true;
@@ -109,7 +116,7 @@ async function startTunnel() {
         console.error('\n❌ Failed to start tunnel:', error.message);
         console.error('\nPlease check:');
         console.log('1. XAMPP Apache is running (check XAMPP Control Panel)');
-        console.log('2. http://localhost/coding_web is accessible in your browser');
+        console.log('2. http://localhost/codinger is accessible in your browser');
         console.log('3. No other tunnels are running');
         console.log('4. Your firewall allows Node.js connections');
         process.exit(1);
@@ -120,7 +127,7 @@ async function startTunnel() {
 console.log('\n⚡ Starting tunnel service with performance optimizations...');
 console.log('📌 Prerequisites:');
 console.log('   1. XAMPP Apache must be running');
-console.log('   2. http://localhost/coding_web should be accessible');
+console.log('   2. http://localhost/codinger should be accessible');
 console.log('   3. For best performance:');
 console.log('      - Close other bandwidth-heavy applications');
 console.log('      - Use a stable internet connection');

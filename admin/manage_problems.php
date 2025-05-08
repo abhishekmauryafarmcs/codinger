@@ -63,8 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_problem'])) {
     $input_format = trim($_POST['input_format']);
     $output_format = trim($_POST['output_format']);
     $constraints = trim($_POST['constraints']);
-    $sample_input = trim($_POST['sample_input']);
-    $sample_output = trim($_POST['sample_output']);
     $points = (int)$_POST['points'];
     
     // Collect additional test cases if they exist
@@ -85,8 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_problem'])) {
     if (empty($input_format)) $errors[] = "Input format is required";
     if (empty($output_format)) $errors[] = "Output format is required";
     if (empty($constraints)) $errors[] = "Constraints are required";
-    if (empty($sample_input)) $errors[] = "Sample input is required";
-    if (empty($sample_output)) $errors[] = "Sample output is required";
     if ($points <= 0) $errors[] = "Points must be greater than 0";
     if ($has_time_limit && $time_limit <= 0) $errors[] = "Time limit must be greater than 0";
     if ($has_memory_limit && $memory_limit <= 0) $errors[] = "Memory limit must be greater than 0";
@@ -98,12 +94,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_problem'])) {
         }
 
         // Prepare SQL based on which columns exist
-        $columns = "title, description, input_format, output_format, constraints, sample_input, sample_output, points";
-        $placeholders = "?, ?, ?, ?, ?, ?, ?, ?";
-        $types = "sssssssi";
+        $columns = "title, description, input_format, output_format, constraints, points";
+        $placeholders = "?, ?, ?, ?, ?, ?";
+        $types = "sssssi";
         $params = [
             $title, $description, $input_format, $output_format, 
-            $constraints, $sample_input, $sample_output, $points
+            $constraints, $points
         ];
 
         if ($has_difficulty) {
@@ -156,12 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_problem'])) {
             
             // If test_cases table exists, store test cases
             if ($has_test_cases_table) {
-                // Add sample test case (always visible)
-                $stmt = $conn->prepare("INSERT INTO test_cases (problem_id, input, expected_output, is_visible) VALUES (?, ?, ?, 1)");
-                $stmt->bind_param("iss", $problem_id, $sample_input, $sample_output);
-                $stmt->execute();
-                
-                // Add additional test cases if provided
+                // Add test cases if provided
                 if (!empty($test_case_inputs) && !empty($test_case_outputs)) {
                     $stmt = $conn->prepare("INSERT INTO test_cases (problem_id, input, expected_output, is_visible) VALUES (?, ?, ?, ?)");
                     
@@ -199,68 +190,152 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_problem'])) {
 
 // Handle search/filter
 $search_term = '';
-$filter_category = '';
+$filter_problem_type = '';
 $filter_difficulty = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
-    $search_term = trim($_GET['search_term'] ?? '');
-    $filter_category = $has_category ? trim($_GET['filter_category'] ?? '') : '';
-    $filter_difficulty = $has_difficulty ? trim($_GET['filter_difficulty'] ?? '') : '';
+// Initialize problems array
+$stmt = $conn->prepare("SELECT * FROM problems " . $order_by);
+$stmt->execute();
+$problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Handle filtering
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Debug information
+    $debug = [];
+    $debug[] = "Request Method: " . $_SERVER['REQUEST_METHOD'];
+    $debug[] = "GET parameters: " . print_r($_GET, true);
     
-    // Build query with filters - removed the contest_id IS NULL condition
-    $query = "SELECT * FROM problems WHERE 1=1";
-    $params = [];
-    $types = "";
-    
-    if (!empty($search_term)) {
-        $query .= " AND (title LIKE ? OR description LIKE ?)";
-        $search_param = "%" . $search_term . "%";
-        $params[] = $search_param;
-        $params[] = $search_param;
-        $types .= "ss";
+    // Only proceed with filtering if at least one filter parameter is set
+    if (isset($_GET['search_term']) || isset($_GET['filter_problem_type']) || isset($_GET['filter_difficulty'])) {
+        $debug[] = "Filter parameters detected";
+        
+        $search_term = trim($_GET['search_term'] ?? '');
+        $filter_problem_type = $has_problem_type ? trim($_GET['filter_problem_type'] ?? '') : '';
+        $filter_difficulty = $has_difficulty ? trim($_GET['filter_difficulty'] ?? '') : '';
+        
+        $debug[] = "search_term: " . $search_term;
+        $debug[] = "filter_problem_type: " . $filter_problem_type;
+        $debug[] = "filter_difficulty: " . $filter_difficulty;
+        $debug[] = "has_problem_type: " . ($has_problem_type ? 'true' : 'false');
+        $debug[] = "has_difficulty: " . ($has_difficulty ? 'true' : 'false');
+        
+        // Only apply filters if at least one filter has a value
+        if (!empty($search_term) || !empty($filter_problem_type) || !empty($filter_difficulty)) {
+            $debug[] = "At least one filter has a value";
+            
+            // Build query with filters
+            $query = "SELECT * FROM problems WHERE 1=1";
+            $params = [];
+            $types = "";
+            
+            if (!empty($search_term)) {
+                $query .= " AND (title LIKE ? OR description LIKE ?)";
+                $search_param = "%" . $search_term . "%";
+                $params[] = $search_param;
+                $params[] = $search_param;
+                $types .= "ss";
+            }
+            
+            if ($has_problem_type && !empty($filter_problem_type)) {
+                $query .= " AND problem_type = ?";
+                $params[] = $filter_problem_type;
+                $types .= "s";
+            }
+            
+            if ($has_difficulty && !empty($filter_difficulty)) {
+                $query .= " AND difficulty = ?";
+                $params[] = $filter_difficulty;
+                $types .= "s";
+            }
+            
+            $query .= " " . $order_by;
+            $debug[] = "Query: " . $query;
+            $debug[] = "Parameters: " . print_r($params, true);
+            
+            try {
+                $stmt = $conn->prepare($query);
+                if (!empty($params)) {
+                    $stmt->bind_param($types, ...$params);
+                }
+                $stmt->execute();
+                $results = $stmt->get_result();
+                $num_rows = $results->num_rows;
+                $debug[] = "Query executed successfully. Results: " . $num_rows;
+                
+                $problems = $results->fetch_all(MYSQLI_ASSOC);
+            } catch (Exception $e) {
+                $errors[] = "Error applying filters: " . $e->getMessage();
+                $debug[] = "Exception: " . $e->getMessage();
+                // Log the error
+                error_log("Filter error: " . $e->getMessage());
+            }
+        } else {
+            $debug[] = "No filter values provided, showing all problems";
+        }
+    } else {
+        $debug[] = "No filter parameters set";
     }
     
-    if ($has_category && !empty($filter_category)) {
-        $query .= " AND category = ?";
-        $params[] = $filter_category;
-        $types .= "s";
-    }
-    
-    if ($has_difficulty && !empty($filter_difficulty)) {
-        $query .= " AND difficulty = ?";
-        $params[] = $filter_difficulty;
-        $types .= "s";
-    }
-    
-    $query .= " " . $order_by;
-    
-    $stmt = $conn->prepare($query);
-    if (!empty($params)) {
-        $stmt->bind_param($types, ...$params);
-    }
-    $stmt->execute();
-    $problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    // Save debug info to session for troubleshooting
+    $_SESSION['filter_debug'] = $debug;
 }
 
-// Delete a problem - allow deletion of any problem, not just unassigned ones
-if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
-    $problem_id = (int)$_GET['delete'];
-    $stmt = $conn->prepare("DELETE FROM problems WHERE id = ?");
-    $stmt->bind_param("i", $problem_id);
+// Handle problem deletion
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_problem'])) {
+    $problem_id = (int)$_POST['delete_problem'];
     
-    if ($stmt->execute() && $stmt->affected_rows > 0) {
-        $success = "Problem deleted successfully";
-        // Reload problems
-        $stmt = $conn->prepare("SELECT * FROM problems " . $order_by);
+    // Begin transaction
+    $conn->begin_transaction();
+    
+    try {
+        // Delete test cases first (if test_cases table exists)
+        if ($has_test_cases_table) {
+            $stmt = $conn->prepare("DELETE FROM test_cases WHERE problem_id = ?");
+            $stmt->bind_param("i", $problem_id);
+            $stmt->execute();
+        }
+        
+        // Delete the problem
+        $stmt = $conn->prepare("DELETE FROM problems WHERE id = ?");
+        $stmt->bind_param("i", $problem_id);
         $stmt->execute();
-        $problems = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    } else {
-        $errors[] = "Error deleting problem or problem is already assigned to a contest";
+        
+        if ($stmt->affected_rows > 0) {
+            $conn->commit();
+            echo "success";
+            exit;
+        } else {
+            throw new Exception("Problem not found");
+        }
+    } catch (Exception $e) {
+        $conn->rollback();
+        echo "error: " . $e->getMessage();
+        exit;
     }
 }
 
 // Count total problems in bank
 $total_problems = count($problems);
+
+// Set success message if problem was deleted
+if (isset($_GET['deleted']) && $_GET['deleted'] == 1) {
+    $success = "Problem deleted successfully";
+}
+
+// Fetch problem types for dropdown
+$problem_types = [];
+if ($has_problem_type) {
+    try {
+        $stmt = $conn->prepare("SELECT DISTINCT problem_type FROM problems WHERE problem_type IS NOT NULL");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $problem_types[] = $row['problem_type'];
+        }
+    } catch (Exception $e) {
+        // Silently handle the error
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -452,146 +527,206 @@ $total_problems = count($problems);
                             </div>
                         <?php endif; ?>
 
-                        <!-- Search & Filter Box -->
-                        <div class="search-box">
-                            <form method="get" action="" class="row g-3">
-                                <div class="col-md-<?php echo ($has_category || $has_difficulty) ? '5' : '11'; ?>">
-                                    <label for="search_term" class="form-label">Search</label>
-                                    <input type="text" class="form-control" id="search_term" name="search_term" placeholder="Search by title or description" value="<?php echo htmlspecialchars($search_term); ?>">
-                                </div>
-                                
-                                <?php if ($has_category): ?>
-                                <div class="col-md-3">
-                                    <label for="filter_category" class="form-label">Category</label>
-                                    <select class="form-select" id="filter_category" name="filter_category">
-                                        <option value="">All Categories</option>
-                                        <?php foreach ($categories as $cat): ?>
-                                            <option value="<?php echo htmlspecialchars($cat); ?>" <?php echo $filter_category === $cat ? 'selected' : ''; ?>>
-                                                <?php echo htmlspecialchars($cat); ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <?php endif; ?>
-                                
-                                <?php if ($has_difficulty): ?>
-                                <div class="col-md-3">
-                                    <label for="filter_difficulty" class="form-label">Difficulty</label>
-                                    <select class="form-select" id="filter_difficulty" name="filter_difficulty">
-                                        <option value="">All Difficulties</option>
-                                        <option value="easy" <?php echo $filter_difficulty === 'easy' ? 'selected' : ''; ?>>Easy</option>
-                                        <option value="medium" <?php echo $filter_difficulty === 'medium' ? 'selected' : ''; ?>>Medium</option>
-                                        <option value="hard" <?php echo $filter_difficulty === 'hard' ? 'selected' : ''; ?>>Hard</option>
-                                    </select>
-                                </div>
-                                <?php endif; ?>
-                                
-                                <div class="col-md-1 d-flex align-items-end">
-                                    <button type="submit" name="search" class="btn btn-primary w-100">Filter</button>
-                                </div>
-                            </form>
+                        <?php if (isset($_SESSION['filter_debug']) && isset($_GET['debug'])): ?>
+                        <div class="alert alert-secondary">
+                            <h5>Filter Debug Information</h5>
+                            <pre><?php echo htmlspecialchars(implode("\n", $_SESSION['filter_debug'])); ?></pre>
                         </div>
+                        <?php endif; ?>
 
-                        <?php if (empty($problems)): ?>
-                            <div class="empty-state">
-                                <i class="bi bi-file-earmark-code"></i>
-                                <h4>No problems found</h4>
-                                <p class="text-muted">Add problems to your question bank to include them in contests.</p>
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProblemModal">
-                                    <i class="bi bi-plus-circle"></i> Add Your First Problem
-                                </button>
-                            </div>
-                        <?php else: ?>
-                            <div class="row">
-                                <?php foreach ($problems as $problem): ?>
-                                    <div class="col-md-6">
-                                        <div class="card problem-card">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?php echo htmlspecialchars($problem['title']); ?></h5>
-                                                <span class="problem-points"><?php echo $problem['points']; ?> pts</span>
-                                                
-                                                <?php if ($has_difficulty && !empty($problem['difficulty'])): ?>
-                                                    <span class="problem-difficulty difficulty-<?php echo strtolower(htmlspecialchars($problem['difficulty'])); ?>">
-                                                        <?php echo ucfirst(htmlspecialchars($problem['difficulty'])); ?>
-                                                    </span>
-                                                <?php endif; ?>
-                                                
-                                                <?php if ($has_category && !empty($problem['category'])): ?>
-                                                    <span class="problem-category">
-                                                        <?php echo htmlspecialchars($problem['category']); ?>
-                                                    </span>
-                                                <?php endif; ?>
-                                                
-                                                <p class="card-text mt-3"><?php echo nl2br(htmlspecialchars(substr($problem['description'], 0, 150) . (strlen($problem['description']) > 150 ? '...' : ''))); ?></p>
-                                                
-                                                <div class="problem-stats">
-                                                    <?php if ($has_time_limit && !empty($problem['time_limit'])): ?>
-                                                        <span><i class="bi bi-clock"></i> <?php echo $problem['time_limit']; ?>s</span>
-                                                    <?php endif; ?>
-                                                    
-                                                    <?php if ($has_memory_limit && !empty($problem['memory_limit'])): ?>
-                                                        <span><i class="bi bi-hdd"></i> <?php echo $problem['memory_limit']; ?>MB</span>
-                                                    <?php endif; ?>
-                                                    
-                                                    <?php if ($has_problem_type && !empty($problem['problem_type'])): ?>
-                                                        <span><i class="bi bi-code-square"></i> <?php echo ucfirst(htmlspecialchars($problem['problem_type'])); ?></span>
-                                                    <?php endif; ?>
-                                                </div>
+                        <!-- Show debugging information -->
+                        <?php if (isset($_GET['debug'])): ?>
+                        <div class="alert alert-secondary mt-3 mb-3">
+                            <h5>Filter Debug Information</h5>
+                            <p><strong>Current URL:</strong> <?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?></p>
+                            <?php if (isset($_SESSION['filter_debug'])): ?>
+                                <pre style="max-height: 300px; overflow-y: auto;"><?php echo htmlspecialchars(implode("\n", $_SESSION['filter_debug'])); ?></pre>
+                            <?php else: ?>
+                                <p>No filter debug information available.</p>
+                            <?php endif; ?>
+                            
+                            <h6 class="mt-3">Database Information:</h6>
+                            <ul>
+                                <li>Category column exists: <?php echo $has_category ? 'Yes' : 'No'; ?></li>
+                                <li>Difficulty column exists: <?php echo $has_difficulty ? 'Yes' : 'No'; ?></li>
+                                <li>Created at column exists: <?php echo $has_created_at ? 'Yes' : 'No'; ?></li>
+                                <li>Problem type column exists: <?php echo $has_problem_type ? 'Yes' : 'No'; ?></li>
+                                <li>Time limit column exists: <?php echo $has_time_limit ? 'Yes' : 'No'; ?></li>
+                                <li>Memory limit column exists: <?php echo $has_memory_limit ? 'Yes' : 'No'; ?></li>
+                                <li>Test cases table exists: <?php echo $has_test_cases_table ? 'Yes' : 'No'; ?></li>
+                            </ul>
+                            
+                            <h6>Categories in database:</h6>
+                            <?php if (!empty($categories)): ?>
+                                <ul>
+                                    <?php foreach ($categories as $cat): ?>
+                                        <li><?php echo htmlspecialchars($cat); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php else: ?>
+                                <p>No categories found.</p>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
 
-                                                <!-- Add contest information outside the problem-stats div -->
-                                                <?php if ($problem['contest_id']): 
-                                                    $contest_stmt = $conn->prepare("SELECT title FROM contests WHERE id = ?");
-                                                    $contest_stmt->bind_param("i", $problem['contest_id']);
-                                                    $contest_stmt->execute();
-                                                    $contest_result = $contest_stmt->get_result();
-                                                    if ($contest_data = $contest_result->fetch_assoc()): ?>
-                                                        <div class="contest-badge mt-2">
-                                                            <i class="bi bi-trophy"></i> Assigned to: <?php echo htmlspecialchars($contest_data['title']); ?>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                <?php else: ?>
-                                                    <div class="contest-badge mt-2" style="background-color: #28a745;">
-                                                        <i class="bi bi-check-circle"></i> Available
-                                                    </div>
-                                                <?php endif; ?>
-
-                                                <div class="mt-3">
-                                                    <button class="btn btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#problem<?php echo $problem['id']; ?>">
-                                                        View Details
-                                                    </button>
-                                                    
-                                                    <a href="edit_problem.php?id=<?php echo $problem['id']; ?>" class="btn btn-sm btn-warning">
-                                                        Edit
-                                                    </a>
-                                                    
-                                                    <a href="?delete=<?php echo $problem['id']; ?>" class="btn btn-sm btn-danger delete-btn" onclick="return confirm('Are you sure you want to delete this problem?');">
-                                                        Delete
-                                                    </a>
-                                                </div>
-                                                
-                                                <div class="collapse mt-3" id="problem<?php echo $problem['id']; ?>">
-                                                    <div class="card card-body">
-                                                        <h6>Input Format:</h6>
-                                                        <pre><?php echo htmlspecialchars($problem['input_format']); ?></pre>
-                                                        
-                                                        <h6>Output Format:</h6>
-                                                        <pre><?php echo htmlspecialchars($problem['output_format']); ?></pre>
-                                                        
-                                                        <h6>Constraints:</h6>
-                                                        <pre><?php echo htmlspecialchars($problem['constraints']); ?></pre>
-                                                        
-                                                        <h6>Sample Input:</h6>
-                                                        <pre><?php echo htmlspecialchars($problem['sample_input']); ?></pre>
-                                                        
-                                                        <h6>Sample Output:</h6>
-                                                        <pre><?php echo htmlspecialchars($problem['sample_output']); ?></pre>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <!-- Search & Filter Box -->
+                        <div class="search-box mb-4">
+                            <form method="get" id="filter-form">
+                                <div class="row g-3">
+                                    <div class="col-md-<?php echo ($has_problem_type || $has_difficulty) ? '5' : '10'; ?>">
+                                        <label for="search_term" class="form-label">Search</label>
+                                        <input type="text" class="form-control" id="search_term" name="search_term" 
+                                               placeholder="Search by title or description" 
+                                               value="<?php echo htmlspecialchars($search_term); ?>">
+                                    </div>
+                                    
+                                    <?php if ($has_problem_type): ?>
+                                    <div class="col-md-3">
+                                        <label for="filter_problem_type" class="form-label">Problem Type</label>
+                                        <select class="form-select" id="filter_problem_type" name="filter_problem_type">
+                                            <option value="">All Problem Types</option>
+                                            <option value="algorithm" <?php echo $filter_problem_type === 'algorithm' ? 'selected' : ''; ?>>Algorithm</option>
+                                            <option value="data_structure" <?php echo $filter_problem_type === 'data_structure' ? 'selected' : ''; ?>>Data Structure</option>
+                                            <option value="array" <?php echo $filter_problem_type === 'array' ? 'selected' : ''; ?>>Array</option>
+                                            <option value="string" <?php echo $filter_problem_type === 'string' ? 'selected' : ''; ?>>String Manipulation</option>
+                                            <option value="function" <?php echo $filter_problem_type === 'function' ? 'selected' : ''; ?>>Function</option>
+                                            <option value="math" <?php echo $filter_problem_type === 'math' ? 'selected' : ''; ?>>Mathematical</option>
+                                            <option value="logic_based" <?php echo $filter_problem_type === 'logic_based' ? 'selected' : ''; ?>>Logic Based</option>
+                                            <option value="dynamic_programming" <?php echo $filter_problem_type === 'dynamic_programming' ? 'selected' : ''; ?>>Dynamic Programming</option>
+                                            <option value="greedy" <?php echo $filter_problem_type === 'greedy' ? 'selected' : ''; ?>>Greedy</option>
+                                            <option value="graph" <?php echo $filter_problem_type === 'graph' ? 'selected' : ''; ?>>Graph Theory</option>
+                                            <option value="sorting" <?php echo $filter_problem_type === 'sorting' ? 'selected' : ''; ?>>Sorting & Searching</option>
+                                            <option value="other" <?php echo $filter_problem_type === 'other' ? 'selected' : ''; ?>>Other</option>
+                                        </select>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if ($has_difficulty): ?>
+                                    <div class="col-md-3">
+                                        <label for="filter_difficulty" class="form-label">Difficulty</label>
+                                        <select class="form-select" id="filter_difficulty" name="filter_difficulty">
+                                            <option value="">All Difficulties</option>
+                                            <option value="easy" <?php echo $filter_difficulty === 'easy' ? 'selected' : ''; ?>>Easy</option>
+                                            <option value="medium" <?php echo $filter_difficulty === 'medium' ? 'selected' : ''; ?>>Medium</option>
+                                            <option value="hard" <?php echo $filter_difficulty === 'hard' ? 'selected' : ''; ?>>Hard</option>
+                                        </select>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <div class="col-md-2 d-flex align-items-end">
+                                        <div class="d-flex gap-2 w-100">
+                                            <button type="submit" class="btn btn-primary flex-grow-1">
+                                                <i class="bi bi-filter"></i> Filter
+                                            </button>
+                                            <?php if (!empty($search_term) || !empty($filter_problem_type) || !empty($filter_difficulty)): ?>
+                                            <a href="manage_problems.php" class="btn btn-outline-secondary">
+                                                <i class="bi bi-x-circle"></i>
+                                            </a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
+                                </div>
+                            </form>
+                            
+                            <?php if (!empty($search_term) || !empty($filter_problem_type) || !empty($filter_difficulty)): ?>
+                            <div class="mt-3">
+                                <p class="mb-1"><strong>Active filters:</strong></p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <?php if (!empty($search_term)): ?>
+                                        <span class="badge bg-info">Search: <?php echo htmlspecialchars($search_term); ?></span>
+                                    <?php endif; ?>
+                                    
+                                    <?php if (!empty($filter_problem_type)): ?>
+                                        <span class="badge bg-info">Problem Type: <?php echo htmlspecialchars(str_replace('_', ' ', ucfirst($filter_problem_type))); ?></span>
+                                    <?php endif; ?>
+                                    
+                                    <?php if (!empty($filter_difficulty)): ?>
+                                        <span class="badge bg-info">Difficulty: <?php echo htmlspecialchars($filter_difficulty); ?></span>
+                                    <?php endif; ?>
+                                    
+                                    <span class="badge bg-secondary">Found: <?php echo count($problems); ?> problems</span>
+                                </div>
                             </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- Display filter results or no results message -->
+                        <?php if (empty($problems)): ?>
+                        <div class="alert alert-info">
+                            <p>No problems found matching your criteria.</p>
+                            <?php if (!empty($search_term) || !empty($filter_problem_type) || !empty($filter_difficulty)): ?>
+                                <a href="manage_problems.php" class="btn btn-sm btn-outline-primary">Clear Filters</a>
+                            <?php endif; ?>
+                        </div>
+                        <?php else: ?>
+                        <div class="row">
+                            <?php foreach ($problems as $problem): ?>
+                            <div class="col-md-6">
+                                <div class="card problem-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo htmlspecialchars($problem['title']); ?></h5>
+                                        <span class="problem-points"><?php echo $problem['points']; ?> pts</span>
+                                        
+                                        <?php if ($has_difficulty && !empty($problem['difficulty'])): ?>
+                                            <span class="problem-difficulty difficulty-<?php echo strtolower(htmlspecialchars($problem['difficulty'])); ?>">
+                                                <?php echo ucfirst(htmlspecialchars($problem['difficulty'])); ?>
+                                            </span>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($has_category && !empty($problem['category'])): ?>
+                                            <span class="problem-category">
+                                                <?php echo htmlspecialchars($problem['category']); ?>
+                                            </span>
+                                        <?php endif; ?>
+                                        
+                                        <p class="card-text mt-3">
+                                            <?php echo nl2br(htmlspecialchars(substr($problem['description'], 0, 150) . (strlen($problem['description']) > 150 ? '...' : ''))); ?>
+                                        </p>
+                                        
+                                        <div class="problem-stats">
+                                            <?php if ($has_time_limit && !empty($problem['time_limit'])): ?>
+                                                <span><i class="bi bi-clock"></i> <?php echo $problem['time_limit']; ?>s</span>
+                                            <?php endif; ?>
+                                            
+                                            <?php if ($has_memory_limit && !empty($problem['memory_limit'])): ?>
+                                                <span><i class="bi bi-hdd"></i> <?php echo $problem['memory_limit']; ?>MB</span>
+                                            <?php endif; ?>
+                                            
+                                            <?php if ($has_problem_type && !empty($problem['problem_type'])): ?>
+                                                <span><i class="bi bi-code-square"></i> <?php echo ucfirst(htmlspecialchars($problem['problem_type'])); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <!-- Add contest information outside the problem-stats div -->
+                                        <?php if ($problem['contest_id']): 
+                                            $contest_stmt = $conn->prepare("SELECT title FROM contests WHERE id = ?");
+                                            $contest_stmt->bind_param("i", $problem['contest_id']);
+                                            $contest_stmt->execute();
+                                            $contest_result = $contest_stmt->get_result();
+                                            if ($contest_data = $contest_result->fetch_assoc()): ?>
+                                                <div class="contest-badge mt-2">
+                                                    <i class="bi bi-trophy"></i> Assigned to: <?php echo htmlspecialchars($contest_data['title']); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <div class="contest-badge mt-2" style="background-color: #28a745;">
+                                                <i class="bi bi-check-circle"></i> Available
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <div class="mt-3">
+                                            <a href="edit_problem.php?id=<?php echo $problem['id']; ?>" class="btn btn-sm btn-primary">
+                                                <i class="bi bi-pencil"></i> Edit
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-danger delete-problem" data-id="<?php echo $problem['id']; ?>">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -670,8 +805,11 @@ $total_problems = count($problems);
                                                     <select class="form-select" id="problem_type" name="problem_type">
                                                         <option value="algorithm">Algorithm</option>
                                                         <option value="data_structure">Data Structure</option>
+                                                        <option value="array">Array</option>
                                                         <option value="string">String Manipulation</option>
+                                                        <option value="function">Function</option>
                                                         <option value="math">Mathematical</option>
+                                                        <option value="logic_based">Logic Based</option>
                                                         <option value="dynamic_programming">Dynamic Programming</option>
                                                         <option value="greedy">Greedy</option>
                                                         <option value="graph">Graph Theory</option>
@@ -774,36 +912,7 @@ $total_problems = count($problems);
 
                                 <!-- Test Case Creation Interface -->
                                 <div id="test-cases-container">
-                                    <!-- Test Case 1 (Always visible - Sample) -->
-                                    <div class="test-case-item card mb-3">
-                                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                            <h5 class="mb-0">Test Case #1 (Sample)</h5>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="test_case_visible_1" name="test_case_visible[]" value="1" checked>
-                                                <label class="form-check-label" for="test_case_visible_1">Visible to students</label>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="sample_input" class="form-label">Input</label>
-                                                        <textarea class="form-control" id="sample_input" name="sample_input" rows="6" required></textarea>
-                                                        <div class="form-text">Input data for this test case.</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="sample_output" class="form-label">Expected Output</label>
-                                                        <textarea class="form-control" id="sample_output" name="sample_output" rows="6" required></textarea>
-                                                        <div class="form-text">Expected output for the given input.</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Additional test cases will be added here dynamically -->
+                                    <!-- Test cases will be added here dynamically -->
                                 </div>
 
                                 <div class="d-flex justify-content-center mb-3">
@@ -828,10 +937,10 @@ $total_problems = count($problems);
     <script>
         // Add JavaScript for handling test cases dynamically
         document.addEventListener('DOMContentLoaded', function() {
-            let testCaseCounter = 1; // Start with 1 because we already have Test Case #1
+            let testCaseCounter = 0; // Start with 0 because we will increment before using
             
             // Add Test Case button functionality
-            document.getElementById('add-test-case-btn').addEventListener('click', function() {
+            document.getElementById('add-test-case-btn')?.addEventListener('click', function() {
                 testCaseCounter++;
                 
                 const testCaseHTML = `
@@ -880,6 +989,69 @@ $total_problems = count($problems);
                     });
                 });
             });
+
+            // Handle problem deletion
+            document.querySelectorAll('.delete-problem').forEach(button => {
+                button.addEventListener('click', function() {
+                    const problemId = this.dataset.id;
+                    if (confirm('Are you sure you want to delete this problem? This action cannot be undone.')) {
+                        // Create form data
+                        const formData = new FormData();
+                        formData.append('delete_problem', problemId);
+                        
+                        // Send AJAX request
+                        fetch('manage_problems.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.text())
+                        .then(result => {
+                            if (result.includes('success')) {
+                                // Remove the problem card from the UI
+                                this.closest('.col-md-6').remove();
+                                
+                                // Show success message
+                                const alert = document.createElement('div');
+                                alert.className = 'alert alert-success alert-dismissible fade show';
+                                alert.innerHTML = `
+                                    Problem deleted successfully
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                `;
+                                document.querySelector('.container').insertBefore(alert, document.querySelector('.search-box'));
+                                
+                                // If no problems left, show empty state
+                                if (document.querySelectorAll('.problem-card').length === 0) {
+                                    location.reload();
+                                }
+                            } else {
+                                alert('Error deleting problem. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error deleting problem. Please try again.');
+                        });
+                    }
+                });
+            });
+            
+            // Handle filter form submission with validation
+            const filterForm = document.getElementById('filter-form');
+            if (filterForm) {
+                filterForm.addEventListener('submit', function(e) {
+                    const searchTerm = document.getElementById('search_term').value.trim();
+                    const filterProblemType = document.getElementById('filter_problem_type')?.value || '';
+                    const filterDifficulty = document.getElementById('filter_difficulty')?.value || '';
+                    
+                    // Check if we have at least one filter value
+                    if (searchTerm === '' && filterProblemType === '' && filterDifficulty === '') {
+                        // If no filters, just show all problems
+                        window.location.href = 'manage_problems.php';
+                        e.preventDefault();
+                    }
+                    // Otherwise, let the form submit normally
+                });
+            }
         });
     </script>
 </body>

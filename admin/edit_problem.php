@@ -61,6 +61,28 @@ $problem_id = (int)$_GET['id'];
 $problem = [];
 $test_cases = [];
 
+// Fetch problem data
+$stmt = $conn->prepare("SELECT * FROM problems WHERE id = ?");
+$stmt->bind_param("i", $problem_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    // Problem not found
+    header("Location: manage_problems.php");
+    exit();
+}
+
+$problem = $result->fetch_assoc();
+
+// Fetch test cases if table exists
+if ($has_test_cases_table) {
+    $tc_stmt = $conn->prepare("SELECT * FROM test_cases WHERE problem_id = ?");
+    $tc_stmt->bind_param("i", $problem_id);
+    $tc_stmt->execute();
+    $test_cases = $tc_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
 // Process form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_problem'])) {
     $title = trim($_POST['title']);
@@ -68,8 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_problem'])) {
     $input_format = trim($_POST['input_format']);
     $output_format = trim($_POST['output_format']);
     $constraints = trim($_POST['constraints']);
-    $sample_input = trim($_POST['sample_input']);
-    $sample_output = trim($_POST['sample_output']);
     $points = (int)$_POST['points'];
     
     // Optional fields based on schema
@@ -91,8 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_problem'])) {
     if (empty($input_format)) $errors[] = "Input format is required";
     if (empty($output_format)) $errors[] = "Output format is required";
     if (empty($constraints)) $errors[] = "Constraints are required";
-    if (empty($sample_input)) $errors[] = "Sample input is required";
-    if (empty($sample_output)) $errors[] = "Sample output is required";
     if ($points <= 0) $errors[] = "Points must be greater than 0";
     if ($has_time_limit && $time_limit <= 0) $errors[] = "Time limit must be greater than 0";
     if ($has_memory_limit && $memory_limit <= 0) $errors[] = "Memory limit must be greater than 0";
@@ -103,11 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_problem'])) {
         
         try {
             // Prepare SQL based on which columns exist
-            $sql_parts = ["title = ?, description = ?, input_format = ?, output_format = ?, constraints = ?, sample_input = ?, sample_output = ?, points = ?"];
-            $types = "sssssssi";
+            $sql_parts = ["title = ?, description = ?, input_format = ?, output_format = ?, constraints = ?, points = ?"];
+            $types = "sssssi";
             $params = [
                 $title, $description, $input_format, $output_format, 
-                $constraints, $sample_input, $sample_output, $points
+                $constraints, $points
             ];
 
             if ($has_difficulty) {
@@ -227,28 +245,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_problem'])) {
             $errors[] = "Error updating problem: " . $e->getMessage();
         }
     }
-}
-
-// Fetch problem data
-$stmt = $conn->prepare("SELECT * FROM problems WHERE id = ?");
-$stmt->bind_param("i", $problem_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    // Problem not found
-    header("Location: manage_problems.php");
-    exit();
-}
-
-$problem = $result->fetch_assoc();
-
-// Fetch test cases if table exists
-if ($has_test_cases_table) {
-    $tc_stmt = $conn->prepare("SELECT * FROM test_cases WHERE problem_id = ?");
-    $tc_stmt->bind_param("i", $problem_id);
-    $tc_stmt->execute();
-    $test_cases = $tc_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 ?>
 
@@ -456,21 +452,6 @@ if ($has_test_cases_table) {
                                 <label for="constraints" class="form-label">Constraints</label>
                                 <textarea class="form-control" id="constraints" name="constraints" rows="3" required><?php echo htmlspecialchars($problem['constraints']); ?></textarea>
                                 <div class="form-text">Specify the constraints on input values, time and space complexity, etc.</div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="sample_input" class="form-label">Sample Input</label>
-                                        <textarea class="form-control" id="sample_input" name="sample_input" rows="5" required><?php echo htmlspecialchars($problem['sample_input']); ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="sample_output" class="form-label">Sample Output</label>
-                                        <textarea class="form-control" id="sample_output" name="sample_output" rows="5" required><?php echo htmlspecialchars($problem['sample_output']); ?></textarea>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

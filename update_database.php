@@ -59,6 +59,30 @@ try {
         }
     }
 
+    // Add max_submissions column to contests table if it doesn't exist
+    if (!columnExists($conn, 'contests', 'max_submissions')) {
+        echo "<p>Adding max_submissions column to contests table...</p>";
+        $sql = "ALTER TABLE contests ADD COLUMN max_submissions INT(11) DEFAULT 0 COMMENT 'Maximum number of submissions allowed per problem (0 = unlimited)'";
+        
+        if ($conn->query($sql)) {
+            echo "<p style='color: green;'>✓ Added max_submissions column successfully.</p>";
+        } else {
+            echo "<p style='color: red;'>✗ Error adding max_submissions column: " . $conn->error . "</p>";
+        }
+    }
+
+    // Add prevent_right_click column to contests table if it doesn't exist
+    if (!columnExists($conn, 'contests', 'prevent_right_click')) {
+        echo "<p>Adding prevent_right_click column to contests table...</p>";
+        $sql = "ALTER TABLE contests ADD COLUMN prevent_right_click TINYINT(1) DEFAULT 0 COMMENT 'Whether to prevent right-clicking during the contest'";
+        
+        if ($conn->query($sql)) {
+            echo "<p style='color: green;'>✓ Added prevent_right_click column successfully.</p>";
+        } else {
+            echo "<p style='color: red;'>✗ Error adding prevent_right_click column: " . $conn->error . "</p>";
+        }
+    }
+
     // Update problems table schema with new columns
     echo "<h3>Updating problems table</h3>";
     

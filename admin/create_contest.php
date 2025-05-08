@@ -20,12 +20,14 @@ $form_data = [
     'type' => isset($_POST['contest_type']) ? $_POST['contest_type'] : 'public',
     'allowed_tab_switches' => isset($_POST['allowed_tab_switches']) ? $_POST['allowed_tab_switches'] : 0,
     'prevent_copy_paste' => isset($_POST['prevent_copy_paste']) ? $_POST['prevent_copy_paste'] : 0,
+    'prevent_right_click' => isset($_POST['prevent_right_click']) ? $_POST['prevent_right_click'] : 0,
+    'max_submissions' => isset($_POST['max_submissions']) ? $_POST['max_submissions'] : 0,
     'problems' => isset($_POST['problems']) ? $_POST['problems'] : []
 ];
 
 // Get all existing problems from the database
 $all_problems = [];
-$stmt = $conn->prepare("SELECT id, title, description, input_format, output_format, constraints, sample_input, sample_output, points FROM problems");
+$stmt = $conn->prepare("SELECT id, title, description, input_format, output_format, constraints, points FROM problems");
 $stmt->execute();
 $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
@@ -42,26 +44,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
         'type' => $_POST['contest_type'],
         'allowed_tab_switches' => isset($_POST['allowed_tab_switches']) ? intval($_POST['allowed_tab_switches']) : 0,
         'prevent_copy_paste' => isset($_POST['prevent_copy_paste']) ? 1 : 0,
+        'prevent_right_click' => isset($_POST['prevent_right_click']) ? 1 : 0,
+        'max_submissions' => isset($_POST['max_submissions']) ? intval($_POST['max_submissions']) : 0,
         'selected_problems' => isset($_POST['selected_problems']) ? $_POST['selected_problems'] : []
     ];
 
-    // Validation
-    if (empty($form_data['title'])) $errors[] = "Title is required";
-    if (empty($form_data['description'])) $errors[] = "Description is required";
-    if (empty($form_data['start_time'])) $errors[] = "Start time is required";
-    if (empty($form_data['end_time'])) $errors[] = "End time is required";
-    if (empty($form_data['selected_problems'])) $errors[] = "At least one problem is required";
+    // Enhanced Validation
+    if (empty($form_data['title']) || strlen($form_data['title']) < 5) {
+        $errors[] = "Title must be at least 5 characters long";
+    }
+    
+    if (empty($form_data['description']) || strlen($form_data['description']) < 20) {
+        $errors[] = "Description must be at least 20 characters long";
+    }
+    
+    if (empty($form_data['start_time'])) {
+        $errors[] = "Start time is required";
+    }
+    
+    if (empty($form_data['end_time'])) {
+        $errors[] = "End time is required";
+    }
+    
+    if (empty($form_data['type'])) {
+        $errors[] = "Contest type is required";
+    }
 
     // Validate enrollment file for private contests
     if ($form_data['type'] === 'private') {
         if (!isset($_FILES['enrollment_file']) || $_FILES['enrollment_file']['error'] !== UPLOAD_ERR_OK) {
-            $errors[] = "Enrollment file is required";
+            $errors[] = "Enrollment file is required for private contests";
         } else {
             $file_extension = strtolower(pathinfo($_FILES['enrollment_file']['name'], PATHINFO_EXTENSION));
             if ($file_extension !== 'xlsx' && $file_extension !== 'csv' && $file_extension !== 'txt') {
                 $errors[] = "Only CSV (.csv), Excel (.xlsx) or text (.txt) files are allowed";
             }
         }
+    }
+
+    // Validate numeric fields
+    if ($form_data['allowed_tab_switches'] < 0 || $form_data['allowed_tab_switches'] > 100) {
+        $errors[] = "Number of allowed tab switches must be between 0 and 100";
+    }
+
+    if ($form_data['max_submissions'] < 0 || $form_data['max_submissions'] > 100) {
+        $errors[] = "Maximum submissions must be between 0 and 100";
     }
 
     // Validate dates
@@ -72,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
     if ($start < $now) {
         $errors[] = "Start time must be in the future";
     }
+    
     if ($end <= $start) {
         $errors[] = "End time must be after start time";
     }
@@ -84,10 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
             // Insert contest
             $stmt = $conn->prepare("INSERT INTO contests (
                 title, description, start_time, end_time, type, created_by, 
-                allowed_tab_switches, prevent_copy_paste
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                allowed_tab_switches, prevent_copy_paste, prevent_right_click, max_submissions
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
-            $stmt->bind_param("sssssiii", 
+            $stmt->bind_param("sssssiiiii", 
                 $form_data['title'],
                 $form_data['description'],
                 $form_data['start_time'],
@@ -95,7 +123,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                 $form_data['type'],
                 $_SESSION['user_id'],
                 $form_data['allowed_tab_switches'],
-                $form_data['prevent_copy_paste']
+                $form_data['prevent_copy_paste'],
+                $form_data['prevent_right_click'],
+                $form_data['max_submissions']
             );
             $stmt->execute();
             $contest_id = $conn->insert_id;
@@ -294,14 +324,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                                     <div class="row mt-3">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="title" class="form-label">Contest Title</label>
-                                                <input type="text" class="form-control" id="title" name="title" required value="<?php echo htmlspecialchars($form_data['title']); ?>">
+                                                <label for="title" class="form-label">Contest Title <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="title" name="title" required 
+                                                    value="<?php echo htmlspecialchars($form_data['title']); ?>"
+                                                    minlength="5" maxlength="200">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="contest_type" class="form-label">Contest Type</label>
-                                                <select class="form-select" id="contest_type" name="contest_type">
+                                                <label for="contest_type" class="form-label">Contest Type <span class="text-danger">*</span></label>
+                                                <select class="form-select" id="contest_type" name="contest_type" required>
+                                                    <option value="">Select Contest Type</option>
                                                     <option value="public" <?php echo $form_data['type'] === 'public' ? 'selected' : ''; ?>>Public (Open to all)</option>
                                                     <option value="private" <?php echo $form_data['type'] === 'private' ? 'selected' : ''; ?>>Private (By enrollment only)</option>
                                                 </select>
@@ -310,21 +343,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Contest Description</label>
-                                        <textarea class="form-control" id="description" name="description" rows="4" required><?php echo htmlspecialchars($form_data['description']); ?></textarea>
+                                        <label for="description" class="form-label">Contest Description <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="description" name="description" rows="4" required 
+                                            minlength="20"><?php echo htmlspecialchars($form_data['description']); ?></textarea>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="start_time" class="form-label">Start Time</label>
-                                                <input type="datetime-local" class="form-control" id="start_time" name="start_time" required value="<?php echo htmlspecialchars($form_data['start_time']); ?>">
+                                                <label for="start_time" class="form-label">Start Time <span class="text-danger">*</span></label>
+                                                <input type="datetime-local" class="form-control" id="start_time" name="start_time" required 
+                                                    value="<?php echo htmlspecialchars($form_data['start_time']); ?>">
+                                                <div class="invalid-feedback">
+                                                    Please select a valid future start time
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="end_time" class="form-label">End Time</label>
-                                                <input type="datetime-local" class="form-control" id="end_time" name="end_time" required value="<?php echo htmlspecialchars($form_data['end_time']); ?>">
+                                                <label for="end_time" class="form-label">End Time <span class="text-danger">*</span></label>
+                                                <input type="datetime-local" class="form-control" id="end_time" name="end_time" required 
+                                                    value="<?php echo htmlspecialchars($form_data['end_time']); ?>">
+                                                <div class="invalid-feedback">
+                                                    End time must be after start time
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -405,10 +447,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                                                         <input type="number" class="form-control" id="allowed_tab_switches" name="allowed_tab_switches" min="0" value="<?php echo $form_data['allowed_tab_switches']; ?>">
                                                         <div class="form-text">Set to 0 to completely prevent tab switching. Set a higher number to allow students a limited number of tab switches.</div>
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label for="max_submissions" class="form-label">Maximum Submissions per Problem</label>
+                                                        <input type="number" class="form-control" id="max_submissions" name="max_submissions" min="0" value="<?php echo $form_data['max_submissions']; ?>">
+                                                        <div class="form-text">Set to 0 for unlimited submissions. Set a specific number to limit how many times a student can submit each problem.</div>
+                                                    </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" id="prevent_copy_paste" name="prevent_copy_paste" <?php echo $form_data['prevent_copy_paste'] ? 'checked' : ''; ?>>
                                                         <label class="form-check-label" for="prevent_copy_paste">
                                                             Prevent Copy-Paste
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="prevent_right_click" name="prevent_right_click" <?php echo $form_data['prevent_right_click'] ? 'checked' : ''; ?>>
+                                                        <label class="form-check-label" for="prevent_right_click">
+                                                            Prevent Right Click
                                                         </label>
                                                     </div>
                                                 </div>
@@ -432,16 +485,190 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Toggle enrollment file section visibility
-            const contestTypeSelect = document.getElementById('contest_type');
-            const enrollmentFileSection = document.getElementById('enrollment_file_section');
-            
-            contestTypeSelect.addEventListener('change', function() {
-                if (this.value === 'private') {
-                    enrollmentFileSection.classList.remove('d-none');
-                } else {
-                    enrollmentFileSection.classList.add('d-none');
+            const form = document.querySelector('form');
+            const title = document.getElementById('title');
+            const description = document.getElementById('description');
+            const startTime = document.getElementById('start_time');
+            const endTime = document.getElementById('end_time');
+            const contestType = document.getElementById('contest_type');
+
+            // Function to remove error alerts
+            function removeErrorAlerts() {
+                const existingAlerts = document.querySelectorAll('.alert-danger');
+                existingAlerts.forEach(alert => alert.remove());
+            }
+
+            // Function to check if there are any validation errors
+            function checkForErrors() {
+                const invalidInputs = form.querySelectorAll('.is-invalid');
+                if (invalidInputs.length === 0) {
+                    removeErrorAlerts();
                 }
+            }
+
+            // Add input event listeners to all form fields
+            form.querySelectorAll('input, textarea, select').forEach(input => {
+                input.addEventListener('input', checkForErrors);
+                input.addEventListener('change', checkForErrors);
+            });
+
+            // Function to validate form before submission
+            function validateForm(event) {
+                let hasErrors = false;
+                const errors = [];
+
+                // Reset previous error states
+                const inputs = form.querySelectorAll('.form-control, .form-select');
+                inputs.forEach(input => input.classList.remove('is-invalid'));
+
+                // Validate title
+                if (!title.value || title.value.length < 5) {
+                    title.classList.add('is-invalid');
+                    errors.push('Title must be at least 5 characters long');
+                    hasErrors = true;
+                }
+
+                // Validate description
+                if (!description.value || description.value.length < 20) {
+                    description.classList.add('is-invalid');
+                    errors.push('Description must be at least 20 characters long');
+                    hasErrors = true;
+                }
+
+                // Validate dates
+                const now = new Date();
+                let start = null;
+                let end = null;
+
+                // Validate start time
+                if (!startTime.value) {
+                    startTime.classList.add('is-invalid');
+                    errors.push('Start time is required');
+                    hasErrors = true;
+                } else {
+                    start = new Date(startTime.value);
+                    if (start < now) {
+                        startTime.classList.add('is-invalid');
+                        errors.push('Start time must be in the future');
+                        hasErrors = true;
+                    }
+                }
+
+                // Validate end time
+                if (!endTime.value) {
+                    endTime.classList.add('is-invalid');
+                    errors.push('End time is required');
+                    hasErrors = true;
+                } else {
+                    end = new Date(endTime.value);
+                    if (start && end <= start) {
+                        endTime.classList.add('is-invalid');
+                        errors.push('End time must be after start time');
+                        hasErrors = true;
+                    }
+                }
+
+                // Validate contest type
+                if (!contestType.value) {
+                    contestType.classList.add('is-invalid');
+                    errors.push('Please select a contest type');
+                    hasErrors = true;
+                }
+
+                // Validate enrollment file for private contests
+                if (contestType.value === 'private') {
+                    const enrollmentFile = document.querySelector('input[name="enrollment_file"]');
+                    if (!enrollmentFile.files.length) {
+                        enrollmentFile.classList.add('is-invalid');
+                        errors.push('Please upload an enrollment file for private contests');
+                        hasErrors = true;
+                    }
+                }
+
+                if (hasErrors) {
+                    event.preventDefault();
+                    // Show errors in the alert box
+                    alert('Please fix the following errors:\n\n' + errors.join('\n'));
+                    
+                    // Remove any existing error alerts
+                    removeErrorAlerts();
+                    
+                    // Create new error alert
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'alert alert-danger';
+                    errorDiv.innerHTML = '<ul class="mb-0">' + 
+                        errors.map(error => '<li>' + error + '</li>').join('') + 
+                        '</ul>';
+                    
+                    // Insert the new error alert at the top of the form
+                    form.insertBefore(errorDiv, form.firstChild);
+                    
+                    // Switch to the first tab if we're not on it
+                    if (!document.getElementById('details').classList.contains('show')) {
+                        bootstrap.Tab.getOrCreateInstance(document.getElementById('details-tab')).show();
+                    }
+                } else {
+                    removeErrorAlerts();
+                }
+            }
+
+            // Add validation to form submission
+            form.addEventListener('submit', validateForm);
+
+            // Add validation to "Next" buttons
+            document.querySelectorAll('.next-tab').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    // Validate the current tab before proceeding
+                    validateForm(event);
+                    if (!event.defaultPrevented) {
+                        const nextTabId = this.getAttribute('data-next');
+                        const nextTab = document.getElementById(nextTabId);
+                        bootstrap.Tab.getOrCreateInstance(nextTab).show();
+                    }
+                });
+            });
+
+            // Real-time validation for dates
+            function validateDates() {
+                const now = new Date();
+                const start = startTime.value ? new Date(startTime.value) : null;
+                const end = endTime.value ? new Date(endTime.value) : null;
+
+                if (!startTime.value) {
+                    startTime.classList.add('is-invalid');
+                } else if (start < now) {
+                    startTime.classList.add('is-invalid');
+                } else {
+                    startTime.classList.remove('is-invalid');
+                }
+
+                if (!endTime.value) {
+                    endTime.classList.add('is-invalid');
+                } else if (start && end <= start) {
+                    endTime.classList.add('is-invalid');
+                } else {
+                    endTime.classList.remove('is-invalid');
+                }
+
+                // Check for any remaining errors
+                checkForErrors();
+            }
+
+            startTime.addEventListener('change', validateDates);
+            endTime.addEventListener('change', validateDates);
+            
+            // Initial validation on page load
+            validateDates();
+
+            // Show/hide enrollment file input based on contest type
+            contestType.addEventListener('change', function() {
+                const enrollmentFileDiv = document.getElementById('enrollment_file_section');
+                if (this.value === 'private') {
+                    enrollmentFileDiv.classList.remove('d-none');
+                } else {
+                    enrollmentFileDiv.classList.add('d-none');
+                }
+                checkForErrors();
             });
 
             // Problem selection
@@ -451,25 +678,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                     const checkbox = this.querySelector('.problem-checkbox');
                     this.classList.toggle('selected');
                     checkbox.checked = !checkbox.checked;
-                });
-            });
-
-            // Tab navigation buttons
-            const nextButtons = document.querySelectorAll('.next-tab');
-            nextButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const nextTabId = this.getAttribute('data-next');
-                    const nextTab = document.getElementById(nextTabId);
-                    bootstrap.Tab.getOrCreateInstance(nextTab).show();
-                });
-            });
-
-            const prevButtons = document.querySelectorAll('.prev-tab');
-            prevButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const prevTabId = this.getAttribute('data-prev');
-                    const prevTab = document.getElementById(prevTabId);
-                    bootstrap.Tab.getOrCreateInstance(prevTab).show();
                 });
             });
         });

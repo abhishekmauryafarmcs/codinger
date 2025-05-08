@@ -114,6 +114,7 @@ $stmt->close();
                             <div class="contest-actions justify-content-end">
                                 <a href="edit_contest.php?id=<?php echo $contest['id']; ?>" class="btn btn-warning">Edit</a>
                                 <a href="view_submissions.php?id=<?php echo $contest['id']; ?>" class="btn btn-info">View Submissions</a>
+                                <a href="contest_results.php?id=<?php echo $contest['id']; ?>" class="btn btn-success">View Results</a>
                                 <button class="btn btn-danger" onclick="deleteContest(<?php echo $contest['id']; ?>)">Delete</button>
                             </div>
                         </div>

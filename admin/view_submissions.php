@@ -35,15 +35,65 @@ if (!$contest) {
 }
 
 // Get all submissions for this contest with user info
-$stmt = $conn->prepare("
-    SELECT s.*, u.full_name as student_name, p.title as problem_title
-    FROM submissions s
-    JOIN users u ON s.user_id = u.id
-    JOIN problems p ON s.problem_id = p.id
-    WHERE p.contest_id = ?
-    ORDER BY s.submitted_at DESC
-");
-$stmt->bind_param("i", $contest_id);
+// First, check if MySQL supports CTEs (MySQL 8.0+)
+$mysql_version_check = $conn->query("SELECT VERSION() as version");
+$mysql_version = $mysql_version_check->fetch_assoc()['version'];
+$supports_cte = version_compare($mysql_version, '8.0.0', '>=');
+
+if ($supports_cte) {
+    // Use CTE approach for MySQL 8.0+
+    $stmt = $conn->prepare("
+        WITH LatestSubmissions AS (
+            SELECT MAX(s.id) as max_id
+            FROM submissions s
+            JOIN problems p ON s.problem_id = p.id
+            WHERE p.contest_id = ?
+            GROUP BY s.user_id, s.problem_id
+        )
+        SELECT s.*, 
+               u.full_name as student_name, 
+               p.title as problem_title,
+               p.points as problem_points,
+               s.test_cases_passed,
+               (SELECT COUNT(*) FROM test_cases WHERE problem_id = p.id) as total_test_cases,
+               (SELECT COUNT(*) FROM submissions s2 
+                WHERE s2.user_id = s.user_id 
+                AND s2.problem_id = s.problem_id 
+                AND s2.status = 'accepted') as successful_submissions
+        FROM submissions s
+        JOIN users u ON s.user_id = u.id
+        JOIN problems p ON s.problem_id = p.id
+        JOIN LatestSubmissions ls ON s.id = ls.max_id
+        ORDER BY s.submitted_at DESC
+    ");
+    $stmt->bind_param("i", $contest_id);
+} else {
+    // Fallback approach for older MySQL versions
+    $stmt = $conn->prepare("
+        SELECT s.*, 
+               u.full_name as student_name, 
+               p.title as problem_title,
+               p.points as problem_points,
+               s.test_cases_passed,
+               (SELECT COUNT(*) FROM test_cases WHERE problem_id = p.id) as total_test_cases,
+               (SELECT COUNT(*) FROM submissions s2 
+                WHERE s2.user_id = s.user_id 
+                AND s2.problem_id = s.problem_id 
+                AND s2.status = 'accepted') as successful_submissions
+        FROM submissions s
+        JOIN users u ON s.user_id = u.id
+        JOIN problems p ON s.problem_id = p.id
+        WHERE p.contest_id = ? AND s.id IN (
+            SELECT MAX(s2.id) 
+            FROM submissions s2
+            JOIN problems p2 ON s2.problem_id = p2.id
+            WHERE p2.contest_id = ?
+            GROUP BY s2.user_id, s2.problem_id
+        )
+        ORDER BY s.submitted_at DESC
+    ");
+    $stmt->bind_param("ii", $contest_id, $contest_id);
+}
 $stmt->execute();
 $result = $stmt->get_result();
 $submissions = $result->fetch_all(MYSQLI_ASSOC);
@@ -57,19 +107,26 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contest Submissions - <?php echo htmlspecialchars($contest['title']); ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <style>
         .submission-card {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 12px;
+            padding: 15px;
+            transition: all 0.2s ease;
+        }
+        .submission-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
         .status-badge {
-            font-size: 0.9em;
-            padding: 5px 10px;
-            border-radius: 15px;
+            font-size: 0.85em;
+            padding: 5px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 500;
         }
         .status-accepted { 
             background-color: #198754; 
@@ -82,6 +139,13 @@ $stmt->close();
         .status-pending { 
             background-color: #ffc107; 
             color: #000; 
+        }
+        .submission-card h5 {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+        .text-muted {
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -123,6 +187,9 @@ $stmt->close();
                     Duration: <?php echo date('M d, Y h:i A', strtotime($contest['start_time'])); ?> - 
                              <?php echo date('M d, Y h:i A', strtotime($contest['end_time'])); ?>
                 </p>
+                <div class="alert alert-info">
+                    <small><i class="bi bi-info-circle"></i> Only showing the latest submission for each student per problem. Rankings are determined based on these latest submissions.</small>
+                </div>
             </div>
             <a href="manage_contests.php" class="btn btn-secondary">Back to Contests</a>
         </div>
@@ -131,34 +198,30 @@ $stmt->close();
             <?php foreach ($submissions as $submission): ?>
                 <div class="submission-card">
                     <div class="row align-items-center">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5><?php echo htmlspecialchars($submission['student_name']); ?></h5>
-                            <small class="text-muted">Problem: <?php echo htmlspecialchars($submission['problem_title']); ?></small>
-                        </div>
-                        <div class="col-md-3">
-                            <span class="status-badge <?php 
-                                echo $submission['status'] === 'accepted' ? 'status-accepted' : 
-                                    ($submission['status'] === 'pending' ? 'status-pending' : 'status-wrong'); 
-                            ?>">
-                                <?php 
-                                    $status = $submission['status'];
-                                    if ($status === 'wrong_answer') {
-                                        echo 'Wrong Answer';
-                                    } elseif ($status === 'accepted') {
-                                        echo 'Accepted';
-                                    } else {
-                                        echo ucfirst($status);
-                                    }
-                                ?>
-                            </span>
-                        </div>
-                        <div class="col-md-3">
-                            <small class="text-muted">
-                                Submitted: <?php echo date('M d, Y h:i A', strtotime($submission['submitted_at'])); ?>
-                            </small>
                         </div>
                         <div class="col-md-2">
-                            <a href="view_code.php?id=<?php echo $submission['id']; ?>" class="btn btn-sm btn-primary">View Code</a>
+                            <?php
+                                $score = 0;
+                                if ($submission['total_test_cases'] > 0) {
+                                    $score = ($submission['test_cases_passed'] / $submission['total_test_cases']) * $submission['problem_points'];
+                                }
+                            ?>
+                            <p class="mb-0">Score: <?php echo number_format($score, 1); ?>/<?php echo $submission['problem_points']; ?></p>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="mb-0">
+                                Successful Submissions: <?php echo $submission['successful_submissions']; ?>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="mb-0 text-muted">
+                                Submitted: <?php echo date('M d, Y h:i A', strtotime($submission['submitted_at'])); ?>
+                            </p>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <a href="view_code.php?id=<?php echo $submission['id']; ?>" class="btn btn-primary">View Code</a>
                         </div>
                     </div>
                 </div>

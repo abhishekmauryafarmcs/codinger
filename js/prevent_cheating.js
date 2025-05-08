@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const maxSwitches = parseInt(document.body.getAttribute('data-max-tab-switches') || 3);
     // Also check if copy-paste is allowed based on data attribute from the page
     const isCopyPasteAllowed = document.body.getAttribute('data-allow-copy-paste') === "1";
+    // Check if right click should be prevented
+    const preventRightClick = document.body.getAttribute('data-prevent-right-click') === "1";
     let isContestActive = true;
     let warningTimeout;
     let lastViolationTime = 0;
@@ -19,10 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
     debug("Initializing cheat prevention system");
     debug(`Tab switches configured: ${maxSwitches}`);
     debug(`Copy-paste allowed: ${isCopyPasteAllowed}`);
+    debug(`Right click prevented: ${preventRightClick}`);
     
-    // Prevent right click
+    // Prevent right click only if the setting is enabled
     document.addEventListener('contextmenu', function(e) {
-        if (isContestActive) {
+        if (isContestActive && preventRightClick) {
             e.preventDefault();
             showWarningModal('Right-clicking is not allowed during the contest.');
         }

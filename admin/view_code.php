@@ -19,7 +19,8 @@ $submission_id = $_GET['id'];
 // Get submission details with user and problem info
 $stmt = $conn->prepare("
     SELECT s.*, u.full_name as student_name, p.title as problem_title, 
-           p.contest_id, c.title as contest_title
+           p.contest_id, c.title as contest_title, p.points as problem_points,
+           c.start_time
     FROM submissions s
     JOIN users u ON s.user_id = u.id
     JOIN problems p ON s.problem_id = p.id
@@ -35,6 +36,40 @@ if (!$submission) {
     header("Location: manage_contests.php");
     exit();
 }
+
+// Calculate the time taken (from contest start to submission)
+$contest_start = new DateTime($submission['start_time']);
+$submission_time = new DateTime($submission['submitted_at']);
+$time_diff = $contest_start->diff($submission_time);
+$time_taken_formatted = '';
+
+if ($time_diff->d > 0) {
+    $time_taken_formatted .= $time_diff->d . ' day' . ($time_diff->d > 1 ? 's' : '') . ', ';
+}
+if ($time_diff->h > 0) {
+    $time_taken_formatted .= $time_diff->h . ' hour' . ($time_diff->h > 1 ? 's' : '') . ', ';
+}
+if ($time_diff->i > 0) {
+    $time_taken_formatted .= $time_diff->i . ' minute' . ($time_diff->i > 1 ? 's' : '') . ', ';
+}
+$time_taken_formatted .= $time_diff->s . ' second' . ($time_diff->s != 1 ? 's' : '');
+
+// Get test case details for this problem
+$test_cases_query = $conn->prepare("
+    SELECT COUNT(*) as total_cases, 
+           SUM(CASE WHEN is_visible = 1 THEN 1 ELSE 0 END) as visible_cases
+    FROM test_cases 
+    WHERE problem_id = ?
+");
+$test_cases_query->bind_param("i", $submission['problem_id']);
+$test_cases_query->execute();
+$test_cases_result = $test_cases_query->get_result()->fetch_assoc();
+$test_cases_query->close();
+
+// Calculate test case percentage
+$total_cases = $test_cases_result['total_cases'] ?? 0;
+$test_cases_passed = $submission['test_cases_passed'] ?? 0;
+$test_case_percentage = $total_cases > 0 ? round(($test_cases_passed / $total_cases) * 100) : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +78,7 @@ if (!$submission) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Submission - Codinger Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css" rel="stylesheet">
     <style>
@@ -57,16 +93,32 @@ if (!$submission) {
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .status-badge {
-            font-size: 0.9em;
-            padding: 5px 10px;
-            border-radius: 15px;
+            font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 50px;
             color: white;
+            font-weight: 500;
+            display: inline-block;
         }
         .status-accepted { background-color: #198754; }
         .status-wrong { background-color: #dc3545; }
         .status-pending { background-color: #ffc107; color: black; }
+        
+        .submission-info h5 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .submission-info p {
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        .submission-info strong {
+            color: #495057;
+        }
     </style>
 </head>
 <body>
@@ -117,21 +169,23 @@ if (!$submission) {
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <span class="status-badge <?php 
-                        echo $submission['status'] === 'accepted' ? 'status-accepted' : 
-                            ($submission['status'] === 'pending' ? 'status-pending' : 'status-wrong'); 
-                    ?>">
-                        <?php 
-                            $status = $submission['status'];
-                            if ($status === 'wrong_answer') {
-                                echo 'Wrong Answer';
-                            } elseif ($status === 'accepted') {
-                                echo 'Accepted';
-                            } else {
-                                echo ucfirst($status);
-                            }
-                        ?>
-                    </span>
+                    <div class="mb-3">
+                        <span class="status-badge <?php 
+                            echo $submission['status'] === 'accepted' ? 'status-accepted' : 
+                                ($submission['status'] === 'pending' ? 'status-pending' : 'status-wrong'); 
+                        ?>">
+                            <?php 
+                                $status = $submission['status'];
+                                if ($status === 'wrong_answer') {
+                                    echo 'Wrong Answer';
+                                } elseif ($status === 'accepted') {
+                                    echo 'Accepted';
+                                } else {
+                                    echo ucfirst($status);
+                                }
+                            ?>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

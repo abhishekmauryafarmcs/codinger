@@ -191,16 +191,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             border: 1px solid #e9ecef;
         }
         .test-case {
-            border-left: 4px solid #6c757d;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
         .test-case.passed {
-            border-left-color: #28a745;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
         }
         .test-case.failed {
-            border-left-color: #dc3545;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
         }
         .custom-input {
             height: 100px;
@@ -217,7 +219,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             overflow-y: auto;
         }
         .error-output {
-            color: #ff6b6b;
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
         }
         .success-output {
             color: #69db7c;
@@ -339,9 +346,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             -ms-user-select: text;
             user-select: text;
         }
+
+        .overall-result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        
+        .overall-result.passed {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .overall-result.failed {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
     </style>
 </head>
-<body data-max-tab-switches="<?php echo htmlspecialchars($contest['allowed_tab_switches']); ?>" data-allow-copy-paste="<?php echo $contest['prevent_copy_paste'] ? '0' : '1'; ?>">
+<body data-max-tab-switches="<?php echo htmlspecialchars($contest['allowed_tab_switches']); ?>" 
+      data-allow-copy-paste="<?php echo $contest['prevent_copy_paste'] ? '0' : '1'; ?>"
+      data-prevent-right-click="<?php echo $contest['prevent_right_click'] ? '1' : '0'; ?>">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Codinger</a>
@@ -396,10 +425,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
 
                         <ul class="nav nav-tabs mt-3" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#output">Output</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#testcases">Test Cases</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#testcases">Test Cases</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#custom">Custom Input</a>
@@ -407,12 +433,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
                         </ul>
 
                         <div class="tab-content">
-                            <div id="output" class="tab-pane active">
-                                <div class="output-section mt-3" id="codeOutput">
-                                    <div class="text-muted">Click 'Run Code' to see the output</div>
-                                </div>
-                            </div>
-                            <div id="testcases" class="tab-pane">
+                            <div id="testcases" class="tab-pane active">
                                 <div id="testCaseResults"></div>
                             </div>
                             <div id="custom" class="tab-pane fade">
@@ -523,13 +544,13 @@ int main() {
             const language = document.getElementById("language").value;
             const customInput = document.getElementById("customInput").value;
 
-            // Show loading state
-            document.getElementById("codeOutput").innerHTML = "Running...";
+            // Determine which tab is active
+            const activeTab = document.querySelector('.tab-pane.active').id;
             
-            // Switch to output tab
-            document.querySelector('a[href="#output"]').click();
+            if (activeTab === 'custom') {
+                // If custom tab is active, run with custom input
+                document.getElementById("customOutput").innerHTML = "Running...";
 
-            // Make API call to run code
             fetch('../api/run_code.php', {
                 method: 'POST',
                 headers: {
@@ -544,10 +565,10 @@ int main() {
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    document.getElementById("codeOutput").innerHTML = 
+                        document.getElementById("customOutput").innerHTML = 
                         `<div class="error-output">${data.error}</div>`;
                 } else {
-                    document.getElementById("codeOutput").innerHTML = 
+                        document.getElementById("customOutput").innerHTML = 
                         `<div class="success-output">
                             <div class="mb-2">Output:</div>
                             <div class="output-content">${data.output || '(no output)'}</div>
@@ -556,21 +577,131 @@ int main() {
                 }
             })
             .catch(error => {
-                document.getElementById("codeOutput").innerHTML = 
+                    document.getElementById("customOutput").innerHTML = 
                     `<div class="error-output">Error: ${error.message}</div>`;
             });
+            } else {
+                // Show loading state in test cases tab
+                document.getElementById("testCaseResults").innerHTML = "Running test cases...";
+
+                // Get visible test cases for current problem
+                fetch(`../student/get_test_cases.php?id=${currentProblemId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.visible_test_cases && data.visible_test_cases.length > 0) {
+                            // Run each visible test case
+                            const testPromises = data.visible_test_cases.map((testCase, index) => {
+                                return fetch('../api/run_code.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        code: code,
+                                        language: language,
+                                        input: testCase.input
+                                    })
+                                })
+                                .then(response => response.json())
+                                .then(result => {
+                                    return {
+                                        testCase,
+                                        result,
+                                        index
+                                    };
+                                });
+                            });
+
+                            // Wait for all test cases to complete
+                            Promise.all(testPromises)
+                                .then(results => {
+                                    let testCasesHtml = '';
+                                    let allPassed = true;
+
+                                    results.forEach(({testCase, result, index}) => {
+                                        const passed = !result.error && result.output.trim() === testCase.output.trim();
+                                        allPassed = allPassed && passed;
+
+                                        testCasesHtml += `
+                                            <div class="test-case ${passed ? 'passed' : 'failed'}">
+                                                <strong>Test Case ${index + 1}</strong>
+                                                <div>Status: ${passed ? 'Passed' : 'Failed'}</div>
+                                                <div>Input:</div>
+                                                <pre>${testCase.input}</pre>
+                                                <div>Expected Output:</div>
+                                                <pre>${testCase.output}</pre>
+                                                <div>Your Output:</div>
+                                                <pre>${result.error ? result.error : result.output}</pre>
+                                                <div>Time: ${result.executionTime}ms</div>
+                                            </div>
+                                        `;
+                                    });
+
+                                    // Add summary at the top
+                                    testCasesHtml = `
+                                        <div class="alert alert-${allPassed ? 'success' : 'danger'} mb-3">
+                                            ${allPassed ? 'All test cases passed!' : 'Some test cases failed.'}
+                                        </div>
+                                    ` + testCasesHtml;
+
+                                    document.getElementById("testCaseResults").innerHTML = testCasesHtml;
+                                })
+                                .catch(error => {
+                                    document.getElementById("testCaseResults").innerHTML = 
+                                        `<div class="error-output">Error running test cases: ${error.message}</div>`;
+                                });
+                        } else {
+                            // If no visible test cases, show message
+                            document.getElementById("testCaseResults").innerHTML = 
+                                '<div class="alert alert-info">No test cases available. Use custom input to test your code.</div>';
+                            // Switch to custom input tab
+                            document.querySelector('a[href="#custom"]').click();
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById("testCaseResults").innerHTML = 
+                            `<div class="error-output">Error loading test cases: ${error.message}</div>`;
+                    });
+            }
         }
 
-        // Function to submit code
+        // Function to check submission limits
+        function checkSubmissionLimit(problemId) {
+            return fetch('../api/check_submission_limit.php?problem_id=' + problemId)
+                .then(response => response.json())
+                .then(data => {
+                    return data;
+                })
+                .catch(error => {
+                    console.error('Error checking submission limit:', error);
+                    return { canSubmit: false, error: 'Could not verify submission limit' };
+                });
+        }
+
+        // Modify the submitCode function to check limits before submitting
         function submitCode() {
             const code = editor.getValue();
-            const language = document.getElementById("language").value;
-            const problemId = currentProblemId; // Use the global variable
+            const language = document.getElementById('language').value;
+            const problemId = currentProblemId;
+
+            if (!code.trim()) {
+                alert('Please write some code before submitting.');
+                return;
+            }
 
             // Show loading state
-            document.getElementById("testCaseResults").innerHTML = "Running test cases...";
+            document.getElementById("testCaseResults").innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 
-            // Make API call to submit code
+            // First check if the user has reached their submission limit
+            checkSubmissionLimit(problemId)
+                .then(limitData => {
+                    if (!limitData.canSubmit) {
+                        document.getElementById("testCaseResults").innerHTML = 
+                            `<div class="error-output">${limitData.message}</div>`;
+                        return;
+                    }
+
+                    // If submission is allowed, proceed with API call
             fetch('../api/submit_code.php', {
                 method: 'POST',
                 headers: {
@@ -591,7 +722,17 @@ int main() {
                 }
                 
                 let resultsHtml = '';
+                        let allPassed = true;
+                        let visiblePassed = true;
+                        let hiddenPassed = true;
+                        
+                        // Process visible test cases first
                 data.testCases.forEach((testCase, index) => {
+                            if (testCase.is_visible) {
+                                if (!testCase.passed) {
+                                    visiblePassed = false;
+                                    allPassed = false;
+                                }
                     resultsHtml += `
                         <div class="test-case ${testCase.passed ? 'passed' : 'failed'}">
                             <strong>Test Case ${index + 1}</strong>
@@ -603,12 +744,57 @@ int main() {
                             <div>Time: ${testCase.time}ms</div>
                         </div>
                     `;
+                            }
                 });
+
+                        // Add hidden test cases summary
+                        const hiddenCases = data.testCases.filter(tc => !tc.is_visible);
+                        if (hiddenCases.length > 0) {
+                            const hiddenPassed = hiddenCases.every(tc => tc.passed);
+                            if (!hiddenPassed) {
+                                allPassed = false;
+                            }
+                            resultsHtml += `
+                                <div class="test-case ${hiddenPassed ? 'passed' : 'failed'}">
+                                    <strong>Hidden Test Cases</strong>
+                                    <div>Status: ${hiddenPassed ? 'All Passed' : 'Some Failed'}</div>
+                                    <div>Total Hidden Cases: ${hiddenCases.length}</div>
+                                </div>
+                            `;
+                        }
+
+                        // Add overall result
+                        resultsHtml = `
+                            <div class="overall-result ${allPassed ? 'passed' : 'failed'}">
+                                <strong>Overall Result: ${allPassed ? 'Accepted' : 'Wrong Answer'}</strong>
+                            </div>
+                            ${resultsHtml}
+                        `;
+
                 document.getElementById("testCaseResults").innerHTML = resultsHtml;
+
+                // If all test cases passed, show success message
+                if (allPassed) {
+                    // Remove the alert popup
+                    // alert('Congratulations! All test cases passed.');
+                    
+                    // Optional: Add a more prominent success message in the UI instead
+                    const successMessage = `<div class="alert alert-success mt-3">
+                        <i class="bi bi-check-circle-fill"></i> Congratulations! All test cases passed.
+                    </div>`;
+                    document.getElementById("testCaseResults").innerHTML += successMessage;
+                }
+
+                // Show remaining submissions if limit is applied
+                if (limitData.submissionsRemaining !== undefined && limitData.maxSubmissions > 0) {
+                    const remainingMessage = `<div class="alert alert-info mt-3">You have used ${limitData.submissionsUsed + 1} out of ${limitData.maxSubmissions} allowed submissions for this problem.</div>`;
+                    document.getElementById("testCaseResults").innerHTML += remainingMessage;
+                }
             })
             .catch(error => {
                 document.getElementById("testCaseResults").innerHTML = 
                     `<div class="error-output">Error: ${error.message}</div>`;
+                    });
             });
         }
 
@@ -620,20 +806,57 @@ int main() {
             
             currentProblemId = problem.id;
             
+            // Debug: Check problem description
+            console.log('Problem description type:', typeof problem.description);
+            console.log('Problem description length:', problem.description ? problem.description.length : 0);
+            
+            // Debug: Log all problem properties 
+            console.log('All problem properties:');
+            for (const prop in problem) {
+                console.log(`${prop}: ${typeof problem[prop]} (${problem[prop] ? problem[prop].toString().substring(0, 30) : 'null/undefined'})`);
+            }
+            
             // Set problem title
-            document.getElementById("problemTitle").textContent = problem.title;
+            document.getElementById("problemTitle").textContent = problem.title || 'Untitled Problem';
             
-            // Set problem description
-            document.getElementById("problemDescription").innerHTML = problem.description || 'No description available';
+            // Set problem description - handle potentially unsafe HTML
+            const descriptionElement = document.getElementById("problemDescription");
+            if (problem.description && problem.description.trim()) {
+                try {
+                    // First try to set as HTML (if it contains formatted content)
+                    descriptionElement.innerHTML = problem.description;
+                } catch (e) {
+                    console.error('Error setting description as HTML:', e);
+                    // Fallback to plain text if HTML fails
+                    descriptionElement.textContent = problem.description;
+                }
+            } else {
+                descriptionElement.textContent = 'No description available';
+            }
             
-            // Set input format
-            document.getElementById("inputFormat").textContent = problem.input_format || 'No input format specified';
+            // Set input format - use textContent for safely displaying text
+            const inputFormatElement = document.getElementById("inputFormat");
+            if (problem.input_format && problem.input_format.trim()) {
+                inputFormatElement.textContent = problem.input_format;
+            } else {
+                inputFormatElement.textContent = 'No input format specified';
+            }
             
-            // Set output format
-            document.getElementById("outputFormat").textContent = problem.output_format || 'No output format specified';
+            // Set output format - use textContent for safely displaying text
+            const outputFormatElement = document.getElementById("outputFormat");
+            if (problem.output_format && problem.output_format.trim()) {
+                outputFormatElement.textContent = problem.output_format;
+            } else {
+                outputFormatElement.textContent = 'No output format specified';
+            }
             
-            // Set constraints
-            document.getElementById("constraints").textContent = problem.constraints || 'No constraints specified';
+            // Set constraints - use textContent for safely displaying text
+            const constraintsElement = document.getElementById("constraints");
+            if (problem.constraints && problem.constraints.trim()) {
+                constraintsElement.textContent = problem.constraints;
+            } else {
+                constraintsElement.textContent = 'No constraints specified';
+            }
             
             // Load test cases from API
             loadTestCases(problem.id);
@@ -724,23 +947,78 @@ int main() {
         <?php
         $problemsArray = array();
         while ($problem = $problems->fetch_assoc()) {
+            // Clean and encode problem data to ensure valid UTF-8
+            $clean_description = isset($problem['description']) ? mb_convert_encoding($problem['description'], 'UTF-8', 'UTF-8') : '';
+            $clean_input_format = isset($problem['input_format']) ? mb_convert_encoding($problem['input_format'], 'UTF-8', 'UTF-8') : '';
+            $clean_output_format = isset($problem['output_format']) ? mb_convert_encoding($problem['output_format'], 'UTF-8', 'UTF-8') : '';
+            $clean_constraints = isset($problem['constraints']) ? mb_convert_encoding($problem['constraints'], 'UTF-8', 'UTF-8') : '';
+            $clean_sample_input = isset($problem['sample_input']) ? mb_convert_encoding($problem['sample_input'], 'UTF-8', 'UTF-8') : '';
+            $clean_sample_output = isset($problem['sample_output']) ? mb_convert_encoding($problem['sample_output'], 'UTF-8', 'UTF-8') : '';
+            
             $problemData = array(
                 'id' => $problem['id'],
-                'title' => $problem['title'],
-                'description' => $problem['description'],
-                'input_format' => $problem['input_format'],
-                'output_format' => $problem['output_format'],
-                'constraints' => $problem['constraints'],
-                'sample_input' => $problem['sample_input'],
-                'sample_output' => $problem['sample_output'],
+                'title' => isset($problem['title']) ? mb_convert_encoding($problem['title'], 'UTF-8', 'UTF-8') : '',
+                'description' => $clean_description,
+                'input_format' => $clean_input_format,
+                'output_format' => $clean_output_format,
+                'constraints' => $clean_constraints,
+                'sample_input' => $clean_sample_input,
+                'sample_output' => $clean_sample_output,
                 'points' => $problem['points']
             );
             $problemsArray[] = $problemData;
         }
+        
+        // Use JSON_INVALID_UTF8_SUBSTITUTE flag to handle invalid UTF-8 sequences
+        $encoded_problems = json_encode($problemsArray, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_INVALID_UTF8_SUBSTITUTE);
+        
+        // Fallback if json_encode fails
+        if ($encoded_problems === false) {
+            // Try to clean the data more aggressively
+            foreach ($problemsArray as &$problem) {
+                foreach ($problem as $key => $value) {
+                    if (is_string($value)) {
+                        // Replace any potentially problematic characters
+                        $problem[$key] = preg_replace('/[^\x20-\x7E]/', '', $value);
+                    }
+                }
+            }
+            $encoded_problems = json_encode($problemsArray);
+            
+            // Last resort fallback - if still fails, create minimal problem data
+            if ($encoded_problems === false) {
+                $minimal_problems = array();
+                foreach ($problemsArray as $problem) {
+                    $minimal_problems[] = array(
+                        'id' => $problem['id'],
+                        'title' => 'Problem ' . $problem['id'],
+                        'description' => 'Problem description unavailable due to encoding issues. Please contact administrator.',
+                        'input_format' => '',
+                        'output_format' => '',
+                        'constraints' => '',
+                        'sample_input' => '',
+                        'sample_output' => '',
+                        'points' => $problem['points']
+                    );
+                }
+                $encoded_problems = json_encode($minimal_problems);
+            }
+        }
         ?>
         
         // Create problems navigation
-        const problems = <?php echo json_encode($problemsArray); ?>;
+        const problems = <?php echo $encoded_problems; ?>;
+        
+        // Debug problems data
+        console.log('Problems data from PHP:', problems);
+        if (problems.length > 0) {
+            console.log('First problem description from PHP array:', problems[0].description);
+            if (problems[0].description) {
+                console.log('First problem description length:', problems[0].description.length);
+                console.log('First problem description substring:', problems[0].description.substring(0, 50));
+            }
+        }
+        
         const problemsNav = document.createElement('div');
         problemsNav.className = 'list-group mb-3';
         problems.forEach((problem, index) => {

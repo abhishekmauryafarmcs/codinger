@@ -1,267 +1,129 @@
 <?php
+// Disable error output to prevent HTML being mixed with JSON
+ini_set('display_errors', 0);
+error_reporting(0);
+
+// Set JSON content type
 header('Content-Type: application/json');
-session_start();
-require_once '../config/db.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['error' => 'Unauthorized']);
-    exit();
-}
+// Start output buffering to prevent any PHP warnings/errors from being output
+ob_start();
 
-// Get JSON input
-$input = json_decode(file_get_contents('php://input'), true);
+try {
+    session_start();
+    require_once '../config/db.php';
+    require_once '../config/session.php';
 
-if (!isset($input['code']) || !isset($input['language']) || !isset($input['problem_id'])) {
-    echo json_encode(['error' => 'Missing required parameters']);
-    exit();
-}
+    // Check if user is logged in
+    if (!isStudentSessionValid()) {
+        throw new Exception('Unauthorized');
+    }
 
-$code = $input['code'];
-$language = $input['language'];
-$problem_id = $input['problem_id'];
-$user_id = $_SESSION['user_id'];
+    // Get JSON input
+    $input_raw = file_get_contents('php://input');
+    $input = json_decode($input_raw, true);
 
-// Get problem details for generating test cases
-$stmt = $conn->prepare("SELECT title, input_format, output_format, constraints, sample_input, sample_output FROM problems WHERE id = ?");
-$stmt->bind_param("i", $problem_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$problem = $result->fetch_assoc();
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception('Invalid JSON input: ' . json_last_error_msg());
+    }
 
-if (!$problem) {
-    echo json_encode(['error' => 'Problem not found']);
-    exit();
-}
+    if (!isset($input['code']) || !isset($input['language']) || !isset($input['problem_id'])) {
+        throw new Exception('Missing required parameters');
+    }
 
-// Check if test_cases table exists
-function tableExists($conn, $table) {
-    $result = $conn->query("SHOW TABLES LIKE '{$table}'");
-    return $result->num_rows > 0;
-}
+    $code = $input['code'];
+    $language = $input['language'];
+    $problem_id = $input['problem_id'];
+    $user_id = $_SESSION['user_id'];
 
-// Function to get test cases from database
-function getTestCasesFromDatabase($conn, $problem_id) {
-    $testCases = [];
-    
-    // Only get visible test cases for student submissions
-    $stmt = $conn->prepare("SELECT input, expected_output FROM test_cases WHERE problem_id = ? AND is_visible = 1 ORDER BY id ASC");
+    // Get problem details for generating test cases
+    $stmt = $conn->prepare("SELECT title, input_format, output_format, constraints, points FROM problems WHERE id = ?");
     $stmt->bind_param("i", $problem_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    
-    while ($row = $result->fetch_assoc()) {
-        $testCases[] = [
-            'test_input' => $row['input'],
-            'test_output' => $row['expected_output']
-        ];
-    }
-    
-    return $testCases;
-}
+    $problem = $result->fetch_assoc();
 
-// Function to generate random test cases based on problem type
-function generateTestCases($problem) {
-    $testCases = [];
-    
-    // Split sample input and output into separate test cases
-    $sample_inputs = explode("\n", trim($problem['sample_input']));
-    $sample_outputs = explode("\n", trim($problem['sample_output']));
-    
-    // Add each sample test case separately
-    foreach ($sample_inputs as $index => $input) {
-        if (isset($sample_outputs[$index])) {
-            $testCases[] = [
-                'test_input' => trim($input),
-                'test_output' => trim($sample_outputs[$index])
-            ];
-        }
+    if (!$problem) {
+        throw new Exception('Problem not found');
     }
 
-    // Check if input format mentions string or characters
-    $isStringProblem = (
-        stripos($problem['input_format'], 'string') !== false ||
-        stripos($problem['input_format'], 'character') !== false ||
-        stripos($problem['input_format'], 'text') !== false ||
-        stripos($problem['input_format'], 'word') !== false
-    );
+    // Check if test_cases table exists
+    function tableExists($conn, $table) {
+        $result = $conn->query("SHOW TABLES LIKE '{$table}'");
+        return $result->num_rows > 0;
+    }
 
-    if ($isStringProblem) {
-        // Generate string-based test cases
-        $testTypes = [
-            'basic' => function() {
-                return generateRandomString(5, 10, 'abcdefghijklmnopqrstuvwxyz');
-            },
-            'mixed_case' => function() {
-                return generateRandomString(5, 10, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-            },
-            'alphanumeric' => function() {
-                return generateRandomString(5, 10, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
-            },
-            'with_spaces' => function() {
-                $words = [];
-                for ($i = 0; $i < rand(2, 4); $i++) {
-                    $words[] = generateRandomString(3, 7, 'abcdefghijklmnopqrstuvwxyz');
-                }
-                return implode(' ', $words);
-            }
-        ];
-
-        // Generate test cases based on problem type
-        foreach ($testTypes as $type => $generator) {
-            $input = $generator();
-            $output = '';
-
-            // Determine expected output based on problem description
-            if (stripos($problem['title'], 'reverse') !== false) {
-                $output = strrev($input);
-            } 
-            else if (stripos($problem['title'], 'uppercase') !== false || 
-                     stripos($problem['title'], 'upper case') !== false) {
-                $output = strtoupper($input);
-            }
-            else if (stripos($problem['title'], 'lowercase') !== false || 
-                     stripos($problem['title'], 'lower case') !== false) {
-                $output = strtolower($input);
-            }
-            else if (stripos($problem['title'], 'length') !== false) {
-                $output = (string)strlen($input);
-            }
-            else if (stripos($problem['title'], 'count') !== false && 
-                     stripos($problem['title'], 'vowel') !== false) {
-                $output = (string)preg_match_all('/[aeiou]/i', $input);
-            }
-            else if (stripos($problem['title'], 'count') !== false && 
-                     stripos($problem['title'], 'word') !== false) {
-                $output = (string)str_word_count($input);
-            }
-            else {
-                // Default behavior - use the first sample case to determine transformation
-                $sample_input = trim($sample_inputs[0]);
-                $sample_output = trim($sample_outputs[0]);
-                if (strlen($sample_input) === strlen($sample_output)) {
-                    // Might be character transformation
-                    $output = strtr($input, $sample_input, $sample_output);
-                }
-            }
-
-            if ($output !== '') {
-                $testCases[] = [
-                    'test_input' => $input,
-                    'test_output' => $output
-                ];
-            }
-        }
-    } else if (stripos($problem['title'], 'sum') !== false) {
-        // Existing number sum logic
-        for ($i = 0; $i < 5; $i++) {
-            $a = rand(1, 1000);
-            $b = rand(1, 1000);
-            $testCases[] = [
-                'test_input' => "$a $b",
-                'test_output' => (string)($a + $b)
-            ];
-        }
-    } else {
-        // Existing default logic for number-based problems
-        $constraints = strtolower($problem['constraints']);
-        $min = 1;
-        $max = 1000;
+    // Function to get test cases from database
+    function getTestCasesFromDatabase($conn, $problem_id) {
+        $testCases = [];
         
-        if (preg_match('/(\d+)\s*[<≤]\s*[a-z]\s*[<≤]\s*(\d+)/', $constraints, $matches)) {
-            $min = intval($matches[1]);
-            $max = intval($matches[2]);
-        }
-
-        for ($i = 0; $i < 5; $i++) {
-            if (stripos($problem['input_format'], 'first line contains n') !== false) {
-                $n = rand(1, 10);
-                $input = $n . "\n";
-                $numbers = [];
-                for ($j = 0; $j < $n; $j++) {
-                    $numbers[] = rand($min, $max);
-                }
-                $input .= implode(' ', $numbers);
-                
-                if (stripos($problem['output_format'], 'sum') !== false) {
-                    $output = array_sum($numbers);
-                } elseif (stripos($problem['output_format'], 'maximum') !== false || 
-                         stripos($problem['output_format'], 'max') !== false) {
-                    $output = max($numbers);
-                } elseif (stripos($problem['output_format'], 'minimum') !== false || 
-                         stripos($problem['output_format'], 'min') !== false) {
-                    $output = min($numbers);
-                }
-            } else {
-                $a = rand($min, $max);
-                $b = rand($min, $max);
-                $input = "$a $b";
-                $output = $a + $b;
-            }
-            
+        // Get all test cases (both visible and hidden) for submissions
+        $stmt = $conn->prepare("SELECT input, expected_output, is_visible FROM test_cases WHERE problem_id = ? ORDER BY id ASC");
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        while ($row = $result->fetch_assoc()) {
             $testCases[] = [
-                'test_input' => $input,
-                'test_output' => (string)$output
+                'test_input' => $row['input'],
+                'test_output' => $row['expected_output'],
+                'is_visible' => $row['is_visible']
             ];
         }
+        
+        return $testCases;
     }
+
+    // Get test cases
+    $testCases = [];
+    if (tableExists($conn, 'test_cases')) {
+        // Try to get test cases from database
+        $testCases = getTestCasesFromDatabase($conn, $problem_id);
+    }
+
+    // If no test cases found, generate a simple test case
+    if (empty($testCases)) {
+        $testCases[] = [
+            'test_input' => 'Default test input',
+            'test_output' => 'Default test output',
+            'is_visible' => 1
+        ];
+    }
+
+    // Create a temporary directory for the code
+    $tempDir = '../temp/' . uniqid();
+    if (!file_exists('../temp')) {
+        mkdir('../temp', 0777, true);
+    }
+    mkdir($tempDir, 0777, true);
     
-    return $testCases;
-}
+    // File extensions and compilation commands for each language
+    $config = [
+        'cpp' => [
+            'extension' => 'cpp',
+            'compile' => true,
+            'compile_cmd' => 'g++ "{source}" -o "{executable}"',
+            'run' => '"{executable}"',
+            'filename' => 'solution.cpp',
+            'check_cmd' => 'g++ --version'
+        ],
+        'java' => [
+            'extension' => 'java',
+            'compile' => true,
+            'compile_cmd' => 'javac "{source}"',
+            'run' => 'java -classpath "{classdir}" Solution',
+            'filename' => 'Solution.java',
+            'check_cmd' => 'javac -version'
+        ],
+        'python' => [
+            'extension' => 'py',
+            'compile' => false,
+            'run' => 'python "{source}"',
+            'filename' => 'solution.py',
+            'check_cmd' => 'python --version'
+        ]
+    ];
 
-// Helper function to generate random strings
-function generateRandomString($minLength, $maxLength, $characters) {
-    $length = rand($minLength, $maxLength);
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
-// Get or generate test cases
-$testCases = [];
-if (tableExists($conn, 'test_cases')) {
-    // Try to get test cases from database
-    $testCases = getTestCasesFromDatabase($conn, $problem_id);
-}
-
-// Fall back to generating test cases if none found in database
-if (empty($testCases)) {
-    $testCases = generateTestCases($problem);
-}
-
-// Create a temporary directory for the code
-$tempDir = '../temp/' . uniqid();
-mkdir($tempDir, 0777, true);
-
-// File extensions and compilation commands for each language
-$config = [
-    'cpp' => [
-        'extension' => 'cpp',
-        'compile' => 'g++ "{source}" -o "{executable}"',
-        'run' => '"{executable}"',
-        'filename' => 'solution.cpp',
-        'check_cmd' => 'g++ --version'
-    ],
-    'java' => [
-        'extension' => 'java',
-        'compile' => 'javac "{source}"',
-        'run' => 'java Solution',
-        'filename' => 'Solution.java',
-        'check_cmd' => 'javac -version'
-    ],
-    'python' => [
-        'extension' => 'py',
-        'compile' => null,
-        'run' => 'python "{source}"',
-        'filename' => 'solution.py',
-        'check_cmd' => 'python --version'
-    ]
-];
-
-try {
     if (!isset($config[$language])) {
         throw new Exception('Unsupported language');
     }
@@ -269,6 +131,8 @@ try {
     $langConfig = $config[$language];
     
     // Check if compiler/interpreter is available
+    $versionOutput = [];
+    $versionStatus = 0;
     exec($langConfig['check_cmd'] . " 2>&1", $versionOutput, $versionStatus);
     if ($versionStatus !== 0) {
         switch($language) {
@@ -298,40 +162,46 @@ try {
     // Compile the code if needed
     if ($langConfig['compile']) {
         $compileCmd = str_replace(
-            ['{source}', '{executable}'],
-            [$sourceFile, $executableFile],
-            $langConfig['compile']
+            ['{source}', '{executable}', '{classdir}'],
+            [$sourceFile, $executableFile, $tempDir],
+            $langConfig['compile_cmd']
         );
+        $compileOutput = [];
+        $compileStatus = 0;
         exec($compileCmd . " 2> " . escapeshellarg($errorFile), $compileOutput, $compileStatus);
 
         if ($compileStatus !== 0) {
             $error = file_get_contents($errorFile);
-            throw new Exception("Compilation Error:\n" . $error);
+            throw new Exception("Compilation Error: " . $error);
         }
     }
 
     // Run against each test case
     $results = [];
     $allPassed = true;
+    $testCasesPassed = 0;
+    $totalTestCases = count($testCases);
     foreach ($testCases as $index => $testCase) {
         // Save test input
         file_put_contents($inputFile, $testCase['test_input']);
 
         // Run the code
         $runCmd = str_replace(
-            ['{source}', '{executable}'],
-            [$sourceFile, $executableFile],
+            ['{source}', '{executable}', '{classdir}'],
+            [$sourceFile, $executableFile, $tempDir],
             $langConfig['run']
         );
         $runCmd .= " < " . escapeshellarg($inputFile) . " > " . escapeshellarg($outputFile) . " 2>> " . escapeshellarg($errorFile);
 
         $startTime = microtime(true);
+        $runOutput = [];
+        $runStatus = 0;
         exec($runCmd, $runOutput, $runStatus);
         $executionTime = round((microtime(true) - $startTime) * 1000, 2);
 
         if ($runStatus !== 0) {
             $error = file_get_contents($errorFile);
-            throw new Exception("Runtime Error:\n" . $error);
+            throw new Exception("Runtime Error: " . $error);
         }
 
         $output = trim(file_get_contents($outputFile));
@@ -339,24 +209,34 @@ try {
         $passed = $output === $expected;
         $allPassed = $allPassed && $passed;
 
+        if ($passed) {
+            $testCasesPassed++;
+        }
+
         $results[] = [
             'passed' => $passed,
             'time' => $executionTime,
             'expected' => $passed ? null : $expected,
             'actual' => $passed ? null : $output,
-            'input' => $testCase['test_input'] // Include input for better debugging
+            'input' => $testCase['test_input'], // Include input for better debugging
+            'is_visible' => isset($testCase['is_visible']) ? $testCase['is_visible'] : 1
         ];
     }
 
     // Save submission to database
     $status = $allPassed ? 'accepted' : 'wrong_answer';
-    $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, code, language, status) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("iisss", $user_id, $problem_id, $code, $language, $status);
+    $score = $testCasesPassed * ($problem['points'] / $totalTestCases);
+    $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, code, language, status, test_cases_passed, total_test_cases, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("iisssidi", $user_id, $problem_id, $code, $language, $status, $testCasesPassed, $totalTestCases, $score);
     $stmt->execute();
 
     // Clean up
-    exec("rm -rf " . escapeshellarg($tempDir));
+    cleanupTempDir($tempDir);
 
+    // Discard any PHP output and warnings
+    ob_end_clean();
+    
+    // Return the result as JSON
     echo json_encode([
         'status' => $status,
         'testCases' => $results
@@ -365,8 +245,30 @@ try {
 } catch (Exception $e) {
     // Clean up on error
     if (isset($tempDir) && is_dir($tempDir)) {
-        exec("rm -rf " . escapeshellarg($tempDir));
+        cleanupTempDir($tempDir);
     }
+    
+    // Discard any PHP output and warnings
+    ob_end_clean();
+    
+    // Return error as JSON
     echo json_encode(['error' => $e->getMessage()]);
+}
+
+// Function to clean up temporary directory
+function cleanupTempDir($dir) {
+    if (is_dir($dir)) {
+        $objects = scandir($dir);
+        foreach ($objects as $object) {
+            if ($object != "." && $object != "..") {
+                if (is_dir($dir . "/" . $object)) {
+                    cleanupTempDir($dir . "/" . $object);
+                } else {
+                    @unlink($dir . "/" . $object);
+                }
+            }
+        }
+        @rmdir($dir);
+    }
 }
 ?> 

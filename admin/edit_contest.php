@@ -24,6 +24,10 @@ $title = '';
 $description = '';
 $start_time = '';
 $end_time = '';
+$allowed_tab_switches = 0;
+$prevent_copy_paste = 0;
+$prevent_right_click = 0;
+$max_submissions = 0;
 $problems = array();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,6 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description']);
     $start_time = $_POST['start_time'];
     $end_time = $_POST['end_time'];
+    $allowed_tab_switches = isset($_POST['allowed_tab_switches']) ? intval($_POST['allowed_tab_switches']) : 0;
+    $prevent_copy_paste = isset($_POST['prevent_copy_paste']) ? 1 : 0;
+    $prevent_right_click = isset($_POST['prevent_right_click']) ? 1 : 0;
+    $max_submissions = isset($_POST['max_submissions']) ? intval($_POST['max_submissions']) : 0;
     $problems = isset($_POST['problems']) ? $_POST['problems'] : [];
 
     // Validation
@@ -53,8 +61,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         try {
             // Update contest details
-            $stmt = $conn->prepare("UPDATE contests SET title = ?, description = ?, start_time = ?, end_time = ? WHERE id = ?");
-            $stmt->bind_param("ssssi", $title, $description, $start_time, $end_time, $contest_id);
+            $stmt = $conn->prepare("UPDATE contests SET 
+                title = ?, 
+                description = ?, 
+                start_time = ?, 
+                end_time = ?, 
+                allowed_tab_switches = ?, 
+                prevent_copy_paste = ?, 
+                prevent_right_click = ?,
+                max_submissions = ? 
+                WHERE id = ?");
+            $stmt->bind_param("ssssiiiis", 
+                $title, 
+                $description, 
+                $start_time, 
+                $end_time, 
+                $allowed_tab_switches, 
+                $prevent_copy_paste, 
+                $prevent_right_click,
+                $max_submissions, 
+                $contest_id
+            );
             $stmt->execute();
 
             // Instead of deleting problems, just remove their association with this contest
@@ -92,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     // Get contest details from database
-    $stmt = $conn->prepare("SELECT title, description, start_time, end_time FROM contests WHERE id = ?");
+    $stmt = $conn->prepare("SELECT title, description, start_time, end_time, allowed_tab_switches, prevent_copy_paste, prevent_right_click, max_submissions FROM contests WHERE id = ?");
     $stmt->bind_param("i", $contest_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -101,6 +128,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $description = $contest['description'];
         $start_time = $contest['start_time'];
         $end_time = $contest['end_time'];
+        $allowed_tab_switches = $contest['allowed_tab_switches'];
+        $prevent_copy_paste = $contest['prevent_copy_paste'];
+        $prevent_right_click = $contest['prevent_right_click'];
+        $max_submissions = $contest['max_submissions'];
     }
     $stmt->close();
 
@@ -192,6 +223,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="datetime-local" class="form-control" id="end_time" name="end_time" required
                                    value="<?php echo date('Y-m-d\TH:i', strtotime($end_time)); ?>">
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Advanced Settings</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="allowed_tab_switches" class="form-label">Number of Allowed Tab Switches</label>
+                            <input type="number" class="form-control" id="allowed_tab_switches" name="allowed_tab_switches" min="0" 
+                                   value="<?php echo htmlspecialchars($allowed_tab_switches); ?>">
+                            <div class="form-text">Set to 0 to completely prevent tab switching. Set a higher number to allow students a limited number of tab switches.</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="max_submissions" class="form-label">Maximum Submissions per Problem</label>
+                            <input type="number" class="form-control" id="max_submissions" name="max_submissions" min="0" 
+                                   value="<?php echo htmlspecialchars($max_submissions); ?>">
+                            <div class="form-text">Set to 0 for unlimited submissions. Set a specific number to limit how many times a student can submit each problem.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="prevent_copy_paste" name="prevent_copy_paste" 
+                               <?php echo $prevent_copy_paste ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="prevent_copy_paste">
+                            Prevent Copy-Paste
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="prevent_right_click" name="prevent_right_click" 
+                               <?php echo $prevent_right_click ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="prevent_right_click">
+                            Prevent Right Click
+                        </label>
                     </div>
                 </div>
             </div>

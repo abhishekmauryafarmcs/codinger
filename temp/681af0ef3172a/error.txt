@@ -1,0 +1,14 @@
+../temp/681af0ef3172a/solution.cpp: In function 'int main()':
+../temp/681af0ef3172a/solution.cpp:11:7: error: 'factorial' was not declared in this scope
+       factorial *= i;
+       ^~~~~~~~~
+../temp/681af0ef3172a/solution.cpp:14:17: error: 'factorial' was not declared in this scope
+     std::cout <<factorial << std::endl;
+                 ^~~~~~~~~
+../temp/681af0ef3172a/solution.cpp: At global scope:
+../temp/681af0ef3172a/solution.cpp:17:3: error: expected unqualified-id before 'return'
+   return 0;
+   ^~~~~~
+../temp/681af0ef3172a/solution.cpp:18:1: error: expected declaration before '}' token
+ }
+ ^
