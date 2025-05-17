@@ -1,1 +1,0 @@
-Enter the three integers: Reversed array: 3 2 1 

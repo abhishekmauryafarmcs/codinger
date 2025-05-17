@@ -1,0 +1,19 @@
+# Protect admin directory while allowing proper navigation
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Allow direct access to login page and assets
+  RewriteRule ^(login\.php|css/|js/|images/|assets/|session_debug\.php) - [L]
+  
+  # Skip the rest of rules if the user has a valid PHP session
+  # This will be checked by each PHP file's session validation
+  RewriteRule ^ - [L]
+</IfModule>
+
+# Fallback protection if mod_rewrite is not available
+<IfModule !mod_rewrite.c>
+  <FilesMatch "^((?!login\.php|session_debug\.php).)*$">
+    Order Allow,Deny
+    Deny from all
+  </FilesMatch>
+</IfModule> 

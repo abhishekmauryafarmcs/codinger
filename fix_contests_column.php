@@ -60,5 +60,5 @@ if ($verify1->num_rows > 0 && $verify2->num_rows > 0) {
 // Close connection
 $conn->close();
 
-echo "<p><a href='admin/create_contest.php' style='display: inline-block; padding: 10px 15px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px;'>Return to Create Contest</a></p>";
+echo "<p><a href='cadmin/create_contest.php' style='display: inline-block; padding: 10px 15px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px;'>Return to Create Contest</a></p>";
 ?> 

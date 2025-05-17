@@ -1,4 +1,10 @@
 <?php
+// Force browser to clear cache for this page
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+
 require_once '../config/session.php';
 
 // Force reload with cache clearing if the refresh parameter is set
@@ -10,9 +16,17 @@ if (isset($_GET['refresh_cache']) && $_GET['refresh_cache'] === '1') {
 
 // Check if user is logged in and is a student
 if (!isStudentSessionValid()) {
-    header("Location: ../login.php?error=session_expired");
+    // Check if we still have user ID but session was invalidated (another login)
+    if (isset($_SESSION['student']['user_id']) && !isset($_SESSION['student']['validated'])) {
+        header("Location: ../login.php?error=another_login");
+    } else {
+        header("Location: ../login.php?error=session_expired");
+    }
     exit();
 }
+
+// Mark this session as validated for this page load
+$_SESSION['student']['validated'] = true;
 
 require_once '../config/db.php';
 
@@ -23,7 +37,54 @@ if (!isset($_GET['id'])) {
 }
 
 $contest_id = (int)$_GET['id'];
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['student']['user_id'];
+
+// Check if the student has previously exited this contest
+if (isset($_SESSION['student']['exited_contests'][$contest_id]) && $_SESSION['student']['exited_contests'][$contest_id] === true) {
+    header("Location: dashboard.php?error=contest_exited");
+    exit();
+}
+
+// Check if the student has been permanently terminated from this contest
+if (isset($_SESSION['student']['terminated_contests'][$contest_id])) {
+    header("Location: dashboard.php?error=contest_terminated&reason=" . urlencode($_SESSION['student']['terminated_contests'][$contest_id]['reason']));
+    exit();
+}
+
+// If not in session, check the database
+$stmt = $conn->prepare("
+    SELECT *, is_permanent, reason FROM contest_exits 
+    WHERE user_id = ? AND contest_id = ?
+");
+$stmt->bind_param("ii", $user_id, $contest_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $exit_data = $result->fetch_assoc();
+    
+    // Mark in session for future checks
+    if (!isset($_SESSION['student']['exited_contests'])) {
+        $_SESSION['student']['exited_contests'] = array();
+    }
+    $_SESSION['student']['exited_contests'][$contest_id] = true;
+    
+    // If this was a permanent termination, also mark it in the terminated_contests session variable
+    if ($exit_data['is_permanent']) {
+        if (!isset($_SESSION['student']['terminated_contests'])) {
+            $_SESSION['student']['terminated_contests'] = array();
+        }
+        $_SESSION['student']['terminated_contests'][$contest_id] = [
+            'reason' => $exit_data['reason'],
+            'time' => strtotime($exit_data['exit_time'])
+        ];
+        
+        header("Location: dashboard.php?error=contest_terminated&reason=" . urlencode($exit_data['reason']));
+    } else {
+        header("Location: dashboard.php?error=contest_exited");
+    }
+    exit();
+}
 
 // Get contest details
 $stmt = $conn->prepare("
@@ -53,7 +114,7 @@ if (!$contest) {
 // Check if this is a private contest and verify enrollment
 if ($contest['type'] === 'private') {
     // Check if the user has verified enrollment for this contest
-    if (!isset($_SESSION['verified_contests'][$contest_id])) {
+    if (!isset($_SESSION['student']['verified_contests'][$contest_id])) {
         // Get the user's enrollment number
         $stmt = $conn->prepare("SELECT enrollment_number FROM users WHERE id = ?");
         $stmt->bind_param("i", $user_id);
@@ -77,7 +138,10 @@ if ($contest['type'] === 'private') {
                 exit();
             } else {
                 // Store verification in session for future access
-                $_SESSION['verified_contests'][$contest_id] = $user['enrollment_number'];
+                if (!isset($_SESSION['student']['verified_contests'])) {
+                    $_SESSION['student']['verified_contests'] = array();
+                }
+                $_SESSION['student']['verified_contests'][$contest_id] = $user['enrollment_number'];
             }
         } else {
             // User record not found (shouldn't happen)
@@ -88,7 +152,7 @@ if ($contest['type'] === 'private') {
 }
 
 // Store contest ID in session for violation tracking
-$_SESSION['current_contest_id'] = $contest_id;
+$_SESSION['student']['current_contest_id'] = $contest_id;
 
 // Check contest status and handle accordingly
 if ($contest['contest_status'] === 'upcoming') {
@@ -103,7 +167,13 @@ if ($contest['contest_status'] === 'upcoming') {
 }
 
 // Get problems for this contest
-$stmt = $conn->prepare("SELECT * FROM problems WHERE contest_id = ? ORDER BY points ASC");
+$stmt = $conn->prepare("
+    SELECT p.* 
+    FROM problems p
+    JOIN contest_problems cp ON p.id = cp.problem_id
+    WHERE cp.contest_id = ? 
+    ORDER BY p.points ASC
+");
 $stmt->bind_param("i", $contest_id);
 $stmt->execute();
 $problems = $stmt->get_result();
@@ -113,6 +183,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
     $problem_id = $_POST['problem_id'];
     $code = $_POST['code'];
     $language = $_POST['language'];
+    // Use the contest ID from the URL parameter directly - fixing the variable declaration
+    $current_contest_id = $contest_id; 
     
     // Basic validation
     if (empty($code)) {
@@ -122,8 +194,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
         // For this example, we'll randomly determine if it's correct
         $status = rand(0, 1) ? 'accepted' : 'wrong_answer';
         
-        $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, code, language, status) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("iisss", $user_id, $problem_id, $code, $language, $status);
+        $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, contest_id, code, language, status) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iiisss", $user_id, $problem_id, $current_contest_id, $code, $language, $status);
         
         if ($stmt->execute()) {
             $success = true;
@@ -366,6 +438,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             border-color: #f5c6cb;
             color: #721c24;
         }
+        
+        /* Code Mirror Overlay Styles */
+        .editor-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-radius: 4px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .final-submission-message {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 80%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .final-submission-message h3 {
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+        
+        .final-submission-message p {
+            color: #343a40;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Position the CodeMirror container relatively for absolute positioning of overlay */
+        .code-editor-container {
+            position: relative;
+        }
     </style>
 </head>
 <body data-max-tab-switches="<?php echo htmlspecialchars($contest['allowed_tab_switches']); ?>" 
@@ -373,7 +487,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
       data-prevent-right-click="<?php echo $contest['prevent_right_click'] ? '1' : '0'; ?>">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="../index.php">Codinger</a>
+            <span class="navbar-brand">Codinger</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -388,13 +502,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
+                        <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['student']['full_name']); ?></span>
                     </li>
                     <li class="nav-item">
-                        <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['full_name']); ?></span>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../logout.php">Logout</a>
+                        <button class="btn btn-outline-danger my-1 ms-2" id="exitContestBtn">
+                            <i class="bi bi-box-arrow-right"></i> Exit Contest
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -414,14 +527,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
                                     <option value="java">Java</option>
                                     <option value="python">Python</option>
                                 </select>
+                                <!-- Java class information text -->
+                                <div class="text-muted mt-1" id="javaHelperText" style="display: none; font-size: 0.8rem;">
+                                    <i class="bi bi-info-circle"></i> Java submissions must use <code>public class Solution</code>
+                                </div>
                             </div>
                             <div>
                                 <button class="btn btn-primary" onclick="runCode()">Run Code</button>
                                 <button class="btn btn-success" onclick="submitCode()">Submit</button>
+                                <div id="submissionLimitInfo" class="mt-2 small"></div>
                             </div>
                         </div>
 
-                        <textarea id="editor"></textarea>
+                        <div class="code-editor-container">
+                            <textarea id="editor"></textarea>
+                            <!-- Overlay for final submission message will be added here dynamically -->
+                        </div>
 
                         <ul class="nav nav-tabs mt-3" role="tablist">
                             <li class="nav-item">
@@ -493,7 +614,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
     <script src="../js/prevent_cheating.js?v=<?php echo time(); ?>"></script>
+    <script src="../js/fullscreen_security.js?v=<?php echo time(); ?>"></script>
+    <script src="../js/clipboard_security.js?v=<?php echo time(); ?>"></script>
     <script>
+        // Clipboard protection: clear clipboard and block copy/cut/paste
+        function clearClipboard() {
+            if (navigator.clipboard && window.isSecureContext) {
+                // Modern async clipboard API
+                navigator.clipboard.writeText('').catch(() => {});
+            } else {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = '';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (e) {}
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Check if element is within CodeMirror
+        function isElementInCodeMirror(element) {
+            while (element && element !== document.body) {
+                if (element.classList.contains('CodeMirror') || 
+                    element.classList.contains('CodeMirror-line') ||
+                    element.classList.contains('CodeMirror-scroll') ||
+                    element.classList.contains('CodeMirror-gutter') ||
+                    element.classList.contains('CodeMirror-linenumber') ||
+                    element.className.includes('CodeMirror')) {
+                    return true;
+                }
+                element = element.parentElement;
+            }
+            return false;
+        }
+
+        // Block and clear clipboard on copy/cut/paste except in CodeMirror
+        document.addEventListener('copy', function(e) {
+            if (document.body.getAttribute('data-allow-copy-paste') === '0' && !isElementInCodeMirror(e.target)) {
+                e.preventDefault();
+                clearClipboard();
+            }
+        });
+        
+        document.addEventListener('cut', function(e) {
+            if (document.body.getAttribute('data-allow-copy-paste') === '0' && !isElementInCodeMirror(e.target)) {
+                e.preventDefault();
+                clearClipboard();
+            }
+        });
+        
+        document.addEventListener('paste', function(e) {
+            if (document.body.getAttribute('data-allow-copy-paste') === '0' && !isElementInCodeMirror(e.target)) {
+                e.preventDefault();
+                clearClipboard();
+            }
+        });
+        
+        // Clear clipboard on page load to prevent bringing code from outside
+        document.addEventListener('DOMContentLoaded', function() {
+            clearClipboard();
+        });
+
         // Initialize CodeMirror
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             lineNumbers: true,
@@ -505,7 +689,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             lineWrapping: true
         });
 
-        // Language-specific starter code
+        // Apply anti-cheating measures to CodeMirror
+        if (document.body.getAttribute('data-allow-copy-paste') === '0') {
+            // Only prevent drag and drop from outside the editor
+            editor.on("drop", function(cm, event) {
+                // Allow drops that originate within the editor
+                if (isElementInCodeMirror(event.target)) {
+                    return true;
+                }
+                // Block drops from outside
+                event.preventDefault();
+                return false;
+            });
+            
+            // Block right-click context menu outside of editor
+            document.addEventListener('contextmenu', function(e) {
+                if (!isElementInCodeMirror(e.target) && 
+                    document.body.getAttribute('data-prevent-right-click') === '1') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
+
+        // Starter code templates
         const starterCode = {
             cpp: `#include <iostream>
 using namespace std;
@@ -533,10 +740,129 @@ int main() {
             };
             editor.setOption("mode", modes[language]);
             editor.setValue(starterCode[language]);
+            
+            // Show/hide Java helper text
+            const javaHelperText = document.getElementById("javaHelperText");
+            if (javaHelperText) {
+                javaHelperText.style.display = language === 'java' ? 'block' : 'none';
+            }
+        }
+
+        // Java class name checker function
+        function checkJavaClassName() {
+            const code = editor.getValue();
+            const language = document.getElementById("language").value;
+            
+            if (language !== 'java') {
+                return;
+            }
+            
+            fetch('../api/java_class_helper.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    code: code,
+                    language: language
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    showJavaHelperMessage('error', data.error);
+                    return;
+                }
+                
+                // Handle the result
+                if (data.valid) {
+                    showJavaHelperMessage('success', data.message);
+                } else {
+                    // Show the error message and suggestions
+                    let message = `<strong>${data.message}</strong><br>`;
+                    if (data.suggestions && data.suggestions.length > 0) {
+                        message += '<ul>';
+                        data.suggestions.forEach(suggestion => {
+                            message += `<li>${suggestion}</li>`;
+                        });
+                        message += '</ul>';
+                    }
+                    
+                    // Add a button to apply the fix if available
+                    if (data.fixedCode) {
+                        message += '<button class="btn btn-primary btn-sm mt-2" onclick="applyJavaFix()">Apply Fix</button>';
+                        // Store the fixed code in a variable
+                        window.fixedJavaCode = data.fixedCode;
+                    }
+                    
+                    showJavaHelperMessage('warning', message);
+                }
+            })
+            .catch(error => {
+                showJavaHelperMessage('error', `Error checking Java class: ${error.message}`);
+            });
+        }
+        
+        // Apply the Java fix
+        function applyJavaFix() {
+            if (window.fixedJavaCode) {
+                editor.setValue(window.fixedJavaCode);
+                showJavaHelperMessage('success', 'Code updated to use public class Solution');
+            }
+        }
+        
+        // Helper function to show messages
+        function showJavaHelperMessage(type, message) {
+            // Create a message container if it doesn't exist
+            let messageContainer = document.getElementById('javaHelperMessage');
+            if (!messageContainer) {
+                messageContainer = document.createElement('div');
+                messageContainer.id = 'javaHelperMessage';
+                messageContainer.style.marginTop = '10px';
+                messageContainer.style.padding = '10px';
+                messageContainer.style.borderRadius = '5px';
+                
+                // Add it after the editor
+                document.querySelector('.CodeMirror').insertAdjacentElement('afterend', messageContainer);
+            }
+            
+            // Set the appropriate styles
+            const styles = {
+                success: {
+                    background: '#d4edda', 
+                    border: '1px solid #c3e6cb', 
+                    color: '#155724'
+                },
+                warning: {
+                    background: '#fff3cd', 
+                    border: '1px solid #ffeeba', 
+                    color: '#856404'
+                },
+                error: {
+                    background: '#f8d7da', 
+                    border: '1px solid #f5c6cb', 
+                    color: '#721c24'
+                }
+            };
+            
+            // Apply the styles
+            const style = styles[type] || styles.info;
+            Object.assign(messageContainer.style, style);
+            
+            // Set the message content
+            messageContainer.innerHTML = message;
+            
+            // Auto-hide after 10 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageContainer.style.display = 'none';
+                }, 10000);
+            }
         }
 
         // Initialize with C++ code
-        editor.setValue(starterCode.cpp);
+        // editor.setValue(starterCode.cpp);
+        // Don't set initial value here, loadProblem will handle it
 
         // Function to run code
         function runCode() {
@@ -667,7 +993,10 @@ int main() {
 
         // Function to check submission limits
         function checkSubmissionLimit(problemId) {
-            return fetch('../api/check_submission_limit.php?problem_id=' + problemId)
+            // Add cache-busting to prevent caching
+            const cacheBuster = new Date().getTime();
+            const contestId = <?php echo $contest_id; ?>; // Get the contest ID from PHP
+            return fetch(`../api/check_submission_limit.php?problem_id=${problemId}&contest_id=${contestId}&_=${cacheBuster}`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
@@ -683,11 +1012,26 @@ int main() {
             const code = editor.getValue();
             const language = document.getElementById('language').value;
             const problemId = currentProblemId;
+            const contestId = <?php echo $contest_id; ?>;
+
+            console.log("Submit button clicked");
+            console.log("Current problem ID:", problemId);
+            console.log("Current contest ID:", contestId);
+            console.log("Selected language:", language);
 
             if (!code.trim()) {
                 alert('Please write some code before submitting.');
                 return;
             }
+
+            if (!problemId) {
+                document.getElementById("testCaseResults").innerHTML = 
+                    `<div class="error-output">Error: No problem selected. Please select a problem first.</div>`;
+                return;
+            }
+
+            // Switch to test cases tab before proceeding
+            document.querySelector('a[href="#testcases"]').click();
 
             // Show loading state
             document.getElementById("testCaseResults").innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
@@ -697,114 +1041,278 @@ int main() {
                 .then(limitData => {
                     if (!limitData.canSubmit) {
                         document.getElementById("testCaseResults").innerHTML = 
-                            `<div class="error-output">${limitData.message}</div>`;
+                            `<div class="error-output">${limitData.message || limitData.error || 'You have reached the maximum number of submissions for this problem.'}</div>`;
                         return;
                     }
-
-                    // If submission is allowed, proceed with API call
-            fetch('../api/submit_code.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    code: code,
-                    language: language,
-                    problem_id: problemId
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    document.getElementById("testCaseResults").innerHTML = 
-                        `<div class="error-output">${data.error}</div>`;
-                    return;
-                }
-                
-                let resultsHtml = '';
-                        let allPassed = true;
-                        let visiblePassed = true;
-                        let hiddenPassed = true;
+                    
+                    // Check if this is the final submission
+                    const isLastSubmission = limitData.maxSubmissions > 0 && 
+                                           (limitData.submissionsUsed + 1) >= limitData.maxSubmissions;
+                    
+                    // Function to proceed with submission
+                    const proceedWithSubmission = () => {
+                        console.log("Making API call to submit_code.php with problem_id:", problemId, "contest_id:", contestId);
                         
-                        // Process visible test cases first
-                data.testCases.forEach((testCase, index) => {
-                            if (testCase.is_visible) {
-                                if (!testCase.passed) {
-                                    visiblePassed = false;
+                        // If submission is allowed, proceed with API call
+                        fetch('../api/submit_code.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                code: code,
+                                language: language,
+                                problem_id: problemId,
+                                contest_id: contestId
+                            })
+                        })
+                        .then(response => {
+                            console.log("API Response status:", response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log("API Response data:", data);
+                            if (data.error) {
+                                document.getElementById("testCaseResults").innerHTML = 
+                                    `<div class="error-output">${data.error}</div>`;
+                                return;
+                            }
+                            
+                            let resultsHtml = '';
+                            let allPassed = true;
+                            let visiblePassed = true;
+                            let hiddenPassed = true;
+                            
+                            // Process visible test cases first
+                            data.testCases.forEach((testCase, index) => {
+                                if (testCase.is_visible) {
+                                    if (!testCase.passed) {
+                                        visiblePassed = false;
+                                        allPassed = false;
+                                    }
+                                    resultsHtml += `
+                                        <div class="test-case ${testCase.passed ? 'passed' : 'failed'}">
+                                            <strong>Test Case ${index + 1}</strong>
+                                            <div>Status: ${testCase.passed ? 'Passed' : 'Failed'}</div>
+                                            ${!testCase.passed ? `
+                                                <div>Expected Output: ${testCase.expected}</div>
+                                                <div>Your Output: ${testCase.actual}</div>
+                                            ` : ''}
+                                            <div>Time: ${testCase.time}ms</div>
+                                        </div>
+                                    `;
+                                }
+                            });
+
+                            // Add hidden test cases summary
+                            const hiddenCases = data.testCases.filter(tc => !tc.is_visible);
+                            if (hiddenCases.length > 0) {
+                                const hiddenPassed = hiddenCases.every(tc => tc.passed);
+                                if (!hiddenPassed) {
                                     allPassed = false;
                                 }
-                    resultsHtml += `
-                        <div class="test-case ${testCase.passed ? 'passed' : 'failed'}">
-                            <strong>Test Case ${index + 1}</strong>
-                            <div>Status: ${testCase.passed ? 'Passed' : 'Failed'}</div>
-                            ${!testCase.passed ? `
-                                <div>Expected Output: ${testCase.expected}</div>
-                                <div>Your Output: ${testCase.actual}</div>
-                            ` : ''}
-                            <div>Time: ${testCase.time}ms</div>
-                        </div>
-                    `;
+                                resultsHtml += `
+                                    <div class="test-case ${hiddenPassed ? 'passed' : 'failed'}">
+                                        <strong>Hidden Test Cases</strong>
+                                        <div>Status: ${hiddenPassed ? 'All Passed' : 'Some Failed'}</div>
+                                        <div>Total Hidden Cases: ${hiddenCases.length}</div>
+                                    </div>
+                                `;
                             }
-                });
 
-                        // Add hidden test cases summary
-                        const hiddenCases = data.testCases.filter(tc => !tc.is_visible);
-                        if (hiddenCases.length > 0) {
-                            const hiddenPassed = hiddenCases.every(tc => tc.passed);
-                            if (!hiddenPassed) {
-                                allPassed = false;
-                            }
-                            resultsHtml += `
-                                <div class="test-case ${hiddenPassed ? 'passed' : 'failed'}">
-                                    <strong>Hidden Test Cases</strong>
-                                    <div>Status: ${hiddenPassed ? 'All Passed' : 'Some Failed'}</div>
-                                    <div>Total Hidden Cases: ${hiddenCases.length}</div>
+                            // Add overall result
+                            resultsHtml = `
+                                <div class="overall-result ${allPassed ? 'passed' : 'failed'}">
+                                    <strong>Overall Result: ${allPassed ? 'Accepted' : 'Wrong Answer'}</strong>
                                 </div>
+                                ${resultsHtml}
                             `;
-                        }
 
-                        // Add overall result
-                        resultsHtml = `
-                            <div class="overall-result ${allPassed ? 'passed' : 'failed'}">
-                                <strong>Overall Result: ${allPassed ? 'Accepted' : 'Wrong Answer'}</strong>
-                            </div>
-                            ${resultsHtml}
-                        `;
+                            document.getElementById("testCaseResults").innerHTML = resultsHtml;
 
-                document.getElementById("testCaseResults").innerHTML = resultsHtml;
+                            // If all test cases passed, show success message
+                            if (allPassed) {
+                                // Optional: Add a more prominent success message in the UI instead
+                                const successMessage = `<div class="alert alert-success mt-3">
+                                    <i class="bi bi-check-circle-fill"></i> Congratulations! All test cases passed.
+                                </div>`;
+                                document.getElementById("testCaseResults").innerHTML += successMessage;
+                                
+                                // Show beautiful success overlay with confetti
+                                // Get the problem name for the success message
+                                const currentProblemName = currentProblemId && problems ? 
+                                    (problems.find(p => p.id == currentProblemId)?.title || 'the problem') : 
+                                    'the problem';
+                                
+                                // Call the success overlay with a slight delay so the results are visible first
+                                setTimeout(() => {
+                                    window.showSuccessOverlay(currentProblemName);
+                                }, 800);
+                            }
 
-                // If all test cases passed, show success message
-                if (allPassed) {
-                    // Remove the alert popup
-                    // alert('Congratulations! All test cases passed.');
+                            // Show remaining submissions if limit is applied
+                            if (limitData.maxSubmissions > 0) {
+                                const submissionsUsed = limitData.submissionsUsed + 1;
+                                const remainingSubmissions = limitData.maxSubmissions - submissionsUsed;
+                                const remainingMessage = `<div class="alert alert-info mt-3">
+                                    <i class="bi bi-info-circle"></i> You have used ${submissionsUsed} out of ${limitData.maxSubmissions} allowed submissions for this problem. 
+                                    ${remainingSubmissions > 0 ? `You have ${remainingSubmissions} submission(s) remaining.` : '(No more submissions allowed)'}
+                                </div>`;
+                                document.getElementById("testCaseResults").innerHTML += remainingMessage;
+                                
+                                // Create overlay message for final submission instead of adding to testCaseResults
+                                if (remainingSubmissions <= 0) {
+                                    // Disable the submit button to make it visually clear
+                                    const submitBtn = document.querySelector('.btn-success[onclick="submitCode()"]');
+                                    if (submitBtn) {
+                                        submitBtn.disabled = true;
+                                        submitBtn.classList.add('disabled');
+                                        
+                                        // Mark this problem as having reached submission limit
+                                        submitBtn.setAttribute('data-problem-' + problemId + '-can-submit', 'false');
+                                    }
+                                    
+                                    // Add overlay on top of CodeMirror
+                                    const editorContainer = document.querySelector('.code-editor-container');
+                                    const overlay = document.createElement('div');
+                                    overlay.className = 'editor-overlay';
+                                    overlay.innerHTML = `
+                                        <div class="final-submission-message">
+                                            <h3><i class="bi bi-check-circle-fill"></i> Final Submission Complete</h3>
+                                            <p>Your code has been successfully submitted for this problem.</p>
+                                            <p>Thank you for your participation!</p>
+                                            <div class="mt-3">
+                                                <button class="btn btn-primary" onclick="this.closest('.editor-overlay').style.display='none'">
+                                                    Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    `;
+                                    editorContainer.appendChild(overlay);
+                                    
+                                    // Store the submitted code in localStorage after successful submission
+                                    // This ensures the final submitted code persists, not just any typed code
+                                    localStorage.setItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`, code);
+                                }
+                            }
+                            
+                            // Update the submission limit info with a small delay to allow database to update
+                            setTimeout(() => {
+                                displaySubmissionLimitInfo();
+                            }, 500);
+                        })
+                        .catch(error => {
+                            document.getElementById("testCaseResults").innerHTML = 
+                                `<div class="error-output">Error: ${error.message}</div>`;
+                        });
+                    };
                     
-                    // Optional: Add a more prominent success message in the UI instead
-                    const successMessage = `<div class="alert alert-success mt-3">
-                        <i class="bi bi-check-circle-fill"></i> Congratulations! All test cases passed.
-                    </div>`;
-                    document.getElementById("testCaseResults").innerHTML += successMessage;
-                }
-
-                // Show remaining submissions if limit is applied
-                if (limitData.submissionsRemaining !== undefined && limitData.maxSubmissions > 0) {
-                    const remainingMessage = `<div class="alert alert-info mt-3">You have used ${limitData.submissionsUsed + 1} out of ${limitData.maxSubmissions} allowed submissions for this problem.</div>`;
-                    document.getElementById("testCaseResults").innerHTML += remainingMessage;
-                }
-            })
-            .catch(error => {
-                document.getElementById("testCaseResults").innerHTML = 
-                    `<div class="error-output">Error: ${error.message}</div>`;
-                    });
-            });
+                    // If this is the last submission, show a confirmation dialog
+                    if (isLastSubmission) {
+                        // Remove loading state first
+                        document.getElementById("testCaseResults").innerHTML = '';
+                        
+                        // Create custom modal for final submission confirmation
+                        const modalContainer = document.createElement('div');
+                        modalContainer.innerHTML = `
+                            <div class="modal fade" id="finalSubmissionModal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-warning">
+                                            <h5 class="modal-title">⚠️ Final Submission Warning</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>This is your <strong>final submission</strong> for this problem. After this, you won't be able to submit any more solutions.</p>
+                                            <p>Are you sure you want to proceed with this submission?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger" id="confirmFinalSubmission">Yes, Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        document.body.appendChild(modalContainer);
+                        
+                        // Initialize and show the modal
+                        const modal = new bootstrap.Modal(document.getElementById('finalSubmissionModal'));
+                        modal.show();
+                        
+                        // Handle confirmation click
+                        document.getElementById('confirmFinalSubmission').addEventListener('click', function() {
+                            modal.hide();
+                            // Show loading state again
+                            document.getElementById("testCaseResults").innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+                            // Process the submission
+                            proceedWithSubmission();
+                        });
+                        
+                        // Clean up modal after it's hidden
+                        document.getElementById('finalSubmissionModal').addEventListener('hidden.bs.modal', function() {
+                            document.body.removeChild(modalContainer);
+                        });
+                    } else {
+                        // Not the final submission, proceed directly
+                        proceedWithSubmission();
+                    }
+                });
         }
 
         let currentProblemId = null; // Global variable to store current problem ID
+
+        // Function to display submission limit info for current problem
+        function displaySubmissionLimitInfo() {
+            if (!currentProblemId) return;
+            
+            const infoElement = document.getElementById("submissionLimitInfo");
+            const submitBtn = document.querySelector('.btn-success[onclick="submitCode()"]');
+            if (!infoElement) return;
+            
+            infoElement.innerHTML = '<div class="spinner-border spinner-border-sm text-secondary" role="status"><span class="visually-hidden">Loading...</span></div> Checking submission limits...';
+            
+            // Add a cache-busting parameter
+            const cacheBuster = new Date().getTime();
+            
+            checkSubmissionLimit(currentProblemId)
+                .then(limitData => {
+                    if (limitData.maxSubmissions === 0) {
+                        infoElement.innerHTML = '<i class="bi bi-infinity"></i> Unlimited submissions allowed';
+                        if (submitBtn) submitBtn.disabled = false;
+                    } else {
+                        const submissionsRemaining = limitData.maxSubmissions - limitData.submissionsUsed;
+                        const statusClass = submissionsRemaining > 1 ? 'text-success' : 
+                                          submissionsRemaining === 1 ? 'text-warning' : 'text-danger';
+                        infoElement.innerHTML = `<span class="${statusClass}">
+                            <i class="bi bi-${submissionsRemaining > 0 ? 'check-circle' : 'x-circle'}"></i> 
+                            ${limitData.submissionsUsed} of ${limitData.maxSubmissions} submissions used
+                            ${submissionsRemaining > 0 ? `(${submissionsRemaining} remaining)` : '(limit reached)'}
+                        </span>`;
+                        
+                        // Only disable the submit button if we've reached the limit for the CURRENT problem
+                        if (submitBtn) {
+                            submitBtn.disabled = submissionsRemaining <= 0;
+                            
+                            // Store the problem's submission status in a data attribute
+                            submitBtn.setAttribute('data-problem-' + currentProblemId + '-can-submit', 
+                                                  submissionsRemaining > 0 ? 'true' : 'false');
+                        }
+                    }
+                })
+                .catch(error => {
+                    infoElement.innerHTML = '<i class="bi bi-exclamation-triangle text-warning"></i> Could not check submission limit';
+                    if (submitBtn) submitBtn.disabled = false;
+                    console.error('Error checking submission limit:', error);
+                });
+        }
 
         // Load problem function
         function loadProblem(problem) {
             console.log('Loading problem:', problem); // Debug log
             
             currentProblemId = problem.id;
+            console.log('Set currentProblemId to:', currentProblemId);
             
             // Debug: Check problem description
             console.log('Problem description type:', typeof problem.description);
@@ -814,6 +1322,19 @@ int main() {
             console.log('All problem properties:');
             for (const prop in problem) {
                 console.log(`${prop}: ${typeof problem[prop]} (${problem[prop] ? problem[prop].toString().substring(0, 30) : 'null/undefined'})`);
+            }
+            
+            // Update submit button state based on the selected problem's submission status
+            const submitBtn = document.querySelector('.btn-success[onclick="submitCode()"]');
+            if (submitBtn) {
+                const canSubmitAttr = submitBtn.getAttribute('data-problem-' + currentProblemId + '-can-submit');
+                if (canSubmitAttr === 'false') {
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('disabled');
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('disabled');
+                }
             }
             
             // Set problem title
@@ -862,9 +1383,15 @@ int main() {
             loadTestCases(problem.id);
             
             // Reset editor and test case results
-            editor.setValue(starterCode[document.getElementById("language").value]);
+            // editor.setValue(starterCode[document.getElementById("language").value]);
+            // Instead of resetting to starter code, fetch and load last submission or starter code
+            loadLastSubmissionOrStarterCode(problem.id, document.getElementById("language").value);
+            
             document.getElementById("testCaseResults").innerHTML = '';
             document.getElementById("customOutput").innerHTML = '';
+            
+            // Display submission limit info
+            displaySubmissionLimitInfo();
         }
         
         // Function to load test cases from API
@@ -1017,6 +1544,8 @@ int main() {
                 console.log('First problem description length:', problems[0].description.length);
                 console.log('First problem description substring:', problems[0].description.substring(0, 50));
             }
+        } else {
+            console.error('No problems available for this contest!');
         }
         
         const problemsNav = document.createElement('div');
@@ -1028,14 +1557,28 @@ int main() {
                 ${problem.title}
                 <span class="badge bg-primary rounded-pill">${problem.points} points</span>
             `;
-            button.onclick = () => loadProblem(problem);
+            button.onclick = () => {
+                // Remove active class from all buttons
+                problemsNav.querySelectorAll('.list-group-item').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to the clicked button
+                button.classList.add('active');
+                loadProblem(problem);
+            };
             problemsNav.appendChild(button);
         });
         document.querySelector('#problemsNavigation').appendChild(problemsNav);
 
         // Load first problem by default if available
         if (problems.length > 0) {
+            // Highlight the first problem in the navigation
+            if (problemsNav.firstChild) {
+                problemsNav.firstChild.classList.add('active');
+            }
             loadProblem(problems[0]);
+        } else {
+            document.getElementById('problemDetails').innerHTML = '<div class="alert alert-warning">No problems available for this contest. Please contact an administrator.</div>';
         }
 
         // Add this before your existing JavaScript code
@@ -1056,6 +1599,12 @@ int main() {
                 if (distance < 0) {
                     timerElement.textContent = "Contest Ended";
                     timerElement.parentElement.classList.add('timer-danger');
+
+                    // Notify prevent_cheating.js that the contest has ended
+                    if (typeof window.setContestEnded === 'function') {
+                        window.setContestEnded(); 
+                    }
+
                     // Redirect to dashboard after 3 seconds
                     setTimeout(() => {
                         window.location.href = 'dashboard.php?error=contest_ended';
@@ -1077,8 +1626,126 @@ int main() {
             setInterval(update, 1000);
         }
         
-        // Initialize timer when page loads
-        document.addEventListener('DOMContentLoaded', updateTimer);
+        // Initialize page components when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start contest timer
+            updateTimer();
+            
+            // Setup exit contest button functionality
+            document.getElementById('exitContestBtn').addEventListener('click', function() {
+                // Create and show the exit confirmation modal
+                const modalContainer = document.createElement('div');
+                modalContainer.innerHTML = `
+                    <div class="modal fade" id="exitContestModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-danger text-white">
+                                    <h5 class="modal-title">⚠️ Warning: Exit Contest</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Are you sure you want to exit this contest?</strong></p>
+                                    <div class="alert alert-warning">
+                                        <i class="bi bi-exclamation-triangle-fill"></i> Once you exit, you will NOT be able to re-enter this contest!
+                                    </div>
+                                    <p>Make sure you have submitted all your solutions before exiting.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-danger" id="confirmExitBtn">Yes, Exit Contest</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modalContainer);
+                
+                // Initialize and show the modal
+                const modal = new bootstrap.Modal(document.getElementById('exitContestModal'));
+                modal.show();
+                
+                // Handle confirmation click
+                document.getElementById('confirmExitBtn').addEventListener('click', function() {
+                    // Set flag in the database that the student has exited the contest
+                    const contestId = <?php echo $contest_id; ?>;
+                    
+                    fetch('../api/exit_contest.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            contest_id: contestId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Redirect to dashboard with exit status
+                            window.location.href = 'dashboard.php?exit_status=success&contest_id=' + contestId;
+                        } else {
+                            // Show error if there was an issue
+                            alert('Error exiting contest: ' + data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Redirect anyway in case of connectivity issues
+                        window.location.href = 'dashboard.php?exit_status=error&contest_id=' + contestId;
+                    });
+                });
+                
+                // Clean up modal after it's hidden
+                document.getElementById('exitContestModal').addEventListener('hidden.bs.modal', function() {
+                    document.body.removeChild(modalContainer);
+                });
+            });
+            
+            // Store contest ID in session (via AJAX) to ensure it's available
+            fetch('../api/update_session.php?contest_id=<?php echo $contest_id; ?>', {
+                method: 'GET',
+                headers: {
+                    'Cache-Control': 'no-cache'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Session updated with contest ID:', data.contest_id);
+                
+                // Since we have the first problem loaded by default, check submission limits
+                if (currentProblemId) {
+                    displaySubmissionLimitInfo();
+                }
+            })
+            .catch(error => {
+                console.error('Error updating session:', error);
+            });
+        });
+
+        // Function to load last submitted code or starter code
+function loadLastSubmissionOrStarterCode(problemId, language) {
+    const contestId = <?php echo $contest_id; ?>;
+    const storedCode = localStorage.getItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`);
+    if (storedCode) {
+        editor.setValue(storedCode);
+    } else {
+        editor.setValue(starterCode[language] || starterCode.cpp); // Fallback to C++ starter if language specific not found
+    }
+}
+
+// Function to save current editor content to localStorage
+function saveCurrentCodeToLocalStorage(problemId, language) {
+    const contestId = <?php echo $contest_id; ?>;
+    const currentCode = editor.getValue();
+    localStorage.setItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`, currentCode);
+}
+        
+        // Save code to localStorage when editor content changes
+        editor.on('change', function() {
+            if (currentProblemId && document.getElementById("language")) {
+                saveCurrentCodeToLocalStorage(currentProblemId, document.getElementById("language").value);
+            }
+        });
     </script>
 </body>
 </html> 

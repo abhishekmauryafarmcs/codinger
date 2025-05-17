@@ -1,0 +1,6 @@
+[2025-05-14 16:18:28] Detected Java class name: Solution
+[2025-05-14 16:18:28] Saved Java code to: temp/6824a634bfbd7/Solution.java
+[2025-05-14 16:18:28] Compile command: javac "temp/6824a634bfbd7/Solution.java" 2> "temp/6824a634bfbd7/error.txt"
+[2025-05-14 16:18:30] Compilation succeeded!
+[2025-05-14 16:18:30] Run command: java -classpath "temp/6824a634bfbd7" Solution
+[2025-05-14 16:18:30] Code ran successfully!

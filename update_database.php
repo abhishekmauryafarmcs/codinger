@@ -122,6 +122,37 @@ try {
         $conn->query("ALTER TABLE problems ADD COLUMN memory_limit INT(11) DEFAULT 256");
     }
 
+    // SQL commands to update the contest_exits table
+    $sql_commands = [
+        // Add reason column if it doesn't exist
+        "ALTER TABLE contest_exits ADD COLUMN IF NOT EXISTS reason VARCHAR(50) DEFAULT 'page_switch_violations'",
+        
+        // Add is_permanent column if it doesn't exist
+        "ALTER TABLE contest_exits ADD COLUMN IF NOT EXISTS is_permanent TINYINT(1) DEFAULT 0",
+        
+        // Create index for faster lookups
+        "CREATE INDEX IF NOT EXISTS idx_contest_exits_user_contest ON contest_exits (user_id, contest_id)",
+        
+        // Update any existing records to have a reason (not permanent by default)
+        "UPDATE contest_exits SET reason = 'manual_exit' WHERE reason IS NULL"
+    ];
+
+    // Execute each SQL command
+    $success = true;
+    $errors = [];
+
+    foreach ($sql_commands as $sql) {
+        try {
+            if (!$conn->query($sql)) {
+                $success = false;
+                $errors[] = "Error executing: $sql. " . $conn->error;
+            }
+        } catch (Exception $e) {
+            $success = false;
+            $errors[] = "Exception: " . $e->getMessage();
+        }
+    }
+
     // Commit transaction
     $conn->commit();
     echo "<p style='color:green;'>Database update completed successfully!</p>";
@@ -129,12 +160,12 @@ try {
     // Provide next steps with appropriate action buttons
     echo "<div style='margin-top: 20px;'>";
     if ($redirect_back) {
-        echo "<p><a href='admin/manage_problems.php' class='btn btn-primary'>Return to Problem Bank</a></p>";
+        echo "<p><a href='cadmin/manage_problems.php' class='btn btn-primary'>Return to Problem Bank</a></p>";
         // Auto-redirect after 2 seconds
-        echo "<script>setTimeout(function() { window.location.href = 'admin/manage_problems.php'; }, 2000);</script>";
+        echo "<script>setTimeout(function() { window.location.href = 'cadmin/manage_problems.php'; }, 2000);</script>";
     } else {
         echo "<p><a href='index.php' class='btn btn-primary'>Return to Home</a></p>";
-        echo "<p><a href='admin/manage_problems.php' class='btn btn-success'>Go to Problem Bank</a></p>";
+        echo "<p><a href='cadmin/manage_problems.php' class='btn btn-success'>Go to Problem Bank</a></p>";
     }
     echo "</div>";
     
@@ -154,10 +185,13 @@ try {
     
     echo "<div style='margin-top: 20px;'>";
     if ($redirect_back) {
-        echo "<p><a href='admin/manage_problems.php' class='btn btn-warning'>Return to Problem Bank</a></p>";
+        echo "<p><a href='cadmin/manage_problems.php' class='btn btn-warning'>Return to Problem Bank</a></p>";
     } else {
         echo "<p><a href='index.php' class='btn btn-warning'>Return to Home</a></p>";
     }
     echo "</div>";
 }
+
+// Close the connection
+$conn->close();
 ?> 

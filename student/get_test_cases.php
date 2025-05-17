@@ -1,9 +1,9 @@
 <?php
-session_start();
+require_once '../config/session.php';
 require_once '../config/db.php';
 
 // Check if user is logged in and is a student
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
+if (!isStudentSessionValid()) {
     http_response_code(401);
     echo json_encode(['error' => 'Unauthorized']);
     exit();

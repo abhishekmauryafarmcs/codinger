@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "C:\xampp\htdocs\coding_web\temp\67aceaf80e248\solution.py", line 2, in <module>
-    n1 = int(intput("enter num1"))
-             ^^^^^^
-NameError: name 'intput' is not defined. Did you mean: 'input'?

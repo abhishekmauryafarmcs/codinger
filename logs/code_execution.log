@@ -1,0 +1,1091 @@
+[2025-05-14 16:18:42] Detected Java class name: name
+[2025-05-14 16:18:43] Saved code to: ../temp/6824a642c592c/name.java
+[2025-05-14 16:18:43] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a642c592c/name.java"
+[2025-05-14 16:18:45] Compilation error: ..\temp\6824a642c592c\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:18:54] Detected Java class name: name
+[2025-05-14 16:18:54] Saved code to: ../temp/6824a64e2d7e1/name.java
+[2025-05-14 16:18:54] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a64e2d7e1/name.java"
+[2025-05-14 16:18:56] Compilation error: ..\temp\6824a64e2d7e1\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:19:01] Detected Java class name: name
+[2025-05-14 16:19:02] Saved code to: ../temp/6824a655bcc3d/name.java
+[2025-05-14 16:19:02] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a655bcc3d/name.java"
+[2025-05-14 16:19:03] Compilation error: ..\temp\6824a655bcc3d\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:19:22] Saved code to: ../temp/6824a66a69623/solution.cpp
+[2025-05-14 16:19:22] Compile command: g++ "../temp/6824a66a69623/solution.cpp" -o "../temp/6824a66a69623/solution.exe"
+[2025-05-14 16:19:28] Run command: "../temp/6824a66a69623/solution.exe" < "../temp/6824a66a69623/input.txt" > "../temp/6824a66a69623/output.txt" 2>> "../temp/6824a66a69623/error.txt"
+[2025-05-14 16:19:34] Detected Java class name: name
+[2025-05-14 16:19:35] Saved code to: ../temp/6824a6768cf8e/name.java
+[2025-05-14 16:19:35] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a6768cf8e/name.java"
+[2025-05-14 16:19:36] Compilation error: ..\temp\6824a6768cf8e\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:20:02] Detected Java class name: name
+[2025-05-14 16:20:02] Saved code to: ../temp/6824a69286015/name.java
+[2025-05-14 16:20:02] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a69286015/name.java"
+[2025-05-14 16:20:04] Compilation error: ..\temp\6824a69286015\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:21:11] Detected Java class name: name
+[2025-05-14 16:21:11] Saved code to: ../temp/6824a6d7428aa/name.java
+[2025-05-14 16:21:11] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a6d7428aa/name.java"
+[2025-05-14 16:21:13] Compilation error: ..\temp\6824a6d7428aa\name.java:5: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:21:14] Saved code to: ../temp/6824a6da250f6/solution.cpp
+[2025-05-14 16:21:14] Compile command: g++ "../temp/6824a6da250f6/solution.cpp" -o "../temp/6824a6da250f6/solution.exe"
+[2025-05-14 16:21:15] Run command: "../temp/6824a6da250f6/solution.exe" < "../temp/6824a6da250f6/input.txt" > "../temp/6824a6da250f6/output.txt" 2>> "../temp/6824a6da250f6/error.txt"
+[2025-05-14 16:21:21] Saved code to: ../temp/6824a6e07ef6f/solution.py
+[2025-05-14 16:21:21] Run command: python "../temp/6824a6e07ef6f/solution.py" < "../temp/6824a6e07ef6f/input.txt" > "../temp/6824a6e07ef6f/output.txt" 2>> "../temp/6824a6e07ef6f/error.txt"
+[2025-05-14 16:22:13] Detected Java class name: name
+[2025-05-14 16:22:13] Saved code to: ../temp/6824a715486f3/name.java
+[2025-05-14 16:22:13] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a715486f3/name.java"
+[2025-05-14 16:22:15] Compilation error: ..\temp\6824a715486f3\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:24:13] Saved code to: ../temp/6824a78d5596f/solution.py
+[2025-05-14 16:24:13] Run command: python "../temp/6824a78d5596f/solution.py" < "../temp/6824a78d5596f/input.txt" > "../temp/6824a78d5596f/output.txt" 2>> "../temp/6824a78d5596f/error.txt"
+[2025-05-14 16:24:13] Runtime error: Traceback (most recent call last):
+  File "C:\xampp\htdocs\codinger\temp\6824a78d5596f\solution.py", line 4, in <module>
+    digit_sum=sum(int(digit) for digit in number)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\codinger\temp\6824a78d5596f\solution.py", line 4, in <genexpr>
+    digit_sum=sum(int(digit) for digit in number)
+                  ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ' '
+
+[2025-05-14 16:24:56] Saved code to: ../temp/6824a7b887f72/solution.cpp
+[2025-05-14 16:24:56] Compile command: g++ "../temp/6824a7b887f72/solution.cpp" -o "../temp/6824a7b887f72/solution.exe"
+[2025-05-14 16:24:57] Run command: "../temp/6824a7b887f72/solution.exe" < "../temp/6824a7b887f72/input.txt" > "../temp/6824a7b887f72/output.txt" 2>> "../temp/6824a7b887f72/error.txt"
+[2025-05-14 16:25:07] Saved code to: ../temp/6824a7c2e4438/solution.py
+[2025-05-14 16:25:07] Run command: python "../temp/6824a7c2e4438/solution.py" < "../temp/6824a7c2e4438/input.txt" > "../temp/6824a7c2e4438/output.txt" 2>> "../temp/6824a7c2e4438/error.txt"
+[2025-05-14 16:25:07] Runtime error: Traceback (most recent call last):
+  File "C:\xampp\htdocs\codinger\temp\6824a7c2e4438\solution.py", line 4, in <module>
+    digit_sum=sum(int(digit) for digit in number)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\codinger\temp\6824a7c2e4438\solution.py", line 4, in <genexpr>
+    digit_sum=sum(int(digit) for digit in number)
+                  ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ' '
+
+[2025-05-14 16:25:12] Detected Java class name: name
+[2025-05-14 16:25:13] Saved code to: ../temp/6824a7c8a22dc/name.java
+[2025-05-14 16:25:13] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a7c8a22dc/name.java"
+[2025-05-14 16:25:14] Compilation error: ..\temp\6824a7c8a22dc\name.java:3: error: class Solution is public, should be declared in a file named Solution.java
+public class Solution {
+       ^
+1 error
+
+[2025-05-14 16:32:34] Saved code to: ../temp/6824a981d69de/solution.cpp
+[2025-05-14 16:32:34] Compile command: g++ "../temp/6824a981d69de/solution.cpp" -o "../temp/6824a981d69de/solution.exe"
+[2025-05-14 16:32:34] Compilation error: ../temp/6824a981d69de/solution.cpp:1:1: error: 'import' does not name a type
+ import java.util.Scanner;
+ ^~~~~~
+../temp/6824a981d69de/solution.cpp:3:1: error: expected unqualified-id before 'public'
+ public class ArraySum {
+ ^~~~~~
+
+[2025-05-14 16:32:49] Detected Java class name: ArraySum - Will use Solution instead
+[2025-05-14 16:32:49] Modified Java code to use Solution class instead of ArraySum
+[2025-05-14 16:32:50] Java code will be saved as: ../temp/6824a991f309f/Solution.java
+[2025-05-14 16:32:50] Java code saved to: ../temp/6824a991f309f/Solution.java with class name: Solution
+[2025-05-14 16:32:50] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a991f309f/Solution.java"
+[2025-05-14 16:32:51] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824a991f309f" Solution < "../temp/6824a991f309f/input.txt" > "../temp/6824a991f309f/output.txt" 2>> "../temp/6824a991f309f/error.txt"
+[2025-05-14 16:33:08] Detected Java class name: ArraySum - Will use Solution instead
+[2025-05-14 16:33:08] Modified Java code to use Solution class instead of ArraySum
+[2025-05-14 16:33:08] Java code will be saved as: ../temp/6824a9a41efb6/Solution.java
+[2025-05-14 16:33:08] Java code saved to: ../temp/6824a9a41efb6/Solution.java with class name: Solution
+[2025-05-14 16:33:08] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a9a41efb6/Solution.java"
+[2025-05-14 16:33:10] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824a9a41efb6" Solution < "../temp/6824a9a41efb6/input.txt" > "../temp/6824a9a41efb6/output.txt" 2>> "../temp/6824a9a41efb6/error.txt"
+[2025-05-14 16:33:26] Detected Java class name: name - Will use Solution instead
+[2025-05-14 16:33:26] Modified Java code to use Solution class instead of name
+[2025-05-14 16:33:27] Java code will be saved as: ../temp/6824a9b6e9189/Solution.java
+[2025-05-14 16:33:27] Java code saved to: ../temp/6824a9b6e9189/Solution.java with class name: Solution
+[2025-05-14 16:33:27] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a9b6e9189/Solution.java"
+[2025-05-14 16:33:29] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824a9b6e9189" Solution < "../temp/6824a9b6e9189/input.txt" > "../temp/6824a9b6e9189/output.txt" 2>> "../temp/6824a9b6e9189/error.txt"
+[2025-05-14 16:34:24] Detected Java class name: name - Will use Solution instead
+[2025-05-14 16:34:24] Modified Java code to use Solution class instead of name
+[2025-05-14 16:34:25] Java code will be saved as: ../temp/6824a9f0976c8/Solution.java
+[2025-05-14 16:34:25] Java code saved to: ../temp/6824a9f0976c8/Solution.java with class name: Solution
+[2025-05-14 16:34:25] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824a9f0976c8/Solution.java"
+[2025-05-14 16:34:27] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824a9f0976c8" Solution < "../temp/6824a9f0976c8/input.txt" > "../temp/6824a9f0976c8/output.txt" 2>> "../temp/6824a9f0976c8/error.txt"
+[2025-05-14 16:36:20] Detected Java class name: name - Will use Solution instead
+[2025-05-14 16:36:20] Modified Java code to use Solution class instead of name
+[2025-05-14 16:36:20] Java code will be saved as: ../temp/6824aa64463bb/Solution.java
+[2025-05-14 16:36:20] Java code saved to: ../temp/6824aa64463bb/Solution.java with class name: Solution
+[2025-05-14 16:36:20] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824aa64463bb/Solution.java"
+[2025-05-14 16:36:22] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824aa64463bb" Solution < "../temp/6824aa64463bb/input.txt" > "../temp/6824aa64463bb/output.txt" 2>> "../temp/6824aa64463bb/error.txt"
+[2025-05-14 16:36:25] Detected Java class name: ArraySum - Will use Solution instead
+[2025-05-14 16:36:25] Modified Java code to use Solution class instead of ArraySum
+[2025-05-14 16:36:25] Java code will be saved as: ../temp/6824aa69577da/Solution.java
+[2025-05-14 16:36:25] Java code saved to: ../temp/6824aa69577da/Solution.java with class name: Solution
+[2025-05-14 16:36:25] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824aa69577da/Solution.java"
+[2025-05-14 16:36:28] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824aa69577da" Solution < "../temp/6824aa69577da/input.txt" > "../temp/6824aa69577da/output.txt" 2>> "../temp/6824aa69577da/error.txt"
+[2025-05-14 16:36:52] Detected Java class name: name - Will use Solution instead
+[2025-05-14 16:36:52] Modified Java code to use Solution class instead of name
+[2025-05-14 16:36:53] Java code will be saved as: ../temp/6824aa84c2385/Solution.java
+[2025-05-14 16:36:53] Java code saved to: ../temp/6824aa84c2385/Solution.java with class name: Solution
+[2025-05-14 16:36:53] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824aa84c2385/Solution.java"
+[2025-05-14 16:36:55] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824aa84c2385" Solution < "../temp/6824aa84c2385/input.txt" > "../temp/6824aa84c2385/output.txt" 2>> "../temp/6824aa84c2385/error.txt"
+[2025-05-14 16:47:18] Saved code to: ../temp/6824acf5ddfb0/solution.cpp
+[2025-05-14 16:47:18] Compile command: g++ "../temp/6824acf5ddfb0/solution.cpp" -o "../temp/6824acf5ddfb0/solution.exe"
+[2025-05-14 16:47:19] Run command: "../temp/6824acf5ddfb0/solution.exe" < "../temp/6824acf5ddfb0/input.txt" > "../temp/6824acf5ddfb0/output.txt" 2>> "../temp/6824acf5ddfb0/error.txt"
+[2025-05-14 16:47:40] Saved code to: ../temp/6824ad0cc3bf4/solution.cpp
+[2025-05-14 16:47:40] Compile command: g++ "../temp/6824ad0cc3bf4/solution.cpp" -o "../temp/6824ad0cc3bf4/solution.exe"
+[2025-05-14 16:47:41] Saved code to: ../temp/6824ad0cdfef1/solution.cpp
+[2025-05-14 16:47:41] Compile command: g++ "../temp/6824ad0cdfef1/solution.cpp" -o "../temp/6824ad0cdfef1/solution.exe"
+[2025-05-14 16:47:41] Run command: "../temp/6824ad0cc3bf4/solution.exe" < "../temp/6824ad0cc3bf4/input.txt" > "../temp/6824ad0cc3bf4/output.txt" 2>> "../temp/6824ad0cc3bf4/error.txt"
+[2025-05-14 16:47:42] Run command: "../temp/6824ad0cdfef1/solution.exe" < "../temp/6824ad0cdfef1/input.txt" > "../temp/6824ad0cdfef1/output.txt" 2>> "../temp/6824ad0cdfef1/error.txt"
+[2025-05-14 16:47:50] Saved code to: ../temp/6824ad1624688/solution.cpp
+[2025-05-14 16:47:50] Compile command: g++ "../temp/6824ad1624688/solution.cpp" -o "../temp/6824ad1624688/solution.exe"
+[2025-05-14 16:47:51] Run command: "../temp/6824ad1624688/solution.exe" < "../temp/6824ad1624688/input.txt" > "../temp/6824ad1624688/output.txt" 2>> "../temp/6824ad1624688/error.txt"
+[2025-05-14 16:48:06] Saved code to: ../temp/6824ad260e869/solution.cpp
+[2025-05-14 16:48:06] Compile command: g++ "../temp/6824ad260e869/solution.cpp" -o "../temp/6824ad260e869/solution.exe"
+[2025-05-14 16:48:07] Run command: "../temp/6824ad260e869/solution.exe" < "../temp/6824ad260e869/input.txt" > "../temp/6824ad260e869/output.txt" 2>> "../temp/6824ad260e869/error.txt"
+[2025-05-14 16:48:13] Saved code to: ../temp/6824ad2d8158b/solution.cpp
+[2025-05-14 16:48:13] Compile command: g++ "../temp/6824ad2d8158b/solution.cpp" -o "../temp/6824ad2d8158b/solution.exe"
+[2025-05-14 16:48:14] Run command: "../temp/6824ad2d8158b/solution.exe" < "../temp/6824ad2d8158b/input.txt" > "../temp/6824ad2d8158b/output.txt" 2>> "../temp/6824ad2d8158b/error.txt"
+[2025-05-14 16:49:45] Saved code to: ../temp/6824ad892db99/solution.cpp
+[2025-05-14 16:49:45] Compile command: g++ "../temp/6824ad892db99/solution.cpp" -o "../temp/6824ad892db99/solution.exe"
+[2025-05-14 16:49:46] Run command: "../temp/6824ad892db99/solution.exe" < "../temp/6824ad892db99/input.txt" > "../temp/6824ad892db99/output.txt" 2>> "../temp/6824ad892db99/error.txt"
+[2025-05-14 16:50:00] Saved code to: ../temp/6824ad9822ed2/solution.cpp
+[2025-05-14 16:50:00] Compile command: g++ "../temp/6824ad9822ed2/solution.cpp" -o "../temp/6824ad9822ed2/solution.exe"
+[2025-05-14 16:50:01] Run command: "../temp/6824ad9822ed2/solution.exe" < "../temp/6824ad9822ed2/input.txt" > "../temp/6824ad9822ed2/output.txt" 2>> "../temp/6824ad9822ed2/error.txt"
+[2025-05-14 18:58:30] Detected Java class name: ReverseArrayOf3 - Will use Solution instead
+[2025-05-14 18:58:30] Modified Java code to use Solution class instead of ReverseArrayOf3
+[2025-05-14 18:58:30] Java code will be saved as: ../temp/6824cbb660680/Solution.java
+[2025-05-14 18:58:30] Java code saved to: ../temp/6824cbb660680/Solution.java with class name: Solution
+[2025-05-14 18:58:30] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824cbb660680/Solution.java"
+[2025-05-14 18:58:33] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824cbb660680" Solution < "../temp/6824cbb660680/input.txt" > "../temp/6824cbb660680/output.txt" 2>> "../temp/6824cbb660680/error.txt"
+[2025-05-14 18:58:33] Runtime error: Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Solution.main(Solution.java:11)
+
+[2025-05-14 18:58:35] Detected Java class name: ReverseArrayOf3 - Will use Solution instead
+[2025-05-14 18:58:35] Modified Java code to use Solution class instead of ReverseArrayOf3
+[2025-05-14 18:58:36] Java code will be saved as: ../temp/6824cbbbb4b5c/Solution.java
+[2025-05-14 18:58:36] Java code saved to: ../temp/6824cbbbb4b5c/Solution.java with class name: Solution
+[2025-05-14 18:58:36] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824cbbbb4b5c/Solution.java"
+[2025-05-14 18:58:38] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824cbbbb4b5c" Solution < "../temp/6824cbbbb4b5c/input.txt" > "../temp/6824cbbbb4b5c/output.txt" 2>> "../temp/6824cbbbb4b5c/error.txt"
+[2025-05-14 18:59:17] Detected Java class name: ReverseArrayOf3 - Will use Solution instead
+[2025-05-14 18:59:17] Modified Java code to use Solution class instead of ReverseArrayOf3
+[2025-05-14 18:59:18] Java code will be saved as: ../temp/6824cbe5aeca5/Solution.java
+[2025-05-14 18:59:18] Java code saved to: ../temp/6824cbe5aeca5/Solution.java with class name: Solution
+[2025-05-14 18:59:18] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824cbe5aeca5/Solution.java"
+[2025-05-14 18:59:20] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824cbe5aeca5" Solution < "../temp/6824cbe5aeca5/input.txt" > "../temp/6824cbe5aeca5/output.txt" 2>> "../temp/6824cbe5aeca5/error.txt"
+[2025-05-14 18:59:49] Detected Java class name: Solution - Will use Solution instead
+[2025-05-14 18:59:50] Java code will be saved as: ../temp/6824cc05ae7c0/Solution.java
+[2025-05-14 18:59:50] Java code saved to: ../temp/6824cc05ae7c0/Solution.java with class name: Solution
+[2025-05-14 18:59:50] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824cc05ae7c0/Solution.java"
+[2025-05-14 18:59:52] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824cc05ae7c0" Solution < "../temp/6824cc05ae7c0/input.txt" > "../temp/6824cc05ae7c0/output.txt" 2>> "../temp/6824cc05ae7c0/error.txt"
+[2025-05-14 19:11:57] Detected Java class name: ReverseArrayOf3 - Will use Solution instead
+[2025-05-14 19:11:57] Modified Java code to use Solution class instead of ReverseArrayOf3
+[2025-05-14 19:11:58] Java code will be saved as: ../temp/6824cedd9523e/Solution.java
+[2025-05-14 19:11:58] Java code saved to: ../temp/6824cedd9523e/Solution.java with class name: Solution
+[2025-05-14 19:11:58] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824cedd9523e/Solution.java"
+[2025-05-14 19:12:00] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824cedd9523e" Solution < "../temp/6824cedd9523e/input.txt" > "../temp/6824cedd9523e/output.txt" 2>> "../temp/6824cedd9523e/error.txt"
+[2025-05-14 19:12:24] Detected Java class name: Solution - Will use Solution instead
+[2025-05-14 19:12:24] Java code will be saved as: ../temp/6824cef835370/Solution.java
+[2025-05-14 19:12:24] Java code saved to: ../temp/6824cef835370/Solution.java with class name: Solution
+[2025-05-14 19:12:24] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6824cef835370/Solution.java"
+[2025-05-14 19:12:26] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6824cef835370" Solution < "../temp/6824cef835370/input.txt" > "../temp/6824cef835370/output.txt" 2>> "../temp/6824cef835370/error.txt"
+[2025-05-14 20:38:35] Saved code to: ../temp/6824e32abfaad/solution.py
+[2025-05-14 20:38:35] Run command: python "../temp/6824e32abfaad/solution.py" < "../temp/6824e32abfaad/input.txt" > "../temp/6824e32abfaad/output.txt" 2>> "../temp/6824e32abfaad/error.txt"
+[2025-05-14 20:44:43] Saved code to: ../temp/6824e49b9fe60/solution.py
+[2025-05-14 20:44:43] Run command: python "../temp/6824e49b9fe60/solution.py" < "../temp/6824e49b9fe60/input.txt" > "../temp/6824e49b9fe60/output.txt" 2>> "../temp/6824e49b9fe60/error.txt"
+[2025-05-14 20:47:41] Saved code to: ../temp/6824e54cde9a3/solution.py
+[2025-05-14 20:47:41] Run command: python "../temp/6824e54cde9a3/solution.py" < "../temp/6824e54cde9a3/input.txt" > "../temp/6824e54cde9a3/output.txt" 2>> "../temp/6824e54cde9a3/error.txt"
+[2025-05-14 20:54:26] Saved code to: ../temp/6824e6e237a20/solution.py
+[2025-05-14 20:54:26] Run command: python "../temp/6824e6e237a20/solution.py" < "../temp/6824e6e237a20/input.txt" > "../temp/6824e6e237a20/output.txt" 2>> "../temp/6824e6e237a20/error.txt"
+[2025-05-14 21:25:14] Saved code to: ../temp/6824ee1a469fd/solution.py
+[2025-05-14 21:25:14] Run command: python "../temp/6824ee1a469fd/solution.py" < "../temp/6824ee1a469fd/input.txt" > "../temp/6824ee1a469fd/output.txt" 2>> "../temp/6824ee1a469fd/error.txt"
+[2025-05-14 21:28:55] Saved code to: ../temp/6824eef76641f/solution.py
+[2025-05-14 21:28:55] Run command: python "../temp/6824eef76641f/solution.py" < "../temp/6824eef76641f/input.txt" > "../temp/6824eef76641f/output.txt" 2>> "../temp/6824eef76641f/error.txt"
+[2025-05-15 06:59:43] Saved code to: ../temp/682574bf26dc2/solution.cpp
+[2025-05-15 06:59:43] Compile command: g++ "../temp/682574bf26dc2/solution.cpp" -o "../temp/682574bf26dc2/solution.exe"
+[2025-05-15 06:59:44] Compilation error: ../temp/682574bf26dc2/solution.cpp: In function 'int main()':
+../temp/682574bf26dc2/solution.cpp:6:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-15 07:00:06] Saved code to: ../temp/682574d5da1b9/solution.cpp
+[2025-05-15 07:00:06] Compile command: g++ "../temp/682574d5da1b9/solution.cpp" -o "../temp/682574d5da1b9/solution.exe"
+[2025-05-15 07:00:07] Run command: "../temp/682574d5da1b9/solution.exe" < "../temp/682574d5da1b9/input.txt" > "../temp/682574d5da1b9/output.txt" 2>> "../temp/682574d5da1b9/error.txt"
+[2025-05-15 07:01:57] Detected Java class name: Solution - Will use Solution instead
+[2025-05-15 07:01:57] Java code will be saved as: ../temp/6825754568714/Solution.java
+[2025-05-15 07:01:57] Java code saved to: ../temp/6825754568714/Solution.java with class name: Solution
+[2025-05-15 07:01:57] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6825754568714/Solution.java"
+[2025-05-15 07:01:59] Compilation error: ..\temp\6825754568714\Solution.java:4: error: cannot find symbol
+        for (int i = 0; i < m; i++) {
+                            ^
+  symbol:   variable m
+  location: class Solution
+..\temp\6825754568714\Solution.java:5: error: cannot find symbol
+            for (int j = 0; j < n; j++) {
+                                ^
+  symbol:   variable n
+  location: class Solution
+..\temp\6825754568714\Solution.java:6: error: cannot find symbol
+                if (((rowMask >> i) & 1) == 1 || ((colMask >> j) & 1) == 1) {
+                      ^
+  symbol:   variable rowMask
+  location: class Solution
+..\temp\6825754568714\Solution.java:6: error: cannot find symbol
+                if (((rowMask >> i) & 1) == 1 || ((colMask >> j) & 1) == 1) {
+                                                   ^
+  symbol:   variable colMask
+  location: class Solution
+..\temp\6825754568714\Solution.java:7: error: cannot find symbol
+                    matrix[i][j] = 0;
+                    ^
+  symbol:   variable matrix
+  location: class Solution
+5 errors
+
+[2025-05-15 07:06:38] Detected Java class name: Solution - Will use Solution instead
+[2025-05-15 07:06:38] Java code will be saved as: ../temp/6825765e12689/Solution.java
+[2025-05-15 07:06:38] Java code saved to: ../temp/6825765e12689/Solution.java with class name: Solution
+[2025-05-15 07:06:38] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6825765e12689/Solution.java"
+[2025-05-15 07:06:39] Compilation error: ..\temp\6825765e12689\Solution.java:4: error: ')' expected
+        System.out.println(3+" "2+" "+1);
+                                ^
+1 error
+
+[2025-05-15 09:11:02] Saved code to: ../temp/6825938615293/solution.cpp
+[2025-05-15 09:11:02] Compile command: g++ "../temp/6825938615293/solution.cpp" -o "../temp/6825938615293/solution.exe"
+[2025-05-15 09:11:03] Run command: "../temp/6825938615293/solution.exe" < "../temp/6825938615293/input.txt" > "../temp/6825938615293/output.txt" 2>> "../temp/6825938615293/error.txt"
+[2025-05-15 10:54:16] Saved code to: ../temp/6825abb8cf9d3/solution.cpp
+[2025-05-15 10:54:16] Compile command: g++ "../temp/6825abb8cf9d3/solution.cpp" -o "../temp/6825abb8cf9d3/solution.exe"
+[2025-05-15 10:54:17] Run command: "../temp/6825abb8cf9d3/solution.exe" < "../temp/6825abb8cf9d3/input.txt" > "../temp/6825abb8cf9d3/output.txt" 2>> "../temp/6825abb8cf9d3/error.txt"
+[2025-05-15 11:28:29] Saved code to: ../temp/6825b3bd18942/solution.cpp
+[2025-05-15 11:28:29] Compile command: g++ "../temp/6825b3bd18942/solution.cpp" -o "../temp/6825b3bd18942/solution.exe"
+[2025-05-15 11:28:30] Run command: "../temp/6825b3bd18942/solution.exe" < "../temp/6825b3bd18942/input.txt" > "../temp/6825b3bd18942/output.txt" 2>> "../temp/6825b3bd18942/error.txt"
+[2025-05-15 11:32:56] Saved code to: ../temp/6825b4c8ce541/solution.cpp
+[2025-05-15 11:32:56] Compile command: g++ "../temp/6825b4c8ce541/solution.cpp" -o "../temp/6825b4c8ce541/solution.exe"
+[2025-05-15 11:32:57] Run command: "../temp/6825b4c8ce541/solution.exe" < "../temp/6825b4c8ce541/input.txt" > "../temp/6825b4c8ce541/output.txt" 2>> "../temp/6825b4c8ce541/error.txt"
+[2025-05-16 08:41:41] Saved code to: ../temp/6826de24de3b5/solution.cpp
+[2025-05-16 08:41:41] Compile command: g++ "../temp/6826de24de3b5/solution.cpp" -o "../temp/6826de24de3b5/solution.exe"
+[2025-05-16 08:41:41] Run command: "../temp/6826de24de3b5/solution.exe" < "../temp/6826de24de3b5/input.txt" > "../temp/6826de24de3b5/output.txt" 2>> "../temp/6826de24de3b5/error.txt"
+[2025-05-16 09:02:45] Saved code to: ../temp/6826e3152cdfb/solution.cpp
+[2025-05-16 09:02:45] Compile command: g++ "../temp/6826e3152cdfb/solution.cpp" -o "../temp/6826e3152cdfb/solution.exe"
+[2025-05-16 09:02:46] Run command: "../temp/6826e3152cdfb/solution.exe" < "../temp/6826e3152cdfb/input.txt" > "../temp/6826e3152cdfb/output.txt" 2>> "../temp/6826e3152cdfb/error.txt"
+[2025-05-16 09:02:46] Saved code to: ../temp/6826e3166a351/solution.cpp
+[2025-05-16 09:02:46] Compile command: g++ "../temp/6826e3166a351/solution.cpp" -o "../temp/6826e3166a351/solution.exe"
+[2025-05-16 09:02:47] Run command: "../temp/6826e3166a351/solution.exe" < "../temp/6826e3166a351/input.txt" > "../temp/6826e3166a351/output.txt" 2>> "../temp/6826e3166a351/error.txt"
+[2025-05-16 09:45:03] Detected Java class name: Solution - Will use Solution instead
+[2025-05-16 09:45:03] Java code will be saved as: ../temp/6826ecff5a61a/Solution.java
+[2025-05-16 09:45:03] Java code saved to: ../temp/6826ecff5a61a/Solution.java with class name: Solution
+[2025-05-16 09:45:03] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6826ecff5a61a/Solution.java"
+[2025-05-16 09:45:05] Compilation error: ..\temp\6826ecff5a61a\Solution.java:5: error: ';' expected
+        int[] a={1,2,3,4,5}
+                           ^
+1 error
+
+[2025-05-16 09:45:14] Detected Java class name: Solution - Will use Solution instead
+[2025-05-16 09:45:15] Java code will be saved as: ../temp/6826ed0a9c0c8/Solution.java
+[2025-05-16 09:45:15] Java code saved to: ../temp/6826ed0a9c0c8/Solution.java with class name: Solution
+[2025-05-16 09:45:15] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6826ed0a9c0c8/Solution.java"
+[2025-05-16 09:45:16] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6826ed0a9c0c8" Solution < "../temp/6826ed0a9c0c8/input.txt" > "../temp/6826ed0a9c0c8/output.txt" 2>> "../temp/6826ed0a9c0c8/error.txt"
+[2025-05-16 09:45:42] Detected Java class name: Solution - Will use Solution instead
+[2025-05-16 09:45:42] Java code will be saved as: ../temp/6826ed262fc2c/Solution.java
+[2025-05-16 09:45:42] Java code saved to: ../temp/6826ed262fc2c/Solution.java with class name: Solution
+[2025-05-16 09:45:42] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6826ed262fc2c/Solution.java"
+[2025-05-16 09:45:45] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6826ed262fc2c" Solution < "../temp/6826ed262fc2c/input.txt" > "../temp/6826ed262fc2c/output.txt" 2>> "../temp/6826ed262fc2c/error.txt"
+[2025-05-16 10:42:36] Saved code to: ../temp/6826fa7c7d59e/solution.cpp
+[2025-05-16 10:42:36] Compile command: g++ "../temp/6826fa7c7d59e/solution.cpp" -o "../temp/6826fa7c7d59e/solution.exe"
+[2025-05-16 10:42:40] Run command: "../temp/6826fa7c7d59e/solution.exe" < "../temp/6826fa7c7d59e/input.txt" > "../temp/6826fa7c7d59e/output.txt" 2>> "../temp/6826fa7c7d59e/error.txt"
+[2025-05-16 10:42:42] Saved code to: ../temp/6826fa823605c/solution.cpp
+[2025-05-16 10:42:42] Compile command: g++ "../temp/6826fa823605c/solution.cpp" -o "../temp/6826fa823605c/solution.exe"
+[2025-05-16 10:42:43] Run command: "../temp/6826fa823605c/solution.exe" < "../temp/6826fa823605c/input.txt" > "../temp/6826fa823605c/output.txt" 2>> "../temp/6826fa823605c/error.txt"
+[2025-05-16 10:43:05] Saved code to: ../temp/6826fa99b8c2c/solution.cpp
+[2025-05-16 10:43:05] Compile command: g++ "../temp/6826fa99b8c2c/solution.cpp" -o "../temp/6826fa99b8c2c/solution.exe"
+[2025-05-16 10:43:06] Compilation error: ../temp/6826fa99b8c2c/solution.cpp: In function 'int main()':
+../temp/6826fa99b8c2c/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:43:09] Saved code to: ../temp/6826fa9cf3df9/solution.cpp
+[2025-05-16 10:43:09] Compile command: g++ "../temp/6826fa9cf3df9/solution.cpp" -o "../temp/6826fa9cf3df9/solution.exe"
+[2025-05-16 10:43:09] Compilation error: ../temp/6826fa9cf3df9/solution.cpp: In function 'int main()':
+../temp/6826fa9cf3df9/solution.cpp:5:10: error: 'n' was not declared in this scope
+  int arr[n]
+          ^
+../temp/6826fa9cf3df9/solution.cpp:6:5: error: expected initializer before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:43:49] Saved code to: ../temp/6826fac57beeb/solution.cpp
+[2025-05-16 10:43:49] Compile command: g++ "../temp/6826fac57beeb/solution.cpp" -o "../temp/6826fac57beeb/solution.exe"
+[2025-05-16 10:43:50] Run command: "../temp/6826fac57beeb/solution.exe" < "../temp/6826fac57beeb/input.txt" > "../temp/6826fac57beeb/output.txt" 2>> "../temp/6826fac57beeb/error.txt"
+[2025-05-16 10:43:50] Saved code to: ../temp/6826fac6ba559/solution.cpp
+[2025-05-16 10:43:50] Compile command: g++ "../temp/6826fac6ba559/solution.cpp" -o "../temp/6826fac6ba559/solution.exe"
+[2025-05-16 10:43:51] Run command: "../temp/6826fac6ba559/solution.exe" < "../temp/6826fac6ba559/input.txt" > "../temp/6826fac6ba559/output.txt" 2>> "../temp/6826fac6ba559/error.txt"
+[2025-05-16 10:43:52] Saved code to: ../temp/6826fac7d785d/solution.cpp
+[2025-05-16 10:43:52] Compile command: g++ "../temp/6826fac7d785d/solution.cpp" -o "../temp/6826fac7d785d/solution.exe"
+[2025-05-16 10:43:52] Run command: "../temp/6826fac7d785d/solution.exe" < "../temp/6826fac7d785d/input.txt" > "../temp/6826fac7d785d/output.txt" 2>> "../temp/6826fac7d785d/error.txt"
+[2025-05-16 10:43:52] Saved code to: ../temp/6826fac8d1755/solution.cpp
+[2025-05-16 10:43:52] Compile command: g++ "../temp/6826fac8d1755/solution.cpp" -o "../temp/6826fac8d1755/solution.exe"
+[2025-05-16 10:43:53] Saved code to: ../temp/6826fac8f2e1f/solution.cpp
+[2025-05-16 10:43:53] Compile command: g++ "../temp/6826fac8f2e1f/solution.cpp" -o "../temp/6826fac8f2e1f/solution.exe"
+[2025-05-16 10:43:53] Run command: "../temp/6826fac8d1755/solution.exe" < "../temp/6826fac8d1755/input.txt" > "../temp/6826fac8d1755/output.txt" 2>> "../temp/6826fac8d1755/error.txt"
+[2025-05-16 10:43:53] Run command: "../temp/6826fac8f2e1f/solution.exe" < "../temp/6826fac8f2e1f/input.txt" > "../temp/6826fac8f2e1f/output.txt" 2>> "../temp/6826fac8f2e1f/error.txt"
+[2025-05-16 10:43:54] Saved code to: ../temp/6826faca1b05a/solution.cpp
+[2025-05-16 10:43:54] Compile command: g++ "../temp/6826faca1b05a/solution.cpp" -o "../temp/6826faca1b05a/solution.exe"
+[2025-05-16 10:43:54] Run command: "../temp/6826faca1b05a/solution.exe" < "../temp/6826faca1b05a/input.txt" > "../temp/6826faca1b05a/output.txt" 2>> "../temp/6826faca1b05a/error.txt"
+[2025-05-16 10:43:55] Saved code to: ../temp/6826facb33553/solution.cpp
+[2025-05-16 10:43:55] Compile command: g++ "../temp/6826facb33553/solution.cpp" -o "../temp/6826facb33553/solution.exe"
+[2025-05-16 10:43:56] Run command: "../temp/6826facb33553/solution.exe" < "../temp/6826facb33553/input.txt" > "../temp/6826facb33553/output.txt" 2>> "../temp/6826facb33553/error.txt"
+[2025-05-16 10:43:56] Saved code to: ../temp/6826facc48f28/solution.cpp
+[2025-05-16 10:43:56] Compile command: g++ "../temp/6826facc48f28/solution.cpp" -o "../temp/6826facc48f28/solution.exe"
+[2025-05-16 10:43:57] Saved code to: ../temp/6826facd1b82a/solution.cpp
+[2025-05-16 10:43:57] Compile command: g++ "../temp/6826facd1b82a/solution.cpp" -o "../temp/6826facd1b82a/solution.exe"
+[2025-05-16 10:43:57] Run command: "../temp/6826facc48f28/solution.exe" < "../temp/6826facc48f28/input.txt" > "../temp/6826facc48f28/output.txt" 2>> "../temp/6826facc48f28/error.txt"
+[2025-05-16 10:43:57] Saved code to: ../temp/6826facd775eb/solution.cpp
+[2025-05-16 10:43:57] Compile command: g++ "../temp/6826facd775eb/solution.cpp" -o "../temp/6826facd775eb/solution.exe"
+[2025-05-16 10:43:58] Run command: "../temp/6826facd1b82a/solution.exe" < "../temp/6826facd1b82a/input.txt" > "../temp/6826facd1b82a/output.txt" 2>> "../temp/6826facd1b82a/error.txt"
+[2025-05-16 10:43:58] Run command: "../temp/6826facd775eb/solution.exe" < "../temp/6826facd775eb/input.txt" > "../temp/6826facd775eb/output.txt" 2>> "../temp/6826facd775eb/error.txt"
+[2025-05-16 10:44:03] Saved code to: ../temp/6826fad3aa088/solution.cpp
+[2025-05-16 10:44:03] Compile command: g++ "../temp/6826fad3aa088/solution.cpp" -o "../temp/6826fad3aa088/solution.exe"
+[2025-05-16 10:44:04] Compilation error: ../temp/6826fad3aa088/solution.cpp:4:12: error: '::main' must return 'int'
+ float main() {
+            ^
+
+[2025-05-16 10:44:31] Saved code to: ../temp/6826faefcc2f1/solution.cpp
+[2025-05-16 10:44:31] Compile command: g++ "../temp/6826faefcc2f1/solution.cpp" -o "../temp/6826faefcc2f1/solution.exe"
+[2025-05-16 10:44:32] Run command: "../temp/6826faefcc2f1/solution.exe" < "../temp/6826faefcc2f1/input.txt" > "../temp/6826faefcc2f1/output.txt" 2>> "../temp/6826faefcc2f1/error.txt"
+[2025-05-16 10:44:35] Saved code to: ../temp/6826faf30b136/solution.cpp
+[2025-05-16 10:44:35] Compile command: g++ "../temp/6826faf30b136/solution.cpp" -o "../temp/6826faf30b136/solution.exe"
+[2025-05-16 10:44:35] Compilation error: ../temp/6826faf30b136/solution.cpp: In function 'int main()':
+../temp/6826faf30b136/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:44:35] Saved code to: ../temp/6826faf3b8839/solution.cpp
+[2025-05-16 10:44:35] Compile command: g++ "../temp/6826faf3b8839/solution.cpp" -o "../temp/6826faf3b8839/solution.exe"
+[2025-05-16 10:44:36] Compilation error: ../temp/6826faf3b8839/solution.cpp: In function 'int main()':
+../temp/6826faf3b8839/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:44:36] Saved code to: ../temp/6826faf46cbc2/solution.cpp
+[2025-05-16 10:44:36] Compile command: g++ "../temp/6826faf46cbc2/solution.cpp" -o "../temp/6826faf46cbc2/solution.exe"
+[2025-05-16 10:44:37] Compilation error: ../temp/6826faf46cbc2/solution.cpp: In function 'int main()':
+../temp/6826faf46cbc2/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:44:37] Saved code to: ../temp/6826faf53e26d/solution.cpp
+[2025-05-16 10:44:37] Compile command: g++ "../temp/6826faf53e26d/solution.cpp" -o "../temp/6826faf53e26d/solution.exe"
+[2025-05-16 10:44:37] Compilation error: ../temp/6826faf53e26d/solution.cpp: In function 'int main()':
+../temp/6826faf53e26d/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:44:38] Saved code to: ../temp/6826faf5eb6ef/solution.cpp
+[2025-05-16 10:44:38] Compile command: g++ "../temp/6826faf5eb6ef/solution.cpp" -o "../temp/6826faf5eb6ef/solution.exe"
+[2025-05-16 10:44:38] Compilation error: ../temp/6826faf5eb6ef/solution.cpp: In function 'int main()':
+../temp/6826faf5eb6ef/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:44:38] Saved code to: ../temp/6826faf6a6b13/solution.cpp
+[2025-05-16 10:44:38] Compile command: g++ "../temp/6826faf6a6b13/solution.cpp" -o "../temp/6826faf6a6b13/solution.exe"
+[2025-05-16 10:44:39] Compilation error: ../temp/6826faf6a6b13/solution.cpp: In function 'int main()':
+../temp/6826faf6a6b13/solution.cpp:8:5: error: expected ';' before 'return'
+     return 0;
+     ^~~~~~
+
+[2025-05-16 10:45:24] Saved code to: ../temp/6826fb247c8e6/solution.cpp
+[2025-05-16 10:45:24] Compile command: g++ "../temp/6826fb247c8e6/solution.cpp" -o "../temp/6826fb247c8e6/solution.exe"
+[2025-05-16 10:45:25] Run command: "../temp/6826fb247c8e6/solution.exe" < "../temp/6826fb247c8e6/input.txt" > "../temp/6826fb247c8e6/output.txt" 2>> "../temp/6826fb247c8e6/error.txt"
+[2025-05-16 10:45:25] Saved code to: ../temp/6826fb259d05a/solution.cpp
+[2025-05-16 10:45:25] Compile command: g++ "../temp/6826fb259d05a/solution.cpp" -o "../temp/6826fb259d05a/solution.exe"
+[2025-05-16 10:45:26] Run command: "../temp/6826fb259d05a/solution.exe" < "../temp/6826fb259d05a/input.txt" > "../temp/6826fb259d05a/output.txt" 2>> "../temp/6826fb259d05a/error.txt"
+[2025-05-16 10:45:26] Saved code to: ../temp/6826fb26b5f73/solution.cpp
+[2025-05-16 10:45:26] Compile command: g++ "../temp/6826fb26b5f73/solution.cpp" -o "../temp/6826fb26b5f73/solution.exe"
+[2025-05-16 10:45:27] Run command: "../temp/6826fb26b5f73/solution.exe" < "../temp/6826fb26b5f73/input.txt" > "../temp/6826fb26b5f73/output.txt" 2>> "../temp/6826fb26b5f73/error.txt"
+[2025-05-16 10:45:28] Saved code to: ../temp/6826fb27e5da6/solution.cpp
+[2025-05-16 10:45:28] Compile command: g++ "../temp/6826fb27e5da6/solution.cpp" -o "../temp/6826fb27e5da6/solution.exe"
+[2025-05-16 10:45:28] Run command: "../temp/6826fb27e5da6/solution.exe" < "../temp/6826fb27e5da6/input.txt" > "../temp/6826fb27e5da6/output.txt" 2>> "../temp/6826fb27e5da6/error.txt"
+[2025-05-16 10:45:29] Saved code to: ../temp/6826fb29198f5/solution.cpp
+[2025-05-16 10:45:29] Compile command: g++ "../temp/6826fb29198f5/solution.cpp" -o "../temp/6826fb29198f5/solution.exe"
+[2025-05-16 10:45:29] Run command: "../temp/6826fb29198f5/solution.exe" < "../temp/6826fb29198f5/input.txt" > "../temp/6826fb29198f5/output.txt" 2>> "../temp/6826fb29198f5/error.txt"
+[2025-05-16 10:45:30] Saved code to: ../temp/6826fb2a2effd/solution.cpp
+[2025-05-16 10:45:30] Compile command: g++ "../temp/6826fb2a2effd/solution.cpp" -o "../temp/6826fb2a2effd/solution.exe"
+[2025-05-16 10:45:31] Run command: "../temp/6826fb2a2effd/solution.exe" < "../temp/6826fb2a2effd/input.txt" > "../temp/6826fb2a2effd/output.txt" 2>> "../temp/6826fb2a2effd/error.txt"
+[2025-05-16 10:45:31] Saved code to: ../temp/6826fb2b48c79/solution.cpp
+[2025-05-16 10:45:31] Compile command: g++ "../temp/6826fb2b48c79/solution.cpp" -o "../temp/6826fb2b48c79/solution.exe"
+[2025-05-16 10:45:32] Run command: "../temp/6826fb2b48c79/solution.exe" < "../temp/6826fb2b48c79/input.txt" > "../temp/6826fb2b48c79/output.txt" 2>> "../temp/6826fb2b48c79/error.txt"
+[2025-05-16 10:45:32] Saved code to: ../temp/6826fb2c5a3ee/solution.cpp
+[2025-05-16 10:45:32] Compile command: g++ "../temp/6826fb2c5a3ee/solution.cpp" -o "../temp/6826fb2c5a3ee/solution.exe"
+[2025-05-16 10:45:33] Run command: "../temp/6826fb2c5a3ee/solution.exe" < "../temp/6826fb2c5a3ee/input.txt" > "../temp/6826fb2c5a3ee/output.txt" 2>> "../temp/6826fb2c5a3ee/error.txt"
+[2025-05-16 10:45:33] Saved code to: ../temp/6826fb2d76e1c/solution.cpp
+[2025-05-16 10:45:33] Compile command: g++ "../temp/6826fb2d76e1c/solution.cpp" -o "../temp/6826fb2d76e1c/solution.exe"
+[2025-05-16 10:45:34] Run command: "../temp/6826fb2d76e1c/solution.exe" < "../temp/6826fb2d76e1c/input.txt" > "../temp/6826fb2d76e1c/output.txt" 2>> "../temp/6826fb2d76e1c/error.txt"
+[2025-05-16 10:45:34] Saved code to: ../temp/6826fb2e90af1/solution.cpp
+[2025-05-16 10:45:34] Compile command: g++ "../temp/6826fb2e90af1/solution.cpp" -o "../temp/6826fb2e90af1/solution.exe"
+[2025-05-16 10:45:34] Saved code to: ../temp/6826fb2eb869a/solution.cpp
+[2025-05-16 10:45:34] Compile command: g++ "../temp/6826fb2eb869a/solution.cpp" -o "../temp/6826fb2eb869a/solution.exe"
+[2025-05-16 10:45:35] Compilation error: ../temp/6826fb2eb869a/solution.cpp:4:13: error: stray '#' in program
+ int main() {#include <iostream>
+             ^
+../temp/6826fb2eb869a/solution.cpp: In function 'int main()':
+../temp/6826fb2eb869a/solution.cpp:4:14: error: 'include' was not declared in this scope
+ int main() {#include <iostream>
+              ^~~~~~~
+../temp/6826fb2eb869a/solution.cpp:4:31: error: expected primary-expression before '>' token
+ int main() {#include <iostream>
+                               ^
+../temp/6826fb2eb869a/solution.cpp:5:1: error: expected primary-expression before 'using'
+ using namespace std;
+ ^~~~~
+../temp/6826fb2eb869a/solution.cpp:7:12: error: a function-definition is not allowed here before '{' token
+ int main() {
+            ^
+../temp/6826fb2eb869a/solution.cpp:35:1: error: expected '}' at end of input
+ }
+ ^
+
+[2025-05-16 10:45:35] Run command: "../temp/6826fb2e90af1/solution.exe" < "../temp/6826fb2e90af1/input.txt" > "../temp/6826fb2e90af1/output.txt" 2>> "../temp/6826fb2e90af1/error.txt"
+[2025-05-16 10:45:35] Saved code to: ../temp/6826fb2fb828b/solution.cpp
+[2025-05-16 10:45:35] Compile command: g++ "../temp/6826fb2fb828b/solution.cpp" -o "../temp/6826fb2fb828b/solution.exe"
+[2025-05-16 10:45:36] Run command: "../temp/6826fb2fb828b/solution.exe" < "../temp/6826fb2fb828b/input.txt" > "../temp/6826fb2fb828b/output.txt" 2>> "../temp/6826fb2fb828b/error.txt"
+[2025-05-16 10:45:54] Saved code to: ../temp/6826fb42a7fe2/solution.cpp
+[2025-05-16 10:45:54] Compile command: g++ "../temp/6826fb42a7fe2/solution.cpp" -o "../temp/6826fb42a7fe2/solution.exe"
+[2025-05-16 10:45:55] Compilation error: ../temp/6826fb42a7fe2/solution.cpp: In function 'int main()':
+../temp/6826fb42a7fe2/solution.cpp:8:12: error: a function-definition is not allowed here before '{' token
+ int main() {
+            ^
+
+[2025-05-16 10:46:24] Saved code to: ../temp/6826fb6050348/solution.cpp
+[2025-05-16 10:46:24] Compile command: g++ "../temp/6826fb6050348/solution.cpp" -o "../temp/6826fb6050348/solution.exe"
+[2025-05-16 10:46:25] Run command: "../temp/6826fb6050348/solution.exe" < "../temp/6826fb6050348/input.txt" > "../temp/6826fb6050348/output.txt" 2>> "../temp/6826fb6050348/error.txt"
+[2025-05-16 10:46:29] Saved code to: ../temp/6826fb659ac72/solution.cpp
+[2025-05-16 10:46:29] Compile command: g++ "../temp/6826fb659ac72/solution.cpp" -o "../temp/6826fb659ac72/solution.exe"
+[2025-05-16 10:46:30] Compilation error: ../temp/6826fb659ac72/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb659ac72/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb659ac72/solution.cpp: In function 'int main()':
+../temp/6826fb659ac72/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:31] Saved code to: ../temp/6826fb675b340/solution.cpp
+[2025-05-16 10:46:31] Compile command: g++ "../temp/6826fb675b340/solution.cpp" -o "../temp/6826fb675b340/solution.exe"
+[2025-05-16 10:46:32] Compilation error: ../temp/6826fb675b340/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb675b340/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb675b340/solution.cpp: In function 'int main()':
+../temp/6826fb675b340/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:32] Saved code to: ../temp/6826fb68af7d1/solution.cpp
+[2025-05-16 10:46:32] Compile command: g++ "../temp/6826fb68af7d1/solution.cpp" -o "../temp/6826fb68af7d1/solution.exe"
+[2025-05-16 10:46:33] Compilation error: ../temp/6826fb68af7d1/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb68af7d1/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb68af7d1/solution.cpp: In function 'int main()':
+../temp/6826fb68af7d1/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:33] Saved code to: ../temp/6826fb698856c/solution.cpp
+[2025-05-16 10:46:33] Compile command: g++ "../temp/6826fb698856c/solution.cpp" -o "../temp/6826fb698856c/solution.exe"
+[2025-05-16 10:46:34] Saved code to: ../temp/6826fb6a0180c/solution.cpp
+[2025-05-16 10:46:34] Compile command: g++ "../temp/6826fb6a0180c/solution.cpp" -o "../temp/6826fb6a0180c/solution.exe"
+[2025-05-16 10:46:34] Compilation error: ../temp/6826fb698856c/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb698856c/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb698856c/solution.cpp: In function 'int main()':
+../temp/6826fb698856c/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:34] Saved code to: ../temp/6826fb6a43ed3/solution.cpp
+[2025-05-16 10:46:34] Compile command: g++ "../temp/6826fb6a43ed3/solution.cpp" -o "../temp/6826fb6a43ed3/solution.exe"
+[2025-05-16 10:46:34] Run command: "../temp/6826fb6a0180c/solution.exe" < "../temp/6826fb6a0180c/input.txt" > "../temp/6826fb6a0180c/output.txt" 2>> "../temp/6826fb6a0180c/error.txt"
+[2025-05-16 10:46:34] Compilation error: ../temp/6826fb6a43ed3/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb6a43ed3/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb6a43ed3/solution.cpp: In function 'int main()':
+../temp/6826fb6a43ed3/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:35] Saved code to: ../temp/6826fb6b2d77e/solution.cpp
+[2025-05-16 10:46:35] Saved code to: ../temp/6826fb6b2d686/solution.cpp
+[2025-05-16 10:46:35] Compile command: g++ "../temp/6826fb6b2d77e/solution.cpp" -o "../temp/6826fb6b2d77e/solution.exe"
+[2025-05-16 10:46:35] Compile command: g++ "../temp/6826fb6b2d686/solution.cpp" -o "../temp/6826fb6b2d686/solution.exe"
+[2025-05-16 10:46:35] Saved code to: ../temp/6826fb6b945bb/solution.cpp
+[2025-05-16 10:46:35] Compile command: g++ "../temp/6826fb6b945bb/solution.cpp" -o "../temp/6826fb6b945bb/solution.exe"
+[2025-05-16 10:46:36] Saved code to: ../temp/6826fb6bddf7d/solution.cpp
+[2025-05-16 10:46:36] Compile command: g++ "../temp/6826fb6bddf7d/solution.cpp" -o "../temp/6826fb6bddf7d/solution.exe"
+[2025-05-16 10:46:36] Run command: "../temp/6826fb6b2d686/solution.exe" < "../temp/6826fb6b2d686/input.txt" > "../temp/6826fb6b2d686/output.txt" 2>> "../temp/6826fb6b2d686/error.txt"
+[2025-05-16 10:46:36] Compilation error: ../temp/6826fb6b2d77e/solution.cpp:4:13: error: stray '#' in program
+ int main() {#include <iostream>
+             ^
+../temp/6826fb6b2d77e/solution.cpp: In function 'int main()':
+../temp/6826fb6b2d77e/solution.cpp:4:14: error: 'include' was not declared in this scope
+ int main() {#include <iostream>
+              ^~~~~~~
+../temp/6826fb6b2d77e/solution.cpp:4:31: error: expected primary-expression before '>' token
+ int main() {#include <iostream>
+                               ^
+../temp/6826fb6b2d77e/solution.cpp:5:1: error: expected primary-expression before 'using'
+ using namespace std;
+ ^~~~~
+../temp/6826fb6b2d77e/solution.cpp:8:12: error: 'n' was not declared in this scope
+     cin >> n;
+            ^
+../temp/6826fb6b2d77e/solution.cpp:15:16: error: 'arr' was not declared in this scope
+         cin >> arr[i];
+                ^~~
+../temp/6826fb6b2d77e/solution.cpp:20:16: error: 'arr' was not declared in this scope
+         sum += arr[i];
+                ^~~
+
+[2025-05-16 10:46:36] Compilation error: ../temp/6826fb6b945bb/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb6b945bb/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb6b945bb/solution.cpp: In function 'int main()':
+../temp/6826fb6b945bb/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:36] Compilation error: ../temp/6826fb6bddf7d/solution.cpp:4:12: error: '::main' must return 'int'
+ float main() {
+            ^
+../temp/6826fb6bddf7d/solution.cpp: In function 'int main()':
+../temp/6826fb6bddf7d/solution.cpp:6:10: error: 'a' was not declared in this scope
+     cin<<a;
+          ^
+
+[2025-05-16 10:46:37] Saved code to: ../temp/6826fb6ce501e/solution.cpp
+[2025-05-16 10:46:37] Compile command: g++ "../temp/6826fb6ce501e/solution.cpp" -o "../temp/6826fb6ce501e/solution.exe"
+[2025-05-16 10:46:37] Compilation error: ../temp/6826fb6ce501e/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb6ce501e/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb6ce501e/solution.cpp: In function 'int main()':
+../temp/6826fb6ce501e/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:38] Saved code to: ../temp/6826fb6e08573/solution.cpp
+[2025-05-16 10:46:38] Compile command: g++ "../temp/6826fb6e08573/solution.cpp" -o "../temp/6826fb6e08573/solution.exe"
+[2025-05-16 10:46:38] Compilation error: ../temp/6826fb6e08573/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb6e08573/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb6e08573/solution.cpp: In function 'int main()':
+../temp/6826fb6e08573/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:39] Saved code to: ../temp/6826fb6f5d661/solution.cpp
+[2025-05-16 10:46:39] Compile command: g++ "../temp/6826fb6f5d661/solution.cpp" -o "../temp/6826fb6f5d661/solution.exe"
+[2025-05-16 10:46:39] Saved code to: ../temp/6826fb6fa65ea/solution.cpp
+[2025-05-16 10:46:39] Compile command: g++ "../temp/6826fb6fa65ea/solution.cpp" -o "../temp/6826fb6fa65ea/solution.exe"
+[2025-05-16 10:46:40] Compilation error: ../temp/6826fb6f5d661/solution.cpp:5:32: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                ^
+../temp/6826fb6f5d661/solution.cpp:5:34: error: stray '\' in program
+     cout<<"hello world!"<<end1:\:\;
+                                  ^
+../temp/6826fb6f5d661/solution.cpp: In function 'int main()':
+../temp/6826fb6f5d661/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1:\:\;
+                           ^~~~
+
+[2025-05-16 10:46:40] Compilation error: ../temp/6826fb6fa65ea/solution.cpp: In function 'int main()':
+../temp/6826fb6fa65ea/solution.cpp:5:5: error: 'print' was not declared in this scope
+     print
+     ^~~~~
+
+[2025-05-16 10:46:47] Detected Java class name: Solution - Will use Solution instead
+[2025-05-16 10:46:47] Java code will be saved as: ../temp/6826fb7750709/Solution.java
+[2025-05-16 10:46:47] Java code saved to: ../temp/6826fb7750709/Solution.java with class name: Solution
+[2025-05-16 10:46:47] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6826fb7750709/Solution.java"
+[2025-05-16 10:46:48] Saved code to: ../temp/6826fb7806268/solution.cpp
+[2025-05-16 10:46:48] Compile command: g++ "../temp/6826fb7806268/solution.cpp" -o "../temp/6826fb7806268/solution.exe"
+[2025-05-16 10:46:48] Compilation error: ../temp/6826fb7806268/solution.cpp: In function 'int main()':
+../temp/6826fb7806268/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:46:49] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6826fb7750709" Solution < "../temp/6826fb7750709/input.txt" > "../temp/6826fb7750709/output.txt" 2>> "../temp/6826fb7750709/error.txt"
+[2025-05-16 10:46:49] Runtime error: Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at Solution.main(Solution.java:9)
+
+[2025-05-16 10:46:51] Saved code to: ../temp/6826fb7b23de2/solution.cpp
+[2025-05-16 10:46:51] Compile command: g++ "../temp/6826fb7b23de2/solution.cpp" -o "../temp/6826fb7b23de2/solution.exe"
+[2025-05-16 10:46:51] Compilation error: ../temp/6826fb7b23de2/solution.cpp: In function 'int main()':
+../temp/6826fb7b23de2/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:46:52] Saved code to: ../temp/6826fb7c7c65e/solution.cpp
+[2025-05-16 10:46:52] Compile command: g++ "../temp/6826fb7c7c65e/solution.cpp" -o "../temp/6826fb7c7c65e/solution.exe"
+[2025-05-16 10:46:53] Compilation error: ../temp/6826fb7c7c65e/solution.cpp: In function 'int main()':
+../temp/6826fb7c7c65e/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:46:55] Saved code to: ../temp/6826fb7f17e78/solution.cpp
+[2025-05-16 10:46:55] Compile command: g++ "../temp/6826fb7f17e78/solution.cpp" -o "../temp/6826fb7f17e78/solution.exe"
+[2025-05-16 10:46:55] Compilation error: ../temp/6826fb7f17e78/solution.cpp: In function 'int main()':
+../temp/6826fb7f17e78/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:04] Saved code to: ../temp/6826fb88978a1/solution.cpp
+[2025-05-16 10:47:04] Compile command: g++ "../temp/6826fb88978a1/solution.cpp" -o "../temp/6826fb88978a1/solution.exe"
+[2025-05-16 10:47:05] Compilation error: ../temp/6826fb88978a1/solution.cpp: In function 'int main()':
+../temp/6826fb88978a1/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:06] Saved code to: ../temp/6826fb89df25b/solution.cpp
+[2025-05-16 10:47:06] Compile command: g++ "../temp/6826fb89df25b/solution.cpp" -o "../temp/6826fb89df25b/solution.exe"
+[2025-05-16 10:47:06] Compilation error: ../temp/6826fb89df25b/solution.cpp: In function 'int main()':
+../temp/6826fb89df25b/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:06] Saved code to: ../temp/6826fb8a8e964/solution.cpp
+[2025-05-16 10:47:06] Compile command: g++ "../temp/6826fb8a8e964/solution.cpp" -o "../temp/6826fb8a8e964/solution.exe"
+[2025-05-16 10:47:07] Compilation error: ../temp/6826fb8a8e964/solution.cpp: In function 'int main()':
+../temp/6826fb8a8e964/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:29] Saved code to: ../temp/6826fba17e80e/solution.cpp
+[2025-05-16 10:47:29] Compile command: g++ "../temp/6826fba17e80e/solution.cpp" -o "../temp/6826fba17e80e/solution.exe"
+[2025-05-16 10:47:30] Run command: "../temp/6826fba17e80e/solution.exe" < "../temp/6826fba17e80e/input.txt" > "../temp/6826fba17e80e/output.txt" 2>> "../temp/6826fba17e80e/error.txt"
+[2025-05-16 10:47:30] Saved code to: ../temp/6826fba29b207/solution.cpp
+[2025-05-16 10:47:30] Compile command: g++ "../temp/6826fba29b207/solution.cpp" -o "../temp/6826fba29b207/solution.exe"
+[2025-05-16 10:47:31] Run command: "../temp/6826fba29b207/solution.exe" < "../temp/6826fba29b207/input.txt" > "../temp/6826fba29b207/output.txt" 2>> "../temp/6826fba29b207/error.txt"
+[2025-05-16 10:47:31] Saved code to: ../temp/6826fba3b91cb/solution.cpp
+[2025-05-16 10:47:31] Compile command: g++ "../temp/6826fba3b91cb/solution.cpp" -o "../temp/6826fba3b91cb/solution.exe"
+[2025-05-16 10:47:32] Run command: "../temp/6826fba3b91cb/solution.exe" < "../temp/6826fba3b91cb/input.txt" > "../temp/6826fba3b91cb/output.txt" 2>> "../temp/6826fba3b91cb/error.txt"
+[2025-05-16 10:47:33] Saved code to: ../temp/6826fba553d71/solution.cpp
+[2025-05-16 10:47:33] Compile command: g++ "../temp/6826fba553d71/solution.cpp" -o "../temp/6826fba553d71/solution.exe"
+[2025-05-16 10:47:33] Compilation error: ../temp/6826fba553d71/solution.cpp: In function 'int main()':
+../temp/6826fba553d71/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:34] Saved code to: ../temp/6826fba604f55/solution.cpp
+[2025-05-16 10:47:34] Compile command: g++ "../temp/6826fba604f55/solution.cpp" -o "../temp/6826fba604f55/solution.exe"
+[2025-05-16 10:47:34] Compilation error: ../temp/6826fba604f55/solution.cpp: In function 'int main()':
+../temp/6826fba604f55/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:35] Saved code to: ../temp/6826fba759477/solution.cpp
+[2025-05-16 10:47:35] Compile command: g++ "../temp/6826fba759477/solution.cpp" -o "../temp/6826fba759477/solution.exe"
+[2025-05-16 10:47:36] Compilation error: ../temp/6826fba759477/solution.cpp: In function 'int main()':
+../temp/6826fba759477/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:36] Saved code to: ../temp/6826fba811936/solution.cpp
+[2025-05-16 10:47:36] Compile command: g++ "../temp/6826fba811936/solution.cpp" -o "../temp/6826fba811936/solution.exe"
+[2025-05-16 10:47:36] Detected Java class name: Solution - Will use Solution instead
+[2025-05-16 10:47:36] Compilation error: ../temp/6826fba811936/solution.cpp: In function 'int main()':
+../temp/6826fba811936/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:36] Saved code to: ../temp/6826fba8cfac2/solution.cpp
+[2025-05-16 10:47:36] Compile command: g++ "../temp/6826fba8cfac2/solution.cpp" -o "../temp/6826fba8cfac2/solution.exe"
+[2025-05-16 10:47:37] Java code will be saved as: ../temp/6826fba8b0b4e/Solution.java
+[2025-05-16 10:47:37] Java code saved to: ../temp/6826fba8b0b4e/Solution.java with class name: Solution
+[2025-05-16 10:47:37] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6826fba8b0b4e/Solution.java"
+[2025-05-16 10:47:37] Compilation error: ../temp/6826fba8cfac2/solution.cpp: In function 'int main()':
+../temp/6826fba8cfac2/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:37] Saved code to: ../temp/6826fba98d332/solution.cpp
+[2025-05-16 10:47:37] Compile command: g++ "../temp/6826fba98d332/solution.cpp" -o "../temp/6826fba98d332/solution.exe"
+[2025-05-16 10:47:38] Compilation error: ../temp/6826fba98d332/solution.cpp: In function 'int main()':
+../temp/6826fba98d332/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:38] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6826fba8b0b4e" Solution < "../temp/6826fba8b0b4e/input.txt" > "../temp/6826fba8b0b4e/output.txt" 2>> "../temp/6826fba8b0b4e/error.txt"
+[2025-05-16 10:47:39] Saved code to: ../temp/6826fbaae8948/solution.cpp
+[2025-05-16 10:47:39] Compile command: g++ "../temp/6826fbaae8948/solution.cpp" -o "../temp/6826fbaae8948/solution.exe"
+[2025-05-16 10:47:39] Runtime error: Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at Solution.main(Solution.java:9)
+
+[2025-05-16 10:47:39] Compilation error: ../temp/6826fbaae8948/solution.cpp: In function 'int main()':
+../temp/6826fbaae8948/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:47:39] Saved code to: ../temp/6826fbab9e5fc/solution.cpp
+[2025-05-16 10:47:39] Compile command: g++ "../temp/6826fbab9e5fc/solution.cpp" -o "../temp/6826fbab9e5fc/solution.exe"
+[2025-05-16 10:47:40] Compilation error: ../temp/6826fbab9e5fc/solution.cpp: In function 'int main()':
+../temp/6826fbab9e5fc/solution.cpp:5:27: error: 'end1' was not declared in this scope
+     cout<<"hello world!"<<end1;
+                           ^~~~
+
+[2025-05-16 10:48:22] Saved code to: ../temp/6826fbd608fd7/solution.cpp
+[2025-05-16 10:48:22] Compile command: g++ "../temp/6826fbd608fd7/solution.cpp" -o "../temp/6826fbd608fd7/solution.exe"
+[2025-05-16 10:48:22] Compilation error: ../temp/6826fbd608fd7/solution.cpp: In function 'int main()':
+../temp/6826fbd608fd7/solution.cpp:5:5: error: 'count' was not declared in this scope
+     count<<"hello world"<<endl;
+     ^~~~~
+
+[2025-05-16 10:48:24] Saved code to: ../temp/6826fbd82e837/solution.cpp
+[2025-05-16 10:48:24] Compile command: g++ "../temp/6826fbd82e837/solution.cpp" -o "../temp/6826fbd82e837/solution.exe"
+[2025-05-16 10:48:24] Compilation error: ../temp/6826fbd82e837/solution.cpp: In function 'int main()':
+../temp/6826fbd82e837/solution.cpp:5:5: error: 'count' was not declared in this scope
+     count<<"hello world"<<endl;
+     ^~~~~
+
+[2025-05-16 10:48:37] Saved code to: ../temp/6826fbe52988a/solution.cpp
+[2025-05-16 10:48:37] Compile command: g++ "../temp/6826fbe52988a/solution.cpp" -o "../temp/6826fbe52988a/solution.exe"
+[2025-05-16 10:48:37] Compilation error: ../temp/6826fbe52988a/solution.cpp:4:12: error: '::main' must return 'int'
+ float main() {
+            ^
+
+[2025-05-16 10:49:03] Saved code to: ../temp/6826fbff0f4c7/solution.cpp
+[2025-05-16 10:49:03] Compile command: g++ "../temp/6826fbff0f4c7/solution.cpp" -o "../temp/6826fbff0f4c7/solution.exe"
+[2025-05-16 10:49:03] Compilation error: c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../libmingw32.a(main.o):(.text.startup+0xa0): undefined reference to `WinMain@16'
+collect2.exe: error: ld returned 1 exit status
+
+[2025-05-16 10:49:03] Saved code to: ../temp/6826fbffaebf1/solution.cpp
+[2025-05-16 10:49:03] Compile command: g++ "../temp/6826fbffaebf1/solution.cpp" -o "../temp/6826fbffaebf1/solution.exe"
+[2025-05-16 10:49:04] Compilation error: c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../libmingw32.a(main.o):(.text.startup+0xa0): undefined reference to `WinMain@16'
+collect2.exe: error: ld returned 1 exit status
+
+[2025-05-16 10:49:04] Saved code to: ../temp/6826fc00562a5/solution.cpp
+[2025-05-16 10:49:04] Compile command: g++ "../temp/6826fc00562a5/solution.cpp" -o "../temp/6826fc00562a5/solution.exe"
+[2025-05-16 10:49:04] Compilation error: c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../libmingw32.a(main.o):(.text.startup+0xa0): undefined reference to `WinMain@16'
+collect2.exe: error: ld returned 1 exit status
+
+[2025-05-16 10:49:05] Saved code to: ../temp/6826fc00e2374/solution.cpp
+[2025-05-16 10:49:05] Compile command: g++ "../temp/6826fc00e2374/solution.cpp" -o "../temp/6826fc00e2374/solution.exe"
+[2025-05-16 10:49:05] Compilation error: c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../libmingw32.a(main.o):(.text.startup+0xa0): undefined reference to `WinMain@16'
+collect2.exe: error: ld returned 1 exit status
+
+[2025-05-16 10:49:38] Saved code to: ../temp/6826fc222e69a/solution.cpp
+[2025-05-16 10:49:38] Compile command: g++ "../temp/6826fc222e69a/solution.cpp" -o "../temp/6826fc222e69a/solution.exe"
+[2025-05-16 10:49:39] Run command: "../temp/6826fc222e69a/solution.exe" < "../temp/6826fc222e69a/input.txt" > "../temp/6826fc222e69a/output.txt" 2>> "../temp/6826fc222e69a/error.txt"
+[2025-05-16 10:49:39] Saved code to: ../temp/6826fc2392022/solution.cpp
+[2025-05-16 10:49:39] Compile command: g++ "../temp/6826fc2392022/solution.cpp" -o "../temp/6826fc2392022/solution.exe"
+[2025-05-16 10:49:40] Run command: "../temp/6826fc2392022/solution.exe" < "../temp/6826fc2392022/input.txt" > "../temp/6826fc2392022/output.txt" 2>> "../temp/6826fc2392022/error.txt"
+[2025-05-16 10:49:41] Saved code to: ../temp/6826fc25960d1/solution.cpp
+[2025-05-16 10:49:41] Compile command: g++ "../temp/6826fc25960d1/solution.cpp" -o "../temp/6826fc25960d1/solution.exe"
+[2025-05-16 10:49:42] Run command: "../temp/6826fc25960d1/solution.exe" < "../temp/6826fc25960d1/input.txt" > "../temp/6826fc25960d1/output.txt" 2>> "../temp/6826fc25960d1/error.txt"
+[2025-05-16 10:49:53] Detected Java class name: Solution - Will use Solution instead
+[2025-05-16 10:49:53] Java code will be saved as: ../temp/6826fc31649c8/Solution.java
+[2025-05-16 10:49:53] Java code saved to: ../temp/6826fc31649c8/Solution.java with class name: Solution
+[2025-05-16 10:49:53] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6826fc31649c8/Solution.java"
+[2025-05-16 10:49:55] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6826fc31649c8" Solution < "../temp/6826fc31649c8/input.txt" > "../temp/6826fc31649c8/output.txt" 2>> "../temp/6826fc31649c8/error.txt"
+[2025-05-16 10:50:11] Saved code to: ../temp/6826fc435920a/solution.cpp
+[2025-05-16 10:50:11] Compile command: g++ "../temp/6826fc435920a/solution.cpp" -o "../temp/6826fc435920a/solution.exe"
+[2025-05-16 10:50:12] Compilation error: ../temp/6826fc435920a/solution.cpp: In function 'int main()':
+../temp/6826fc435920a/solution.cpp:5:4: error: 'n' was not declared in this scope
+    n = int(input())
+    ^
+../temp/6826fc435920a/solution.cpp:5:18: error: 'input' was not declared in this scope
+    n = int(input())
+                  ^
+
+[2025-05-16 10:50:40] Saved code to: ../temp/6826fc603447f/solution.cpp
+[2025-05-16 10:50:40] Compile command: g++ "../temp/6826fc603447f/solution.cpp" -o "../temp/6826fc603447f/solution.exe"
+[2025-05-16 10:50:41] Run command: "../temp/6826fc603447f/solution.exe" < "../temp/6826fc603447f/input.txt" > "../temp/6826fc603447f/output.txt" 2>> "../temp/6826fc603447f/error.txt"
+[2025-05-16 10:50:44] Saved code to: ../temp/6826fc643fa47/solution.cpp
+[2025-05-16 10:50:44] Compile command: g++ "../temp/6826fc643fa47/solution.cpp" -o "../temp/6826fc643fa47/solution.exe"
+[2025-05-16 10:50:44] Compilation error: ../temp/6826fc643fa47/solution.cpp:4:13: error: stray '#' in program
+ int main() {#include <iostream>
+             ^
+../temp/6826fc643fa47/solution.cpp: In function 'int main()':
+../temp/6826fc643fa47/solution.cpp:4:14: error: 'include' was not declared in this scope
+ int main() {#include <iostream>
+              ^~~~~~~
+../temp/6826fc643fa47/solution.cpp:4:31: error: expected primary-expression before '>' token
+ int main() {#include <iostream>
+                               ^
+../temp/6826fc643fa47/solution.cpp:5:1: error: expected primary-expression before 'using'
+ using namespace std;
+ ^~~~~
+../temp/6826fc643fa47/solution.cpp:8:12: error: 'n' was not declared in this scope
+     cin >> n;
+            ^
+../temp/6826fc643fa47/solution.cpp:15:16: error: 'arr' was not declared in this scope
+         cin >> arr[i];
+                ^~~
+../temp/6826fc643fa47/solution.cpp:20:16: error: 'arr' was not declared in this scope
+         sum += arr[i];
+                ^~~
+
+[2025-05-16 10:50:59] Saved code to: ../temp/6826fc72f17b0/solution.cpp
+[2025-05-16 10:50:59] Compile command: g++ "../temp/6826fc72f17b0/solution.cpp" -o "../temp/6826fc72f17b0/solution.exe"
+[2025-05-16 10:50:59] Run command: "../temp/6826fc72f17b0/solution.exe" < "../temp/6826fc72f17b0/input.txt" > "../temp/6826fc72f17b0/output.txt" 2>> "../temp/6826fc72f17b0/error.txt"
+[2025-05-16 10:51:00] Saved code to: ../temp/6826fc74b6097/solution.cpp
+[2025-05-16 10:51:00] Compile command: g++ "../temp/6826fc74b6097/solution.cpp" -o "../temp/6826fc74b6097/solution.exe"
+[2025-05-16 10:51:01] Run command: "../temp/6826fc74b6097/solution.exe" < "../temp/6826fc74b6097/input.txt" > "../temp/6826fc74b6097/output.txt" 2>> "../temp/6826fc74b6097/error.txt"
+[2025-05-16 10:51:02] Saved code to: ../temp/6826fc760fa38/solution.cpp
+[2025-05-16 10:51:02] Compile command: g++ "../temp/6826fc760fa38/solution.cpp" -o "../temp/6826fc760fa38/solution.exe"
+[2025-05-16 10:51:02] Run command: "../temp/6826fc760fa38/solution.exe" < "../temp/6826fc760fa38/input.txt" > "../temp/6826fc760fa38/output.txt" 2>> "../temp/6826fc760fa38/error.txt"
+[2025-05-16 10:51:09] Saved code to: ../temp/6826fc7d2ed96/solution.cpp
+[2025-05-16 10:51:09] Compile command: g++ "../temp/6826fc7d2ed96/solution.cpp" -o "../temp/6826fc7d2ed96/solution.exe"
+[2025-05-16 10:51:10] Run command: "../temp/6826fc7d2ed96/solution.exe" < "../temp/6826fc7d2ed96/input.txt" > "../temp/6826fc7d2ed96/output.txt" 2>> "../temp/6826fc7d2ed96/error.txt"
+[2025-05-16 10:51:11] Saved code to: ../temp/6826fc7edd24d/solution.cpp
+[2025-05-16 10:51:11] Compile command: g++ "../temp/6826fc7edd24d/solution.cpp" -o "../temp/6826fc7edd24d/solution.exe"
+[2025-05-16 10:51:11] Run command: "../temp/6826fc7edd24d/solution.exe" < "../temp/6826fc7edd24d/input.txt" > "../temp/6826fc7edd24d/output.txt" 2>> "../temp/6826fc7edd24d/error.txt"
+[2025-05-16 10:51:12] Saved code to: ../temp/6826fc8095748/solution.cpp
+[2025-05-16 10:51:12] Compile command: g++ "../temp/6826fc8095748/solution.cpp" -o "../temp/6826fc8095748/solution.exe"
+[2025-05-16 10:51:13] Run command: "../temp/6826fc8095748/solution.exe" < "../temp/6826fc8095748/input.txt" > "../temp/6826fc8095748/output.txt" 2>> "../temp/6826fc8095748/error.txt"
+[2025-05-16 10:51:20] Saved code to: ../temp/6826fc88392ae/solution.cpp
+[2025-05-16 10:51:20] Compile command: g++ "../temp/6826fc88392ae/solution.cpp" -o "../temp/6826fc88392ae/solution.exe"
+[2025-05-16 10:51:20] Compilation error: ../temp/6826fc88392ae/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:51:21] Saved code to: ../temp/6826fc8933bd4/solution.cpp
+[2025-05-16 10:51:21] Compile command: g++ "../temp/6826fc8933bd4/solution.cpp" -o "../temp/6826fc8933bd4/solution.exe"
+[2025-05-16 10:51:21] Compilation error: ../temp/6826fc8933bd4/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:51:32] Saved code to: ../temp/6826fc9413ec8/solution.cpp
+[2025-05-16 10:51:32] Compile command: g++ "../temp/6826fc9413ec8/solution.cpp" -o "../temp/6826fc9413ec8/solution.exe"
+[2025-05-16 10:51:32] Compilation error: ../temp/6826fc9413ec8/solution.cpp: In function 'int main()':
+../temp/6826fc9413ec8/solution.cpp:5:4: error: 'n' was not declared in this scope
+    n = int(input())
+    ^
+../temp/6826fc9413ec8/solution.cpp:5:18: error: 'input' was not declared in this scope
+    n = int(input())
+                  ^
+
+[2025-05-16 10:51:34] Saved code to: ../temp/6826fc95ef457/solution.cpp
+[2025-05-16 10:51:34] Compile command: g++ "../temp/6826fc95ef457/solution.cpp" -o "../temp/6826fc95ef457/solution.exe"
+[2025-05-16 10:51:34] Compilation error: ../temp/6826fc95ef457/solution.cpp:3:1: error: 'imt' does not name a type
+ imt main ()
+ ^~~
+../temp/6826fc95ef457/solution.cpp:5:5: error: 'cin' does not name a type
+     cin >> n;
+     ^~~
+../temp/6826fc95ef457/solution.cpp:7:13: error: 'n' was not declared in this scope
+     int arr[n], sum = 0;
+             ^
+../temp/6826fc95ef457/solution.cpp:10:5: error: 'cout' does not name a type
+     cout << "Enter " << n << " elements:" << endl;
+     ^~~~
+../temp/6826fc95ef457/solution.cpp:11:5: error: expected unqualified-id before 'for'
+     for (int i = 0; i < n; i++) {
+     ^~~
+../temp/6826fc95ef457/solution.cpp:11:21: error: 'i' does not name a type
+     for (int i = 0; i < n; i++) {
+                     ^
+../temp/6826fc95ef457/solution.cpp:11:28: error: 'i' does not name a type
+     for (int i = 0; i < n; i++) {
+                            ^
+../temp/6826fc95ef457/solution.cpp:16:5: error: expected unqualified-id before 'for'
+     for (int i = 0; i < n; i++) {
+     ^~~
+../temp/6826fc95ef457/solution.cpp:16:21: error: 'i' does not name a type
+     for (int i = 0; i < n; i++) {
+                     ^
+../temp/6826fc95ef457/solution.cpp:16:28: error: 'i' does not name a type
+     for (int i = 0; i < n; i++) {
+                            ^
+../temp/6826fc95ef457/solution.cpp:19:5: error: 'cout' does not name a type
+     cout << "The sum of the array elements is: " << sum << endl;
+     ^~~~
+../temp/6826fc95ef457/solution.cpp:21:5: error: expected unqualified-id before 'return'
+     return 0;
+     ^~~~~~
+../temp/6826fc95ef457/solution.cpp:22:1: error: expected declaration before '}' token
+ }
+ ^
+
+[2025-05-16 10:51:35] Saved code to: ../temp/6826fc9765977/solution.cpp
+[2025-05-16 10:51:35] Compile command: g++ "../temp/6826fc9765977/solution.cpp" -o "../temp/6826fc9765977/solution.exe"
+[2025-05-16 10:51:35] Compilation error: ../temp/6826fc9765977/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:51:37] Saved code to: ../temp/6826fc992391a/solution.cpp
+[2025-05-16 10:51:37] Compile command: g++ "../temp/6826fc992391a/solution.cpp" -o "../temp/6826fc992391a/solution.exe"
+[2025-05-16 10:51:37] Compilation error: ../temp/6826fc992391a/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:51:59] Saved code to: ../temp/6826fcaf1ae10/solution.cpp
+[2025-05-16 10:51:59] Compile command: g++ "../temp/6826fcaf1ae10/solution.cpp" -o "../temp/6826fcaf1ae10/solution.exe"
+[2025-05-16 10:51:59] Compilation error: ../temp/6826fcaf1ae10/solution.cpp:4:12: error: '::main' must return 'int'
+ float main() {
+            ^
+
+[2025-05-16 10:52:00] Saved code to: ../temp/6826fcb03382f/solution.cpp
+[2025-05-16 10:52:00] Compile command: g++ "../temp/6826fcb03382f/solution.cpp" -o "../temp/6826fcb03382f/solution.exe"
+[2025-05-16 10:52:00] Compilation error: ../temp/6826fcb03382f/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:52:06] Saved code to: ../temp/6826fcb674661/solution.cpp
+[2025-05-16 10:52:06] Compile command: g++ "../temp/6826fcb674661/solution.cpp" -o "../temp/6826fcb674661/solution.exe"
+[2025-05-16 10:52:07] Run command: "../temp/6826fcb674661/solution.exe" < "../temp/6826fcb674661/input.txt" > "../temp/6826fcb674661/output.txt" 2>> "../temp/6826fcb674661/error.txt"
+[2025-05-16 10:52:09] Saved code to: ../temp/6826fcb9ac5e9/solution.cpp
+[2025-05-16 10:52:09] Compile command: g++ "../temp/6826fcb9ac5e9/solution.cpp" -o "../temp/6826fcb9ac5e9/solution.exe"
+[2025-05-16 10:52:10] Compilation error: ../temp/6826fcb9ac5e9/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:52:10] Saved code to: ../temp/6826fcba47bb9/solution.cpp
+[2025-05-16 10:52:10] Compile command: g++ "../temp/6826fcba47bb9/solution.cpp" -o "../temp/6826fcba47bb9/solution.exe"
+[2025-05-16 10:52:11] Run command: "../temp/6826fcba47bb9/solution.exe" < "../temp/6826fcba47bb9/input.txt" > "../temp/6826fcba47bb9/output.txt" 2>> "../temp/6826fcba47bb9/error.txt"
+[2025-05-16 10:52:13] Saved code to: ../temp/6826fcbd1fb40/solution.cpp
+[2025-05-16 10:52:13] Compile command: g++ "../temp/6826fcbd1fb40/solution.cpp" -o "../temp/6826fcbd1fb40/solution.exe"
+[2025-05-16 10:52:14] Run command: "../temp/6826fcbd1fb40/solution.exe" < "../temp/6826fcbd1fb40/input.txt" > "../temp/6826fcbd1fb40/output.txt" 2>> "../temp/6826fcbd1fb40/error.txt"
+[2025-05-16 10:52:37] Saved code to: ../temp/6826fcd50200e/solution.cpp
+[2025-05-16 10:52:37] Compile command: g++ "../temp/6826fcd50200e/solution.cpp" -o "../temp/6826fcd50200e/solution.exe"
+[2025-05-16 10:52:38] Run command: "../temp/6826fcd50200e/solution.exe" < "../temp/6826fcd50200e/input.txt" > "../temp/6826fcd50200e/output.txt" 2>> "../temp/6826fcd50200e/error.txt"
+[2025-05-16 10:52:43] Saved code to: ../temp/6826fcdb1876b/solution.cpp
+[2025-05-16 10:52:43] Compile command: g++ "../temp/6826fcdb1876b/solution.cpp" -o "../temp/6826fcdb1876b/solution.exe"
+[2025-05-16 10:52:44] Run command: "../temp/6826fcdb1876b/solution.exe" < "../temp/6826fcdb1876b/input.txt" > "../temp/6826fcdb1876b/output.txt" 2>> "../temp/6826fcdb1876b/error.txt"
+[2025-05-16 10:53:40] Saved code to: ../temp/6826fd13e8400/solution.cpp
+[2025-05-16 10:53:40] Compile command: g++ "../temp/6826fd13e8400/solution.cpp" -o "../temp/6826fd13e8400/solution.exe"
+[2025-05-16 10:53:40] Compilation error: ../temp/6826fd13e8400/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:53:46] Saved code to: ../temp/6826fd19f0867/solution.cpp
+[2025-05-16 10:53:46] Compile command: g++ "../temp/6826fd19f0867/solution.cpp" -o "../temp/6826fd19f0867/solution.exe"
+[2025-05-16 10:53:46] Compilation error: ../temp/6826fd19f0867/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:54:10] Saved code to: ../temp/6826fd324e903/solution.cpp
+[2025-05-16 10:54:10] Compile command: g++ "../temp/6826fd324e903/solution.cpp" -o "../temp/6826fd324e903/solution.exe"
+[2025-05-16 10:54:10] Compilation error: ../temp/6826fd324e903/solution.cpp:1:19: fatal error: studioh: No such file or directory
+ #include <studioh>
+                   ^
+compilation terminated.
+
+[2025-05-16 10:55:47] Saved code to: ../temp/6826fd934918b/solution.cpp
+[2025-05-16 10:55:47] Compile command: g++ "../temp/6826fd934918b/solution.cpp" -o "../temp/6826fd934918b/solution.exe"
+[2025-05-16 10:55:47] Compilation error: ../temp/6826fd934918b/solution.cpp: In function 'int main()':
+../temp/6826fd934918b/solution.cpp:5:4: error: 'n' was not declared in this scope
+    n = int(input())
+    ^
+../temp/6826fd934918b/solution.cpp:5:18: error: 'input' was not declared in this scope
+    n = int(input())
+                  ^
+
+[2025-05-16 10:55:58] Saved code to: ../temp/6826fd9e9e275/solution.cpp
+[2025-05-16 10:55:58] Compile command: g++ "../temp/6826fd9e9e275/solution.cpp" -o "../temp/6826fd9e9e275/solution.exe"
+[2025-05-16 10:55:59] Run command: "../temp/6826fd9e9e275/solution.exe" < "../temp/6826fd9e9e275/input.txt" > "../temp/6826fd9e9e275/output.txt" 2>> "../temp/6826fd9e9e275/error.txt"
+[2025-05-16 10:56:01] Saved code to: ../temp/6826fda1300ce/solution.cpp
+[2025-05-16 10:56:01] Compile command: g++ "../temp/6826fda1300ce/solution.cpp" -o "../temp/6826fda1300ce/solution.exe"
+[2025-05-16 10:56:02] Run command: "../temp/6826fda1300ce/solution.exe" < "../temp/6826fda1300ce/input.txt" > "../temp/6826fda1300ce/output.txt" 2>> "../temp/6826fda1300ce/error.txt"
+[2025-05-16 10:56:12] Saved code to: ../temp/6826fdac6ec86/solution.cpp
+[2025-05-16 10:56:12] Compile command: g++ "../temp/6826fdac6ec86/solution.cpp" -o "../temp/6826fdac6ec86/solution.exe"
+[2025-05-16 10:56:13] Run command: "../temp/6826fdac6ec86/solution.exe" < "../temp/6826fdac6ec86/input.txt" > "../temp/6826fdac6ec86/output.txt" 2>> "../temp/6826fdac6ec86/error.txt"
+[2025-05-16 12:32:07] Saved code to: ../temp/6827142764c2d/solution.cpp
+[2025-05-16 12:32:07] Compile command: g++ "../temp/6827142764c2d/solution.cpp" -o "../temp/6827142764c2d/solution.exe"
+[2025-05-16 12:32:08] Run command: "../temp/6827142764c2d/solution.exe" < "../temp/6827142764c2d/input.txt" > "../temp/6827142764c2d/output.txt" 2>> "../temp/6827142764c2d/error.txt"
+[2025-05-16 12:32:08] Saved code to: ../temp/68271428beb8d/solution.cpp
+[2025-05-16 12:32:08] Compile command: g++ "../temp/68271428beb8d/solution.cpp" -o "../temp/68271428beb8d/solution.exe"
+[2025-05-16 12:32:09] Run command: "../temp/68271428beb8d/solution.exe" < "../temp/68271428beb8d/input.txt" > "../temp/68271428beb8d/output.txt" 2>> "../temp/68271428beb8d/error.txt"
+[2025-05-17 06:52:21] Saved code to: ../temp/682816051110f/solution.py
+[2025-05-17 06:52:21] Run command: python "../temp/682816051110f/solution.py" < "../temp/682816051110f/input.txt" > "../temp/682816051110f/output.txt" 2>> "../temp/682816051110f/error.txt"
+[2025-05-17 09:11:20] Saved code to: ../temp/682836986dca4/solution.cpp
+[2025-05-17 09:11:20] Compile command: g++ "../temp/682836986dca4/solution.cpp" -o "../temp/682836986dca4/solution.exe"
+[2025-05-17 09:11:21] Run command: "../temp/682836986dca4/solution.exe" < "../temp/682836986dca4/input.txt" > "../temp/682836986dca4/output.txt" 2>> "../temp/682836986dca4/error.txt"
+[2025-05-17 09:11:22] Saved code to: ../temp/6828369aba4ea/solution.cpp
+[2025-05-17 09:11:22] Compile command: g++ "../temp/6828369aba4ea/solution.cpp" -o "../temp/6828369aba4ea/solution.exe"
+[2025-05-17 09:11:23] Run command: "../temp/6828369aba4ea/solution.exe" < "../temp/6828369aba4ea/input.txt" > "../temp/6828369aba4ea/output.txt" 2>> "../temp/6828369aba4ea/error.txt"
+[2025-05-17 09:11:24] Saved code to: ../temp/6828369c8073a/solution.cpp
+[2025-05-17 09:11:24] Compile command: g++ "../temp/6828369c8073a/solution.cpp" -o "../temp/6828369c8073a/solution.exe"
+[2025-05-17 09:11:25] Run command: "../temp/6828369c8073a/solution.exe" < "../temp/6828369c8073a/input.txt" > "../temp/6828369c8073a/output.txt" 2>> "../temp/6828369c8073a/error.txt"
+[2025-05-17 09:11:25] Saved code to: ../temp/6828369da1952/solution.cpp
+[2025-05-17 09:11:25] Compile command: g++ "../temp/6828369da1952/solution.cpp" -o "../temp/6828369da1952/solution.exe"
+[2025-05-17 09:11:26] Run command: "../temp/6828369da1952/solution.exe" < "../temp/6828369da1952/input.txt" > "../temp/6828369da1952/output.txt" 2>> "../temp/6828369da1952/error.txt"
+[2025-05-17 09:11:27] Saved code to: ../temp/6828369f819c9/solution.cpp
+[2025-05-17 09:11:27] Compile command: g++ "../temp/6828369f819c9/solution.cpp" -o "../temp/6828369f819c9/solution.exe"
+[2025-05-17 09:11:28] Run command: "../temp/6828369f819c9/solution.exe" < "../temp/6828369f819c9/input.txt" > "../temp/6828369f819c9/output.txt" 2>> "../temp/6828369f819c9/error.txt"
+[2025-05-17 09:11:28] Saved code to: ../temp/682836a099f38/solution.cpp
+[2025-05-17 09:11:28] Compile command: g++ "../temp/682836a099f38/solution.cpp" -o "../temp/682836a099f38/solution.exe"
+[2025-05-17 09:11:29] Run command: "../temp/682836a099f38/solution.exe" < "../temp/682836a099f38/input.txt" > "../temp/682836a099f38/output.txt" 2>> "../temp/682836a099f38/error.txt"
+[2025-05-17 09:11:30] Saved code to: ../temp/682836a26b1d9/solution.cpp
+[2025-05-17 09:11:30] Compile command: g++ "../temp/682836a26b1d9/solution.cpp" -o "../temp/682836a26b1d9/solution.exe"
+[2025-05-17 09:11:31] Run command: "../temp/682836a26b1d9/solution.exe" < "../temp/682836a26b1d9/input.txt" > "../temp/682836a26b1d9/output.txt" 2>> "../temp/682836a26b1d9/error.txt"
+[2025-05-17 09:12:35] Saved code to: ../temp/682836e3c9366/solution.cpp
+[2025-05-17 09:12:35] Compile command: g++ "../temp/682836e3c9366/solution.cpp" -o "../temp/682836e3c9366/solution.exe"
+[2025-05-17 09:12:37] Run command: "../temp/682836e3c9366/solution.exe" < "../temp/682836e3c9366/input.txt" > "../temp/682836e3c9366/output.txt" 2>> "../temp/682836e3c9366/error.txt"
+[2025-05-17 09:13:34] Saved code to: ../temp/6828371e9798d/solution.cpp
+[2025-05-17 09:13:34] Compile command: g++ "../temp/6828371e9798d/solution.cpp" -o "../temp/6828371e9798d/solution.exe"
+[2025-05-17 09:13:35] Run command: "../temp/6828371e9798d/solution.exe" < "../temp/6828371e9798d/input.txt" > "../temp/6828371e9798d/output.txt" 2>> "../temp/6828371e9798d/error.txt"
+[2025-05-17 09:16:28] Saved code to: ../temp/682837ccb4761/solution.cpp
+[2025-05-17 09:16:28] Compile command: g++ "../temp/682837ccb4761/solution.cpp" -o "../temp/682837ccb4761/solution.exe"
+[2025-05-17 09:16:29] Run command: "../temp/682837ccb4761/solution.exe" < "../temp/682837ccb4761/input.txt" > "../temp/682837ccb4761/output.txt" 2>> "../temp/682837ccb4761/error.txt"
+[2025-05-17 09:16:30] Saved code to: ../temp/682837ce0a8e4/solution.cpp
+[2025-05-17 09:16:30] Compile command: g++ "../temp/682837ce0a8e4/solution.cpp" -o "../temp/682837ce0a8e4/solution.exe"
+[2025-05-17 09:16:30] Run command: "../temp/682837ce0a8e4/solution.exe" < "../temp/682837ce0a8e4/input.txt" > "../temp/682837ce0a8e4/output.txt" 2>> "../temp/682837ce0a8e4/error.txt"
+[2025-05-17 09:22:47] Saved code to: ../temp/6828394756138/solution.cpp
+[2025-05-17 09:22:47] Compile command: g++ "../temp/6828394756138/solution.cpp" -o "../temp/6828394756138/solution.exe"
+[2025-05-17 09:22:48] Run command: "../temp/6828394756138/solution.exe" < "../temp/6828394756138/input.txt" > "../temp/6828394756138/output.txt" 2>> "../temp/6828394756138/error.txt"
+[2025-05-17 10:20:21] Saved code to: ../temp/682846c4cfa67/solution.cpp
+[2025-05-17 10:20:21] Compile command: g++ "../temp/682846c4cfa67/solution.cpp" -o "../temp/682846c4cfa67/solution.exe"
+[2025-05-17 10:20:24] Run command: "../temp/682846c4cfa67/solution.exe" < "../temp/682846c4cfa67/input.txt" > "../temp/682846c4cfa67/output.txt" 2>> "../temp/682846c4cfa67/error.txt"

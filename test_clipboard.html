@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard Security Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f5f7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .log-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            height: 150px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .log-entry.success {
+            color: #28a745;
+        }
+        .log-entry.error {
+            color: #dc3545;
+        }
+        .log-entry.info {
+            color: #17a2b8;
+        }
+        .test-code {
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clipboard Security Test</h1>
+        
+        <div class="test-section">
+            <h2>Test 1: Direct Clipboard Clearing</h2>
+            <p>This test will attempt to clear your clipboard directly using JavaScript.</p>
+            <button id="clear-js-btn">Clear Clipboard (JS)</button>
+            <div id="js-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 2: Server-Side Clipboard Clearing</h2>
+            <p>This test will call the server-side Python script to clear your clipboard.</p>
+            <button id="clear-server-btn">Clear Clipboard (Server)</button>
+            <div id="server-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 3: Fullscreen Mode Test</h2>
+            <p>This test will simulate the full security process that happens when entering fullscreen mode.</p>
+            <button id="fullscreen-test-btn">Enter Fullscreen</button>
+            <p><small>Note: After entering fullscreen mode, try pasting any content to see if it was cleared.</small></p>
+        </div>
+        
+        <div class="test-section">
+            <h2>Clipboard Testing Area</h2>
+            <p>Test your clipboard here:</p>
+            <ol>
+                <li>Copy some code (e.g., <code>function test() { return true; }</code>)</li>
+                <li>Run one of the tests above</li>
+                <li>Try pasting in this box:</li>
+            </ol>
+            <textarea id="test-paste" placeholder="Paste here to test..."></textarea>
+            <button id="copy-test-code-btn">Copy Test Code</button>
+        </div>
+        
+        <div class="test-code">
+            function exampleCode() {
+                console.log("Hello world!");
+                return {
+                    status: true,
+                    message: "This is test code to copy"
+                };
+            }
+        </div>
+
+        <h2>Log</h2>
+        <div class="log-section" id="log">
+            <div class="log-entry info">Test initialized. Please run the tests above.</div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const config = {
+            apiUrl: './api/clear_clipboard.php', // Relative path for compatibility
+            tunnelMode: true // Set to true when accessing via tunnel
+        };
+        
+        // Log messages to the log section
+        function log(message, type = 'info') {
+            const logSection = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logSection.appendChild(entry);
+            logSection.scrollTop = logSection.scrollHeight;
+            console.log(`[${type}] ${message}`);
+        }
+        
+        // Clear clipboard using JavaScript
+        function clearClipboardJS() {
+            try {
+                // Method 1: Modern API
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText('')
+                        .then(() => {
+                            log('Clipboard cleared via Clipboard API', 'success');
+                            document.getElementById('js-result').textContent = 'Success! Clipboard cleared.';
+                        })
+                        .catch(err => {
+                            log('Failed to clear via Clipboard API: ' + err, 'error');
+                            document.getElementById('js-result').textContent = 'Failed to clear clipboard: ' + err;
+                            // Try legacy method as fallback
+                            clearClipboardLegacy();
+                        });
+                } else {
+                    // Method 2: Legacy execCommand
+                    clearClipboardLegacy();
+                }
+            } catch (e) {
+                log('Error clearing clipboard: ' + e, 'error');
+                document.getElementById('js-result').textContent = 'Error: ' + e;
+            }
+        }
+        
+        // Clear clipboard using legacy method
+        function clearClipboardLegacy() {
+            try {
+                const textarea = document.createElement('textarea');
+                textarea.value = '';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    log('Clipboard cleared via execCommand', 'success');
+                    document.getElementById('js-result').textContent = 'Success! Clipboard cleared via legacy method.';
+                } else {
+                    throw new Error('execCommand returned false');
+                }
+                
+                document.body.removeChild(textarea);
+            } catch (e) {
+                log('Error with legacy clearing: ' + e, 'error');
+                document.getElementById('js-result').textContent = 'Failed with legacy method: ' + e;
+            }
+        }
+        
+        // Clear clipboard via server
+        function clearClipboardServer() {
+            const resultElement = document.getElementById('server-result');
+            resultElement.textContent = 'Sending request to server...';
+            
+            // Build URL with tunnel mode parameter if needed
+            let url = config.apiUrl + '?event=test_page';
+            if (config.tunnelMode) {
+                url += '&tunnel_mode=true';
+            }
+            
+            fetch(url)
+                .then(response => {
+                    log('Server responded with status: ' + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        log('Server reported clipboard cleared successfully', 'success');
+                        resultElement.textContent = 'Success! Server cleared the clipboard.';
+                    } else {
+                        log('Server failed to clear clipboard: ' + (data.error || data.message), 'error');
+                        resultElement.textContent = 'Failed: ' + (data.error || data.message);
+                    }
+                })
+                .catch(error => {
+                    log('Error calling server: ' + error, 'error');
+                    resultElement.textContent = 'Error: ' + error;
+                });
+        }
+        
+        // Enter fullscreen and clear clipboard
+        function enterFullscreenTest() {
+            const container = document.querySelector('.container');
+            
+            // First clear clipboard using JavaScript
+            clearClipboardJS();
+            
+            // Log the action
+            log('Entering fullscreen mode', 'info');
+            
+            // Request fullscreen
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if (container.mozRequestFullScreen) { // Firefox
+                container.mozRequestFullScreen();
+            } else if (container.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                container.webkitRequestFullscreen();
+            } else if (container.msRequestFullscreen) { // IE/Edge
+                container.msRequestFullscreen();
+            }
+            
+            // After entering fullscreen, also call server-side clearing
+            setTimeout(() => {
+                clearClipboardServer();
+                log('Fullscreen security measures activated', 'info');
+            }, 500);
+        }
+        
+        // Copy test code to clipboard
+        function copyTestCode() {
+            const testCode = document.querySelector('.test-code').textContent;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(testCode)
+                    .then(() => {
+                        log('Test code copied to clipboard', 'success');
+                    })
+                    .catch(err => {
+                        log('Failed to copy test code: ' + err, 'error');
+                    });
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = testCode;
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        log('Test code copied to clipboard', 'success');
+                    } else {
+                        throw new Error('execCommand returned false');
+                    }
+                } catch (e) {
+                    log('Error copying test code: ' + e, 'error');
+                }
+                
+                document.body.removeChild(textarea);
+            }
+        }
+        
+        // Handle fullscreen change events
+        function handleFullscreenChange() {
+            if (!document.fullscreenElement && 
+                !document.webkitFullscreenElement && 
+                !document.mozFullScreenElement && 
+                !document.msFullscreenElement) {
+                log('Exited fullscreen mode', 'info');
+            }
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup button event handlers
+            document.getElementById('clear-js-btn').addEventListener('click', clearClipboardJS);
+            document.getElementById('clear-server-btn').addEventListener('click', clearClipboardServer);
+            document.getElementById('fullscreen-test-btn').addEventListener('click', enterFullscreenTest);
+            document.getElementById('copy-test-code-btn').addEventListener('click', copyTestCode);
+            
+            // Setup fullscreen change listener
+            document.addEventListener('fullscreenchange', handleFullscreenChange);
+            document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+            document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+            
+            log('Test page initialized', 'info');
+        });
+    </script>
+</body>
+</html> 

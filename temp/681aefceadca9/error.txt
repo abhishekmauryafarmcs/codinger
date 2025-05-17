@@ -1,9 +1,0 @@
-../temp/681aefceadca9/solution.cpp: In function 'int main()':
-../temp/681aefceadca9/solution.cpp:29:4: error: 'cout' was not declared in this scope
-    cout<<"15";
-    ^~~~
-../temp/681aefceadca9/solution.cpp:29:4: note: suggested alternative:
-In file included from ../temp/681aefceadca9/solution.cpp:2:0:
-c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:61:18: note:   'std::cout'
-   extern ostream cout;  /// Linked to standard output
-                  ^~~~

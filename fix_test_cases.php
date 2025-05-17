@@ -200,7 +200,7 @@ if ($verifyResult && $verifyResult->num_rows > 0) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/index.php">Admin Dashboard</a>
+                        <a class="nav-link" href="cadmin/index.php">Admin Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
@@ -233,7 +233,7 @@ if ($verifyResult && $verifyResult->num_rows > 0) {
                 
                 <div class="d-flex justify-content-between">
                     <a href="index.php" class="btn btn-secondary">Back to Home</a>
-                    <a href="admin/manage_problems.php" class="btn btn-primary">Go to Problem Management</a>
+                    <a href="cadmin/manage_problems.php" class="btn btn-primary">Go to Problem Management</a>
                 </div>
             </div>
         </div>

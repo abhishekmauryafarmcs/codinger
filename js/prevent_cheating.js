@@ -1,5 +1,109 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let pageSwitchCount = 0;
+    // Get the contest ID from the URL or data attribute
+    const urlParams = new URLSearchParams(window.location.search);
+    const contestId = urlParams.get('id') || document.body.getAttribute('data-contest-id') || 'unknown';
+    const storageKey = `pageSwitchCount_${contestId}`;
+    
+    // Check if this contest was previously terminated for this user
+    // This is a client-side check that works alongside server-side validation
+    const wasTerminated = localStorage.getItem(`contest_${contestId}_terminated`) === 'true';
+    if (wasTerminated) {
+        const reason = localStorage.getItem(`contest_${contestId}_termination_reason`) || 'Contest rules violation';
+        const terminationTime = localStorage.getItem(`contest_${contestId}_termination_time`) || Date.now().toString();
+        const terminationDate = new Date(parseInt(terminationTime));
+        
+        // Create and show permanent termination notice
+        const terminationOverlay = document.createElement('div');
+        terminationOverlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: system-ui, -apple-system, sans-serif;
+            text-align: center;
+            padding: 20px;
+        `;
+        
+        const icon = document.createElement('div');
+        icon.innerHTML = '<svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7.03 4.5 3 8.53 3 13.5C3 18.47 7.03 22.5 12 22.5C16.97 22.5 21 18.47 21 13.5C21 8.53 16.97 4.5 12 4.5ZM12 20.5C8.14 20.5 5 17.36 5 13.5C5 9.64 8.14 6.5 12 6.5C15.86 6.5 19 9.64 19 13.5C19 17.36 15.86 20.5 12 20.5Z" fill="#ff4757"/><path d="M13 10.5H11V16.5H13V10.5Z" fill="#ff4757"/><path d="M13 8.5H11V9.5H13V8.5Z" fill="#ff4757"/><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#ff4757"/></svg>';
+        
+        const title = document.createElement('h1');
+        title.textContent = 'Contest Access Denied';
+        title.style.cssText = 'color: #ff4757; margin: 20px 0; font-size: 2.5rem;';
+        
+        const message = document.createElement('p');
+        message.innerHTML = `This contest has been <strong>permanently terminated</strong> for your account due to a violation of contest rules:<br><strong>${reason}</strong>`;
+        message.style.cssText = 'font-size: 1.2rem; max-width: 600px; line-height: 1.6;';
+        
+        const timestamp = document.createElement('p');
+        timestamp.textContent = `Termination occurred on: ${terminationDate.toLocaleString()}`;
+        timestamp.style.cssText = 'color: #aaa; margin-top: 20px; font-size: 0.9rem;';
+        
+        const returnButton = document.createElement('button');
+        returnButton.textContent = 'Return to Dashboard';
+        returnButton.style.cssText = `
+            background: #3498db;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+        `;
+        returnButton.addEventListener('mouseover', () => {
+            returnButton.style.background = '#2980b9';
+        });
+        returnButton.addEventListener('mouseout', () => {
+            returnButton.style.background = '#3498db';
+        });
+        returnButton.addEventListener('click', () => {
+            window.location.href = 'dashboard.php?error=contest_terminated';
+        });
+        
+        terminationOverlay.appendChild(icon);
+        terminationOverlay.appendChild(title);
+        terminationOverlay.appendChild(message);
+        terminationOverlay.appendChild(timestamp);
+        terminationOverlay.appendChild(returnButton);
+        
+        // Add the overlay to the document
+        document.body.appendChild(terminationOverlay);
+        
+        // Also make an API call to verify the termination status server-side
+        fetch('../api/check_contest_status.php?contest_id=' + contestId)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.terminated) {
+                    // If server says the contest is not terminated, clear local storage and reload
+                    // This handles the case where a user might have manipulated localStorage
+                    localStorage.removeItem(`contest_${contestId}_terminated`);
+                    localStorage.removeItem(`contest_${contestId}_termination_reason`);
+                    localStorage.removeItem(`contest_${contestId}_termination_time`);
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                // If we can't verify with the server, keep the termination screen
+                // Better safe than sorry
+            });
+        
+        // Stop further execution of the script
+        return;
+    }
+    
+    // Initialize from localStorage if available, otherwise start at 0
+    let pageSwitchCount = parseInt(localStorage.getItem(storageKey) || '0');
+    
     // Instead of hardcoding maxSwitches, get it from the data attribute we'll add to the page
     const maxSwitches = parseInt(document.body.getAttribute('data-max-tab-switches') || 3);
     // Also check if copy-paste is allowed based on data attribute from the page
@@ -11,29 +115,379 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastViolationTime = 0;
     let debugMode = false; // Set to true to enable console logging
     
+    // Track clipboard state to detect external copying
+    let internalClipboardContent = null;
+    let lastFocusTime = Date.now();
+    let pageHiddenStartTime = 0;
+    let devToolsViolationCount = 0; // New counter for dev tools violations
+    const maxDevToolsViolations = 2; // Max allowed dev tools openings before termination
+    
+    let fullscreenCountdownInterval = null;
+    let fullscreenCountdownValue = 5; // Default 5 seconds
+    
+    // Track if this is the first fullscreen prompt - Check localStorage first, defaulting to true if not found
+    let isFirstFullscreenPrompt = localStorage.getItem(`contest_${contestId}_first_fullscreen`) !== 'false';
+    
+    // --- Fullscreen Enforcement Variables ---
+    let fullscreenEnforcerOverlay = null;
+    let codeMirrorEditor = null; // Will hold the CodeMirror instance
+    
+    // Function to be called from contest.php when timer ends
+    window.setContestEnded = function() {
+        isContestActive = false;
+        updateFullscreenEnforcement(); // This will unlock the editor if it was locked
+        if (fullscreenCountdownInterval) {
+            clearInterval(fullscreenCountdownInterval);
+            fullscreenCountdownInterval = null;
+        }
+        // Optionally clear page switch count for this ended contest
+        // localStorage.removeItem(storageKey);
+        // Hide violation status bar if it's still visible
+        if (statusBar && statusBar.style.opacity === '1') {
+            statusBar.style.opacity = '0';
+            statusBar.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                if (statusBar.style.opacity === '0') {
+                    statusBar.style.display = 'none';
+                }
+            }, 300);
+        }    
+    };
+    
     // Debug helper function
     function debug(message) {
         if (debugMode) {
-            console.log("[Cheat Prevention]:", message);
+            // Console logging removed
         }
     }
     
-    debug("Initializing cheat prevention system");
-    debug(`Tab switches configured: ${maxSwitches}`);
-    debug(`Copy-paste allowed: ${isCopyPasteAllowed}`);
-    debug(`Right click prevented: ${preventRightClick}`);
+    // --- Fullscreen Helper Functions ---
+    function isFullscreen() {
+        return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
+    function requestSystemFullscreen() {
+        const el = document.documentElement;
+        if (el.requestFullscreen) {
+            el.requestFullscreen().catch(err => debug(`Error requesting fullscreen: ${err.message}`));
+        } else if (el.webkitRequestFullscreen) { /* Safari */
+            el.webkitRequestFullscreen().catch(err => debug(`Error requesting fullscreen (webkit): ${err.message}`));
+        } else if (el.mozRequestFullScreen) { /* Firefox */
+            el.mozRequestFullScreen().catch(err => debug(`Error requesting fullscreen (moz): ${err.message}`));
+        } else if (el.msRequestFullscreen) { /* IE/Edge */
+            el.msRequestFullscreen().catch(err => debug(`Error requesting fullscreen (ms): ${err.message}`));
+        }
+    }
+
+    function createFullscreenEnforcerUI() {
+        if (document.getElementById('fullscreen-enforcer')) return;
+
+        fullscreenEnforcerOverlay = document.createElement('div');
+        fullscreenEnforcerOverlay.id = 'fullscreen-enforcer';
+        fullscreenEnforcerOverlay.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 20000; text-align: center; padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+        `;
+
+        const message = document.createElement('h2');
+        // Different message for initial vs subsequent prompts
+        if (isFirstFullscreenPrompt) {
+            message.innerHTML = '<i class="bi bi-arrows-fullscreen" style="font-size: 2em; margin-bottom: 15px;"></i><br>Fullscreen Required';
+        } else {
+            message.innerHTML = '<i class="bi bi-exclamation-triangle-fill" style="font-size: 2em; margin-bottom: 15px; color: #ffc107;"></i><br>Fullscreen Exit Detected!';
+        }
+        message.style.cssText = 'font-size: 2rem; margin-bottom: 20px; color: #fff;';
+        
+        const subMessage = document.createElement('p');
+        if (isFirstFullscreenPrompt) {
+            subMessage.textContent = 'Please enter fullscreen mode to access the contest and write your code.';
+        } else {
+            subMessage.textContent = 'Please re-enter fullscreen mode immediately. Failure to do so will result in contest termination.';
+        }
+        subMessage.style.cssText = 'font-size: 1.1rem; margin-bottom: 30px; color: #ccc; max-width: 500px;';
+
+        const countdownDisplay = document.createElement('p');
+        countdownDisplay.id = 'fullscreen-countdown-timer';
+        countdownDisplay.style.cssText = 'font-size: 2.5rem; color: #ffc107; margin: 15px 0; font-weight: bold; display: none;';
+
+        const switchInfo = document.createElement('p');
+        switchInfo.id = 'fullscreen-switch-info';
+        switchInfo.style.cssText = 'font-size: 1rem; margin-bottom: 20px; color: #ffc107;'; // Yellow color for visibility
+
+        const enterButton = document.createElement('button');
+        if (isFirstFullscreenPrompt) {
+            enterButton.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Enter Fullscreen';
+        } else {
+            enterButton.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Re-Enter Fullscreen';
+        }
+        enterButton.className = 'btn btn-primary btn-lg'; // Using Bootstrap classes
+        enterButton.style.padding = '12px 25px';
+        enterButton.style.fontSize = '1.1rem';
+        enterButton.onclick = requestSystemFullscreen;
+
+        fullscreenEnforcerOverlay.appendChild(message);
+        fullscreenEnforcerOverlay.appendChild(subMessage);
+        fullscreenEnforcerOverlay.appendChild(countdownDisplay);
+        fullscreenEnforcerOverlay.appendChild(switchInfo);
+        fullscreenEnforcerOverlay.appendChild(enterButton);
+        document.body.appendChild(fullscreenEnforcerOverlay);
+    }
+
+    function updateFullscreenEnforcement() {
+        const countdownDisplay = document.getElementById('fullscreen-countdown-timer');
+
+        if (!isContestActive) { 
+             if (fullscreenEnforcerOverlay) fullscreenEnforcerOverlay.style.display = 'none';
+             if (countdownDisplay) countdownDisplay.style.display = 'none';
+             if (fullscreenCountdownInterval) {
+                clearInterval(fullscreenCountdownInterval);
+                fullscreenCountdownInterval = null;
+             }
+             if (codeMirrorEditor) {
+                codeMirrorEditor.setOption("readOnly", false);
+                if (codeMirrorEditor.getWrapperElement()) {
+                    codeMirrorEditor.getWrapperElement().style.opacity = '1';
+                    codeMirrorEditor.getWrapperElement().style.pointerEvents = 'auto';
+                }
+            }
+            return;
+        }
+
+        if (isFullscreen()) {
+            if (fullscreenEnforcerOverlay) fullscreenEnforcerOverlay.style.display = 'none';
+            if (countdownDisplay) countdownDisplay.style.display = 'none';
+            if (fullscreenCountdownInterval) {
+                clearInterval(fullscreenCountdownInterval);
+                fullscreenCountdownInterval = null;
+            }
+            if (codeMirrorEditor) {
+                codeMirrorEditor.setOption("readOnly", false);
+                codeMirrorEditor.refresh(); // Refresh editor state
+                if (codeMirrorEditor.getWrapperElement()) {
+                    codeMirrorEditor.getWrapperElement().style.opacity = '1';
+                    codeMirrorEditor.getWrapperElement().style.pointerEvents = 'auto';
+                }
+            }
+            
+            // After user successfully enters fullscreen for the first time, update flag and store in localStorage
+            if (isFirstFullscreenPrompt) {
+                isFirstFullscreenPrompt = false;
+                localStorage.setItem(`contest_${contestId}_first_fullscreen`, 'false');
+            }
+        } else {
+            createFullscreenEnforcerUI(); // Ensure UI is created
+            const messageElement = fullscreenEnforcerOverlay.querySelector('h2');
+            const subMessageElement = fullscreenEnforcerOverlay.querySelector('p:not(#fullscreen-switch-info):not(#fullscreen-countdown-timer)');
+            const enterButton = fullscreenEnforcerOverlay.querySelector('button');
+            const switchInfoElement = document.getElementById('fullscreen-switch-info');
+            
+            // Only start the countdown if this is not the first fullscreen prompt
+            if (!isFirstFullscreenPrompt && !fullscreenCountdownInterval) {
+                fullscreenCountdownValue = 5; // Reset countdown to 5 seconds
+                
+                if (messageElement) messageElement.innerHTML = '<i class="bi bi-exclamation-triangle-fill" style="font-size: 2em; margin-bottom: 15px; color: #ffc107;"></i><br>Fullscreen Exit Detected!';
+                if (subMessageElement) subMessageElement.textContent = 'Please re-enter fullscreen mode immediately. Failure to do so will result in contest termination.';
+                if (enterButton) enterButton.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Re-Enter Fullscreen';
+                
+                if (countdownDisplay) {
+                    countdownDisplay.textContent = `${fullscreenCountdownValue}s`;
+                    countdownDisplay.style.display = 'block';
+                }
+
+                fullscreenCountdownInterval = setInterval(() => {
+                    fullscreenCountdownValue--;
+                    if(countdownDisplay) countdownDisplay.textContent = `${fullscreenCountdownValue}s`;
+
+                    if (isFullscreen()) { 
+                        clearInterval(fullscreenCountdownInterval);
+                        fullscreenCountdownInterval = null;
+                        if(countdownDisplay) countdownDisplay.style.display = 'none';
+                        updateFullscreenEnforcement(); 
+                        return;
+                    }
+
+                    if (fullscreenCountdownValue <= 0) {
+                        clearInterval(fullscreenCountdownInterval);
+                        fullscreenCountdownInterval = null;
+                        if (!isFullscreen()) { 
+                            terminateContest('Failed to re-enter fullscreen within the allowed time.');
+                        }
+                    }
+                }, 1000);
+            }
+            
+            if (fullscreenEnforcerOverlay) {
+                fullscreenEnforcerOverlay.style.display = 'flex';
+                if (switchInfoElement) {
+                    switchInfoElement.textContent = `Page Switches: ${pageSwitchCount} / ${maxSwitches}`;
+                }
+            }
+            if (codeMirrorEditor) {
+                codeMirrorEditor.setOption("readOnly", true);
+                codeMirrorEditor.refresh(); // Refresh editor state
+                 if (codeMirrorEditor.getWrapperElement()) {
+                    codeMirrorEditor.getWrapperElement().style.opacity = '0.7'; // Visually indicate disabled
+                    codeMirrorEditor.getWrapperElement().style.pointerEvents = 'none';
+                }
+            }
+        }
+    }
+
+    // Attempt to find CodeMirror instance (might be initialized later)
+    function findCodeMirrorInstance() {
+        if (window.editor && typeof window.editor.setOption === 'function') {
+            codeMirrorEditor = window.editor;
+            updateFullscreenEnforcement(); // Update state once editor is found
+        } else {
+            // If contest.php has multiple editors, this might need adjustment
+            // For now, assuming one global 'editor' or a single .CodeMirror element
+            const cmElement = document.querySelector('.CodeMirror');
+            if (cmElement && cmElement.CodeMirror) {
+                 codeMirrorEditor = cmElement.CodeMirror;
+                 updateFullscreenEnforcement();
+            }
+        }
+    }
     
+    // --- End of Fullscreen Helper Functions ---
+
     // Prevent right click only if the setting is enabled
     document.addEventListener('contextmenu', function(e) {
         if (isContestActive && preventRightClick) {
             e.preventDefault();
-            showWarningModal('Right-clicking is not allowed during the contest.');
+            if (!isFullscreen()) { // Show fullscreen prompt if right click is attempted outside fullscreen
+                showWarningModal('Please enter fullscreen. Right-clicking is also disabled.');
+                updateFullscreenEnforcement(); // Re-check and show overlay if needed
+            } else {
+                showWarningModal('Right-clicking is not allowed during the contest.');
+            }
         }
     });
 
-    // Prevent copy/paste and show warning - only if copy-paste is not allowed
+    // Function to clear clipboard - enhanced version
+    function clearClipboard() {
+        try {
+            // Try multiple methods to clear the clipboard for better reliability
+            
+            // Method 1: Modern Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText('');
+            }
+            
+            // Method 2: Legacy execCommand approach
+            const textarea = document.createElement('textarea');
+            textarea.value = '';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (e) {}
+            document.body.removeChild(textarea);
+            
+            return true;
+        } catch (error) {
+            // Error handling, but no console log
+        }
+        return false;
+    }
+    
+    // Function to refresh page with cleared cache
+    function refreshPageWithClearedCache() {
+        // Store the current contest ID to preserve it
+        const contestId = urlParams.get('id');
+        
+        // Build the cache-busting URL
+        const refreshUrl = window.location.pathname + 
+            (contestId ? `?id=${contestId}&refresh_cache=1` : '?refresh_cache=1') + 
+            `&t=${Date.now()}`;
+            
+        // Navigate to the URL, which forces a complete page reload
+        window.location.href = refreshUrl;
+    }
+    
+    // Check and clear clipboard when window gains focus
+    window.addEventListener('focus', function() {
+        if (!isContestActive || isCopyPasteAllowed) return;
+        
+        const timeSinceLastFocus = Date.now() - lastFocusTime;
+        
+        // If window was unfocused for more than a brief moment (indicating tab switch)
+        if (timeSinceLastFocus > 300) {
+            // Clear the clipboard when returning to the contest page
+            clearClipboard();
+            
+            // If user was away for more than 5 seconds, perform a page refresh
+            if (pageHiddenStartTime > 0 && (Date.now() - pageHiddenStartTime) > 5000) {
+                setTimeout(() => {
+                    refreshPageWithClearedCache();
+                }, 100); // Shortened timeout
+            } else {
+                showWarningModal('Clipboard has been cleared for security reasons.');
+            }
+        }
+        
+        lastFocusTime = Date.now();
+        pageHiddenStartTime = 0; // Reset the hidden start time
+    });
+    
+    // Prevent copy/paste with keyboard shortcuts and handle F5
     document.addEventListener('keydown', function(e) {
         if (isContestActive) {
+            // Check if the event target is inside CodeMirror
+            const isInCodeMirror = e.target.closest('.CodeMirror') !== null;
+            
+            // --- Check for Developer Tools Shortcuts ---
+            const isDevToolsShortcut = 
+                (e.key === 'F12') || 
+                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // Ctrl+Shift+I
+                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') || // Ctrl+Shift+J
+                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') || // Ctrl+Shift+C
+                (e.metaKey && e.altKey && e.key.toLowerCase() === 'i') ||   // Cmd+Option+I (Mac)
+                (e.metaKey && e.altKey && e.key.toLowerCase() === 'j') ||   // Cmd+Option+J (Mac)
+                (e.metaKey && e.altKey && e.key.toLowerCase() === 'c');      // Cmd+Option+C (Mac)
+
+            if (isDevToolsShortcut) {
+                e.preventDefault();
+                handleDevToolsViolation(); // Trigger violation handling
+                return;
+            }
+            
+            // --- Check for Tab Switching Shortcuts ---
+            const isTabSwitchShortcut = 
+                (e.ctrlKey && e.key === 'Tab') ||                                     // Ctrl+Tab, Ctrl+Shift+Tab (Shift is a modifier)
+                (e.ctrlKey && e.key === 'PageDown') ||                                // Ctrl+PageDown
+                (e.ctrlKey && e.key === 'PageUp') ||                                  // Ctrl+PageUp
+                (e.ctrlKey && e.key >= '1' && e.key <= '9') ||                        // Ctrl+[1-9]
+                (e.metaKey && e.shiftKey && (e.key === ']' || e.key === '[')) ||       // Cmd+Shift+] or [
+                (e.metaKey && e.altKey && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')); // Cmd+Option+Left/Right
+            
+            if (isTabSwitchShortcut) {
+                // Allow tab switching if it happens within CodeMirror itself (e.g. some plugins might use similar shortcuts)
+                // Though this is less likely for the listed browser-level shortcuts.
+                if (isInCodeMirror) {
+                    return;
+                }
+                e.preventDefault();
+                handlePageSwitchViolation('Attempted tab switch using shortcut!');
+                return;
+            }
+            
+            // Handle F5 and Ctrl+R to prevent page refresh
+            if (e.key === 'F5' || (e.ctrlKey && e.key.toLowerCase() === 'r')) {
+                e.preventDefault();
+                handlePageSwitchViolation('Page refresh attempted!');
+                return;
+            }
+            
+            // For copy-paste in CodeMirror, we allow it but track it
+            if (isInCodeMirror) {
+                // Still allow keyboard shortcuts in CodeMirror
+                return;
+            }
+            
             // Prevent copy (Ctrl+C) - only if copy-paste is not allowed
             if (!isCopyPasteAllowed && e.ctrlKey && e.key.toLowerCase() === 'c') {
                 e.preventDefault();
@@ -44,16 +498,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 showWarningModal('Pasting is not allowed during the contest.');
             }
-            // Existing F5 prevention
-            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+            
+            // F11 to enter/exit fullscreen - browser handles this, our listener will catch the change
+            if (e.key === 'Escape' && isFullscreen()) {
+                 // User might be trying to exit fullscreen with Esc. Our fullscreenchange listener will handle it.
+            }
+            if (isInCodeMirror && !isFullscreen()) {
+                // If user tries to type in CodeMirror when not in fullscreen
                 e.preventDefault();
-                handlePageSwitchViolation('Page refresh attempted!');
+                showWarningModal("Please enter fullscreen mode to write code.");
+                updateFullscreenEnforcement(); // Ensure overlay is shown
+                return;
             }
         }
     });
-
-    // Prevent copy/paste through context menu and mouse events - only if copy-paste is not allowed
+    
+    // Track internal copy operations
     document.addEventListener('copy', function(e) {
+        // Check if the event target is inside CodeMirror
+        const isInCodeMirror = e.target.closest('.CodeMirror') !== null;
+        
+        // Allow copy in CodeMirror regardless of settings
+        if (isInCodeMirror) {
+            // Mark this as an internal copy operation
+            try {
+                const selection = document.getSelection();
+                if (selection) {
+                    internalClipboardContent = selection.toString();
+                }
+            } catch (error) {
+                // No console.log for error
+            }
+            return;
+        }
+        
         if (isContestActive && !isCopyPasteAllowed) {
             e.preventDefault();
             showWarningModal('Copying is not allowed during the contest.');
@@ -61,405 +539,76 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('paste', function(e) {
+        // Check if the event target is inside CodeMirror
+        const isInCodeMirror = e.target.closest('.CodeMirror') !== null;
+        
+        if (isInCodeMirror) {
+            // If copy-paste prevention is enabled, verify clipboard content
+            if (!isCopyPasteAllowed) {
+                // Try to get clipboard data
+                try {
+                    // For security reasons, we cannot directly access clipboard content
+                    // We can only block the paste event
+                    
+                    // If we haven't tracked this as an internal copy, block the paste
+                    if (!internalClipboardContent) {
+                        e.preventDefault();
+                        showWarningModal('Pasting from external sources is not allowed.');
+                        return;
+                    }
+                } catch (error) {
+                    // No console.log for error
+                }
+            }
+            return; // Allow paste in CodeMirror
+        }
+        
         if (isContestActive && !isCopyPasteAllowed) {
             e.preventDefault();
             showWarningModal('Pasting is not allowed during the contest.');
         }
     });
     
-    // Remove any existing prevention elements from previous versions
-    const existingElements = [
-        document.getElementById('violation-warning'),
-        document.getElementById('violations-counter'),
-        document.getElementById('tab-switch-warning'),
-        document.getElementById('warning-indicator'),
-        document.getElementById('cheating-prevention-system')
-    ];
-    
-    existingElements.forEach(element => {
-        if (element) element.remove();
-    });
-    
-    // Ensure page state tracking is set up immediately
-    document.title = document.title || "Contest Page";
-    const originalTitle = document.title;
-    
-    // Immediately push state to prevent back navigation
-    history.pushState({page: 1}, originalTitle, window.location.href);
-
-    // Create main container for all warning elements
-    const warningSystem = document.createElement('div');
-    warningSystem.id = 'cheating-prevention-system';
-    document.body.appendChild(warningSystem);
-
-    // Create modal warning overlay
-    const warningOverlay = document.createElement('div');
-    warningOverlay.id = 'warning-overlay';
-    warningOverlay.style.cssText = `
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.85);
-        z-index: 10000;
-        backdrop-filter: blur(8px);
-    `;
-    warningSystem.appendChild(warningOverlay);
-
-    // Create modal warning dialog
-    const warningModal = document.createElement('div');
-    warningModal.id = 'warning-modal';
-    warningModal.style.cssText = `
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #1e1e2f;
-        border-radius: 16px;
-        padding: 0;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 25px 50px -12px rgba(255, 56, 56, 0.5);
-        overflow: hidden;
-        font-family: system-ui, -apple-system, sans-serif;
-    `;
-    warningOverlay.appendChild(warningModal);
-
-    // Create warning header
-    const warningHeader = document.createElement('div');
-    warningHeader.style.cssText = `
-        background: linear-gradient(135deg, #ff4757, #ff6b81);
-        color: white;
-        padding: 20px 30px;
-        font-size: 22px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    `;
-    warningModal.appendChild(warningHeader);
-
-    // Create warning content
-    const warningContent = document.createElement('div');
-    warningContent.style.cssText = `
-        padding: 25px 30px;
-        color: white;
-        font-size: 16px;
-        line-height: 1.6;
-    `;
-    warningModal.appendChild(warningContent);
-
-    // Create violations status bar
-    const statusBar = document.createElement('div');
-    statusBar.id = 'violations-status';
-    statusBar.style.cssText = `
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        background: rgba(30, 30, 47, 0.95);
-        border-radius: 15px;
-        padding: 15px;
-        color: white;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-size: 14px;
-        z-index: 9990;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        min-width: 220px;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        opacity: 0;
-        transform: translateY(-20px);
-    `;
-    
-    const statusTitle = document.createElement('div');
-    statusTitle.style.cssText = `
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        font-size: 15px;
-        color: #fff;
-        letter-spacing: 0.3px;
-    `;
-    statusTitle.innerHTML = '<svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5ZM8 13C5.23858 13 3 10.7614 3 8C3 5.23858 5.23858 3 8 3C10.7614 3 13 5.23858 13 8C13 10.7614 10.7614 13 8 13Z" fill="white"/><path d="M7.25 5C7.25 4.58579 7.58579 4.25 8 4.25C8.41421 4.25 8.75 4.58579 8.75 5V8.5C8.75 8.91421 8.41421 9.25 8 9.25C7.58579 9.25 7.25 8.91421 7.25 8.5V5Z" fill="white"/><circle cx="8" cy="11" r="1" fill="white"/></svg> Contest Security';
-    
-    const violationCounter = document.createElement('div');
-    violationCounter.style.cssText = `
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 8px 12px;
-        border-radius: 10px;
-        font-size: 13px;
-    `;
-    violationCounter.innerHTML = `<span style="color: rgba(255,255,255,0.8);">Page Switches:</span> <span id="violation-count" style="font-weight: 600;">0/${maxSwitches}</span>`;
-    
-    const indicatorContainer = document.createElement('div');
-    indicatorContainer.style.cssText = `
-        display: flex;
-        gap: 8px;
-        height: 6px;
-        padding: 0 2px;
-    `;
-    
-    // Create indicators based on the maximum number of switches
-    for (let i = 0; i < maxSwitches; i++) {
-        const indicator = document.createElement('div');
-        indicator.className = 'violation-indicator';
-        indicator.style.cssText = `
-            height: 6px;
-            flex: 1;
-            background: #2ecc71;
-            border-radius: 3px;
-            transition: background-color 0.3s ease;
-        `;
-        indicatorContainer.appendChild(indicator);
-    }
-    
-    statusBar.appendChild(statusTitle);
-    statusBar.appendChild(violationCounter);
-    statusBar.appendChild(indicatorContainer);
-    warningSystem.appendChild(statusBar);
-    
-    // Add CSS keyframes for animations
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        @keyframes shake {
-            0%, 100% { transform: translate(-50%, -50%); }
-            10%, 30%, 50%, 70%, 90% { transform: translate(-52%, -50%); }
-            20%, 40%, 60%, 80% { transform: translate(-48%, -50%); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        @keyframes slideInTop {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes emergencyPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
-            50% { box-shadow: 0 0 0 15px rgba(255, 71, 87, 0); }
-        }
-        
-        #warning-overlay {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        #warning-overlay.visible {
-            opacity: 1;
-        }
-        
-        /* Allow text selection in CodeMirror always */
-        .CodeMirror {
-            -webkit-user-select: text !important;
-            -moz-user-select: text !important;
-            -ms-user-select: text !important;
-            user-select: text !important;
-        }
-        
-        /* Only apply user-select none if copy-paste is not allowed */
-        ${!isCopyPasteAllowed ? `
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }` : ''}
-    `;
-    document.head.appendChild(styleSheet);
-    
-    // Update indicators function to handle dynamic number of indicators
-    function updateViolationIndicators() {
-        debug(`Updating violation indicators: ${pageSwitchCount}/${maxSwitches}`);
-        
-        // Update text counter
-        const violationCount = document.getElementById('violation-count');
-        if (violationCount) {
-            violationCount.textContent = `${pageSwitchCount}/${maxSwitches}`;
-        }
-        
-        // Update indicator colors
-        const indicators = document.querySelectorAll('.violation-indicator');
-        
-        indicators.forEach((indicator, index) => {
-            if (index < pageSwitchCount) {
-                // Make indicators red when switched
-                indicator.style.backgroundColor = '#ff4757';
-                
-                // Add animation
-                indicator.style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    indicator.style.animation = '';
-                }, 500);
-            } else {
-                indicator.className = 'violation-indicator';
-            }
-        });
-        
-        // Show the status bar with animation
-        statusBar.style.display = 'flex';
-        statusBar.style.opacity = '1';
-        statusBar.style.transform = 'translateY(0)';
-
-        // Clear any existing hide timeout
-        if (window.statusBarTimeout) {
-            clearTimeout(window.statusBarTimeout);
-        }
-
-        // Hide status bar after 5 seconds unless there's an active warning
-        window.statusBarTimeout = setTimeout(() => {
-            if (!warningOverlay.classList.contains('visible')) {
-                statusBar.style.opacity = '0';
-                statusBar.style.transform = 'translateY(-20px)';
-                setTimeout(() => {
-                    if (statusBar.style.opacity === '0') {
-                        statusBar.style.display = 'none';
-                    }
-                }, 300);
-            }
-        }, 5000);
-    }
-    
-    // Function to hide warning modal
-    function hideWarningModal() {
-        debug("Hiding warning modal");
-        // Hide using class approach for more reliable animation
-        warningOverlay.classList.remove('visible');
-        
-        // Then remove from DOM after animation completes
-        setTimeout(function() {
-            if (warningOverlay) {
-                warningOverlay.style.display = 'none';
-                if (warningModal) {
-                    warningModal.style.animation = '';
-                }
-            }
-            debug("Warning modal hidden completely");
-        }, 300);
-    }
-    
-    // Function to show warning modal
-    function showWarningModal(message, isTerminal = false) {
-        if (!isContestActive) return;
-        
-        debug(`Showing warning modal: ${isTerminal ? 'Terminal' : 'Warning'} - ${message}`);
-        
-        // Clear any existing timeout to prevent conflicts
-        if (warningTimeout) {
-            debug("Clearing existing warning timeout");
-            clearTimeout(warningTimeout);
-            warningTimeout = null;
-        }
-        
-        // Set content based on warning type
-        warningHeader.innerHTML = isTerminal ? 
-            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 7.75C12.4142 7.75 12.75 8.08579 12.75 8.5V13.5C12.75 13.9142 12.4142 14.25 12 14.25C11.5858 14.25 11.25 13.9142 11.25 13.5V8.5C11.25 8.08579 11.5858 7.75 12 7.75Z" fill="white"/><circle cx="12" cy="17" r="1" fill="white"/><path d="M8.97046 3.34239C10.3372 0.93724 13.6628 0.937241 15.0295 3.34239L22.3922 16.2764C23.7218 18.5979 22.0273 21.5 19.3626 21.5H4.63736C1.97271 21.5 0.278183 18.5979 1.60779 16.2764L8.97046 3.34239Z" stroke="white" stroke-width="2"/></svg> Contest Terminated' : 
-            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 7.75C12.4142 7.75 12.75 8.08579 12.75 8.5V13.5C12.75 13.9142 12.4142 14.25 12 14.25C11.5858 14.25 11.25 13.9142 11.25 13.5V8.5C11.25 8.08579 11.5858 7.75 12 7.75Z" fill="white"/><circle cx="12" cy="17" r="1" fill="white"/><path d="M8.97046 3.34239C10.3372 0.93724 13.6628 0.937241 15.0295 3.34239L22.3922 16.2764C23.7218 18.5979 22.0273 21.5 19.3626 21.5H4.63736C1.97271 21.5 0.278183 18.5979 1.60779 16.2764L8.97046 3.34239Z" stroke="white" stroke-width="2"/></svg> Warning';
-        
-        // Set warning content
-        warningContent.innerHTML = `
-            <p>${message}</p>
-            ${isTerminal ? '<p style="margin-top: 15px; opacity: 0.8;">Redirecting to dashboard...</p>' : ''}
-        `;
-        
-        // Show the warning with class-based approach
-        warningOverlay.style.display = 'block';
-        // Force reflow to ensure animation starts properly
-        void warningOverlay.offsetWidth;
-        warningOverlay.classList.add('visible');
-        
-        // Set appropriate animation and styling for terminal vs warning
-        if (isTerminal) {
-            warningModal.style.animation = 'shake 0.5s ease';
-            warningModal.style.boxShadow = '0 25px 50px -12px rgba(255, 56, 56, 0.7)';
-            statusBar.style.animation = 'emergencyPulse 1.5s infinite';
-        } else {
-            warningModal.style.animation = 'pulse 2s infinite';
-            
-            // Auto-hide warning after 3 seconds for non-terminal warnings
-            debug("Setting warning timeout for 3 seconds");
-            warningTimeout = setTimeout(function() {
-                debug("Warning timeout triggered, hiding warning");
-                hideWarningModal();
-            }, 3000);
-        }
-    }
-    
-    // Function to handle contest termination
-    function terminateContest() {
-        isContestActive = false;
-        
-        // Show terminal warning
-        showWarningModal('You have exceeded the maximum number of page switch violations. Your contest session has been terminated.', true);
-        
-        // Create a form to post the termination reason
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'dashboard.php';
-        form.style.display = 'none';
-        
-        const reasonInput = document.createElement('input');
-        reasonInput.type = 'hidden';
-        reasonInput.name = 'termination_reason';
-        reasonInput.value = 'page_switch_violations';
-        
-        const statusInput = document.createElement('input');
-        statusInput.type = 'hidden';
-        statusInput.name = 'status';
-        statusInput.value = 'terminated';
-        
-        form.appendChild(reasonInput);
-        form.appendChild(statusInput);
-        document.body.appendChild(form);
-        
-        // Submit the form after a delay
-        setTimeout(() => {
-            form.submit();
-        }, 3000);
-    }
-    
-    // Function to handle page switch violations
-    function handlePageSwitchViolation(type) {
-        // Prevent counting violations too quickly (cooldown of 1 second)
-        const now = Date.now();
-        if (now - lastViolationTime < 1000) return;
-        lastViolationTime = now;
-        
-        // Count the violation
-        pageSwitchCount++;
-        updateViolationIndicators();
-        
-        // Show appropriate warning
-        if (pageSwitchCount >= maxSwitches) {
-            terminateContest();
-        } else {
-            const remainingChances = maxSwitches - pageSwitchCount;
-            showWarningModal(`${type} You have ${remainingChances} warning${remainingChances === 1 ? '' : 's'} remaining before termination.`);
-        }
-    }
-    
     // Handle visibility change (tab switching)
     document.addEventListener('visibilitychange', function() {
         if (document.hidden && isContestActive) {
+            pageHiddenStartTime = Date.now();
             handlePageSwitchViolation('Tab switched!');
+        } else if (!document.hidden && isContestActive && pageHiddenStartTime > 0) {
+            // Page became visible again after being hidden
+            const timeHidden = Date.now() - pageHiddenStartTime;
+            
+            // Clear clipboard
+            clearClipboard();
+            
+            // If we're not in fullscreen, prioritize showing the fullscreen warning with countdown
+            if (!isFullscreen()) {
+                // We need to ensure this isn't treated as a first-time fullscreen prompt
+                // and persist this state in localStorage
+                isFirstFullscreenPrompt = false;
+                localStorage.setItem(`contest_${contestId}_first_fullscreen`, 'false');
+                
+                // Show a warning about tab switching
+                showWarningModal('Tab switching detected! Please re-enter fullscreen immediately.');
+                
+                // Force update the fullscreen UI with countdown
+                if (fullscreenCountdownInterval) {
+                    clearInterval(fullscreenCountdownInterval);
+                    fullscreenCountdownInterval = null;
+                }
+                updateFullscreenEnforcement();
+                
+                // Do not refresh page in this case, as we want to show the fullscreen countdown
+            } 
+            // Only refresh if in fullscreen and away for more than 5 seconds
+            else if (timeHidden > 5000 && isFullscreen()) {
+                showWarningModal('Refreshing page and clearing clipboard for security reasons...');
+                setTimeout(() => {
+                    refreshPageWithClearedCache();
+                }, 1500);
+            }
+            
+            pageHiddenStartTime = 0;
         }
     });
     
@@ -479,17 +628,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Prevent closing/reloading page
-    window.addEventListener('beforeunload', function(e) {
-        if (isContestActive) {
-            e.preventDefault();
-            e.returnValue = 'Are you sure you want to leave? This will be counted as a violation!';
-            return e.returnValue;
-        }
-    });
+    // --- Initialize Fullscreen Enforcement & other features ---
     
-    // Initialize the violation indicators
-    updateViolationIndicators();
+    // Try to find CodeMirror instance periodically until found or for a few seconds
+    let findCmInterval = setInterval(() => {
+        if (!codeMirrorEditor) {
+            findCodeMirrorInstance();
+        } else {
+            clearInterval(findCmInterval); // Stop trying once found
+        }
+    }, 500);
+    setTimeout(() => clearInterval(findCmInterval), 5000); // Stop after 5 seconds
+
+    // Initial check and UI setup
+    createFullscreenEnforcerUI(); // Create it so it's ready
+    updateFullscreenEnforcement(); // Initial state check
+
+    // Listen for fullscreen changes
+    ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange'].forEach(event => {
+        document.addEventListener(event, updateFullscreenEnforcement);
+    });
+
+    // Initialize the violation indicators (this should be after these elements are created)
+    updateViolationIndicators(); 
     
     // Check if UI elements were properly initialized
     setTimeout(() => {
@@ -497,9 +658,536 @@ document.addEventListener('DOMContentLoaded', function() {
         const warningModalElement = document.getElementById('warning-modal');
         
         if (!violationCountElement || !warningModalElement) {
-            console.log('Prevention system UI not properly initialized. Reloading...');
-            // Force a hard reload of the page (bypass cache)
-            window.location.reload(true);
+            // Prevention system UI (violations) not properly initialized
+        }
+         if (!fullscreenEnforcerOverlay && isContestActive && !isFullscreen()) {
+            createFullscreenEnforcerUI();
+            updateFullscreenEnforcement();
+         }
+         
+        // Special handling for page refresh while fullscreen enforcement was active
+        if (isContestActive && !isFullscreen() && !isFirstFullscreenPrompt) {
+            // This means the page was refreshed while not in fullscreen mode
+            // and we've previously shown the first fullscreen prompt
+            // Re-trigger the fullscreen enforcement with countdown
+            if (fullscreenCountdownInterval) {
+                clearInterval(fullscreenCountdownInterval);
+                fullscreenCountdownInterval = null;
+            }
+            
+            // Force update the fullscreen UI with countdown
+            createFullscreenEnforcerUI();
+            updateFullscreenEnforcement();
         }
     }, 1000);
+
+    const finishButtons = document.querySelectorAll('.contest-finish-btn, .submit-final-btn');
+    finishButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            localStorage.removeItem(storageKey);
+            isContestActive = false; // Contest is over
+            clearInterval(devToolsCheckInterval); // Stop dev tools check when contest finishes
+            updateFullscreenEnforcement(); // Release fullscreen enforcement
+        });
+    });
+
+    // Function to detect if developer tools are open
+    function detectDeveloperTools() {
+        const threshold = 160; // Time in ms. If execution takes longer, dev tools likely open.
+        let devToolsOpen = false;
+
+        // Technique 1: Check console.toString()
+        // This is a common technique, but can be fragile.
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get: function () {
+                devToolsOpen = true;
+                return 'devtools';
+            }
+        });
+        // console.dirxml will trigger the getter if devtools are open and it tries to display the element properties
+        // We need to be careful not to log this to the actual console during normal operation.
+        // So, we'll wrap it in a way that it only has an effect if devtools are truly inspecting it.
+        
+        const devToolsChecker = {
+            open: false,
+            toString: function() {
+                this.open = true;
+                return 'devtools_opened';
+            }
+        };
+        // Using console.log with a custom toString object.
+        // If devtools are open, it might try to introspect the object, calling toString().
+        // console.log('%c', devToolsChecker); 
+        // This line above is tricky because if devtools are NOT open, it might still log. 
+        // A more reliable direct check is the debugger statement approach.
+
+        // Technique 2: Debugger statement timing
+        const startTime = performance.now();
+        debugger; // This statement will pause if dev tools are open
+        const endTime = performance.now();
+
+        if (endTime - startTime > threshold) {
+            devToolsOpen = true;
+        }
+
+        // Technique 3: Check if specific console functions are native code
+        // This is less reliable as browsers change and users can override these too.
+        // if (typeof console.log !== 'function' || console.log.toString().indexOf('native code') === -1) {
+        // devToolsOpen = true;
+        // }
+
+        return devToolsOpen;
+    }
+
+    // Function to handle developer tools violations
+    function handleDevToolsViolation() {
+        if (!isContestActive) return;
+
+        devToolsViolationCount++;
+        const now = Date.now();
+        if (now - lastViolationTime < 2000) return; // Prevent rapid multiple triggers
+        lastViolationTime = now;
+
+        showWarningModal(`Developer tools detected (${devToolsViolationCount}/${maxDevToolsViolations}). Please close them to continue.`);
+        updateViolationIndicators(); // This might need adjustment to show dev tools violations separately or combined
+
+        if (devToolsViolationCount >= maxDevToolsViolations) {
+            terminateContest('Developer tools abuse detected. Contest terminated.');
+        }
+    }
+    
+    // Function to handle page switch violations (tab switching, window switching, etc.)
+    function handlePageSwitchViolation(reason) {
+        if (!isContestActive) return;
+        
+        // Increment the counter
+        pageSwitchCount++;
+        
+        // Store the new count in localStorage
+        localStorage.setItem(storageKey, pageSwitchCount.toString());
+        
+        // Update UI elements if they exist
+        updateViolationIndicators();
+        
+        // Display warning message if not already showing a warning
+        const now = Date.now();
+        if (now - lastViolationTime > 2000) {
+            lastViolationTime = now;
+            showWarningModal(`Page switch detected! (${pageSwitchCount}/${maxSwitches})`);
+        }
+        
+        // If page switches exceed the maximum allowed, terminate the contest
+        if (pageSwitchCount >= maxSwitches) {
+            terminateContest('Exceeded maximum allowed page switches.');
+        }
+    }
+    
+    // Function to show warning modal or status bar
+    function showWarningModal(message) {
+        // Try to find or create modal - this is a simplified version; in practice, you'd have proper UI
+        const warningModal = document.getElementById('warning-modal') || createWarningModal();
+        
+        // Set the message
+        const messageElement = warningModal.querySelector('.message');
+        if (messageElement) {
+            messageElement.textContent = message;
+        }
+        
+        // Show the modal
+        warningModal.style.display = 'block';
+        
+        // Auto-hide after a few seconds
+        clearTimeout(warningTimeout);
+        warningTimeout = setTimeout(() => {
+            warningModal.style.display = 'none';
+        }, 3000);
+    }
+    
+    // Function to create a warning modal if it doesn't exist
+    function createWarningModal() {
+        const modal = document.createElement('div');
+        modal.id = 'warning-modal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #dc3545;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            transition: opacity 0.3s;
+            max-width: 400px;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            text-align: center;
+        `;
+        
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message';
+        modal.appendChild(messageElement);
+        
+        document.body.appendChild(modal);
+        return modal;
+    }
+    
+    // Function to update violation indicators in UI
+    function updateViolationIndicators() {
+        // Update the page switch info display in fullscreen overlay
+        const switchInfoElement = document.getElementById('fullscreen-switch-info');
+        if (switchInfoElement) {
+            switchInfoElement.textContent = `Page Switches: ${pageSwitchCount} / ${maxSwitches}`;
+            
+            // Add warning color if approaching limit
+            if (pageSwitchCount >= maxSwitches - 1) {
+                switchInfoElement.style.color = '#dc3545'; // Red
+            } else if (pageSwitchCount >= maxSwitches - 2) {
+                switchInfoElement.style.color = '#ffc107'; // Yellow
+            }
+        }
+        
+        // If there's a separate violation counter element, update it too
+        const violationCountElement = document.getElementById('violation-count');
+        if (violationCountElement) {
+            violationCountElement.textContent = pageSwitchCount.toString();
+            
+            // Add warning classes if approaching limit
+            violationCountElement.classList.remove('warning', 'danger');
+            if (pageSwitchCount >= maxSwitches - 1) {
+                violationCountElement.classList.add('danger');
+            } else if (pageSwitchCount >= maxSwitches - 2) {
+                violationCountElement.classList.add('warning');
+            }
+        }
+    }
+    
+    // Function to terminate the contest due to violations
+    function terminateContest(reason) {
+        if (!isContestActive) return; // Don't terminate if contest isn't active
+        
+        isContestActive = false; // Mark contest as no longer active
+        
+        // Store termination state in localStorage
+        localStorage.setItem(`contest_${contestId}_terminated`, 'true');
+        localStorage.setItem(`contest_${contestId}_termination_reason`, reason);
+        localStorage.setItem(`contest_${contestId}_termination_time`, Date.now().toString());
+        
+        // Clear any active countdowns/intervals
+        if (fullscreenCountdownInterval) {
+            clearInterval(fullscreenCountdownInterval);
+            fullscreenCountdownInterval = null;
+        }
+        
+        if (devToolsCheckInterval) {
+            clearInterval(devToolsCheckInterval);
+            devToolsCheckInterval = null;
+        }
+        
+        // Determine the reason code
+        let reasonCode;
+        if (reason.includes('fullscreen')) {
+            reasonCode = 'fullscreen_violation';
+        } else if (reason.includes('developer tools') || reason.includes('Developer tools')) {
+            reasonCode = 'developer_tools';
+        } else {
+            reasonCode = 'page_switch_violations';
+        }
+        
+        // Send termination to the server using AJAX
+        fetch('../api/record_contest_exit.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contest_id: contestId,
+                reason: reasonCode,
+                permanent: true
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Termination recorded:', data);
+            
+            // After successfully recording the termination, redirect to dashboard
+            redirectToDashboardWithTerminationMessage(reason, reasonCode);
+        })
+        .catch(error => {
+            console.error('Error recording termination:', error);
+            
+            // Even if there's an error with the API call, still redirect to dashboard
+            redirectToDashboardWithTerminationMessage(reason, reasonCode);
+        });
+        
+        // Also submit a form as a backup method to ensure termination is recorded
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../api/record_contest_exit.php';
+        form.style.display = 'none';
+        
+        const contestIdField = document.createElement('input');
+        contestIdField.name = 'contest_id';
+        contestIdField.value = contestId;
+        
+        const reasonField = document.createElement('input');
+        reasonField.name = 'reason';
+        reasonField.value = reasonCode;
+        
+        const permanentField = document.createElement('input');
+        permanentField.name = 'permanent';
+        permanentField.value = 'true';
+        
+        form.appendChild(contestIdField);
+        form.appendChild(reasonField);
+        form.appendChild(permanentField);
+        
+        document.body.appendChild(form);
+        
+        // If AJAX is blocked or fails, submit the form after a delay
+        setTimeout(() => {
+            try {
+                form.submit();
+            } catch (e) {
+                // If form submission fails too, force redirect to dashboard
+                redirectToDashboardWithTerminationMessage(reason, reasonCode);
+            }
+        }, 1000);
+    }
+    
+    // Helper function to handle redirection to dashboard with appropriate message
+    function redirectToDashboardWithTerminationMessage(reason, reasonCode) {
+        // Get contest name if available in the page
+        let contestName = document.querySelector('.contest-title')?.textContent || 
+                        document.title || 'This contest';
+        
+        // Create a more user-friendly message based on the reason
+        let friendlyMessage;
+        switch(reasonCode) {
+            case 'fullscreen_violation':
+                friendlyMessage = `Your access to "${contestName}" has been permanently revoked due to fullscreen mode violations.`;
+                break;
+            case 'developer_tools':
+                friendlyMessage = `Your access to "${contestName}" has been permanently revoked due to the use of developer tools.`;
+                break;
+            case 'page_switch_violations':
+                friendlyMessage = `Your access to "${contestName}" has been permanently revoked due to excessive page switches.`;
+                break;
+            default:
+                friendlyMessage = `Your access to "${contestName}" has been permanently revoked due to contest rule violations.`;
+        }
+        
+        // Redirect to the dashboard with appropriate error parameters
+        window.location.href = `../student/dashboard.php?error=contest_terminated&reason=${encodeURIComponent(reason)}&message=${encodeURIComponent(friendlyMessage)}`;
+    }
+
+    // Periodically check for developer tools
+    // We need to be careful with setInterval and debugger statements, as they can be disruptive.
+    // A better approach might be to check on focus or specific interactions.
+    // For now, a gentle interval check.
+    let devToolsCheckInterval = setInterval(() => {
+        if (isContestActive && detectDeveloperTools()) {
+            handleDevToolsViolation();
+        }
+    }, 5000); // Check every 5 seconds
+    
+    // Function to show a beautiful success overlay when all test cases pass
+    window.showSuccessOverlay = function(problemName) {
+        // Create overlay container
+        const successOverlay = document.createElement('div');
+        successOverlay.id = 'success-overlay';
+        successOverlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        `;
+        
+        // Create success animation with confetti effect
+        const successAnimation = document.createElement('div');
+        successAnimation.style.cssText = `
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        `;
+        
+        // Success checkmark
+        const checkmark = document.createElement('div');
+        checkmark.style.cssText = `
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #28a745;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 30px rgba(40, 167, 69, 0.6);
+        `;
+        
+        checkmark.innerHTML = `
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
+            </svg>
+        `;
+        
+        successAnimation.appendChild(checkmark);
+        
+        // Create message content
+        const messageContainer = document.createElement('div');
+        messageContainer.style.cssText = `
+            color: white;
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+        `;
+        
+        const title = document.createElement('h2');
+        title.textContent = 'All Test Cases Passed!';
+        title.style.cssText = `
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #28a745;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        `;
+        
+        const message = document.createElement('p');
+        message.innerHTML = problemName ? 
+            `Congratulations! You've successfully solved <strong>${problemName}</strong>. All test cases have passed.` :
+            `Congratulations! You've successfully passed all test cases.`;
+        message.style.cssText = `
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #e9ecef;
+            line-height: 1.6;
+        `;
+        
+        const continueBtn = document.createElement('button');
+        continueBtn.textContent = 'Continue';
+        continueBtn.style.cssText = `
+            padding: 10px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        `;
+        
+        continueBtn.onmouseover = () => {
+            continueBtn.style.background = '#218838';
+            continueBtn.style.transform = 'translateY(-2px)';
+        };
+        
+        continueBtn.onmouseout = () => {
+            continueBtn.style.background = '#28a745';
+            continueBtn.style.transform = 'translateY(0)';
+        };
+        
+        continueBtn.onclick = () => {
+            hideSuccessOverlay();
+        };
+        
+        messageContainer.appendChild(title);
+        messageContainer.appendChild(message);
+        messageContainer.appendChild(continueBtn);
+        
+        // Add elements to overlay
+        successOverlay.appendChild(successAnimation);
+        successOverlay.appendChild(messageContainer);
+        
+        // Add confetti elements
+        for (let i = 0; i < 40; i++) {
+            const confetti = document.createElement('div');
+            const size = Math.random() * 10 + 5;
+            const color = getRandomColor();
+            
+            confetti.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background-color: ${color};
+                top: -20px;
+                left: ${Math.random() * 100}%;
+                opacity: ${Math.random() * 0.8 + 0.2};
+                animation: confetti-fall ${Math.random() * 3 + 2}s linear infinite,
+                           confetti-sway ${Math.random() * 4 + 3}s ease-in-out infinite alternate;
+                transform: rotate(${Math.random() * 360}deg);
+            `;
+            
+            successOverlay.appendChild(confetti);
+        }
+        
+        // Add CSS animation styles
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+            
+            @keyframes confetti-fall {
+                0% { top: -20px; }
+                100% { top: 100vh; }
+            }
+            
+            @keyframes confetti-sway {
+                0% { transform: translateX(0) rotate(0); }
+                50% { transform: translateX(100px) rotate(90deg); }
+                100% { transform: translateX(-100px) rotate(-90deg); }
+            }
+        `;
+        
+        document.head.appendChild(styleSheet);
+        document.body.appendChild(successOverlay);
+        
+        // Fade in effect
+        setTimeout(() => {
+            successOverlay.style.opacity = '1';
+        }, 100);
+        
+        // Auto-hide after 8 seconds (optional)
+        setTimeout(() => {
+            hideSuccessOverlay();
+        }, 8000);
+        
+        // Function to hide the overlay
+        function hideSuccessOverlay() {
+            successOverlay.style.opacity = '0';
+            setTimeout(() => {
+                if (successOverlay.parentNode) {
+                    successOverlay.parentNode.removeChild(successOverlay);
+                }
+            }, 500);
+        }
+        
+        // Function to get random colors for confetti
+        function getRandomColor() {
+            const colors = [
+                '#f94144', '#f3722c', '#f8961e', '#f9c74f', 
+                '#90be6d', '#43aa8b', '#4d908e', '#577590', 
+                '#277da1', '#ff66ff', '#66ffff'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    };
 }); 

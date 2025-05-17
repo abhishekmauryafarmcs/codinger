@@ -1,9 +1,9 @@
 <?php
-session_start();
+require_once '../config/session.php';
 require_once '../config/db.php';
 
 // Check if user is logged in and is a student
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
+if (!isStudentSessionValid()) {
     header("Location: ../login.php");
     exit();
 }
@@ -16,7 +16,7 @@ if (!isset($_POST['contest_id']) || !isset($_POST['enrollment_number'])) {
 
 $contest_id = (int)$_POST['contest_id'];
 $enrollment_number = trim($_POST['enrollment_number']);
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['student']['user_id'];
 
 // Verify that the contest exists and is active
 $stmt = $conn->prepare("
@@ -70,8 +70,13 @@ if ($result->num_rows > 0) {
     
     // Double verification to ensure user's own enrollment number matches (optional security)
     if ($user && $user['enrollment_number'] === $enrollment_number) {
+        // Initialize verified_contests array if it doesn't exist
+        if (!isset($_SESSION['student']['verified_contests'])) {
+            $_SESSION['student']['verified_contests'] = array();
+        }
+        
         // Store enrollment information in session for reference
-        $_SESSION['verified_contests'][$contest_id] = $enrollment_number;
+        $_SESSION['student']['verified_contests'][$contest_id] = $enrollment_number;
         
         // Redirect to the contest
         header("Location: contest.php?id=" . $contest_id);

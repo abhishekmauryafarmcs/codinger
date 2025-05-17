@@ -13,6 +13,7 @@ try {
     session_start();
     require_once '../config/db.php';
     require_once '../config/session.php';
+    require_once '../config/compiler_paths.php';
 
     // Check if user is logged in
     if (!isStudentSessionValid()) {
@@ -34,7 +35,139 @@ try {
     $code = $input['code'];
     $language = $input['language'];
     $problem_id = $input['problem_id'];
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['student']['user_id'];
+    
+    // Get contest ID from request if available, fallback to session
+    $contest_id = isset($input['contest_id']) ? (int)$input['contest_id'] : ($_SESSION['student']['current_contest_id'] ?? null);
+    
+    // Log session data for debugging
+    error_log("User ID from session: " . $user_id);
+    error_log("Contest ID from request/session: " . ($contest_id ? $contest_id : "Not set"));
+    error_log("Problem ID from request: " . $problem_id);
+    
+    // Check if contest ID is available
+    if (!$contest_id) {
+        // Try to find a valid contest for this problem as a fallback
+        $stmt = $conn->prepare("
+            SELECT cp.contest_id 
+            FROM contest_problems cp
+            WHERE cp.problem_id = ?
+            LIMIT 1
+        ");
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        $contest_result = $stmt->get_result();
+        if ($contest_result->num_rows > 0) {
+            $contest_row = $contest_result->fetch_assoc();
+            $contest_id = $contest_row['contest_id'];
+            error_log("Found contest ID from database: " . $contest_id);
+            // Update session for future requests
+            $_SESSION['student']['current_contest_id'] = $contest_id;
+        } else {
+            throw new Exception("Could not determine contest for this problem. Please go back to the contest page and try again.");
+        }
+    }
+
+    // Verify that the problem exists and belongs to the current contest
+    $stmt = $conn->prepare("
+        SELECT p.id, p.title, p.input_format, p.output_format, p.constraints, p.points 
+        FROM problems p
+        JOIN contest_problems cp ON p.id = cp.problem_id
+        WHERE p.id = ? AND cp.contest_id = ?
+    ");
+    $stmt->bind_param("ii", $problem_id, $contest_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $problem = $result->fetch_assoc();
+    
+    error_log("Checking problem in contest: Problem ID=$problem_id, Contest ID=$contest_id, Result=" . ($problem ? "Found" : "Not Found"));
+
+    if (!$problem) {
+        // Let's do a direct check to see if the problem exists at all
+        $stmt = $conn->prepare("SELECT id, title FROM problems WHERE id = ?");
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        $direct_problem_result = $stmt->get_result();
+        $problem_exists = $direct_problem_result->num_rows > 0;
+        error_log("Direct problem check: Problem ID=$problem_id, Exists=" . ($problem_exists ? "Yes" : "No"));
+        
+        // Let's check if there's any contest_problems entry for this problem
+        $stmt = $conn->prepare("SELECT contest_id FROM contest_problems WHERE problem_id = ?");
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        $cp_result = $stmt->get_result();
+        $has_contest = $cp_result->num_rows > 0;
+        error_log("Contest_problems check: Problem ID=$problem_id, Has contest entry=" . ($has_contest ? "Yes" : "No"));
+        if ($has_contest) {
+            while ($cp_row = $cp_result->fetch_assoc()) {
+                error_log("Contest_problems association: Problem ID=$problem_id is associated with Contest ID=" . $cp_row['contest_id']);
+            }
+        }
+        
+        // If problem doesn't exist or doesn't belong to current contest, try to get the problem directly
+        $stmt = $conn->prepare("SELECT id, title, input_format, output_format, constraints, points FROM problems WHERE id = ?");
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        $problem_result = $stmt->get_result();
+        
+        if ($problem_result->num_rows > 0) {
+            // Problem exists but may not be connected to the contest
+            $problem = $problem_result->fetch_assoc();
+            error_log("Problem found directly in database: " . $problem['title']);
+            
+            // Try to find the correct contest for this problem
+            $stmt = $conn->prepare("
+                SELECT cp.contest_id 
+                FROM contest_problems cp
+                WHERE cp.problem_id = ?
+                LIMIT 1
+            ");
+            $stmt->bind_param("i", $problem_id);
+            $stmt->execute();
+            $contest_result = $stmt->get_result();
+            if ($contest_result->num_rows > 0) {
+                $contest_row = $contest_result->fetch_assoc();
+                $contest_id = $contest_row['contest_id'];
+                error_log("Found correct contest ID: " . $contest_id);
+                // Update session for future requests
+                $_SESSION['student']['current_contest_id'] = $contest_id;
+            } else {
+                throw new Exception("This problem exists but isn't associated with any contest. Please contact an administrator.");
+            }
+        } else {
+            throw new Exception("Problem not found for problem_id: $problem_id. Please refresh the page and try again.");
+        }
+    }
+
+    // Check submission limit on the backend
+    $stmt = $conn->prepare("SELECT max_submissions FROM contests WHERE id = ?");
+    $stmt->bind_param("i", $contest_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $contest = $result->fetch_assoc();
+    
+    if (!$contest) {
+        throw new Exception('Contest not found');
+    }
+    
+    $max_submissions = intval($contest['max_submissions']);
+    
+    // If max_submissions is greater than 0, check the limit
+    if ($max_submissions > 0) {
+        // Count existing submissions for this user and problem in THIS CONTEST
+        $stmt = $conn->prepare("SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = ? AND problem_id = ? AND contest_id = ?");
+        $stmt->bind_param("iii", $user_id, $problem_id, $contest_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+        
+        $submissions_used = intval($data['submission_count']);
+        
+        // If user has reached the limit, reject the submission
+        if ($submissions_used >= $max_submissions) {
+            throw new Exception("You have reached the maximum limit of $max_submissions submissions for this problem");
+        }
+    }
 
     // Get problem details for generating test cases
     $stmt = $conn->prepare("SELECT title, input_format, output_format, constraints, points FROM problems WHERE id = ?");
@@ -44,7 +177,7 @@ try {
     $problem = $result->fetch_assoc();
 
     if (!$problem) {
-        throw new Exception('Problem not found');
+        throw new Exception('Problem not found for problem_id: ' . $problem_id);
     }
 
     // Check if test_cases table exists
@@ -97,30 +230,51 @@ try {
     }
     mkdir($tempDir, 0777, true);
     
+    // Set main class name for Java - always use Solution
+    $mainClassName = 'Solution'; 
+    
+    // Log detected Java class name but don't use it (for debug purposes only)
+    if ($language === 'java') {
+        // Extract the public class name from the code using regex
+        if (preg_match('/public\s+class\s+([a-zA-Z0-9_]+)/', $code, $matches)) {
+            $detectedClassName = $matches[1];
+            error_log("Detected Java class name: " . $detectedClassName . " - Will use Solution instead");
+            
+            // If user used a different class name, force it to be Solution
+            if ($detectedClassName !== 'Solution') {
+                $code = preg_replace('/public\s+class\s+' . preg_quote($detectedClassName, '/') . '\b/', 'public class Solution', $code);
+                error_log("Modified Java code to use Solution class instead of " . $detectedClassName);
+            }
+        } else {
+            error_log("No public class found in Java code - may cause compilation errors");
+        }
+    }
+    
     // File extensions and compilation commands for each language
     $config = [
         'cpp' => [
             'extension' => 'cpp',
             'compile' => true,
-            'compile_cmd' => 'g++ "{source}" -o "{executable}"',
+            'compile_cmd' => getCompilerCommand('cpp', 'g++') . ' "{source}" -o "{executable}"',
             'run' => '"{executable}"',
             'filename' => 'solution.cpp',
-            'check_cmd' => 'g++ --version'
+            'check_cmd' => getCompilerCommand('cpp', 'g++') . ' --version'
         ],
         'java' => [
             'extension' => 'java',
             'compile' => true,
-            'compile_cmd' => 'javac "{source}"',
-            'run' => 'java -classpath "{classdir}" Solution',
-            'filename' => 'Solution.java',
-            'check_cmd' => 'javac -version'
+            'compile_cmd' => getCompilerCommand('java', 'javac') . ' "{source}"',
+            'run' => getCompilerCommand('java', 'java') . ' -classpath "{classdir}" {mainclass}',
+            'filename' => $mainClassName . '.java',
+            'mainclass' => $mainClassName,
+            'check_cmd' => getCompilerCommand('java', 'javac') . ' -version'
         ],
         'python' => [
             'extension' => 'py',
             'compile' => false,
-            'run' => 'python "{source}"',
+            'run' => getCompilerCommand('python', 'python') . ' "{source}"',
             'filename' => 'solution.py',
-            'check_cmd' => 'python --version'
+            'check_cmd' => getCompilerCommand('python', 'python') . ' --version'
         ]
     ];
 
@@ -147,7 +301,14 @@ try {
         }
     }
 
-    $sourceFile = $tempDir . '/' . $langConfig['filename'];
+    // For Java, ensure the source file matches the class name
+    if ($language === 'java') {
+        $sourceFile = $tempDir . '/' . $mainClassName . '.java';
+        error_log("Java code will be saved as: " . $sourceFile);
+    } else {
+        $sourceFile = $tempDir . '/' . $langConfig['filename'];
+    }
+    
     $executableFile = $tempDir . '/solution';
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
         $executableFile .= '.exe';
@@ -156,8 +317,15 @@ try {
     $outputFile = $tempDir . '/output.txt';
     $errorFile = $tempDir . '/error.txt';
 
-    // Save the code to a file
-    file_put_contents($sourceFile, $code);
+    // Save the code to a file - extra precaution for Java files
+    if ($language === 'java') {
+        // For Java, explicitly save with the class name to ensure they match
+        file_put_contents($sourceFile, $code);
+        error_log("Java code saved to: " . $sourceFile . " with class name: " . $mainClassName);
+    } else {
+        file_put_contents($sourceFile, $code);
+        error_log("Code saved to: " . $sourceFile);
+    }
 
     // Compile the code if needed
     if ($langConfig['compile']) {
@@ -168,6 +336,10 @@ try {
         );
         $compileOutput = [];
         $compileStatus = 0;
+        
+        // Log the compilation command
+        error_log("Compilation command: " . $compileCmd);
+        
         exec($compileCmd . " 2> " . escapeshellarg($errorFile), $compileOutput, $compileStatus);
 
         if ($compileStatus !== 0) {
@@ -187,8 +359,8 @@ try {
 
         // Run the code
         $runCmd = str_replace(
-            ['{source}', '{executable}', '{classdir}'],
-            [$sourceFile, $executableFile, $tempDir],
+            ['{source}', '{executable}', '{classdir}', '{mainclass}'],
+            [$sourceFile, $executableFile, $tempDir, $langConfig['mainclass'] ?? 'Solution'],
             $langConfig['run']
         );
         $runCmd .= " < " . escapeshellarg($inputFile) . " > " . escapeshellarg($outputFile) . " 2>> " . escapeshellarg($errorFile);
@@ -226,9 +398,26 @@ try {
     // Save submission to database
     $status = $allPassed ? 'accepted' : 'wrong_answer';
     $score = $testCasesPassed * ($problem['points'] / $totalTestCases);
-    $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, code, language, status, test_cases_passed, total_test_cases, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iisssidi", $user_id, $problem_id, $code, $language, $status, $testCasesPassed, $totalTestCases, $score);
-    $stmt->execute();
+    
+    // Log submission details before saving to database
+    error_log("Saving submission: User ID=$user_id, Problem ID=$problem_id, Contest ID=$contest_id, Status=$status, Passed=$testCasesPassed/$totalTestCases");
+    
+    $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, contest_id, code, language, status, test_cases_passed, total_test_cases, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        error_log("Database prepare error: " . $conn->error);
+        throw new Exception("Failed to prepare submission statement: " . $conn->error);
+    }
+    
+    $stmt->bind_param("iiisssdii", $user_id, $problem_id, $contest_id, $code, $language, $status, $testCasesPassed, $totalTestCases, $score);
+    $result = $stmt->execute();
+    
+    if (!$result) {
+        error_log("Database execution error: " . $stmt->error);
+        throw new Exception("Failed to save submission: " . $stmt->error);
+    } else {
+        $submission_id = $conn->insert_id;
+        error_log("Submission saved successfully with ID: $submission_id");
+    }
 
     // Clean up
     cleanupTempDir($tempDir);

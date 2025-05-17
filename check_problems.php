@@ -53,7 +53,7 @@ if ($result->num_rows > 0) {
              ", Created: " . $row['created_at'] . "\n";
              
         // Check problems assigned to this contest
-        $stmt = $conn->prepare("SELECT COUNT(*) as problem_count FROM problems WHERE contest_id = ?");
+        $stmt = $conn->prepare("SELECT COUNT(*) as problem_count FROM problems p JOIN contest_problems cp ON p.id = cp.problem_id WHERE cp.contest_id = ?");
         $stmt->bind_param("i", $row['id']);
         $stmt->execute();
         $problemResult = $stmt->get_result();

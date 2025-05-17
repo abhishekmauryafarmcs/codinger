@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'config/session.php';
 require_once 'config/db.php';
 
 $errors = [];
@@ -49,7 +49,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($stmt->execute()) {
             $success = true;
-            header("Location: login.php?registered=1");
+            $user_id = $conn->insert_id;
+            
+            // Set session variables to log the user in automatically
+            $_SESSION['student']['user_id'] = $user_id;
+            $_SESSION['student']['role'] = 'student';
+            $_SESSION['student']['full_name'] = $full_name;
+            $_SESSION['student']['enrollment_number'] = $enrollment_number;
+            
+            // Regenerate session ID for security
+            session_regenerate_id(true);
+            
+            // Register this session as the only valid one for this user
+            registerUserSession($user_id, 'student');
+            
+            // Redirect to dashboard instead of login page
+            header("Location: student/dashboard.php");
             exit();
         } else {
             $errors[] = "Registration failed. Please try again.";
@@ -65,12 +80,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Codinger</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/auth_style.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="auth-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark auth-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Codinger</a>
+            <a class="navbar-brand" href="index.php"><i class="bi bi-code-slash"></i> Codinger</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -87,63 +104,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
 
-    <div class="container">
-        <div class="form-container">
-            <h2>Create Account</h2>
-            
+    <div class="container auth-container">
+        <div class="card auth-card">
+            <div class="auth-header">
+                <i class="bi bi-person-plus-fill icon"></i>
+                <h2>Create Account</h2>
+            </div>
+
             <?php if (!empty($errors)): ?>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" role="alert">
                     <ul class="mb-0">
-                        <?php foreach ($errors as $error): ?>
-                            <li><?php echo htmlspecialchars($error); ?></li>
+                        <?php foreach ($errors as $error_item): ?> 
+                            <li><i class="bi bi-exclamation-circle"></i> <?php echo htmlspecialchars($error_item); ?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
             <?php endif; ?>
 
             <form method="POST" action="register.php">
-                <div class="mb-3">
-                    <label for="enrollment_number" class="form-label">Enrollment Number</label>
-                    <input type="text" class="form-control" id="enrollment_number" name="enrollment_number" required>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="enrollment_number" name="enrollment_number" placeholder="Enrollment Number" required value="<?php echo isset($_POST['enrollment_number']) ? htmlspecialchars($_POST['enrollment_number']) : ''; ?>">
+                    <label for="enrollment_number">Enrollment Number</label>
+                    <span class="form-control-icon"><i class="bi bi-person-badge"></i></span>
                 </div>
                 
-                <div class="mb-3">
-                    <label for="full_name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="full_name" name="full_name" required>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name" required value="<?php echo isset($_POST['full_name']) ? htmlspecialchars($_POST['full_name']) : ''; ?>">
+                    <label for="full_name">Full Name</label>
+                    <span class="form-control-icon"><i class="bi bi-person-fill"></i></span>
                 </div>
 
-                <div class="mb-3">
-                    <label for="college_name" class="form-label">College Name</label>
+                <div class="form-floating mb-3">
                     <select class="form-select" id="college_name" name="college_name" required>
-                        <option value="" selected disabled>Select your college</option>
-                        <option value="LNCT">LNCT</option>
-                        <option value="LNCTS">LNCTS</option>
-                        <option value="LNCTE">LNCTE</option>
-                        <option value="LNCTU">LNCTU</option>
+                        <option value="" disabled <?php echo !isset($_POST['college_name']) ? 'selected' : ''; ?>>Select your college</option>
+                        <option value="LNCT" <?php echo (isset($_POST['college_name']) && $_POST['college_name'] == 'LNCT') ? 'selected' : ''; ?>>LNCT</option>
+                        <option value="LNCTS" <?php echo (isset($_POST['college_name']) && $_POST['college_name'] == 'LNCTS') ? 'selected' : ''; ?>>LNCTS</option>
+                        <option value="LNCTE" <?php echo (isset($_POST['college_name']) && $_POST['college_name'] == 'LNCTE') ? 'selected' : ''; ?>>LNCTE</option>
+                        <option value="LNCTU" <?php echo (isset($_POST['college_name']) && $_POST['college_name'] == 'LNCTU') ? 'selected' : ''; ?>>LNCTU</option>
+                        <option value="JNCT" <?php echo (isset($_POST['college_name']) && $_POST['college_name'] == 'JNCT') ? 'selected' : ''; ?>>JNCT</option>
                     </select>
+                    <label for="college_name">College Name</label>
+                    <span class="form-control-icon"><i class="bi bi-building"></i></span>
                 </div>
 
-                <div class="mb-3">
-                    <label for="mobile_number" class="form-label">Mobile Number</label>
-                    <input type="tel" class="form-control" id="mobile_number" name="mobile_number" required>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile Number" required value="<?php echo isset($_POST['mobile_number']) ? htmlspecialchars($_POST['mobile_number']) : ''; ?>">
+                    <label for="mobile_number">Mobile Number</label>
+                    <span class="form-control-icon"><i class="bi bi-telephone-fill"></i></span>
                 </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                    <label for="email">Email Address</label>
+                    <span class="form-control-icon"><i class="bi bi-envelope-fill"></i></span>
                 </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                    <span class="form-control-icon"><i class="bi bi-lock-fill"></i></span>
                 </div>
 
-                <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                    <label for="confirm_password">Confirm Password</label>
+                    <span class="form-control-icon"><i class="bi bi-check-shield-fill"></i></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Register</button>
+                <button type="submit" class="btn btn-primary w-100 py-2">Register</button>
             </form>
 
             <div class="text-center mt-3">
@@ -151,6 +179,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
+
+    <footer class="auth-footer">
+        <p>&copy; <?php echo date("Y"); ?> Codinger. All Rights Reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

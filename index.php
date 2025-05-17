@@ -460,9 +460,9 @@ if ($viewing_contest) {
             <div class="hero-content">
                 <h1>Welcome to Codinger<span class="cursor"></span></h1>
                 <p>The Best Coding Platform Created By Abhishek Maurya</p>
-                <?php if(isset($_SESSION['user_id'])): ?>
+                <?php if(isset($_SESSION['student']['user_id']) && isset($_SESSION['student']['role']) && $_SESSION['student']['role'] === 'student'): ?>
                     <div class="btn-group">
-                        <a href="<?php echo $_SESSION['role'] === 'admin' ? 'admin/index.php' : 'student/dashboard.php'; ?>" class="btn btn-primary btn-lg">
+                        <a href="student/dashboard.php" class="btn btn-primary btn-lg">
                             <span class="btn-text">Dashboard</span>
                             <span class="btn-hover-text">&lt;Go to Dashboard/&gt;</span>
                         </a>

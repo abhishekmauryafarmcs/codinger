@@ -16,7 +16,7 @@ echo "<tr><th>ID</th><th>Title</th><th>Status</th><th>Problem Count</th></tr>";
 
 while ($contest = $result->fetch_assoc()) {
     // Count problems in this contest
-    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM problems WHERE contest_id = ?");
+    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM problems p JOIN contest_problems cp ON p.id = cp.problem_id WHERE cp.contest_id = ?");
     $stmt->bind_param("i", $contest['id']);
     $stmt->execute();
     $count_result = $stmt->get_result();
@@ -39,7 +39,8 @@ if ($contest = $result->fetch_assoc()) {
     
     echo "<h2>Problems in Contest ID: " . $contest_id . "</h2>";
     
-    $stmt = $conn->prepare("SELECT * FROM problems WHERE contest_id = ?");
+    // Get problems for this contest
+    $stmt = $conn->prepare("SELECT p.* FROM problems p JOIN contest_problems cp ON p.id = cp.problem_id WHERE cp.contest_id = ?");
     $stmt->bind_param("i", $contest_id);
     $stmt->execute();
     $problems = $stmt->get_result();

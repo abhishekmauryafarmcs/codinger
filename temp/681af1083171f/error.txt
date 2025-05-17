@@ -1,6 +1,0 @@
-../temp/681af1083171f/solution.cpp:17:3: error: expected unqualified-id before 'return'
-   return 0;
-   ^~~~~~
-../temp/681af1083171f/solution.cpp:18:1: error: expected declaration before '}' token
- }
- ^

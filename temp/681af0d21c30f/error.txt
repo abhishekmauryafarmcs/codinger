@@ -1,3 +1,0 @@
-../temp/681af0d21c30f/solution.cpp:8:5: error: expected unqualified-id before 'else'
-   } else {
-     ^~~~

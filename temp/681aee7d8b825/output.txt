@@ -1,1 +1,0 @@
-Enter the number of integers: Enter the integers, separated by spaces: The sum of the integers is: 15

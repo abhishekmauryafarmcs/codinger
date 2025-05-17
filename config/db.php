@@ -121,6 +121,69 @@ try {
             FOREIGN KEY (contest_id) REFERENCES contests(id) ON DELETE CASCADE
         )";
         $conn->query($sql);
+
+        // Create contest_problems table
+        $sql = "CREATE TABLE IF NOT EXISTS contest_problems (
+            `id` INT(11) AUTO_INCREMENT PRIMARY KEY,
+            `contest_id` INT(11) NOT NULL,
+            `problem_id` INT(11) NOT NULL,
+            `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE KEY (`contest_id`, `problem_id`),
+            FOREIGN KEY (`contest_id`) REFERENCES `contests`(`id`) ON DELETE CASCADE,
+            FOREIGN KEY (`problem_id`) REFERENCES `problems`(`id`) ON DELETE CASCADE
+        )";
+        if ($conn->query($sql) === TRUE) {
+            // Table created successfully or already exists
+        } else {
+            // Error creating table
+        }
+        
+        // Create user_sessions table to track active user sessions
+        $sql = "CREATE TABLE IF NOT EXISTS user_sessions (
+            `id` INT(11) AUTO_INCREMENT PRIMARY KEY,
+            `user_id` INT(11) NOT NULL,
+            `role` ENUM('student', 'admin') NOT NULL,
+            `session_id` VARCHAR(255) NOT NULL,
+            `ip_address` VARCHAR(45) NOT NULL,
+            `user_agent` VARCHAR(255) NOT NULL,
+            `last_activity` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX (`user_id`, `role`),
+            UNIQUE KEY `unique_user_session` (`user_id`, `role`, `session_id`)
+        )";
+        $conn->query($sql);
+        
+        // Ensure the user_sessions table has the correct structure
+        $sql = "SHOW KEYS FROM user_sessions WHERE Key_name = 'session_id'";
+        $result = $conn->query($sql);
+        if ($result && $result->num_rows > 0) {
+            // If the old unique constraint exists, drop it and add the new one
+            $sql = "ALTER TABLE `user_sessions` DROP INDEX `session_id`;
+                   ALTER TABLE `user_sessions` ADD UNIQUE KEY `unique_user_session` (`user_id`, `role`, `session_id`)";
+            $conn->multi_query($sql);
+            // Clear results to continue
+            while ($conn->more_results() && $conn->next_result()) {
+                // Consume any pending results
+                if ($result = $conn->store_result()) {
+                    $result->free();
+                }
+            }
+        }
+        
+        // Check and remove any foreign key constraints on user_sessions
+        $sql = "SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE
+                WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_sessions'
+                AND REFERENCED_TABLE_NAME IS NOT NULL";
+        $result = $conn->query($sql);
+        
+        if ($result && $result->num_rows > 0) {
+            // Drop existing foreign key constraints
+            while ($row = $result->fetch_assoc()) {
+                $constraint_name = $row['CONSTRAINT_NAME'];
+                $sql = "ALTER TABLE user_sessions DROP FOREIGN KEY `$constraint_name`";
+                $conn->query($sql);
+            }
+        }
     }
 } catch (Exception $e) {
     error_log("Database Error: " . $e->getMessage());

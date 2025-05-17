@@ -1,1 +1,0 @@
-Enter the three integers: 1 0 -1 

@@ -3,12 +3,8 @@ require_once 'config/session.php';
 require_once 'config/db.php';  // Add database configuration
 
 // If user is already logged in, redirect to appropriate dashboard
-if (isset($_SESSION['user_id'])) {
-    if ($_SESSION['role'] === 'admin') {
-        header("Location: admin/index.php");
-    } else {
-        header("Location: student/dashboard.php");
-    }
+if (isStudentSessionValid()) {
+    header("Location: student/dashboard.php");
     exit();
 }
 
@@ -21,14 +17,20 @@ if (isset($_GET['error'])) {
         case 'not_found':
             $error = 'Student not found.';
             break;
+        case 'session_expired':
+            $error = 'Your session has expired. Please log in again.';
+            break;
+        case 'another_login':
+            $error = 'You have been logged out because your account was accessed from another location.';
+            break;
         default:
             $error = 'An error occurred. Please try again.';
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $enrollment = trim($_POST['enrollment']);
-    $password = $_POST['password'];
+    $enrollment = isset($_POST['enrollment']) ? trim($_POST['enrollment']) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     try {
         // Check if connection exists
@@ -48,13 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($user && password_verify($password, $user['password'])) {
             // Set session variables
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['role'] = 'student';
-            $_SESSION['full_name'] = $user['full_name'];
-            $_SESSION['enrollment_number'] = $user['enrollment_number'];
+            $_SESSION['student']['user_id'] = $user['id'];
+            $_SESSION['student']['role'] = 'student';
+            $_SESSION['student']['full_name'] = $user['full_name'];
+            $_SESSION['student']['enrollment_number'] = $user['enrollment_number'];
 
             // Regenerate session ID for security
             session_regenerate_id(true);
+            
+            // Register this session as the only valid one for this user
+            registerUserSession($user['id'], 'student');
 
             // Log successful login
             error_log("Student Login Success - User ID: {$user['id']}");
@@ -80,6 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Codinger</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/auth_style.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
         .session-expired {
@@ -91,10 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="auth-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark auth-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Codinger</a>
+            <a class="navbar-brand" href="index.php"><i class="bi bi-code-slash"></i> Codinger</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -104,9 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link active" href="login.php">Student Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/login.php">Admin Login</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="register.php">Register</a>
                     </li>
                 </ul>
@@ -114,9 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
 
-    <div class="container">
-        <div class="form-container">
-            <h2>Student Login</h2>
+    <div class="container auth-container">
+        <div class="card auth-card">
+            <div class="auth-header">
+                <i class="bi bi-box-arrow-in-right icon"></i>
+                <h2>Student Login</h2>
+            </div>
             
             <?php if (isset($_GET['registered'])): ?>
                 <div class="alert alert-success">
@@ -131,17 +138,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form method="POST" action="login.php">
-                <div class="mb-3">
-                    <label for="enrollment" class="form-label">Enrollment Number</label>
-                    <input type="text" class="form-control" id="enrollment" name="enrollment" required>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="enrollment" name="enrollment" placeholder="Enrollment Number" required value="<?php echo isset($_POST['enrollment']) ? htmlspecialchars($_POST['enrollment']) : ''; ?>">
+                    <label for="enrollment">Enrollment Number</label>
+                    <span class="form-control-icon"><i class="bi bi-person-badge"></i></span>
                 </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                    <span class="form-control-icon"><i class="bi bi-lock"></i></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
             </form>
 
             <div class="text-center mt-3">
@@ -149,6 +158,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
+
+    <footer class="auth-footer">
+        <p>&copy; <?php echo date("Y"); ?> Codinger. All Rights Reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
