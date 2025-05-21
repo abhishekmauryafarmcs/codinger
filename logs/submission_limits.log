@@ -5882,3 +5882,2103 @@
 [2025-05-17 10:20:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 16 AND contest_id = 86
 [2025-05-17 10:20:32] Submissions used: 1, Submissions remaining: 2
 [2025-05-17 10:20:32] DECISION: User can submit (used 1 out of 3)
+[2025-05-20 07:19:07] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:19:07] Contest ID resolved: 87
+[2025-05-20 07:19:07] Contest max_submissions: 5
+[2025-05-20 07:19:07] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:19:07] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:19:07] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:19:14] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:19:14] Contest ID resolved: 87
+[2025-05-20 07:19:14] Contest max_submissions: 5
+[2025-05-20 07:19:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:19:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:19:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:19:34] Request: problem_id=9, user_id=7, contest_id=87
+[2025-05-20 07:19:34] Contest ID resolved: 87
+[2025-05-20 07:19:34] Contest max_submissions: 5
+[2025-05-20 07:19:34] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 87
+[2025-05-20 07:19:34] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:19:34] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:19:36] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:19:36] Contest ID resolved: 87
+[2025-05-20 07:19:36] Contest max_submissions: 5
+[2025-05-20 07:19:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:19:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:19:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:19:46] Request: problem_id=9, user_id=7, contest_id=87
+[2025-05-20 07:19:46] Contest ID resolved: 87
+[2025-05-20 07:19:46] Contest max_submissions: 5
+[2025-05-20 07:19:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 87
+[2025-05-20 07:19:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:19:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:19:52] Request: problem_id=9, user_id=7, contest_id=87
+[2025-05-20 07:19:52] Contest ID resolved: 87
+[2025-05-20 07:19:52] Contest max_submissions: 5
+[2025-05-20 07:19:52] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 87
+[2025-05-20 07:19:52] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:19:52] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:20:02] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:20:02] Contest ID resolved: 87
+[2025-05-20 07:20:02] Contest max_submissions: 5
+[2025-05-20 07:20:02] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:20:02] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:20:02] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:20:03] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:20:03] Contest ID resolved: 87
+[2025-05-20 07:20:03] Contest max_submissions: 5
+[2025-05-20 07:20:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:20:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:20:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:20:22] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:20:22] Contest ID resolved: 87
+[2025-05-20 07:20:22] Contest max_submissions: 5
+[2025-05-20 07:20:22] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:20:22] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:20:22] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:20:26] Request: problem_id=7, user_id=7, contest_id=87
+[2025-05-20 07:20:26] Contest ID resolved: 87
+[2025-05-20 07:20:26] Contest max_submissions: 5
+[2025-05-20 07:20:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 87
+[2025-05-20 07:20:26] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 07:20:26] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 07:22:25] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:22:25] Contest ID resolved: 88
+[2025-05-20 07:22:25] Contest max_submissions: 5
+[2025-05-20 07:22:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:22:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:22:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:22:27] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:22:27] Contest ID resolved: 88
+[2025-05-20 07:22:27] Contest max_submissions: 5
+[2025-05-20 07:22:27] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:22:27] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:22:27] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:22:28] Request: problem_id=9, user_id=7, contest_id=88
+[2025-05-20 07:22:28] Contest ID resolved: 88
+[2025-05-20 07:22:28] Contest max_submissions: 5
+[2025-05-20 07:22:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 88
+[2025-05-20 07:22:28] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:22:28] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:22:30] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:22:30] Contest ID resolved: 88
+[2025-05-20 07:22:30] Contest max_submissions: 5
+[2025-05-20 07:22:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:22:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:22:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:23:01] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:23:01] Contest ID resolved: 88
+[2025-05-20 07:23:01] Contest max_submissions: 5
+[2025-05-20 07:23:01] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:23:01] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:23:01] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:23:03] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:23:03] Contest ID resolved: 88
+[2025-05-20 07:23:03] Contest max_submissions: 5
+[2025-05-20 07:23:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:23:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:23:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:23:17] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:23:17] Contest ID resolved: 88
+[2025-05-20 07:23:17] Contest max_submissions: 5
+[2025-05-20 07:23:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:23:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:23:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:23:20] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:23:20] Contest ID resolved: 88
+[2025-05-20 07:23:20] Contest max_submissions: 5
+[2025-05-20 07:23:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:23:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:23:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:23:24] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:23:24] Contest ID resolved: 88
+[2025-05-20 07:23:24] Contest max_submissions: 5
+[2025-05-20 07:23:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:23:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:23:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:23:27] Request: problem_id=7, user_id=7, contest_id=88
+[2025-05-20 07:23:27] Contest ID resolved: 88
+[2025-05-20 07:23:27] Contest max_submissions: 5
+[2025-05-20 07:23:27] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 88
+[2025-05-20 07:23:27] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:23:27] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:29:32] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:29:32] Contest ID resolved: 89
+[2025-05-20 07:29:32] Contest max_submissions: 5
+[2025-05-20 07:29:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:29:32] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:29:32] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:29:33] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:29:33] Contest ID resolved: 89
+[2025-05-20 07:29:33] Contest max_submissions: 5
+[2025-05-20 07:29:33] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:29:33] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:29:33] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:29:35] Request: problem_id=7, user_id=1, contest_id=89
+[2025-05-20 07:29:35] Contest ID resolved: 89
+[2025-05-20 07:29:35] Contest max_submissions: 5
+[2025-05-20 07:29:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:29:35] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:29:35] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:29:36] Request: problem_id=7, user_id=1, contest_id=89
+[2025-05-20 07:29:36] Contest ID resolved: 89
+[2025-05-20 07:29:36] Contest max_submissions: 5
+[2025-05-20 07:29:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:29:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:29:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:29:44] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:29:44] Contest ID resolved: 89
+[2025-05-20 07:29:44] Contest max_submissions: 5
+[2025-05-20 07:29:44] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:29:44] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:29:44] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:29:45] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:29:45] Contest ID resolved: 89
+[2025-05-20 07:29:45] Contest max_submissions: 5
+[2025-05-20 07:29:45] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:29:45] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:29:45] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:30:47] Request: problem_id=9, user_id=7, contest_id=89
+[2025-05-20 07:30:47] Contest ID resolved: 89
+[2025-05-20 07:30:47] Contest max_submissions: 5
+[2025-05-20 07:30:47] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 89
+[2025-05-20 07:30:47] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:30:47] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:30:53] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:30:53] Contest ID resolved: 89
+[2025-05-20 07:30:53] Contest max_submissions: 5
+[2025-05-20 07:30:53] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:30:53] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:30:53] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:31:00] Request: problem_id=7, user_id=1, contest_id=89
+[2025-05-20 07:31:00] Contest ID resolved: 89
+[2025-05-20 07:31:00] Contest max_submissions: 5
+[2025-05-20 07:31:00] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:31:00] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:31:00] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:31:01] Request: problem_id=7, user_id=1, contest_id=89
+[2025-05-20 07:31:01] Contest ID resolved: 89
+[2025-05-20 07:31:01] Contest max_submissions: 5
+[2025-05-20 07:31:01] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:31:01] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:31:01] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:35:00] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:35:00] Contest ID resolved: 89
+[2025-05-20 07:35:00] Contest max_submissions: 5
+[2025-05-20 07:35:00] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:35:00] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:35:00] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:35:03] Request: problem_id=7, user_id=7, contest_id=89
+[2025-05-20 07:35:03] Contest ID resolved: 89
+[2025-05-20 07:35:03] Contest max_submissions: 5
+[2025-05-20 07:35:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 89
+[2025-05-20 07:35:03] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 07:35:03] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 07:35:10] Request: problem_id=9, user_id=7, contest_id=89
+[2025-05-20 07:35:10] Contest ID resolved: 89
+[2025-05-20 07:35:10] Contest max_submissions: 5
+[2025-05-20 07:35:10] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 89
+[2025-05-20 07:35:10] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:35:10] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:35:14] Request: problem_id=9, user_id=7, contest_id=89
+[2025-05-20 07:35:14] Contest ID resolved: 89
+[2025-05-20 07:35:14] Contest max_submissions: 5
+[2025-05-20 07:35:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 89
+[2025-05-20 07:35:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:35:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:38:57] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:38:57] Contest ID resolved: 90
+[2025-05-20 07:38:57] Contest max_submissions: 5
+[2025-05-20 07:38:57] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:38:57] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:38:57] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:38:58] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:38:58] Contest ID resolved: 90
+[2025-05-20 07:38:58] Contest max_submissions: 5
+[2025-05-20 07:38:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:38:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:38:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:07] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:40:07] Contest ID resolved: 90
+[2025-05-20 07:40:07] Contest max_submissions: 5
+[2025-05-20 07:40:07] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:40:07] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:07] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:08] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:40:08] Contest ID resolved: 90
+[2025-05-20 07:40:08] Contest max_submissions: 5
+[2025-05-20 07:40:08] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:40:08] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:08] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:19] Request: problem_id=9, user_id=7, contest_id=90
+[2025-05-20 07:40:19] Contest ID resolved: 90
+[2025-05-20 07:40:19] Contest max_submissions: 5
+[2025-05-20 07:40:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 9 AND contest_id = 90
+[2025-05-20 07:40:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:28] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:40:28] Contest ID resolved: 90
+[2025-05-20 07:40:28] Contest max_submissions: 5
+[2025-05-20 07:40:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:40:28] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:28] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:29] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:40:29] Contest ID resolved: 90
+[2025-05-20 07:40:29] Contest max_submissions: 5
+[2025-05-20 07:40:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:40:29] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:29] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:31] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:40:31] Contest ID resolved: 90
+[2025-05-20 07:40:31] Contest max_submissions: 5
+[2025-05-20 07:40:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:40:31] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:31] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:40:33] Request: problem_id=7, user_id=7, contest_id=90
+[2025-05-20 07:40:33] Contest ID resolved: 90
+[2025-05-20 07:40:33] Contest max_submissions: 5
+[2025-05-20 07:40:33] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:40:33] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:40:33] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:41:35] Request: problem_id=7, user_id=1, contest_id=90
+[2025-05-20 07:41:35] Contest ID resolved: 90
+[2025-05-20 07:41:35] Contest max_submissions: 5
+[2025-05-20 07:41:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:41:35] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:41:35] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:41:36] Request: problem_id=7, user_id=1, contest_id=90
+[2025-05-20 07:41:36] Contest ID resolved: 90
+[2025-05-20 07:41:36] Contest max_submissions: 5
+[2025-05-20 07:41:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:41:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:41:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:41:42] Request: problem_id=7, user_id=1, contest_id=90
+[2025-05-20 07:41:42] Contest ID resolved: 90
+[2025-05-20 07:41:42] Contest max_submissions: 5
+[2025-05-20 07:41:42] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:41:42] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:41:42] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:41:43] Request: problem_id=7, user_id=1, contest_id=90
+[2025-05-20 07:41:43] Contest ID resolved: 90
+[2025-05-20 07:41:43] Contest max_submissions: 5
+[2025-05-20 07:41:43] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 90
+[2025-05-20 07:41:43] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 07:41:43] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 07:44:26] Request: problem_id=7, user_id=1, contest_id=91
+[2025-05-20 07:44:26] Contest ID resolved: 91
+[2025-05-20 07:44:26] Contest max_submissions: 4
+[2025-05-20 07:44:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:26] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:26] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:26] Request: problem_id=7, user_id=1, contest_id=91
+[2025-05-20 07:44:26] Contest ID resolved: 91
+[2025-05-20 07:44:26] Contest max_submissions: 4
+[2025-05-20 07:44:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:26] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:26] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:31] Request: problem_id=7, user_id=7, contest_id=91
+[2025-05-20 07:44:31] Contest ID resolved: 91
+[2025-05-20 07:44:31] Contest max_submissions: 4
+[2025-05-20 07:44:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:31] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:31] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:32] Request: problem_id=7, user_id=7, contest_id=91
+[2025-05-20 07:44:32] Contest ID resolved: 91
+[2025-05-20 07:44:32] Contest max_submissions: 4
+[2025-05-20 07:44:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:32] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:32] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:50] Request: problem_id=7, user_id=7, contest_id=91
+[2025-05-20 07:44:50] Contest ID resolved: 91
+[2025-05-20 07:44:50] Contest max_submissions: 4
+[2025-05-20 07:44:50] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:50] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:50] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:51] Request: problem_id=7, user_id=7, contest_id=91
+[2025-05-20 07:44:51] Contest ID resolved: 91
+[2025-05-20 07:44:51] Contest max_submissions: 4
+[2025-05-20 07:44:51] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:51] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:51] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:54] Request: problem_id=7, user_id=7, contest_id=91
+[2025-05-20 07:44:54] Contest ID resolved: 91
+[2025-05-20 07:44:54] Contest max_submissions: 4
+[2025-05-20 07:44:54] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:54] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:54] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:44:54] Request: problem_id=7, user_id=7, contest_id=91
+[2025-05-20 07:44:54] Contest ID resolved: 91
+[2025-05-20 07:44:54] Contest max_submissions: 4
+[2025-05-20 07:44:55] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 7 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:44:55] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:44:55] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:45:26] Request: problem_id=7, user_id=1, contest_id=91
+[2025-05-20 07:45:26] Contest ID resolved: 91
+[2025-05-20 07:45:26] Contest max_submissions: 4
+[2025-05-20 07:45:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:45:26] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:45:26] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 07:45:27] Request: problem_id=7, user_id=1, contest_id=91
+[2025-05-20 07:45:27] Contest ID resolved: 91
+[2025-05-20 07:45:27] Contest max_submissions: 4
+[2025-05-20 07:45:27] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 1 AND problem_id = 7 AND contest_id = 91
+[2025-05-20 07:45:27] Submissions used: 0, Submissions remaining: 4
+[2025-05-20 07:45:27] DECISION: User can submit (used 0 out of 4)
+[2025-05-20 08:01:10] Request: problem_id=16, user_id=37, contest_id=92
+[2025-05-20 08:01:10] Contest ID resolved: 92
+[2025-05-20 08:01:10] Contest max_submissions: 5
+[2025-05-20 08:01:10] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:10] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:10] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:11] Request: problem_id=16, user_id=37, contest_id=92
+[2025-05-20 08:01:11] Contest ID resolved: 92
+[2025-05-20 08:01:11] Contest max_submissions: 5
+[2025-05-20 08:01:11] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:11] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:11] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:12] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:01:12] Contest ID resolved: 92
+[2025-05-20 08:01:12] Contest max_submissions: 5
+[2025-05-20 08:01:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:12] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:12] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:12] Request: problem_id=16, user_id=42, contest_id=92
+[2025-05-20 08:01:12] Contest ID resolved: 92
+[2025-05-20 08:01:12] Contest max_submissions: 5
+[2025-05-20 08:01:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 42 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:12] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:12] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:13] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:01:13] Contest ID resolved: 92
+[2025-05-20 08:01:13] Contest max_submissions: 5
+[2025-05-20 08:01:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:13] Request: problem_id=16, user_id=42, contest_id=92
+[2025-05-20 08:01:13] Contest ID resolved: 92
+[2025-05-20 08:01:13] Contest max_submissions: 5
+[2025-05-20 08:01:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 42 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:14] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:01:14] Contest ID resolved: 92
+[2025-05-20 08:01:14] Contest max_submissions: 5
+[2025-05-20 08:01:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:14] Request: problem_id=16, user_id=40, contest_id=92
+[2025-05-20 08:01:14] Contest ID resolved: 92
+[2025-05-20 08:01:14] Contest max_submissions: 5
+[2025-05-20 08:01:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:15] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:01:15] Contest ID resolved: 92
+[2025-05-20 08:01:15] Contest max_submissions: 5
+[2025-05-20 08:01:15] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:15] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:15] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:16] Request: problem_id=16, user_id=40, contest_id=92
+[2025-05-20 08:01:16] Contest ID resolved: 92
+[2025-05-20 08:01:16] Contest max_submissions: 5
+[2025-05-20 08:01:16] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:16] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:16] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:18] Request: problem_id=16, user_id=41, contest_id=92
+[2025-05-20 08:01:18] Contest ID resolved: 92
+[2025-05-20 08:01:18] Contest max_submissions: 5
+[2025-05-20 08:01:18] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:18] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:18] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:18] Request: problem_id=16, user_id=33, contest_id=92
+[2025-05-20 08:01:18] Contest ID resolved: 92
+[2025-05-20 08:01:18] Contest max_submissions: 5
+[2025-05-20 08:01:18] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:18] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:18] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:18] Request: problem_id=16, user_id=41, contest_id=92
+[2025-05-20 08:01:18] Contest ID resolved: 92
+[2025-05-20 08:01:18] Contest max_submissions: 5
+[2025-05-20 08:01:18] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:18] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:18] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:19] Request: problem_id=16, user_id=33, contest_id=92
+[2025-05-20 08:01:19] Contest ID resolved: 92
+[2025-05-20 08:01:19] Contest max_submissions: 5
+[2025-05-20 08:01:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:19] Request: problem_id=16, user_id=39, contest_id=92
+[2025-05-20 08:01:19] Contest ID resolved: 92
+[2025-05-20 08:01:19] Contest max_submissions: 5
+[2025-05-20 08:01:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:20] Request: problem_id=16, user_id=37, contest_id=92
+[2025-05-20 08:01:20] Contest ID resolved: 92
+[2025-05-20 08:01:20] Contest max_submissions: 5
+[2025-05-20 08:01:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:20] Request: problem_id=16, user_id=39, contest_id=92
+[2025-05-20 08:01:20] Contest ID resolved: 92
+[2025-05-20 08:01:20] Contest max_submissions: 5
+[2025-05-20 08:01:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:20] Request: problem_id=16, user_id=45, contest_id=92
+[2025-05-20 08:01:20] Contest ID resolved: 92
+[2025-05-20 08:01:20] Contest max_submissions: 5
+[2025-05-20 08:01:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 45 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:21] Request: problem_id=16, user_id=38, contest_id=92
+[2025-05-20 08:01:21] Contest ID resolved: 92
+[2025-05-20 08:01:21] Contest max_submissions: 5
+[2025-05-20 08:01:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 38 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:21] Request: problem_id=16, user_id=45, contest_id=92
+[2025-05-20 08:01:21] Contest ID resolved: 92
+[2025-05-20 08:01:21] Contest max_submissions: 5
+[2025-05-20 08:01:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 45 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:21] Request: problem_id=16, user_id=37, contest_id=92
+[2025-05-20 08:01:21] Contest ID resolved: 92
+[2025-05-20 08:01:21] Contest max_submissions: 5
+[2025-05-20 08:01:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:21] Request: problem_id=16, user_id=38, contest_id=92
+[2025-05-20 08:01:21] Contest ID resolved: 92
+[2025-05-20 08:01:21] Contest max_submissions: 5
+[2025-05-20 08:01:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 38 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:23] Request: problem_id=16, user_id=48, contest_id=92
+[2025-05-20 08:01:23] Contest ID resolved: 92
+[2025-05-20 08:01:23] Contest max_submissions: 5
+[2025-05-20 08:01:23] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:23] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:23] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:24] Request: problem_id=16, user_id=44, contest_id=92
+[2025-05-20 08:01:24] Contest ID resolved: 92
+[2025-05-20 08:01:24] Contest max_submissions: 5
+[2025-05-20 08:01:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:24] Request: problem_id=16, user_id=49, contest_id=92
+[2025-05-20 08:01:24] Contest ID resolved: 92
+[2025-05-20 08:01:24] Contest max_submissions: 5
+[2025-05-20 08:01:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:24] Request: problem_id=16, user_id=48, contest_id=92
+[2025-05-20 08:01:24] Contest ID resolved: 92
+[2025-05-20 08:01:24] Contest max_submissions: 5
+[2025-05-20 08:01:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:25] Request: problem_id=16, user_id=44, contest_id=92
+[2025-05-20 08:01:25] Contest ID resolved: 92
+[2025-05-20 08:01:25] Contest max_submissions: 5
+[2025-05-20 08:01:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:25] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:01:25] Contest ID resolved: 92
+[2025-05-20 08:01:25] Contest max_submissions: 5
+[2025-05-20 08:01:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:25] Request: problem_id=16, user_id=49, contest_id=92
+[2025-05-20 08:01:25] Contest ID resolved: 92
+[2025-05-20 08:01:25] Contest max_submissions: 5
+[2025-05-20 08:01:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:26] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:01:26] Contest ID resolved: 92
+[2025-05-20 08:01:26] Contest max_submissions: 5
+[2025-05-20 08:01:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:26] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:26] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:30] Request: problem_id=16, user_id=39, contest_id=92
+[2025-05-20 08:01:30] Contest ID resolved: 92
+[2025-05-20 08:01:30] Contest max_submissions: 5
+[2025-05-20 08:01:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:30] Request: problem_id=16, user_id=43, contest_id=92
+[2025-05-20 08:01:30] Contest ID resolved: 92
+[2025-05-20 08:01:30] Contest max_submissions: 5
+[2025-05-20 08:01:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 43 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:31] Request: problem_id=16, user_id=43, contest_id=92
+[2025-05-20 08:01:31] Contest ID resolved: 92
+[2025-05-20 08:01:31] Contest max_submissions: 5
+[2025-05-20 08:01:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 43 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:31] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:31] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:31] Request: problem_id=16, user_id=39, contest_id=92
+[2025-05-20 08:01:31] Contest ID resolved: 92
+[2025-05-20 08:01:31] Contest max_submissions: 5
+[2025-05-20 08:01:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:31] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:31] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:33] Request: problem_id=16, user_id=44, contest_id=92
+[2025-05-20 08:01:33] Contest ID resolved: 92
+[2025-05-20 08:01:33] Contest max_submissions: 5
+[2025-05-20 08:01:33] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:33] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:33] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:34] Request: problem_id=16, user_id=44, contest_id=92
+[2025-05-20 08:01:34] Contest ID resolved: 92
+[2025-05-20 08:01:34] Contest max_submissions: 5
+[2025-05-20 08:01:34] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:34] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:34] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:36] Request: problem_id=16, user_id=51, contest_id=92
+[2025-05-20 08:01:36] Contest ID resolved: 92
+[2025-05-20 08:01:36] Contest max_submissions: 5
+[2025-05-20 08:01:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:36] Request: problem_id=16, user_id=47, contest_id=92
+[2025-05-20 08:01:36] Contest ID resolved: 92
+[2025-05-20 08:01:36] Contest max_submissions: 5
+[2025-05-20 08:01:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 47 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:37] Request: problem_id=16, user_id=47, contest_id=92
+[2025-05-20 08:01:37] Contest ID resolved: 92
+[2025-05-20 08:01:37] Contest max_submissions: 5
+[2025-05-20 08:01:37] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 47 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:37] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:37] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:37] Request: problem_id=16, user_id=51, contest_id=92
+[2025-05-20 08:01:37] Contest ID resolved: 92
+[2025-05-20 08:01:37] Contest max_submissions: 5
+[2025-05-20 08:01:37] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:37] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:37] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:38] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:01:38] Contest ID resolved: 92
+[2025-05-20 08:01:38] Contest max_submissions: 5
+[2025-05-20 08:01:38] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:38] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:38] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:39] Request: problem_id=16, user_id=32, contest_id=92
+[2025-05-20 08:01:39] Contest ID resolved: 92
+[2025-05-20 08:01:39] Contest max_submissions: 5
+[2025-05-20 08:01:39] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:39] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:39] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:40] Request: problem_id=16, user_id=34, contest_id=92
+[2025-05-20 08:01:40] Contest ID resolved: 92
+[2025-05-20 08:01:40] Contest max_submissions: 5
+[2025-05-20 08:01:40] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:40] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:40] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:40] Request: problem_id=16, user_id=34, contest_id=92
+[2025-05-20 08:01:40] Contest ID resolved: 92
+[2025-05-20 08:01:40] Contest max_submissions: 5
+[2025-05-20 08:01:40] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:40] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:40] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:40] Request: problem_id=16, user_id=32, contest_id=92
+[2025-05-20 08:01:40] Contest ID resolved: 92
+[2025-05-20 08:01:40] Contest max_submissions: 5
+[2025-05-20 08:01:40] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:40] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:40] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:45] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:01:45] Contest ID resolved: 92
+[2025-05-20 08:01:45] Contest max_submissions: 5
+[2025-05-20 08:01:45] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:45] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:45] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:46] Request: problem_id=16, user_id=51, contest_id=92
+[2025-05-20 08:01:46] Contest ID resolved: 92
+[2025-05-20 08:01:46] Contest max_submissions: 5
+[2025-05-20 08:01:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:46] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:01:46] Contest ID resolved: 92
+[2025-05-20 08:01:46] Contest max_submissions: 5
+[2025-05-20 08:01:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:46] Request: problem_id=16, user_id=51, contest_id=92
+[2025-05-20 08:01:46] Contest ID resolved: 92
+[2025-05-20 08:01:46] Contest max_submissions: 5
+[2025-05-20 08:01:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:53] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:01:53] Contest ID resolved: 92
+[2025-05-20 08:01:53] Contest max_submissions: 5
+[2025-05-20 08:01:53] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:53] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:53] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:56] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:01:56] Contest ID resolved: 92
+[2025-05-20 08:01:56] Contest max_submissions: 5
+[2025-05-20 08:01:56] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:56] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:01:56] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:01:57] Request: problem_id=16, user_id=32, contest_id=92
+[2025-05-20 08:01:57] Contest ID resolved: 92
+[2025-05-20 08:01:57] Contest max_submissions: 5
+[2025-05-20 08:01:57] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:57] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:57] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:01:58] Request: problem_id=16, user_id=32, contest_id=92
+[2025-05-20 08:01:58] Contest ID resolved: 92
+[2025-05-20 08:01:58] Contest max_submissions: 5
+[2025-05-20 08:01:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:01:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:01:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:00] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:00] Contest ID resolved: 92
+[2025-05-20 08:02:00] Contest max_submissions: 5
+[2025-05-20 08:02:00] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:00] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:02:00] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:02:03] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:03] Contest ID resolved: 92
+[2025-05-20 08:02:03] Contest max_submissions: 5
+[2025-05-20 08:02:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:03] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:03] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:16] Request: problem_id=16, user_id=49, contest_id=92
+[2025-05-20 08:02:16] Contest ID resolved: 92
+[2025-05-20 08:02:16] Contest max_submissions: 5
+[2025-05-20 08:02:16] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:16] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:16] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:17] Request: problem_id=16, user_id=49, contest_id=92
+[2025-05-20 08:02:17] Contest ID resolved: 92
+[2025-05-20 08:02:17] Contest max_submissions: 5
+[2025-05-20 08:02:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:17] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:02:17] Contest ID resolved: 92
+[2025-05-20 08:02:17] Contest max_submissions: 5
+[2025-05-20 08:02:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:18] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:02:18] Contest ID resolved: 92
+[2025-05-20 08:02:18] Contest max_submissions: 5
+[2025-05-20 08:02:18] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:18] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:18] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:19] Request: problem_id=17, user_id=40, contest_id=92
+[2025-05-20 08:02:19] Contest ID resolved: 92
+[2025-05-20 08:02:19] Contest max_submissions: 5
+[2025-05-20 08:02:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 17 AND contest_id = 92
+[2025-05-20 08:02:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:19] Request: problem_id=17, user_id=40, contest_id=92
+[2025-05-20 08:02:19] Contest ID resolved: 92
+[2025-05-20 08:02:19] Contest max_submissions: 5
+[2025-05-20 08:02:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 17 AND contest_id = 92
+[2025-05-20 08:02:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:19] Request: problem_id=16, user_id=40, contest_id=92
+[2025-05-20 08:02:19] Contest ID resolved: 92
+[2025-05-20 08:02:19] Contest max_submissions: 5
+[2025-05-20 08:02:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:21] Request: problem_id=17, user_id=40, contest_id=92
+[2025-05-20 08:02:21] Contest ID resolved: 92
+[2025-05-20 08:02:21] Contest max_submissions: 5
+[2025-05-20 08:02:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 17 AND contest_id = 92
+[2025-05-20 08:02:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:23] Request: problem_id=16, user_id=40, contest_id=92
+[2025-05-20 08:02:23] Contest ID resolved: 92
+[2025-05-20 08:02:23] Contest max_submissions: 5
+[2025-05-20 08:02:23] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:23] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:23] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:24] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:24] Contest ID resolved: 92
+[2025-05-20 08:02:24] Contest max_submissions: 5
+[2025-05-20 08:02:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:24] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:24] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:24] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:24] Contest ID resolved: 92
+[2025-05-20 08:02:24] Contest max_submissions: 5
+[2025-05-20 08:02:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:24] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:24] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:24] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:24] Contest ID resolved: 92
+[2025-05-20 08:02:24] Contest max_submissions: 5
+[2025-05-20 08:02:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:24] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:24] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:24] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:24] Contest ID resolved: 92
+[2025-05-20 08:02:24] Contest max_submissions: 5
+[2025-05-20 08:02:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:24] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:24] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:24] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:24] Contest ID resolved: 92
+[2025-05-20 08:02:24] Contest max_submissions: 5
+[2025-05-20 08:02:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:24] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:24] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:24] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:24] Contest ID resolved: 92
+[2025-05-20 08:02:24] Contest max_submissions: 5
+[2025-05-20 08:02:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:24] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:24] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:25] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:25] Contest ID resolved: 92
+[2025-05-20 08:02:25] Contest max_submissions: 5
+[2025-05-20 08:02:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:25] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:02:25] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:02:26] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:26] Contest ID resolved: 92
+[2025-05-20 08:02:26] Contest max_submissions: 5
+[2025-05-20 08:02:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:26] Submissions used: 3, Submissions remaining: 2
+[2025-05-20 08:02:26] DECISION: User can submit (used 3 out of 5)
+[2025-05-20 08:02:26] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:26] Contest ID resolved: 92
+[2025-05-20 08:02:26] Contest max_submissions: 5
+[2025-05-20 08:02:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:26] Submissions used: 3, Submissions remaining: 2
+[2025-05-20 08:02:26] DECISION: User can submit (used 3 out of 5)
+[2025-05-20 08:02:27] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:27] Contest ID resolved: 92
+[2025-05-20 08:02:27] Contest max_submissions: 5
+[2025-05-20 08:02:27] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:27] Submissions used: 4, Submissions remaining: 1
+[2025-05-20 08:02:27] DECISION: User can submit (used 4 out of 5)
+[2025-05-20 08:02:29] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:29] Contest ID resolved: 92
+[2025-05-20 08:02:29] Contest max_submissions: 5
+[2025-05-20 08:02:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:29] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:29] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:29] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:29] Contest ID resolved: 92
+[2025-05-20 08:02:29] Contest max_submissions: 5
+[2025-05-20 08:02:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:29] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:29] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:29] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:29] Contest ID resolved: 92
+[2025-05-20 08:02:29] Contest max_submissions: 5
+[2025-05-20 08:02:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:29] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:29] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:29] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:29] Contest ID resolved: 92
+[2025-05-20 08:02:29] Contest max_submissions: 5
+[2025-05-20 08:02:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:29] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:29] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:29] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:29] Contest ID resolved: 92
+[2025-05-20 08:02:29] Contest max_submissions: 5
+[2025-05-20 08:02:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:29] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:29] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:30] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:30] Contest ID resolved: 92
+[2025-05-20 08:02:30] Contest max_submissions: 5
+[2025-05-20 08:02:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:30] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:30] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:30] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:30] Contest ID resolved: 92
+[2025-05-20 08:02:30] Contest max_submissions: 5
+[2025-05-20 08:02:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:30] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:30] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:30] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:30] Contest ID resolved: 92
+[2025-05-20 08:02:30] Contest max_submissions: 5
+[2025-05-20 08:02:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:30] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:30] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:30] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:30] Contest ID resolved: 92
+[2025-05-20 08:02:30] Contest max_submissions: 5
+[2025-05-20 08:02:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:30] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:30] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:30] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:30] Contest ID resolved: 92
+[2025-05-20 08:02:30] Contest max_submissions: 5
+[2025-05-20 08:02:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:30] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:30] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:30] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:30] Contest ID resolved: 92
+[2025-05-20 08:02:30] Contest max_submissions: 5
+[2025-05-20 08:02:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:30] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:30] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:31] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:31] Contest ID resolved: 92
+[2025-05-20 08:02:31] Contest max_submissions: 5
+[2025-05-20 08:02:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:31] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:31] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:31] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:31] Contest ID resolved: 92
+[2025-05-20 08:02:31] Contest max_submissions: 5
+[2025-05-20 08:02:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:31] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:31] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:31] Request: problem_id=16, user_id=36, contest_id=92
+[2025-05-20 08:02:31] Contest ID resolved: 92
+[2025-05-20 08:02:31] Contest max_submissions: 5
+[2025-05-20 08:02:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 36 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:31] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:02:31] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:02:33] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:02:33] Contest ID resolved: 92
+[2025-05-20 08:02:33] Contest max_submissions: 5
+[2025-05-20 08:02:33] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:33] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:33] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:34] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:02:34] Contest ID resolved: 92
+[2025-05-20 08:02:34] Contest max_submissions: 5
+[2025-05-20 08:02:34] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:34] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:34] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:47] Request: problem_id=16, user_id=39, contest_id=92
+[2025-05-20 08:02:47] Contest ID resolved: 92
+[2025-05-20 08:02:47] Contest max_submissions: 5
+[2025-05-20 08:02:47] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:47] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:47] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:48] Request: problem_id=16, user_id=39, contest_id=92
+[2025-05-20 08:02:48] Contest ID resolved: 92
+[2025-05-20 08:02:48] Contest max_submissions: 5
+[2025-05-20 08:02:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:48] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:48] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:48] Request: problem_id=16, user_id=48, contest_id=92
+[2025-05-20 08:02:48] Contest ID resolved: 92
+[2025-05-20 08:02:48] Contest max_submissions: 5
+[2025-05-20 08:02:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:48] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:48] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:02:49] Request: problem_id=16, user_id=48, contest_id=92
+[2025-05-20 08:02:49] Contest ID resolved: 92
+[2025-05-20 08:02:49] Contest max_submissions: 5
+[2025-05-20 08:02:49] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:02:49] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:02:49] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:03:08] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:03:08] Contest ID resolved: 92
+[2025-05-20 08:03:08] Contest max_submissions: 5
+[2025-05-20 08:03:08] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:03:08] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:03:08] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:03:09] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:03:09] Contest ID resolved: 92
+[2025-05-20 08:03:09] Contest max_submissions: 5
+[2025-05-20 08:03:09] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:03:09] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:03:09] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:03:42] Request: problem_id=16, user_id=34, contest_id=92
+[2025-05-20 08:03:42] Contest ID resolved: 92
+[2025-05-20 08:03:42] Contest max_submissions: 5
+[2025-05-20 08:03:42] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:03:42] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:03:42] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:03:45] Request: problem_id=16, user_id=34, contest_id=92
+[2025-05-20 08:03:45] Contest ID resolved: 92
+[2025-05-20 08:03:45] Contest max_submissions: 5
+[2025-05-20 08:03:45] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:03:45] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:03:45] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:03:53] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:03:53] Contest ID resolved: 92
+[2025-05-20 08:03:53] Contest max_submissions: 5
+[2025-05-20 08:03:53] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:03:53] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:03:53] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:03:54] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:03:54] Contest ID resolved: 92
+[2025-05-20 08:03:54] Contest max_submissions: 5
+[2025-05-20 08:03:54] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:03:54] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:03:54] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:00] Request: problem_id=16, user_id=33, contest_id=92
+[2025-05-20 08:04:00] Contest ID resolved: 92
+[2025-05-20 08:04:00] Contest max_submissions: 5
+[2025-05-20 08:04:00] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:00] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:00] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:03] Request: problem_id=16, user_id=33, contest_id=92
+[2025-05-20 08:04:03] Contest ID resolved: 92
+[2025-05-20 08:04:03] Contest max_submissions: 5
+[2025-05-20 08:04:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:03] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:04:03] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:04:39] Request: problem_id=16, user_id=48, contest_id=92
+[2025-05-20 08:04:39] Contest ID resolved: 92
+[2025-05-20 08:04:39] Contest max_submissions: 5
+[2025-05-20 08:04:39] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:39] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:39] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:40] Request: problem_id=16, user_id=48, contest_id=92
+[2025-05-20 08:04:40] Contest ID resolved: 92
+[2025-05-20 08:04:40] Contest max_submissions: 5
+[2025-05-20 08:04:40] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:40] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:40] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:46] Request: problem_id=16, user_id=52, contest_id=92
+[2025-05-20 08:04:46] Contest ID resolved: 92
+[2025-05-20 08:04:46] Contest max_submissions: 5
+[2025-05-20 08:04:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:48] Request: problem_id=16, user_id=52, contest_id=92
+[2025-05-20 08:04:48] Contest ID resolved: 92
+[2025-05-20 08:04:48] Contest max_submissions: 5
+[2025-05-20 08:04:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:48] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:48] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:49] Request: problem_id=16, user_id=52, contest_id=92
+[2025-05-20 08:04:49] Contest ID resolved: 92
+[2025-05-20 08:04:50] Contest max_submissions: 5
+[2025-05-20 08:04:50] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:50] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:50] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:04:50] Request: problem_id=16, user_id=52, contest_id=92
+[2025-05-20 08:04:50] Contest ID resolved: 92
+[2025-05-20 08:04:50] Contest max_submissions: 5
+[2025-05-20 08:04:50] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:04:50] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:04:50] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:05:14] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:05:14] Contest ID resolved: 92
+[2025-05-20 08:05:14] Contest max_submissions: 5
+[2025-05-20 08:05:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:05:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:05:15] Request: problem_id=16, user_id=34, contest_id=92
+[2025-05-20 08:05:15] Contest ID resolved: 92
+[2025-05-20 08:05:15] Contest max_submissions: 5
+[2025-05-20 08:05:15] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:15] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:05:15] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:05:16] Request: problem_id=16, user_id=34, contest_id=92
+[2025-05-20 08:05:16] Contest ID resolved: 92
+[2025-05-20 08:05:16] Contest max_submissions: 5
+[2025-05-20 08:05:16] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:16] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:05:16] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:05:17] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:05:17] Contest ID resolved: 92
+[2025-05-20 08:05:17] Contest max_submissions: 5
+[2025-05-20 08:05:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:17] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:05:17] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:05:21] Request: problem_id=17, user_id=34, contest_id=92
+[2025-05-20 08:05:21] Contest ID resolved: 92
+[2025-05-20 08:05:21] Contest max_submissions: 5
+[2025-05-20 08:05:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 17 AND contest_id = 92
+[2025-05-20 08:05:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:05:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:05:28] Request: problem_id=16, user_id=42, contest_id=92
+[2025-05-20 08:05:28] Contest ID resolved: 92
+[2025-05-20 08:05:28] Contest max_submissions: 5
+[2025-05-20 08:05:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 42 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:28] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:05:28] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:05:28] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:05:28] Contest ID resolved: 92
+[2025-05-20 08:05:28] Contest max_submissions: 5
+[2025-05-20 08:05:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:28] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:05:28] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:05:30] Request: problem_id=16, user_id=31, contest_id=92
+[2025-05-20 08:05:30] Contest ID resolved: 92
+[2025-05-20 08:05:30] Contest max_submissions: 5
+[2025-05-20 08:05:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:05:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:05:30] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:05:30] Contest ID resolved: 92
+[2025-05-20 08:05:30] Contest max_submissions: 5
+[2025-05-20 08:05:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:30] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:05:30] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:05:33] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:05:33] Contest ID resolved: 92
+[2025-05-20 08:05:33] Contest max_submissions: 5
+[2025-05-20 08:05:33] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:05:33] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:05:33] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:05:34] Request: problem_id=17, user_id=42, contest_id=92
+[2025-05-20 08:05:34] Contest ID resolved: 92
+[2025-05-20 08:05:34] Contest max_submissions: 5
+[2025-05-20 08:05:34] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 42 AND problem_id = 17 AND contest_id = 92
+[2025-05-20 08:05:34] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:05:34] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:06:05] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:05] Contest ID resolved: 92
+[2025-05-20 08:06:05] Contest max_submissions: 5
+[2025-05-20 08:06:05] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:05] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:06:05] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:06:06] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:06] Contest ID resolved: 92
+[2025-05-20 08:06:06] Contest max_submissions: 5
+[2025-05-20 08:06:06] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:06] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:06:06] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:06:06] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:06] Contest ID resolved: 92
+[2025-05-20 08:06:06] Contest max_submissions: 5
+[2025-05-20 08:06:06] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:06] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:06:06] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:06:06] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:06] Contest ID resolved: 92
+[2025-05-20 08:06:06] Contest max_submissions: 5
+[2025-05-20 08:06:07] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:07] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:06:07] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:06:07] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:07] Contest ID resolved: 92
+[2025-05-20 08:06:07] Contest max_submissions: 5
+[2025-05-20 08:06:07] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:07] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:06:07] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:06:11] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:11] Contest ID resolved: 92
+[2025-05-20 08:06:11] Contest max_submissions: 5
+[2025-05-20 08:06:11] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:11] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:06:11] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:06:12] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:12] Contest ID resolved: 92
+[2025-05-20 08:06:12] Contest max_submissions: 5
+[2025-05-20 08:06:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:12] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:06:12] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:06:13] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:13] Contest ID resolved: 92
+[2025-05-20 08:06:13] Contest max_submissions: 5
+[2025-05-20 08:06:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:13] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:06:13] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:06:14] Request: problem_id=16, user_id=35, contest_id=92
+[2025-05-20 08:06:14] Contest ID resolved: 92
+[2025-05-20 08:06:14] Contest max_submissions: 5
+[2025-05-20 08:06:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:06:14] Submissions used: 5, Submissions remaining: 0
+[2025-05-20 08:06:14] DECISION: Limit reached! User cannot submit (used 5 out of 5)
+[2025-05-20 08:07:13] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:07:13] Contest ID resolved: 93
+[2025-05-20 08:07:13] Contest max_submissions: 5
+[2025-05-20 08:07:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:13] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:07:13] Contest ID resolved: 93
+[2025-05-20 08:07:13] Contest max_submissions: 5
+[2025-05-20 08:07:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:14] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:07:14] Contest ID resolved: 93
+[2025-05-20 08:07:14] Contest max_submissions: 5
+[2025-05-20 08:07:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:14] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:07:14] Contest ID resolved: 93
+[2025-05-20 08:07:14] Contest max_submissions: 5
+[2025-05-20 08:07:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:14] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:07:14] Contest ID resolved: 93
+[2025-05-20 08:07:14] Contest max_submissions: 5
+[2025-05-20 08:07:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:14] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:07:14] Contest ID resolved: 92
+[2025-05-20 08:07:14] Contest max_submissions: 5
+[2025-05-20 08:07:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:15] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:07:15] Contest ID resolved: 93
+[2025-05-20 08:07:15] Contest max_submissions: 5
+[2025-05-20 08:07:15] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:15] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:15] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:16] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:07:16] Contest ID resolved: 93
+[2025-05-20 08:07:16] Contest max_submissions: 5
+[2025-05-20 08:07:16] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:16] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:16] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:17] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:07:17] Contest ID resolved: 93
+[2025-05-20 08:07:17] Contest max_submissions: 5
+[2025-05-20 08:07:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:17] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:07:17] Contest ID resolved: 93
+[2025-05-20 08:07:17] Contest max_submissions: 5
+[2025-05-20 08:07:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:18] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:07:18] Contest ID resolved: 93
+[2025-05-20 08:07:18] Contest max_submissions: 5
+[2025-05-20 08:07:18] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:18] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:18] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:19] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:07:19] Contest ID resolved: 93
+[2025-05-20 08:07:19] Contest max_submissions: 5
+[2025-05-20 08:07:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:19] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:19] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:19] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:07:19] Contest ID resolved: 92
+[2025-05-20 08:07:19] Contest max_submissions: 5
+[2025-05-20 08:07:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:19] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:07:19] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:07:20] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:07:20] Contest ID resolved: 93
+[2025-05-20 08:07:20] Contest max_submissions: 5
+[2025-05-20 08:07:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:20] Request: problem_id=7, user_id=39, contest_id=93
+[2025-05-20 08:07:20] Contest ID resolved: 93
+[2025-05-20 08:07:20] Contest max_submissions: 5
+[2025-05-20 08:07:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:20] Request: problem_id=7, user_id=39, contest_id=93
+[2025-05-20 08:07:20] Contest ID resolved: 93
+[2025-05-20 08:07:20] Contest max_submissions: 5
+[2025-05-20 08:07:20] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:20] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:20] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:25] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:07:25] Contest ID resolved: 93
+[2025-05-20 08:07:25] Contest max_submissions: 5
+[2025-05-20 08:07:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:26] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:07:26] Contest ID resolved: 93
+[2025-05-20 08:07:26] Contest max_submissions: 5
+[2025-05-20 08:07:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:26] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:26] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:29] Request: problem_id=7, user_id=47, contest_id=93
+[2025-05-20 08:07:29] Contest ID resolved: 93
+[2025-05-20 08:07:29] Contest max_submissions: 5
+[2025-05-20 08:07:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 47 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:29] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:29] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:29] Request: problem_id=7, user_id=47, contest_id=93
+[2025-05-20 08:07:29] Contest ID resolved: 93
+[2025-05-20 08:07:29] Contest max_submissions: 5
+[2025-05-20 08:07:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 47 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:29] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:29] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:30] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:30] Contest ID resolved: 92
+[2025-05-20 08:07:30] Contest max_submissions: 5
+[2025-05-20 08:07:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:34] Request: problem_id=7, user_id=33, contest_id=93
+[2025-05-20 08:07:34] Contest ID resolved: 93
+[2025-05-20 08:07:34] Contest max_submissions: 5
+[2025-05-20 08:07:34] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:34] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:34] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:35] Request: problem_id=7, user_id=33, contest_id=93
+[2025-05-20 08:07:35] Contest ID resolved: 93
+[2025-05-20 08:07:35] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:35] Contest ID resolved: 92
+[2025-05-20 08:07:35] Contest max_submissions: 5
+[2025-05-20 08:07:35] Contest max_submissions: 5
+[2025-05-20 08:07:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:35] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:35] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:35] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:35] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:36] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:36] Contest ID resolved: 92
+[2025-05-20 08:07:36] Contest max_submissions: 5
+[2025-05-20 08:07:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:37] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:37] Contest ID resolved: 92
+[2025-05-20 08:07:37] Contest max_submissions: 5
+[2025-05-20 08:07:37] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:37] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:37] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:37] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:37] Contest ID resolved: 92
+[2025-05-20 08:07:37] Contest max_submissions: 5
+[2025-05-20 08:07:37] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:37] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:37] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:37] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:37] Contest ID resolved: 92
+[2025-05-20 08:07:37] Contest max_submissions: 5
+[2025-05-20 08:07:37] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:37] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:37] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:41] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:41] Contest ID resolved: 92
+[2025-05-20 08:07:41] Contest max_submissions: 5
+[2025-05-20 08:07:41] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:41] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:41] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:41] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:41] Contest ID resolved: 92
+[2025-05-20 08:07:41] Contest max_submissions: 5
+[2025-05-20 08:07:41] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:41] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:41] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:41] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:41] Contest ID resolved: 92
+[2025-05-20 08:07:41] Contest max_submissions: 5
+[2025-05-20 08:07:41] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:41] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:41] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:43] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:07:43] Contest ID resolved: 93
+[2025-05-20 08:07:43] Contest max_submissions: 5
+[2025-05-20 08:07:43] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:43] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:43] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:44] Request: problem_id=16, user_id=46, contest_id=92
+[2025-05-20 08:07:44] Contest ID resolved: 92
+[2025-05-20 08:07:44] Contest max_submissions: 5
+[2025-05-20 08:07:44] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:07:44] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:44] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:45] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:07:45] Contest ID resolved: 93
+[2025-05-20 08:07:45] Contest max_submissions: 5
+[2025-05-20 08:07:45] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:45] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:45] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:46] Request: problem_id=7, user_id=45, contest_id=93
+[2025-05-20 08:07:46] Contest ID resolved: 93
+[2025-05-20 08:07:46] Contest max_submissions: 5
+[2025-05-20 08:07:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 45 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:46] Request: problem_id=7, user_id=33, contest_id=93
+[2025-05-20 08:07:46] Contest ID resolved: 93
+[2025-05-20 08:07:46] Contest max_submissions: 5
+[2025-05-20 08:07:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:46] Request: problem_id=7, user_id=45, contest_id=93
+[2025-05-20 08:07:46] Contest ID resolved: 93
+[2025-05-20 08:07:46] Contest max_submissions: 5
+[2025-05-20 08:07:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 45 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:47] Request: problem_id=7, user_id=38, contest_id=93
+[2025-05-20 08:07:47] Contest ID resolved: 93
+[2025-05-20 08:07:47] Contest max_submissions: 5
+[2025-05-20 08:07:47] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 38 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:47] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:47] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:47] Request: problem_id=7, user_id=33, contest_id=93
+[2025-05-20 08:07:47] Contest ID resolved: 93
+[2025-05-20 08:07:47] Contest max_submissions: 5
+[2025-05-20 08:07:47] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:47] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:47] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:48] Request: problem_id=7, user_id=38, contest_id=93
+[2025-05-20 08:07:48] Contest ID resolved: 93
+[2025-05-20 08:07:48] Contest max_submissions: 5
+[2025-05-20 08:07:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 38 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:48] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:48] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:58] Request: problem_id=7, user_id=43, contest_id=93
+[2025-05-20 08:07:58] Contest ID resolved: 93
+[2025-05-20 08:07:58] Contest max_submissions: 5
+[2025-05-20 08:07:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 43 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:58] Request: problem_id=9, user_id=41, contest_id=93
+[2025-05-20 08:07:58] Contest ID resolved: 93
+[2025-05-20 08:07:58] Contest max_submissions: 5
+[2025-05-20 08:07:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:07:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:58] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:07:58] Contest ID resolved: 93
+[2025-05-20 08:07:58] Contest max_submissions: 5
+[2025-05-20 08:07:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:58] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:07:58] Contest ID resolved: 93
+[2025-05-20 08:07:58] Contest max_submissions: 5
+[2025-05-20 08:07:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:59] Request: problem_id=7, user_id=43, contest_id=93
+[2025-05-20 08:07:59] Contest ID resolved: 93
+[2025-05-20 08:07:59] Contest max_submissions: 5
+[2025-05-20 08:07:59] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 43 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:07:59] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:59] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:07:59] Request: problem_id=9, user_id=41, contest_id=93
+[2025-05-20 08:07:59] Contest ID resolved: 93
+[2025-05-20 08:07:59] Contest max_submissions: 5
+[2025-05-20 08:07:59] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:07:59] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:07:59] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:01] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:08:01] Contest ID resolved: 93
+[2025-05-20 08:08:01] Contest max_submissions: 5
+[2025-05-20 08:08:01] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:01] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:01] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:02] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:08:02] Contest ID resolved: 93
+[2025-05-20 08:08:02] Contest max_submissions: 5
+[2025-05-20 08:08:02] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:02] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:02] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:03] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:08:03] Contest ID resolved: 93
+[2025-05-20 08:08:03] Contest max_submissions: 5
+[2025-05-20 08:08:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:09] Request: problem_id=7, user_id=33, contest_id=93
+[2025-05-20 08:08:09] Contest ID resolved: 93
+[2025-05-20 08:08:09] Contest max_submissions: 5
+[2025-05-20 08:08:09] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:09] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:09] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:12] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:08:12] Contest ID resolved: 93
+[2025-05-20 08:08:12] Contest max_submissions: 5
+[2025-05-20 08:08:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:12] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:12] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:13] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:08:13] Contest ID resolved: 93
+[2025-05-20 08:08:13] Contest max_submissions: 5
+[2025-05-20 08:08:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:14] Request: problem_id=16, user_id=44, contest_id=92
+[2025-05-20 08:08:14] Contest ID resolved: 92
+[2025-05-20 08:08:14] Contest max_submissions: 5
+[2025-05-20 08:08:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:08:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:15] Request: problem_id=7, user_id=33, contest_id=93
+[2025-05-20 08:08:15] Contest ID resolved: 93
+[2025-05-20 08:08:15] Contest max_submissions: 5
+[2025-05-20 08:08:15] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 33 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:15] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:15] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:15] Request: problem_id=7, user_id=42, contest_id=93
+[2025-05-20 08:08:15] Contest ID resolved: 93
+[2025-05-20 08:08:15] Contest max_submissions: 5
+[2025-05-20 08:08:15] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 42 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:15] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:15] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:16] Request: problem_id=7, user_id=42, contest_id=93
+[2025-05-20 08:08:16] Contest ID resolved: 93
+[2025-05-20 08:08:16] Contest max_submissions: 5
+[2025-05-20 08:08:16] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 42 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:16] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:16] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:17] Request: problem_id=16, user_id=44, contest_id=92
+[2025-05-20 08:08:17] Contest ID resolved: 92
+[2025-05-20 08:08:17] Contest max_submissions: 5
+[2025-05-20 08:08:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:08:17] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:08:17] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:08:21] Request: problem_id=9, user_id=40, contest_id=93
+[2025-05-20 08:08:21] Contest ID resolved: 93
+[2025-05-20 08:08:21] Contest max_submissions: 5
+[2025-05-20 08:08:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:08:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:29] Request: problem_id=7, user_id=50, contest_id=93
+[2025-05-20 08:08:29] Contest ID resolved: 93
+[2025-05-20 08:08:29] Contest max_submissions: 5
+[2025-05-20 08:08:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:29] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:29] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:30] Request: problem_id=7, user_id=50, contest_id=93
+[2025-05-20 08:08:30] Contest ID resolved: 93
+[2025-05-20 08:08:30] Contest max_submissions: 5
+[2025-05-20 08:08:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:35] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:08:35] Contest ID resolved: 93
+[2025-05-20 08:08:35] Contest max_submissions: 5
+[2025-05-20 08:08:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:35] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:35] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:36] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:08:36] Contest ID resolved: 93
+[2025-05-20 08:08:36] Contest max_submissions: 5
+[2025-05-20 08:08:36] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:36] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:36] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:37] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:08:37] Contest ID resolved: 93
+[2025-05-20 08:08:37] Contest max_submissions: 5
+[2025-05-20 08:08:37] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:37] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:37] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:38] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:08:38] Contest ID resolved: 93
+[2025-05-20 08:08:38] Contest max_submissions: 5
+[2025-05-20 08:08:38] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:38] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:38] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:46] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:08:46] Contest ID resolved: 93
+[2025-05-20 08:08:46] Contest max_submissions: 5
+[2025-05-20 08:08:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:46] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:08:46] Contest ID resolved: 93
+[2025-05-20 08:08:46] Contest max_submissions: 5
+[2025-05-20 08:08:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:46] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:46] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:47] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:08:47] Contest ID resolved: 93
+[2025-05-20 08:08:47] Contest max_submissions: 5
+[2025-05-20 08:08:47] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:47] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:47] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:48] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:08:48] Contest ID resolved: 93
+[2025-05-20 08:08:48] Contest max_submissions: 5
+[2025-05-20 08:08:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:48] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:48] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:57] Request: problem_id=7, user_id=39, contest_id=93
+[2025-05-20 08:08:57] Contest ID resolved: 93
+[2025-05-20 08:08:57] Contest max_submissions: 5
+[2025-05-20 08:08:57] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:57] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:57] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:08:58] Request: problem_id=7, user_id=39, contest_id=93
+[2025-05-20 08:08:58] Contest ID resolved: 93
+[2025-05-20 08:08:58] Contest max_submissions: 5
+[2025-05-20 08:08:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:08:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:08:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:00] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:09:00] Contest ID resolved: 93
+[2025-05-20 08:09:00] Contest max_submissions: 5
+[2025-05-20 08:09:00] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:00] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:00] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:01] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:09:01] Contest ID resolved: 93
+[2025-05-20 08:09:01] Contest max_submissions: 5
+[2025-05-20 08:09:01] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:01] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:01] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:01] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:09:01] Contest ID resolved: 93
+[2025-05-20 08:09:01] Contest max_submissions: 5
+[2025-05-20 08:09:01] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:01] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:01] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:02] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:09:02] Contest ID resolved: 93
+[2025-05-20 08:09:02] Contest max_submissions: 5
+[2025-05-20 08:09:02] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:02] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:02] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:02] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:09:02] Contest ID resolved: 93
+[2025-05-20 08:09:02] Contest max_submissions: 5
+[2025-05-20 08:09:02] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:02] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:02] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:03] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:09:03] Contest ID resolved: 93
+[2025-05-20 08:09:03] Contest max_submissions: 5
+[2025-05-20 08:09:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:04] Request: problem_id=9, user_id=39, contest_id=93
+[2025-05-20 08:09:04] Contest ID resolved: 93
+[2025-05-20 08:09:04] Contest max_submissions: 5
+[2025-05-20 08:09:04] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:09:04] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:04] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:04] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:09:04] Contest ID resolved: 93
+[2025-05-20 08:09:04] Contest max_submissions: 5
+[2025-05-20 08:09:04] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:04] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:04] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:05] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:09:05] Contest ID resolved: 93
+[2025-05-20 08:09:05] Contest max_submissions: 5
+[2025-05-20 08:09:05] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:05] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:05] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:09] Request: problem_id=7, user_id=44, contest_id=93
+[2025-05-20 08:09:09] Contest ID resolved: 93
+[2025-05-20 08:09:09] Contest max_submissions: 5
+[2025-05-20 08:09:09] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:09] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:09] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:09] Request: problem_id=9, user_id=39, contest_id=93
+[2025-05-20 08:09:09] Contest ID resolved: 93
+[2025-05-20 08:09:09] Contest max_submissions: 5
+[2025-05-20 08:09:09] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:09:09] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:09] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:11] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:09:11] Contest ID resolved: 93
+[2025-05-20 08:09:11] Contest max_submissions: 5
+[2025-05-20 08:09:11] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:12] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:12] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:12] Request: problem_id=9, user_id=39, contest_id=93
+[2025-05-20 08:09:12] Contest ID resolved: 93
+[2025-05-20 08:09:12] Contest max_submissions: 5
+[2025-05-20 08:09:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:09:12] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:09:12] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:09:13] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:09:13] Contest ID resolved: 93
+[2025-05-20 08:09:13] Contest max_submissions: 5
+[2025-05-20 08:09:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:13] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:09:13] Contest ID resolved: 93
+[2025-05-20 08:09:13] Contest max_submissions: 5
+[2025-05-20 08:09:13] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:13] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:13] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:14] Request: problem_id=7, user_id=35, contest_id=93
+[2025-05-20 08:09:14] Contest ID resolved: 93
+[2025-05-20 08:09:14] Contest max_submissions: 5
+[2025-05-20 08:09:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 35 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:17] Request: problem_id=7, user_id=44, contest_id=93
+[2025-05-20 08:09:17] Contest ID resolved: 93
+[2025-05-20 08:09:17] Contest max_submissions: 5
+[2025-05-20 08:09:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 44 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:24] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:09:24] Contest ID resolved: 93
+[2025-05-20 08:09:24] Contest max_submissions: 5
+[2025-05-20 08:09:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:25] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:09:25] Contest ID resolved: 93
+[2025-05-20 08:09:25] Contest max_submissions: 5
+[2025-05-20 08:09:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:28] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:09:28] Contest ID resolved: 93
+[2025-05-20 08:09:28] Contest max_submissions: 5
+[2025-05-20 08:09:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:28] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:28] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:29] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:09:29] Contest ID resolved: 93
+[2025-05-20 08:09:29] Contest max_submissions: 5
+[2025-05-20 08:09:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:29] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:29] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:31] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:09:31] Contest ID resolved: 93
+[2025-05-20 08:09:31] Contest max_submissions: 5
+[2025-05-20 08:09:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:31] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:31] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:32] Request: problem_id=7, user_id=31, contest_id=93
+[2025-05-20 08:09:32] Contest ID resolved: 93
+[2025-05-20 08:09:32] Contest max_submissions: 5
+[2025-05-20 08:09:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 31 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:32] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:32] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:34] Request: problem_id=7, user_id=39, contest_id=93
+[2025-05-20 08:09:34] Contest ID resolved: 93
+[2025-05-20 08:09:34] Contest max_submissions: 5
+[2025-05-20 08:09:34] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:34] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:34] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:35] Request: problem_id=7, user_id=39, contest_id=93
+[2025-05-20 08:09:35] Contest ID resolved: 93
+[2025-05-20 08:09:35] Contest max_submissions: 5
+[2025-05-20 08:09:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:35] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:35] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:39] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:09:39] Contest ID resolved: 93
+[2025-05-20 08:09:39] Contest max_submissions: 5
+[2025-05-20 08:09:39] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:39] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:39] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:40] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:09:40] Contest ID resolved: 93
+[2025-05-20 08:09:40] Contest max_submissions: 5
+[2025-05-20 08:09:40] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:40] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:40] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:48] Request: problem_id=9, user_id=39, contest_id=93
+[2025-05-20 08:09:48] Contest ID resolved: 93
+[2025-05-20 08:09:48] Contest max_submissions: 5
+[2025-05-20 08:09:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 39 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:09:48] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:09:48] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:09:49] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:09:49] Contest ID resolved: 93
+[2025-05-20 08:09:49] Contest max_submissions: 5
+[2025-05-20 08:09:49] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:49] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:49] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:09:50] Request: problem_id=7, user_id=52, contest_id=93
+[2025-05-20 08:09:50] Contest ID resolved: 93
+[2025-05-20 08:09:50] Contest max_submissions: 5
+[2025-05-20 08:09:50] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 52 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:09:50] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:09:50] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:10:16] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:10:16] Contest ID resolved: 93
+[2025-05-20 08:10:16] Contest max_submissions: 5
+[2025-05-20 08:10:16] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:16] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:10:16] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:10:19] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:10:19] Contest ID resolved: 93
+[2025-05-20 08:10:19] Contest max_submissions: 5
+[2025-05-20 08:10:19] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:19] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:10:19] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:10:21] Request: problem_id=7, user_id=49, contest_id=93
+[2025-05-20 08:10:21] Contest ID resolved: 93
+[2025-05-20 08:10:21] Contest max_submissions: 5
+[2025-05-20 08:10:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:10:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:10:22] Request: problem_id=7, user_id=49, contest_id=93
+[2025-05-20 08:10:22] Contest ID resolved: 93
+[2025-05-20 08:10:22] Contest max_submissions: 5
+[2025-05-20 08:10:22] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:22] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:10:22] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:10:26] Request: problem_id=7, user_id=38, contest_id=93
+[2025-05-20 08:10:26] Contest ID resolved: 93
+[2025-05-20 08:10:26] Contest max_submissions: 5
+[2025-05-20 08:10:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 38 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:26] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:10:26] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:10:29] Request: problem_id=7, user_id=38, contest_id=93
+[2025-05-20 08:10:29] Contest ID resolved: 93
+[2025-05-20 08:10:29] Contest max_submissions: 5
+[2025-05-20 08:10:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 38 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:29] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:10:29] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:10:30] Request: problem_id=7, user_id=34, contest_id=93
+[2025-05-20 08:10:30] Contest ID resolved: 93
+[2025-05-20 08:10:30] Contest max_submissions: 5
+[2025-05-20 08:10:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:10:30] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:10:30] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:11:03] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:11:03] Contest ID resolved: 93
+[2025-05-20 08:11:03] Contest max_submissions: 5
+[2025-05-20 08:11:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:11:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:11:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:11:04] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:11:04] Contest ID resolved: 93
+[2025-05-20 08:11:04] Contest max_submissions: 5
+[2025-05-20 08:11:04] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:11:04] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:11:04] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:11:17] Request: problem_id=9, user_id=34, contest_id=93
+[2025-05-20 08:11:17] Contest ID resolved: 93
+[2025-05-20 08:11:17] Contest max_submissions: 5
+[2025-05-20 08:11:17] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 34 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:11:17] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:11:17] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:11:32] Request: problem_id=7, user_id=49, contest_id=93
+[2025-05-20 08:11:32] Contest ID resolved: 93
+[2025-05-20 08:11:32] Contest max_submissions: 5
+[2025-05-20 08:11:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:11:32] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:11:32] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:11:35] Request: problem_id=7, user_id=49, contest_id=93
+[2025-05-20 08:11:35] Contest ID resolved: 93
+[2025-05-20 08:11:35] Contest max_submissions: 5
+[2025-05-20 08:11:35] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 49 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:11:35] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:11:35] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:11:50] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:11:50] Contest ID resolved: 93
+[2025-05-20 08:11:50] Contest max_submissions: 5
+[2025-05-20 08:11:50] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:11:50] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:11:50] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:11:51] Request: problem_id=7, user_id=40, contest_id=93
+[2025-05-20 08:11:51] Contest ID resolved: 93
+[2025-05-20 08:11:51] Contest max_submissions: 5
+[2025-05-20 08:11:51] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 40 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:11:51] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:11:51] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:12:04] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:12:04] Contest ID resolved: 92
+[2025-05-20 08:12:04] Contest max_submissions: 5
+[2025-05-20 08:12:04] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:12:04] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:04] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:12:05] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:12:05] Contest ID resolved: 92
+[2025-05-20 08:12:05] Contest max_submissions: 5
+[2025-05-20 08:12:05] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:12:05] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:05] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:12:09] Request: problem_id=7, user_id=45, contest_id=93
+[2025-05-20 08:12:09] Contest ID resolved: 93
+[2025-05-20 08:12:09] Contest max_submissions: 5
+[2025-05-20 08:12:09] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 45 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:12:09] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:12:09] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:12:12] Request: problem_id=7, user_id=45, contest_id=93
+[2025-05-20 08:12:12] Contest ID resolved: 93
+[2025-05-20 08:12:12] Contest max_submissions: 5
+[2025-05-20 08:12:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 45 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:12:12] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:12] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:12:29] Request: problem_id=7, user_id=37, contest_id=93
+[2025-05-20 08:12:29] Contest ID resolved: 93
+[2025-05-20 08:12:29] Contest max_submissions: 5
+[2025-05-20 08:12:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:12:29] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:12:29] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:12:30] Request: problem_id=7, user_id=37, contest_id=93
+[2025-05-20 08:12:30] Contest ID resolved: 93
+[2025-05-20 08:12:30] Contest max_submissions: 5
+[2025-05-20 08:12:30] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:12:30] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:12:30] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:12:31] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:12:31] Contest ID resolved: 92
+[2025-05-20 08:12:31] Contest max_submissions: 5
+[2025-05-20 08:12:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:12:31] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:31] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:12:32] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:12:32] Contest ID resolved: 92
+[2025-05-20 08:12:32] Contest max_submissions: 5
+[2025-05-20 08:12:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:12:32] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:32] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:12:32] Request: problem_id=7, user_id=37, contest_id=93
+[2025-05-20 08:12:32] Contest ID resolved: 93
+[2025-05-20 08:12:32] Contest max_submissions: 5
+[2025-05-20 08:12:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:12:32] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:12:32] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:12:33] Request: problem_id=7, user_id=37, contest_id=93
+[2025-05-20 08:12:33] Contest ID resolved: 93
+[2025-05-20 08:12:33] Contest max_submissions: 5
+[2025-05-20 08:12:33] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 37 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:12:33] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:12:33] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:12:53] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:12:53] Contest ID resolved: 92
+[2025-05-20 08:12:53] Contest max_submissions: 5
+[2025-05-20 08:12:53] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:12:53] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:53] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:12:55] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:12:55] Contest ID resolved: 92
+[2025-05-20 08:12:55] Contest max_submissions: 5
+[2025-05-20 08:12:55] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:12:55] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:12:55] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:13:22] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:13:22] Contest ID resolved: 93
+[2025-05-20 08:13:22] Contest max_submissions: 5
+[2025-05-20 08:13:22] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:13:22] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:22] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:23] Request: problem_id=7, user_id=46, contest_id=93
+[2025-05-20 08:13:23] Contest ID resolved: 93
+[2025-05-20 08:13:23] Contest max_submissions: 5
+[2025-05-20 08:13:23] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:13:23] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:23] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:24] Request: problem_id=7, user_id=46, contest_id=93
+[2025-05-20 08:13:24] Contest ID resolved: 93
+[2025-05-20 08:13:24] Contest max_submissions: 5
+[2025-05-20 08:13:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:13:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:24] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:13:24] Contest ID resolved: 93
+[2025-05-20 08:13:24] Contest max_submissions: 5
+[2025-05-20 08:13:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:13:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:25] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:13:25] Contest ID resolved: 93
+[2025-05-20 08:13:25] Contest max_submissions: 5
+[2025-05-20 08:13:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:13:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:25] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:28] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:13:28] Contest ID resolved: 92
+[2025-05-20 08:13:28] Contest max_submissions: 5
+[2025-05-20 08:13:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:13:28] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:13:28] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:13:29] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:13:29] Contest ID resolved: 92
+[2025-05-20 08:13:29] Contest max_submissions: 5
+[2025-05-20 08:13:29] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:13:29] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:13:29] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:13:31] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:13:31] Contest ID resolved: 92
+[2025-05-20 08:13:31] Contest max_submissions: 5
+[2025-05-20 08:13:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:13:31] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:13:31] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:13:32] Request: problem_id=16, user_id=50, contest_id=92
+[2025-05-20 08:13:32] Contest ID resolved: 92
+[2025-05-20 08:13:32] Contest max_submissions: 5
+[2025-05-20 08:13:32] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 50 AND problem_id = 16 AND contest_id = 92
+[2025-05-20 08:13:32] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:13:32] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:13:53] Request: problem_id=9, user_id=46, contest_id=93
+[2025-05-20 08:13:53] Contest ID resolved: 93
+[2025-05-20 08:13:53] Contest max_submissions: 5
+[2025-05-20 08:13:53] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:13:53] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:53] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:55] Request: problem_id=7, user_id=46, contest_id=93
+[2025-05-20 08:13:55] Contest ID resolved: 93
+[2025-05-20 08:13:55] Contest max_submissions: 5
+[2025-05-20 08:13:55] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:13:55] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:55] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:13:58] Request: problem_id=9, user_id=46, contest_id=93
+[2025-05-20 08:13:58] Contest ID resolved: 93
+[2025-05-20 08:13:58] Contest max_submissions: 5
+[2025-05-20 08:13:58] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 9 AND contest_id = 93
+[2025-05-20 08:13:58] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:13:58] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:09] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:14:09] Contest ID resolved: 93
+[2025-05-20 08:14:09] Contest max_submissions: 5
+[2025-05-20 08:14:09] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:09] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:09] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:10] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:14:10] Contest ID resolved: 93
+[2025-05-20 08:14:10] Contest max_submissions: 5
+[2025-05-20 08:14:10] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:10] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:10] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:14] Request: problem_id=7, user_id=46, contest_id=93
+[2025-05-20 08:14:14] Contest ID resolved: 93
+[2025-05-20 08:14:14] Contest max_submissions: 5
+[2025-05-20 08:14:14] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 46 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:14] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:14] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:21] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:14:21] Contest ID resolved: 93
+[2025-05-20 08:14:21] Contest max_submissions: 5
+[2025-05-20 08:14:21] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:21] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:21] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:22] Request: problem_id=7, user_id=48, contest_id=93
+[2025-05-20 08:14:22] Contest ID resolved: 93
+[2025-05-20 08:14:22] Contest max_submissions: 5
+[2025-05-20 08:14:22] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 48 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:22] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:22] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:26] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:14:26] Contest ID resolved: 93
+[2025-05-20 08:14:26] Contest max_submissions: 5
+[2025-05-20 08:14:26] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:26] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:26] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:14:27] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:14:27] Contest ID resolved: 93
+[2025-05-20 08:14:27] Contest max_submissions: 5
+[2025-05-20 08:14:27] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:14:27] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:14:27] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:02] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:02] Contest ID resolved: 93
+[2025-05-20 08:16:02] Contest max_submissions: 5
+[2025-05-20 08:16:02] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:02] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:02] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:02] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:02] Contest ID resolved: 93
+[2025-05-20 08:16:02] Contest max_submissions: 5
+[2025-05-20 08:16:02] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:02] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:02] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:03] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:03] Contest ID resolved: 93
+[2025-05-20 08:16:03] Contest max_submissions: 5
+[2025-05-20 08:16:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:03] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:03] Contest ID resolved: 93
+[2025-05-20 08:16:03] Contest max_submissions: 5
+[2025-05-20 08:16:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:03] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:03] Contest ID resolved: 93
+[2025-05-20 08:16:03] Contest max_submissions: 5
+[2025-05-20 08:16:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:03] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:03] Contest ID resolved: 93
+[2025-05-20 08:16:03] Contest max_submissions: 5
+[2025-05-20 08:16:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:03] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:03] Contest ID resolved: 93
+[2025-05-20 08:16:03] Contest max_submissions: 5
+[2025-05-20 08:16:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:03] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:03] Contest ID resolved: 93
+[2025-05-20 08:16:03] Contest max_submissions: 5
+[2025-05-20 08:16:03] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:03] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:03] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:04] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:04] Contest ID resolved: 93
+[2025-05-20 08:16:04] Contest max_submissions: 5
+[2025-05-20 08:16:04] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:04] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:04] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:04] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:04] Contest ID resolved: 93
+[2025-05-20 08:16:04] Contest max_submissions: 5
+[2025-05-20 08:16:04] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:04] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:04] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:05] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:05] Contest ID resolved: 93
+[2025-05-20 08:16:05] Contest max_submissions: 5
+[2025-05-20 08:16:05] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:05] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:05] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:05] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:05] Contest ID resolved: 93
+[2025-05-20 08:16:05] Contest max_submissions: 5
+[2025-05-20 08:16:05] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:05] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:05] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:12] Request: problem_id=7, user_id=41, contest_id=93
+[2025-05-20 08:16:12] Contest ID resolved: 93
+[2025-05-20 08:16:12] Contest max_submissions: 5
+[2025-05-20 08:16:12] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 41 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:12] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:12] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:16:48] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:16:48] Contest ID resolved: 93
+[2025-05-20 08:16:48] Contest max_submissions: 5
+[2025-05-20 08:16:48] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:16:48] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:16:48] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:18:28] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:18:28] Contest ID resolved: 93
+[2025-05-20 08:18:28] Contest max_submissions: 5
+[2025-05-20 08:18:28] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:18:28] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:18:28] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:18:31] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:18:31] Contest ID resolved: 93
+[2025-05-20 08:18:31] Contest max_submissions: 5
+[2025-05-20 08:18:31] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:18:31] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:18:31] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:18:43] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:18:43] Contest ID resolved: 93
+[2025-05-20 08:18:43] Contest max_submissions: 5
+[2025-05-20 08:18:43] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:18:43] Submissions used: 1, Submissions remaining: 4
+[2025-05-20 08:18:43] DECISION: User can submit (used 1 out of 5)
+[2025-05-20 08:18:46] Request: problem_id=7, user_id=51, contest_id=93
+[2025-05-20 08:18:46] Contest ID resolved: 93
+[2025-05-20 08:18:46] Contest max_submissions: 5
+[2025-05-20 08:18:46] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 51 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:18:46] Submissions used: 2, Submissions remaining: 3
+[2025-05-20 08:18:46] DECISION: User can submit (used 2 out of 5)
+[2025-05-20 08:27:24] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:27:24] Contest ID resolved: 93
+[2025-05-20 08:27:24] Contest max_submissions: 5
+[2025-05-20 08:27:24] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:27:24] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:27:24] DECISION: User can submit (used 0 out of 5)
+[2025-05-20 08:27:25] Request: problem_id=7, user_id=32, contest_id=93
+[2025-05-20 08:27:25] Contest ID resolved: 93
+[2025-05-20 08:27:25] Contest max_submissions: 5
+[2025-05-20 08:27:25] SQL Query: SELECT COUNT(*) AS submission_count FROM submissions WHERE user_id = 32 AND problem_id = 7 AND contest_id = 93
+[2025-05-20 08:27:25] Submissions used: 0, Submissions remaining: 5
+[2025-05-20 08:27:25] DECISION: User can submit (used 0 out of 5)

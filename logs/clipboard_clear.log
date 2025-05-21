@@ -1343,3 +1343,548 @@
 2025-05-17 13:49:10 - Clipboard cleared on Windows using ctypes
 2025-05-17 13:49:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
 2025-05-17 13:49:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 10:49:07 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:49:07 - pywin32 not available
+2025-05-20 10:49:10 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:49:11 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:49:11 - pywin32 not available
+2025-05-20 10:49:13 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:49:29 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:49:29 - pywin32 not available
+2025-05-20 10:49:31 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:52:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:52:23 - pywin32 not available
+2025-05-20 10:52:25 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:52:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:52:26 - pywin32 not available
+2025-05-20 10:52:27 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:52:56 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:52:56 - pywin32 not available
+2025-05-20 10:52:58 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:53:02 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:53:02 - pywin32 not available
+2025-05-20 10:53:03 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:53:04 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:53:04 - pywin32 not available
+2025-05-20 10:53:06 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:53:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:53:12 - pywin32 not available
+2025-05-20 10:53:13 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:53:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:53:18 - pywin32 not available
+2025-05-20 10:53:20 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:53:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:53:25 - pywin32 not available
+2025-05-20 10:53:27 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:53:27 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:53:27 - pywin32 not available
+2025-05-20 10:53:29 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:54:09 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:54:09 - pywin32 not available
+2025-05-20 10:54:11 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:54:19 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:54:19 - pywin32 not available
+2025-05-20 10:54:21 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:54:57 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:54:57 - pywin32 not available
+2025-05-20 10:54:58 - Clipboard cleared on Windows using PowerShell
+2025-05-20 10:59:33 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:59:33 - Clipboard cleared on Windows using ctypes
+2025-05-20 10:59:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:59:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 10:59:37 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:59:37 - Clipboard cleared on Windows using ctypes
+2025-05-20 10:59:40 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:59:40 - Clipboard cleared on Windows using ctypes
+2025-05-20 10:59:44 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:59:44 - Clipboard cleared on Windows using ctypes
+2025-05-20 10:59:48 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 10:59:48 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:00:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:00:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:00:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:00:23 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:01:00 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:01:00 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:08:57 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:08:57 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:08:59 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:08:59 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:08 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:08 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:10 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:10 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:24 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:24 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:28 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:28 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:32 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:32 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:10:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:10:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:11:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:11:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:11:43 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:11:43 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:11:46 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:11:46 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:26 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:32 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:32 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:32 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:32 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:33 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:33 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:50 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:50 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:54 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:54 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:14:56 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:14:56 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:15:27 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:15:27 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:10 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:10 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:15 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:15 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:15 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:15 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:16 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:16 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:16 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:16 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:17 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:17 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:18 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:18 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:19 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:19 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:19 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:19 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:20 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:20 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:20 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:20 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:23 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:23 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:24 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:24 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:24 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:24 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:25 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:25 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:26 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:31 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:31 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:34 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:34 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:37 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:37 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:40 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:40 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:40 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:40 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:42 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:42 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:42 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:42 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:42 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:42 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:45 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:45 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:46 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:46 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:49 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:49 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:54 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:54 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:58 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:59 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:31:59 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:31:59 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:02 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:02 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:03 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:03 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:09 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:09 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:16 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:16 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:18 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:19 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:20 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:20 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:22 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:22 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:34 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:34 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:40 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:40 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:41 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:41 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:44 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:44 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:45 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:45 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:49 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:49 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:52 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:52 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:32:53 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:32:53 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:09 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:09 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:11 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:11 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:38 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:38 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:48 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:49 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:53 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:53 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:54 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:54 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:33:59 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:33:59 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:34:04 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:34:04 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:34:35 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:34:35 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:34:38 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:34:38 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:34:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:34:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:34:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:34:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:34:50 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:34:50 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:35:11 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:35:11 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:35:15 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:35:15 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:35:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:35:18 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:35:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:35:25 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:35:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:35:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:16 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:16 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:17 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:17 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:18 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:18 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:19 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:19 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:19 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:19 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:19 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:23 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:25 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:26 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:27 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:27 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:28 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:28 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:35 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:35 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:41 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:41 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:42 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:42 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:45 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:45 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:45 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:45 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:46 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:46 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:48 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:48 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:37:58 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:37:58 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:03 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:03 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:06 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:06 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:06 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:06 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:07 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:07 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:10 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:10 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:11 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:11 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:11 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:11 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:16 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:16 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:17 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:17 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:31 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:31 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:32 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:32 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:34 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:34 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:35 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:35 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:37 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:37 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:43 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:43 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:45 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:45 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:46 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:46 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:48 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:48 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:50 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:50 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:54 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:54 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:56 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:56 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:57 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:57 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:57 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:57 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:38:59 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:38:59 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:00 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:00 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:01 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:01 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:01 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:01 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:03 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:03 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:04 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:04 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:04 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:04 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:05 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:05 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:09 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:09 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:09 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:09 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:10 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:10 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:10 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:10 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:13 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:13 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:25 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:26 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:26 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:28 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:28 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:28 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:28 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:30 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:30 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:31 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:31 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:31 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:31 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:34 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:34 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:34 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:34 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:40 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:40 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:44 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:44 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:45 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:45 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:49 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:49 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:50 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:50 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:39:57 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:39:57 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:40:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:40:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:40:29 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:40:29 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:41:00 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:41:00 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:41:03 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:41:03 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:41:04 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:41:04 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:41:47 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:41:47 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:41:50 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:41:50 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:41:52 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:41:52 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:05 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:05 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:06 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:06 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:23 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:28 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:28 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:29 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:29 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:31 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:31 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:32 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:32 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:35 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:35 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:36 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:36 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:39 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:39 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:46 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:46 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:50 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:50 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:53 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:53 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:42:57 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:42:57 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:43:23 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:43:23 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:43:24 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:43:24 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:43:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:43:25 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:43:29 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:43:29 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:43:32 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:43:32 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:43:34 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:43:34 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:09 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:09 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:10 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:10 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:17 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:17 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:22 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:22 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:22 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:22 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:26 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:26 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:44:27 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:44:27 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:46:12 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:46:12 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:46:14 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:46:14 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:46:21 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:46:21 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:46:24 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:46:24 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:57:22 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:57:22 - Clipboard cleared on Windows using ctypes
+2025-05-20 11:57:25 - Clipboard clear requested - Python 3.12.10 (main, Apr 18 2025, 06:12:01)  [GCC 14.2.0 64 bit (AMD64)] on Windows-11-10.0.26100-SP0
+2025-05-20 11:57:25 - Clipboard cleared on Windows using ctypes

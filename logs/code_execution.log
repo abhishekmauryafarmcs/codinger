@@ -1089,3 +1089,1585 @@ compilation terminated.
 [2025-05-17 10:20:21] Saved code to: ../temp/682846c4cfa67/solution.cpp
 [2025-05-17 10:20:21] Compile command: g++ "../temp/682846c4cfa67/solution.cpp" -o "../temp/682846c4cfa67/solution.exe"
 [2025-05-17 10:20:24] Run command: "../temp/682846c4cfa67/solution.exe" < "../temp/682846c4cfa67/input.txt" > "../temp/682846c4cfa67/output.txt" 2>> "../temp/682846c4cfa67/error.txt"
+[2025-05-20 07:23:59] Saved code to: ../temp/682c11ef7e1c8/solution.cpp
+[2025-05-20 07:23:59] Compile command: g++ "../temp/682c11ef7e1c8/solution.cpp" -o "../temp/682c11ef7e1c8/solution.exe"
+[2025-05-20 07:24:00] Compilation error: ../temp/682c11ef7e1c8/solution.cpp: In function 'int main()':
+../temp/682c11ef7e1c8/solution.cpp:7:5: error: expected ',' or ';' before 'System'
+     System.out.println(n);
+     ^~~~~~
+
+[2025-05-20 07:33:57] Saved code to: ../temp/682c1445baa6f/solution.cpp
+[2025-05-20 07:33:57] Compile command: g++ "../temp/682c1445baa6f/solution.cpp" -o "../temp/682c1445baa6f/solution.exe"
+[2025-05-20 07:33:58] Compilation error: ../temp/682c1445baa6f/solution.cpp: In function 'int main()':
+../temp/682c1445baa6f/solution.cpp:9:8: error: expected unqualified-id before '[' token
+     int[] arr=new int(a);
+        ^
+../temp/682c1445baa6f/solution.cpp:16:5: error: 'System' was not declared in this scope
+     System.out.println(sum);
+     ^~~~~~
+
+[2025-05-20 07:34:21] Saved code to: ../temp/682c145d55164/solution.cpp
+[2025-05-20 07:34:21] Compile command: g++ "../temp/682c145d55164/solution.cpp" -o "../temp/682c145d55164/solution.exe"
+[2025-05-20 07:34:22] Compilation error: ../temp/682c145d55164/solution.cpp: In function 'int main()':
+../temp/682c145d55164/solution.cpp:9:8: error: expected unqualified-id before '[' token
+     int[] arr=new int(a);
+        ^
+
+[2025-05-20 07:34:34] Saved code to: ../temp/682c146aa2efd/solution.cpp
+[2025-05-20 07:34:34] Compile command: g++ "../temp/682c146aa2efd/solution.cpp" -o "../temp/682c146aa2efd/solution.exe"
+[2025-05-20 07:34:35] Compilation error: ../temp/682c146aa2efd/solution.cpp: In function 'int main()':
+../temp/682c146aa2efd/solution.cpp:9:24: error: initializer fails to determine size of 'arr'
+     int arr[]=new int(a);
+                        ^
+../temp/682c146aa2efd/solution.cpp:9:24: error: array must be initialized with a brace-enclosed initializer
+
+[2025-05-20 07:34:44] Saved code to: ../temp/682c1474b0b94/solution.cpp
+[2025-05-20 07:34:44] Compile command: g++ "../temp/682c1474b0b94/solution.cpp" -o "../temp/682c1474b0b94/solution.exe"
+[2025-05-20 07:34:45] Run command: "../temp/682c1474b0b94/solution.exe" < "../temp/682c1474b0b94/input.txt" > "../temp/682c1474b0b94/output.txt" 2>> "../temp/682c1474b0b94/error.txt"
+[2025-05-20 07:34:56] Saved code to: ../temp/682c1480224d2/solution.cpp
+[2025-05-20 07:34:56] Compile command: g++ "../temp/682c1480224d2/solution.cpp" -o "../temp/682c1480224d2/solution.exe"
+[2025-05-20 07:34:57] Run command: "../temp/682c1480224d2/solution.exe" < "../temp/682c1480224d2/input.txt" > "../temp/682c1480224d2/output.txt" 2>> "../temp/682c1480224d2/error.txt"
+[2025-05-20 08:03:40] Saved code to: ../temp/682c1b3c5bd2e/solution.cpp
+[2025-05-20 08:03:40] Compile command: g++ "../temp/682c1b3c5bd2e/solution.cpp" -o "../temp/682c1b3c5bd2e/solution.exe"
+[2025-05-20 08:03:41] Compilation error: ../temp/682c1b3c5bd2e/solution.cpp: In function 'int main()':
+../temp/682c1b3c5bd2e/solution.cpp:10:12: error: no match for 'operator<<' (operand types are 'std::istream {aka std::basic_istream<char>}' and 'const char [9]')
+         cin<<"Negative";
+         ~~~^~~~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\string:52:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.h:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:41,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:46:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b3c5bd2e/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note: candidate: template<class _CharT, class _Traits, class _Tp> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&)
+     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note:   template argument deduction/substitution failed:
+../temp/682c1b3c5bd2e/solution.cpp:10:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+
+[2025-05-20 08:03:53] Saved code to: ../temp/682c1b49b4b7d/solution.cpp
+[2025-05-20 08:03:53] Compile command: g++ "../temp/682c1b49b4b7d/solution.cpp" -o "../temp/682c1b49b4b7d/solution.exe"
+[2025-05-20 08:03:54] Run command: "../temp/682c1b49b4b7d/solution.exe" < "../temp/682c1b49b4b7d/input.txt" > "../temp/682c1b49b4b7d/output.txt" 2>> "../temp/682c1b49b4b7d/error.txt"
+[2025-05-20 08:04:10] Saved code to: ../temp/682c1b59dcb64/solution.cpp
+[2025-05-20 08:04:10] Compile command: g++ "../temp/682c1b59dcb64/solution.cpp" -o "../temp/682c1b59dcb64/solution.exe"
+[2025-05-20 08:04:10] Compilation error: ../temp/682c1b59dcb64/solution.cpp: In function 'int main()':
+../temp/682c1b59dcb64/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b59dcb64/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b59dcb64/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:11] Saved code to: ../temp/682c1b5b2f249/solution.cpp
+[2025-05-20 08:04:11] Compile command: g++ "../temp/682c1b5b2f249/solution.cpp" -o "../temp/682c1b5b2f249/solution.exe"
+[2025-05-20 08:04:11] Compilation error: ../temp/682c1b5b2f249/solution.cpp: In function 'int main()':
+../temp/682c1b5b2f249/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b5b2f249/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b5b2f249/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:12] Saved code to: ../temp/682c1b5ccf29d/solution.cpp
+[2025-05-20 08:04:12] Compile command: g++ "../temp/682c1b5ccf29d/solution.cpp" -o "../temp/682c1b5ccf29d/solution.exe"
+[2025-05-20 08:04:13] Compilation error: ../temp/682c1b5ccf29d/solution.cpp: In function 'int main()':
+../temp/682c1b5ccf29d/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b5ccf29d/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b5ccf29d/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:13] Saved code to: ../temp/682c1b5d8570f/solution.cpp
+[2025-05-20 08:04:13] Compile command: g++ "../temp/682c1b5d8570f/solution.cpp" -o "../temp/682c1b5d8570f/solution.exe"
+[2025-05-20 08:04:14] Compilation error: ../temp/682c1b5d8570f/solution.cpp: In function 'int main()':
+../temp/682c1b5d8570f/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b5d8570f/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b5d8570f/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:14] Saved code to: ../temp/682c1b5ed34b7/solution.cpp
+[2025-05-20 08:04:14] Compile command: g++ "../temp/682c1b5ed34b7/solution.cpp" -o "../temp/682c1b5ed34b7/solution.exe"
+[2025-05-20 08:04:15] Compilation error: ../temp/682c1b5ed34b7/solution.cpp: In function 'int main()':
+../temp/682c1b5ed34b7/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b5ed34b7/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b5ed34b7/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:15] Saved code to: ../temp/682c1b5f8c326/solution.cpp
+[2025-05-20 08:04:15] Compile command: g++ "../temp/682c1b5f8c326/solution.cpp" -o "../temp/682c1b5f8c326/solution.exe"
+[2025-05-20 08:04:16] Compilation error: ../temp/682c1b5f8c326/solution.cpp: In function 'int main()':
+../temp/682c1b5f8c326/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b5f8c326/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b5f8c326/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:17] Saved code to: ../temp/682c1b617a591/solution.cpp
+[2025-05-20 08:04:17] Compile command: g++ "../temp/682c1b617a591/solution.cpp" -o "../temp/682c1b617a591/solution.exe"
+[2025-05-20 08:04:18] Compilation error: ../temp/682c1b617a591/solution.cpp: In function 'int main()':
+../temp/682c1b617a591/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b617a591/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b617a591/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:18] Saved code to: ../temp/682c1b6234514/solution.cpp
+[2025-05-20 08:04:18] Compile command: g++ "../temp/682c1b6234514/solution.cpp" -o "../temp/682c1b6234514/solution.exe"
+[2025-05-20 08:04:18] Compilation error: ../temp/682c1b6234514/solution.cpp: In function 'int main()':
+../temp/682c1b6234514/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b6234514/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b6234514/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:19] Saved code to: ../temp/682c1b6385cbe/solution.cpp
+[2025-05-20 08:04:19] Compile command: g++ "../temp/682c1b6385cbe/solution.cpp" -o "../temp/682c1b6385cbe/solution.exe"
+[2025-05-20 08:04:20] Compilation error: ../temp/682c1b6385cbe/solution.cpp: In function 'int main()':
+../temp/682c1b6385cbe/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b6385cbe/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b6385cbe/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:20] Saved code to: ../temp/682c1b643ee41/solution.cpp
+[2025-05-20 08:04:20] Compile command: g++ "../temp/682c1b643ee41/solution.cpp" -o "../temp/682c1b643ee41/solution.exe"
+[2025-05-20 08:04:20] Compilation error: ../temp/682c1b643ee41/solution.cpp: In function 'int main()':
+../temp/682c1b643ee41/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b643ee41/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b643ee41/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:21] Saved code to: ../temp/682c1b64f0579/solution.cpp
+[2025-05-20 08:04:21] Compile command: g++ "../temp/682c1b64f0579/solution.cpp" -o "../temp/682c1b64f0579/solution.exe"
+[2025-05-20 08:04:21] Compilation error: ../temp/682c1b64f0579/solution.cpp: In function 'int main()':
+../temp/682c1b64f0579/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b64f0579/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b64f0579/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:21] Saved code to: ../temp/682c1b65bad84/solution.cpp
+[2025-05-20 08:04:21] Compile command: g++ "../temp/682c1b65bad84/solution.cpp" -o "../temp/682c1b65bad84/solution.exe"
+[2025-05-20 08:04:22] Compilation error: ../temp/682c1b65bad84/solution.cpp: In function 'int main()':
+../temp/682c1b65bad84/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b65bad84/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b65bad84/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:22] Saved code to: ../temp/682c1b666b1b1/solution.cpp
+[2025-05-20 08:04:22] Compile command: g++ "../temp/682c1b666b1b1/solution.cpp" -o "../temp/682c1b666b1b1/solution.exe"
+[2025-05-20 08:04:23] Compilation error: ../temp/682c1b666b1b1/solution.cpp: In function 'int main()':
+../temp/682c1b666b1b1/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b666b1b1/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b666b1b1/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:23] Saved code to: ../temp/682c1b67c01b9/solution.cpp
+[2025-05-20 08:04:23] Compile command: g++ "../temp/682c1b67c01b9/solution.cpp" -o "../temp/682c1b67c01b9/solution.exe"
+[2025-05-20 08:04:24] Compilation error: ../temp/682c1b67c01b9/solution.cpp: In function 'int main()':
+../temp/682c1b67c01b9/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b67c01b9/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b67c01b9/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:25] Saved code to: ../temp/682c1b692b9b4/solution.cpp
+[2025-05-20 08:04:25] Compile command: g++ "../temp/682c1b692b9b4/solution.cpp" -o "../temp/682c1b692b9b4/solution.exe"
+[2025-05-20 08:04:25] Compilation error: ../temp/682c1b692b9b4/solution.cpp: In function 'int main()':
+../temp/682c1b692b9b4/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b692b9b4/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b692b9b4/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:26] Saved code to: ../temp/682c1b69d9a22/solution.cpp
+[2025-05-20 08:04:26] Compile command: g++ "../temp/682c1b69d9a22/solution.cpp" -o "../temp/682c1b69d9a22/solution.exe"
+[2025-05-20 08:04:26] Compilation error: ../temp/682c1b69d9a22/solution.cpp: In function 'int main()':
+../temp/682c1b69d9a22/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b69d9a22/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b69d9a22/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:26] Saved code to: ../temp/682c1b6a9d6c6/solution.cpp
+[2025-05-20 08:04:26] Compile command: g++ "../temp/682c1b6a9d6c6/solution.cpp" -o "../temp/682c1b6a9d6c6/solution.exe"
+[2025-05-20 08:04:27] Compilation error: ../temp/682c1b6a9d6c6/solution.cpp: In function 'int main()':
+../temp/682c1b6a9d6c6/solution.cpp:8:9: error: expected ';' before '}' token
+         }
+         ^
+../temp/682c1b6a9d6c6/solution.cpp:11:5: error: expected ';' before '}' token
+     }
+     ^
+../temp/682c1b6a9d6c6/solution.cpp:14:9: error: expected ';' before '}' token
+         }
+         ^
+
+[2025-05-20 08:04:34] Saved code to: ../temp/682c1b72a6ce5/solution.cpp
+[2025-05-20 08:04:34] Compile command: g++ "../temp/682c1b72a6ce5/solution.cpp" -o "../temp/682c1b72a6ce5/solution.exe"
+[2025-05-20 08:04:35] Compilation error: ../temp/682c1b72a6ce5/solution.cpp: In function 'int main()':
+../temp/682c1b72a6ce5/solution.cpp:11:12: error: no match for 'operator<<' (operand types are 'std::istream {aka std::basic_istream<char>}' and 'const char [9]')
+         cin<<"Negative";
+         ~~~^~~~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\string:52:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.h:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:41,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:46:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<char, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1b72a6ce5/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note: candidate: template<class _CharT, class _Traits, class _Tp> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&)
+     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note:   template argument deduction/substitution failed:
+../temp/682c1b72a6ce5/solution.cpp:11:14: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'std::basic_ostream<_CharT, _Traits>'
+         cin<<"Negative";
+              ^~~~~~~~~~
+
+[2025-05-20 08:04:48] Saved code to: ../temp/682c1b8094329/solution.cpp
+[2025-05-20 08:04:48] Compile command: g++ "../temp/682c1b8094329/solution.cpp" -o "../temp/682c1b8094329/solution.exe"
+[2025-05-20 08:04:49] Run command: "../temp/682c1b8094329/solution.exe" < "../temp/682c1b8094329/input.txt" > "../temp/682c1b8094329/output.txt" 2>> "../temp/682c1b8094329/error.txt"
+[2025-05-20 08:05:10] Saved code to: ../temp/682c1b964fafe/solution.cpp
+[2025-05-20 08:05:10] Compile command: g++ "../temp/682c1b964fafe/solution.cpp" -o "../temp/682c1b964fafe/solution.exe"
+[2025-05-20 08:05:11] Run command: "../temp/682c1b964fafe/solution.exe" < "../temp/682c1b964fafe/input.txt" > "../temp/682c1b964fafe/output.txt" 2>> "../temp/682c1b964fafe/error.txt"
+[2025-05-20 08:05:25] Saved code to: ../temp/682c1ba52a7d6/solution.cpp
+[2025-05-20 08:05:25] Compile command: g++ "../temp/682c1ba52a7d6/solution.cpp" -o "../temp/682c1ba52a7d6/solution.exe"
+[2025-05-20 08:05:26] Run command: "../temp/682c1ba52a7d6/solution.exe" < "../temp/682c1ba52a7d6/input.txt" > "../temp/682c1ba52a7d6/output.txt" 2>> "../temp/682c1ba52a7d6/error.txt"
+[2025-05-20 08:05:31] Saved code to: ../temp/682c1baba09f9/solution.cpp
+[2025-05-20 08:05:31] Compile command: g++ "../temp/682c1baba09f9/solution.cpp" -o "../temp/682c1baba09f9/solution.exe"
+[2025-05-20 08:05:32] Compilation error: ../temp/682c1baba09f9/solution.cpp:7:15: warning: missing terminating " character
+         cout<<"it is positive number>>;
+               ^
+../temp/682c1baba09f9/solution.cpp:7:15: error: missing terminating " character
+         cout<<"it is positive number>>;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~
+../temp/682c1baba09f9/solution.cpp:14:15: warning: missing terminating " character
+         cout<<"it is negative number>>endl;
+               ^
+../temp/682c1baba09f9/solution.cpp:14:15: error: missing terminating " character
+         cout<<"it is negative number>>endl;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../temp/682c1baba09f9/solution.cpp: In function 'int main()':
+../temp/682c1baba09f9/solution.cpp:7:13: error: no match for 'operator<<' (operand types are 'std::ostream {aka std::basic_ostream<char>}' and 'std::istream {aka std::basic_istream<char>}')
+         cout<<"it is positive number>>;
+         ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+             cin>>n;
+             ~~~
+../temp/682c1baba09f9/solution.cpp:7:13: note: candidate: operator<<(int, int) <built-in>
+../temp/682c1baba09f9/solution.cpp:7:13: note:   no known conversion for argument 2 from 'std::istream {aka std::basic_istream<char>}' to 'int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:108:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:108:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:117:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]
+       operator<<(__ios_type& (*__pf)(__ios_type&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:117:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:127:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(ios_base& (*__pf) (ios_base&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:127:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::ios_base& (*)(std::ios_base&)'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:166:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:166:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:170:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:170:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:174:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(bool __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:174:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'bool'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:91:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:91:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'short int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:181:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned short __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:181:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'short unsigned int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:105:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:105:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:192:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned int __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:192:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:201:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:201:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long long int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:205:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:205:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long long unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:220:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(double __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:220:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'double'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:224:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(float __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:224:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'float'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:232:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long double __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:232:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long double'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:245:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(const void* __p)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:245:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'const void*'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:119:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:119:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\string:52:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.h:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:41,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:46:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const std::error_code&'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   deduced conflicting types for parameter '_CharT' ('char' and 'std::basic_istream<char>')
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'signed char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'unsigned char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   mismatched types 'const _CharT*' and 'std::basic_istream<char>'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const signed char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note:   template argument deduction/substitution failed:
+../temp/682c1baba09f9/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const unsigned char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baba09f9/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&) [with _CharT = char; _Traits = std::char_traits<char>; _Tp = std::basic_istream<char>] <near match>
+     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note:   conversion of argument 1 would be ill-formed:
+../temp/682c1baba09f9/solution.cpp:8:13: error: cannot bind 'std::ostream {aka std::basic_ostream<char>}' lvalue to 'std::basic_ostream<char>&&'
+             cin>>n;
+             ^~~
+../temp/682c1baba09f9/solution.cpp:11:9: error: 'elseif' was not declared in this scope
+         elseif{ (n==0)
+         ^~~~~~
+../temp/682c1baba09f9/solution.cpp:13:5: error: 'else' without a previous 'if'
+     else{
+     ^~~~
+../temp/682c1baba09f9/solution.cpp:16:5: error: expected primary-expression before 'return'
+     return 0;
+     ^~~~~~
+../temp/682c1baba09f9/solution.cpp:17:1: error: expected '}' at end of input
+ }
+ ^
+
+[2025-05-20 08:05:35] Saved code to: ../temp/682c1baedeb9a/solution.cpp
+[2025-05-20 08:05:35] Compile command: g++ "../temp/682c1baedeb9a/solution.cpp" -o "../temp/682c1baedeb9a/solution.exe"
+[2025-05-20 08:05:35] Compilation error: ../temp/682c1baedeb9a/solution.cpp:7:15: warning: missing terminating " character
+         cout<<"it is positive number>>;
+               ^
+../temp/682c1baedeb9a/solution.cpp:7:15: error: missing terminating " character
+         cout<<"it is positive number>>;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~
+../temp/682c1baedeb9a/solution.cpp:14:15: warning: missing terminating " character
+         cout<<"it is negative number>>endl;
+               ^
+../temp/682c1baedeb9a/solution.cpp:14:15: error: missing terminating " character
+         cout<<"it is negative number>>endl;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../temp/682c1baedeb9a/solution.cpp: In function 'int main()':
+../temp/682c1baedeb9a/solution.cpp:7:13: error: no match for 'operator<<' (operand types are 'std::ostream {aka std::basic_ostream<char>}' and 'std::istream {aka std::basic_istream<char>}')
+         cout<<"it is positive number>>;
+         ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+             cin>>n;
+             ~~~
+../temp/682c1baedeb9a/solution.cpp:7:13: note: candidate: operator<<(int, int) <built-in>
+../temp/682c1baedeb9a/solution.cpp:7:13: note:   no known conversion for argument 2 from 'std::istream {aka std::basic_istream<char>}' to 'int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:108:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:108:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:117:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]
+       operator<<(__ios_type& (*__pf)(__ios_type&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:117:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:127:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(ios_base& (*__pf) (ios_base&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:127:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::ios_base& (*)(std::ios_base&)'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:166:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:166:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:170:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:170:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:174:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(bool __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:174:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'bool'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:91:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:91:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'short int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:181:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned short __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:181:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'short unsigned int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:105:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:105:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:192:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned int __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:192:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:201:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:201:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long long int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:205:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:205:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long long unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:220:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(double __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:220:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'double'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:224:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(float __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:224:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'float'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:232:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long double __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:232:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long double'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:245:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(const void* __p)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:245:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'const void*'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:119:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:119:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\string:52:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.h:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:41,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:46:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const std::error_code&'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   deduced conflicting types for parameter '_CharT' ('char' and 'std::basic_istream<char>')
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'signed char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'unsigned char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   mismatched types 'const _CharT*' and 'std::basic_istream<char>'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const signed char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note:   template argument deduction/substitution failed:
+../temp/682c1baedeb9a/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const unsigned char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1baedeb9a/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&) [with _CharT = char; _Traits = std::char_traits<char>; _Tp = std::basic_istream<char>] <near match>
+     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note:   conversion of argument 1 would be ill-formed:
+../temp/682c1baedeb9a/solution.cpp:8:13: error: cannot bind 'std::ostream {aka std::basic_ostream<char>}' lvalue to 'std::basic_ostream<char>&&'
+             cin>>n;
+             ^~~
+../temp/682c1baedeb9a/solution.cpp:11:9: error: 'elseif' was not declared in this scope
+         elseif{ (n==0)
+         ^~~~~~
+../temp/682c1baedeb9a/solution.cpp:13:5: error: 'else' without a previous 'if'
+     else{
+     ^~~~
+../temp/682c1baedeb9a/solution.cpp:16:5: error: expected primary-expression before 'return'
+     return 0;
+     ^~~~~~
+../temp/682c1baedeb9a/solution.cpp:17:1: error: expected '}' at end of input
+ }
+ ^
+
+[2025-05-20 08:06:46] Saved code to: ../temp/682c1bf5ea549/solution.cpp
+[2025-05-20 08:06:46] Compile command: g++ "../temp/682c1bf5ea549/solution.cpp" -o "../temp/682c1bf5ea549/solution.exe"
+[2025-05-20 08:06:46] Compilation error: ../temp/682c1bf5ea549/solution.cpp:7:15: warning: missing terminating " character
+         cout<<"it is positive number>>;
+               ^
+../temp/682c1bf5ea549/solution.cpp:7:15: error: missing terminating " character
+         cout<<"it is positive number>>;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~
+../temp/682c1bf5ea549/solution.cpp:14:15: warning: missing terminating " character
+         cout<<"it is negative number>>endl;
+               ^
+../temp/682c1bf5ea549/solution.cpp:14:15: error: missing terminating " character
+         cout<<"it is negative number>>endl;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../temp/682c1bf5ea549/solution.cpp: In function 'int main()':
+../temp/682c1bf5ea549/solution.cpp:7:13: error: no match for 'operator<<' (operand types are 'std::ostream {aka std::basic_ostream<char>}' and 'std::istream {aka std::basic_istream<char>}')
+         cout<<"it is positive number>>;
+         ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+             cin>>n;
+             ~~~
+../temp/682c1bf5ea549/solution.cpp:7:13: note: candidate: operator<<(int, int) <built-in>
+../temp/682c1bf5ea549/solution.cpp:7:13: note:   no known conversion for argument 2 from 'std::istream {aka std::basic_istream<char>}' to 'int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:108:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:108:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:117:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]
+       operator<<(__ios_type& (*__pf)(__ios_type&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:117:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:127:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(ios_base& (*__pf) (ios_base&))
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:127:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::ios_base& (*)(std::ios_base&)'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:166:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:166:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:170:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:170:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:174:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(bool __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:174:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'bool'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:91:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:91:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'short int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:181:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned short __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:181:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'short unsigned int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:105:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:105:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'int'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:192:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned int __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:192:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:201:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:201:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long long int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:205:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long long __n)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:205:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long long unsigned int'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:220:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(double __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:220:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'double'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:224:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(float __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:224:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'float'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:232:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long double __f)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:232:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'long double'
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:245:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(const void* __p)
+       ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:245:7: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'const void*'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:119:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:119:5: note:   no known conversion for argument 1 from 'std::istream {aka std::basic_istream<char>}' to 'std::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}'
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\string:52:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.h:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:41,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.h:5325:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   'std::istream {aka std::basic_istream<char>}' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h:46:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:42,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error:209:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const std::error_code&'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:497:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   deduced conflicting types for parameter '_CharT' ('char' and 'std::basic_istream<char>')
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:502:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:508:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:514:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'signed char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:519:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'unsigned char'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:539:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   mismatched types 'const _CharT*' and 'std::basic_istream<char>'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:638:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc:321:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:556:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:569:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const signed char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:574:5: note:   template argument deduction/substitution failed:
+../temp/682c1bf5ea549/solution.cpp:8:13: note:   cannot convert 'std::cin' (type 'std::istream {aka std::basic_istream<char>}') to type 'const unsigned char*'
+             cin>>n;
+             ^~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39:0,
+                 from ../temp/682c1bf5ea549/solution.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&) [with _CharT = char; _Traits = std::char_traits<char>; _Tp = std::basic_istream<char>] <near match>
+     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:628:5: note:   conversion of argument 1 would be ill-formed:
+../temp/682c1bf5ea549/solution.cpp:8:13: error: cannot bind 'std::ostream {aka std::basic_ostream<char>}' lvalue to 'std::basic_ostream<char>&&'
+             cin>>n;
+             ^~~
+../temp/682c1bf5ea549/solution.cpp:11:9: error: 'elseif' was not declared in this scope
+         elseif{ (n==0)
+         ^~~~~~
+../temp/682c1bf5ea549/solution.cpp:13:5: error: 'else' without a previous 'if'
+     else{
+     ^~~~
+../temp/682c1bf5ea549/solution.cpp:16:5: error: expected primary-expression before 'return'
+     return 0;
+     ^~~~~~
+../temp/682c1bf5ea549/solution.cpp:17:1: error: expected '}' at end of input
+ }
+ ^
+
+[2025-05-20 08:06:54] Detected Java class name: Solution - Will use Solution instead
+[2025-05-20 08:06:55] Java code will be saved as: ../temp/682c1bfe9d1cd/Solution.java
+[2025-05-20 08:06:55] Java code saved to: ../temp/682c1bfe9d1cd/Solution.java with class name: Solution
+[2025-05-20 08:06:55] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1bfe9d1cd/Solution.java"
+[2025-05-20 08:06:56] Compilation error: ..\temp\682c1bfe9d1cd\Solution.java:7: error: ')' expected
+Scanner scr = new Scanner (System.in ;
+                                    ^
+1 error
+
+[2025-05-20 08:06:56] Detected Java class name: Solution - Will use Solution instead
+[2025-05-20 08:06:56] Java code will be saved as: ../temp/682c1c0047130/Solution.java
+[2025-05-20 08:06:56] Java code saved to: ../temp/682c1c0047130/Solution.java with class name: Solution
+[2025-05-20 08:06:56] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1c0047130/Solution.java"
+[2025-05-20 08:06:57] Compilation error: ..\temp\682c1c0047130\Solution.java:7: error: ')' expected
+Scanner scr = new Scanner (System.in ;
+                                    ^
+1 error
+
+[2025-05-20 08:07:07] Detected Java class name: Solution - Will use Solution instead
+[2025-05-20 08:07:07] Java code will be saved as: ../temp/682c1c0b114e2/Solution.java
+[2025-05-20 08:07:07] Java code saved to: ../temp/682c1c0b114e2/Solution.java with class name: Solution
+[2025-05-20 08:07:07] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1c0b114e2/Solution.java"
+[2025-05-20 08:07:09] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/682c1c0b114e2" Solution < "../temp/682c1c0b114e2/input.txt" > "../temp/682c1c0b114e2/output.txt" 2>> "../temp/682c1c0b114e2/error.txt"
+[2025-05-20 08:07:36] Saved code to: ../temp/682c1c28b8363/solution.cpp
+[2025-05-20 08:07:36] Compile command: g++ "../temp/682c1c28b8363/solution.cpp" -o "../temp/682c1c28b8363/solution.exe"
+[2025-05-20 08:07:37] Compilation error: ../temp/682c1c28b8363/solution.cpp:7:2: error: 'A' does not name a type
+ }A paragraph can have two to three sentences, but the typical maximum number is five sentences to be considered a good paragraph. If the writer combines too many sentences into one paragraph, the readers might get lost in the text, so following the standard number of sentences is recommended.
+  ^
+
+[2025-05-20 08:08:31] No public class found in Java code - may cause compilation errors
+[2025-05-20 08:08:31] Java code will be saved as: ../temp/682c1c5f6ba78/Solution.java
+[2025-05-20 08:08:31] Java code saved to: ../temp/682c1c5f6ba78/Solution.java with class name: Solution
+[2025-05-20 08:08:31] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1c5f6ba78/Solution.java"
+[2025-05-20 08:08:32] Compilation error: ..\temp\682c1c5f6ba78\Solution.java:1: error: class, interface, enum, or record expected
+<script>alert("xss")</script>
+^
+1 error
+
+[2025-05-20 08:08:53] Saved code to: ../temp/682c1c7584c87/solution.cpp
+[2025-05-20 08:08:53] Compile command: g++ "../temp/682c1c7584c87/solution.cpp" -o "../temp/682c1c7584c87/solution.exe"
+[2025-05-20 08:08:54] Run command: "../temp/682c1c7584c87/solution.exe" < "../temp/682c1c7584c87/input.txt" > "../temp/682c1c7584c87/output.txt" 2>> "../temp/682c1c7584c87/error.txt"
+[2025-05-20 08:09:37] Saved code to: ../temp/682c1ca12b17a/solution.cpp
+[2025-05-20 08:09:37] Compile command: g++ "../temp/682c1ca12b17a/solution.cpp" -o "../temp/682c1ca12b17a/solution.exe"
+[2025-05-20 08:09:37] Compilation error: ../temp/682c1ca12b17a/solution.cpp:7:2: error: 'A' does not name a type
+ }A paragraph can have two to three sentences, but the typical maximum number is five sentences to be considered a good paragraph. If the writer combines too many sentences into one paragraph, the readers might get lost in the text, so following the standard number of sentences is recommended.A paragraph can have two to three sentences, but the typical maximum number is five sentences to be considered a good paragraph. If the writer combines too many sentences into one paragraph, the readers might get lost in the text, so following the standard number of sentences is recommended.A paragraph can have two to three sentences, but the typical maximum number is five sentences to be considered a good paragraph. If the writer combines too many sentences into one paragraph, the readers might get lost in the text, so following the standard number of sentences is recommended.A paragraph can have two to three sentences, but the typical maximum number is five sentences to be considered a good paragraph. If the writer combines too many sentences into one paragraph, the readers might get lost in the text, so following the standard number of sentences is recommended.
+  ^
+
+[2025-05-20 08:09:49] No public class found in Java code - may cause compilation errors
+[2025-05-20 08:09:49] Java code will be saved as: ../temp/682c1cad35bbe/Solution.java
+[2025-05-20 08:09:49] Java code saved to: ../temp/682c1cad35bbe/Solution.java with class name: Solution
+[2025-05-20 08:09:49] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1cad35bbe/Solution.java"
+[2025-05-20 08:09:50] Compilation error: ..\temp\682c1cad35bbe\Solution.java:1: error: class, interface, enum, or record expected
+<script>alert("xss")</script>
+^
+1 error
+
+[2025-05-20 08:09:59] No public class found in Java code - may cause compilation errors
+[2025-05-20 08:09:59] Java code will be saved as: ../temp/682c1cb7231c1/Solution.java
+[2025-05-20 08:09:59] Java code saved to: ../temp/682c1cb7231c1/Solution.java with class name: Solution
+[2025-05-20 08:09:59] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1cb7231c1/Solution.java"
+[2025-05-20 08:10:00] Compilation error: ..\temp\682c1cb7231c1\Solution.java:1: error: class, interface, enum, or record expected
+<script>alert("xss")</script>
+^
+1 error
+
+[2025-05-20 08:10:28] Saved code to: ../temp/682c1cd41e8cc/solution.py
+[2025-05-20 08:10:28] Run command: python "../temp/682c1cd41e8cc/solution.py" < "../temp/682c1cd41e8cc/input.txt" > "../temp/682c1cd41e8cc/output.txt" 2>> "../temp/682c1cd41e8cc/error.txt"
+[2025-05-20 08:10:28] Runtime error:   File "C:\xampp\htdocs\codinger\temp\682c1cd41e8cc\solution.py", line 4
+    print("The number is positive "))
+                                    ^
+SyntaxError: unmatched ')'
+
+[2025-05-20 08:10:28] No public class found in Java code - may cause compilation errors
+[2025-05-20 08:10:29] Java code will be saved as: ../temp/682c1cd48bd71/Solution.java
+[2025-05-20 08:10:29] Java code saved to: ../temp/682c1cd48bd71/Solution.java with class name: Solution
+[2025-05-20 08:10:29] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/682c1cd48bd71/Solution.java"
+[2025-05-20 08:10:30] Compilation error: ..\temp\682c1cd48bd71\Solution.java:1: error: class, interface, enum, or record expected
+<script>alert("xss")</script>
+^
+1 error
+
+[2025-05-20 08:10:53] Saved code to: ../temp/682c1ced98536/solution.cpp
+[2025-05-20 08:10:53] Compile command: g++ "../temp/682c1ced98536/solution.cpp" -o "../temp/682c1ced98536/solution.exe"
+[2025-05-20 08:10:54] Run command: "../temp/682c1ced98536/solution.exe" < "../temp/682c1ced98536/input.txt" > "../temp/682c1ced98536/output.txt" 2>> "../temp/682c1ced98536/error.txt"
+[2025-05-20 08:12:21] Saved code to: ../temp/682c1d4586e1a/solution.cpp
+[2025-05-20 08:12:21] Compile command: g++ "../temp/682c1d4586e1a/solution.cpp" -o "../temp/682c1d4586e1a/solution.exe"
+[2025-05-20 08:12:22] Run command: "../temp/682c1d4586e1a/solution.exe" < "../temp/682c1d4586e1a/input.txt" > "../temp/682c1d4586e1a/output.txt" 2>> "../temp/682c1d4586e1a/error.txt"
+[2025-05-20 08:12:43] Saved code to: ../temp/682c1d5b389c7/solution.cpp
+[2025-05-20 08:12:43] Compile command: g++ "../temp/682c1d5b389c7/solution.cpp" -o "../temp/682c1d5b389c7/solution.exe"
+[2025-05-20 08:12:43] Compilation error: ../temp/682c1d5b389c7/solution.cpp: In lambda function:
+../temp/682c1d5b389c7/solution.cpp:6:5: error: expected '{' before 'int'
+     int n = size.a
+     ^~~
+../temp/682c1d5b389c7/solution.cpp: In function 'int main()':
+../temp/682c1d5b389c7/solution.cpp:6:5: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1d5b389c7/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[]
+             ^
+../temp/682c1d5b389c7/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1d5b389c7/solution.cpp:6:5: error: expected ',' or ';' before 'int'
+     int n = size.a
+     ^~~
+../temp/682c1d5b389c7/solution.cpp:8:17: error: 'i' was not declared in this scope
+     for (int i; i<= n; i++){
+                 ^
+../temp/682c1d5b389c7/solution.cpp:8:21: error: 'n' was not declared in this scope
+     for (int i; i<= n; i++){
+                     ^
+../temp/682c1d5b389c7/solution.cpp:12:13: error: 'sum' was not declared in this scope
+     cout << sum;
+             ^~~
+
+[2025-05-20 08:12:57] Saved code to: ../temp/682c1d697f4a0/solution.cpp
+[2025-05-20 08:12:57] Compile command: g++ "../temp/682c1d697f4a0/solution.cpp" -o "../temp/682c1d697f4a0/solution.exe"
+[2025-05-20 08:12:58] Compilation error: ../temp/682c1d697f4a0/solution.cpp: In lambda function:
+../temp/682c1d697f4a0/solution.cpp:6:5: error: expected '{' before 'int'
+     int n = size.a()
+     ^~~
+../temp/682c1d697f4a0/solution.cpp: In function 'int main()':
+../temp/682c1d697f4a0/solution.cpp:6:5: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1d697f4a0/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[]
+             ^
+../temp/682c1d697f4a0/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1d697f4a0/solution.cpp:6:5: error: expected ',' or ';' before 'int'
+     int n = size.a()
+     ^~~
+../temp/682c1d697f4a0/solution.cpp:8:17: error: 'i' was not declared in this scope
+     for (int i; i<= n; i++){
+                 ^
+../temp/682c1d697f4a0/solution.cpp:8:21: error: 'n' was not declared in this scope
+     for (int i; i<= n; i++){
+                     ^
+../temp/682c1d697f4a0/solution.cpp:12:13: error: 'sum' was not declared in this scope
+     cout << sum;
+             ^~~
+
+[2025-05-20 08:13:11] Saved code to: ../temp/682c1d77b79c8/solution.cpp
+[2025-05-20 08:13:11] Compile command: g++ "../temp/682c1d77b79c8/solution.cpp" -o "../temp/682c1d77b79c8/solution.exe"
+[2025-05-20 08:13:12] Compilation error: ../temp/682c1d77b79c8/solution.cpp: In lambda function:
+../temp/682c1d77b79c8/solution.cpp:6:5: error: expected '{' before 'int'
+     int n = size.a[]
+     ^~~
+../temp/682c1d77b79c8/solution.cpp: In function 'int main()':
+../temp/682c1d77b79c8/solution.cpp:6:5: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1d77b79c8/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[]
+             ^
+../temp/682c1d77b79c8/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1d77b79c8/solution.cpp:6:5: error: expected ',' or ';' before 'int'
+     int n = size.a[]
+     ^~~
+../temp/682c1d77b79c8/solution.cpp:8:17: error: 'i' was not declared in this scope
+     for (int i; i<= n; i++){
+                 ^
+../temp/682c1d77b79c8/solution.cpp:8:21: error: 'n' was not declared in this scope
+     for (int i; i<= n; i++){
+                     ^
+../temp/682c1d77b79c8/solution.cpp:12:13: error: 'sum' was not declared in this scope
+     cout << sum;
+             ^~~
+
+[2025-05-20 08:14:26] Saved code to: ../temp/682c1dc2d7f50/solution.cpp
+[2025-05-20 08:14:26] Compile command: g++ "../temp/682c1dc2d7f50/solution.cpp" -o "../temp/682c1dc2d7f50/solution.exe"
+[2025-05-20 08:14:27] Compilation error: ../temp/682c1dc2d7f50/solution.cpp: In lambda function:
+../temp/682c1dc2d7f50/solution.cpp:6:5: error: expected '{' before 'int'
+     int n = sizeof(a)/sizeof(a[0]);
+     ^~~
+../temp/682c1dc2d7f50/solution.cpp: In function 'int main()':
+../temp/682c1dc2d7f50/solution.cpp:6:5: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1dc2d7f50/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[]
+             ^
+../temp/682c1dc2d7f50/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1dc2d7f50/solution.cpp:6:5: error: expected ',' or ';' before 'int'
+     int n = sizeof(a)/sizeof(a[0]);
+     ^~~
+../temp/682c1dc2d7f50/solution.cpp:7:5: error: 'sum' was not declared in this scope
+     sum =0:
+     ^~~
+../temp/682c1dc2d7f50/solution.cpp:8:17: error: 'i' was not declared in this scope
+     for (int i; i<= n; i++){
+                 ^
+../temp/682c1dc2d7f50/solution.cpp:8:21: error: 'n' was not declared in this scope
+     for (int i; i<= n; i++){
+                     ^
+
+[2025-05-20 08:14:28] Saved code to: ../temp/682c1dc425018/solution.cpp
+[2025-05-20 08:14:28] Compile command: g++ "../temp/682c1dc425018/solution.cpp" -o "../temp/682c1dc425018/solution.exe"
+[2025-05-20 08:14:28] Compilation error: ../temp/682c1dc425018/solution.cpp: In lambda function:
+../temp/682c1dc425018/solution.cpp:6:5: error: expected '{' before 'int'
+     int n = sizeof(a)/sizeof(a[0]);
+     ^~~
+../temp/682c1dc425018/solution.cpp: In function 'int main()':
+../temp/682c1dc425018/solution.cpp:6:5: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1dc425018/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[]
+             ^
+../temp/682c1dc425018/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1dc425018/solution.cpp:6:5: error: expected ',' or ';' before 'int'
+     int n = sizeof(a)/sizeof(a[0]);
+     ^~~
+../temp/682c1dc425018/solution.cpp:7:5: error: 'sum' was not declared in this scope
+     sum =0:
+     ^~~
+../temp/682c1dc425018/solution.cpp:8:17: error: 'i' was not declared in this scope
+     for (int i; i<= n; i++){
+                 ^
+../temp/682c1dc425018/solution.cpp:8:21: error: 'n' was not declared in this scope
+     for (int i; i<= n; i++){
+                     ^
+
+[2025-05-20 08:14:48] Saved code to: ../temp/682c1dd87144a/solution.cpp
+[2025-05-20 08:14:48] Compile command: g++ "../temp/682c1dd87144a/solution.cpp" -o "../temp/682c1dd87144a/solution.exe"
+[2025-05-20 08:14:49] Compilation error: ../temp/682c1dd87144a/solution.cpp: In lambda function:
+../temp/682c1dd87144a/solution.cpp:6:5: error: expected '{' before 'int'
+     int n = sizeof(a)/sizeof(a[0]);
+     ^~~
+../temp/682c1dd87144a/solution.cpp: In function 'int main()':
+../temp/682c1dd87144a/solution.cpp:6:5: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1dd87144a/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[]
+             ^
+../temp/682c1dd87144a/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1dd87144a/solution.cpp:6:5: error: expected ',' or ';' before 'int'
+     int n = sizeof(a)/sizeof(a[0]);
+     ^~~
+../temp/682c1dd87144a/solution.cpp:7:5: error: 'sum' was not declared in this scope
+     sum =0:
+     ^~~
+../temp/682c1dd87144a/solution.cpp:8:17: error: 'i' was not declared in this scope
+     for (int i; i<= n; i++){
+                 ^
+../temp/682c1dd87144a/solution.cpp:8:21: error: 'n' was not declared in this scope
+     for (int i; i<= n; i++){
+                     ^
+
+[2025-05-20 08:15:07] Saved code to: ../temp/682c1deae07db/solution.cpp
+[2025-05-20 08:15:07] Compile command: g++ "../temp/682c1deae07db/solution.cpp" -o "../temp/682c1deae07db/solution.exe"
+[2025-05-20 08:15:07] Compilation error: ../temp/682c1deae07db/solution.cpp: In lambda function:
+../temp/682c1deae07db/solution.cpp:5:14: error: expected '{' before ';' token
+     int a =[];
+              ^
+../temp/682c1deae07db/solution.cpp: In function 'int main()':
+../temp/682c1deae07db/solution.cpp:5:14: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1deae07db/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[];
+             ^
+../temp/682c1deae07db/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1deae07db/solution.cpp:6:33: error: invalid types 'int[int]' for array subscript
+     int n = sizeof(a)/sizeof(a[0]);
+                                 ^
+../temp/682c1deae07db/solution.cpp:7:5: error: 'sum' was not declared in this scope
+     sum =0;
+     ^~~
+../temp/682c1deae07db/solution.cpp:9:14: error: invalid types 'int[int]' for array subscript
+     sum = a[i] + p;
+              ^
+../temp/682c1deae07db/solution.cpp:9:18: error: 'p' was not declared in this scope
+     sum = a[i] + p;
+                  ^
+
+[2025-05-20 08:15:37] Saved code to: ../temp/682c1e093376d/solution.cpp
+[2025-05-20 08:15:37] Compile command: g++ "../temp/682c1e093376d/solution.cpp" -o "../temp/682c1e093376d/solution.exe"
+[2025-05-20 08:15:37] Compilation error: ../temp/682c1e093376d/solution.cpp: In lambda function:
+../temp/682c1e093376d/solution.cpp:5:14: error: expected '{' before ';' token
+     int a =[];
+              ^
+../temp/682c1e093376d/solution.cpp: In function 'int main()':
+../temp/682c1e093376d/solution.cpp:5:14: error: invalid user-defined conversion from 'main()::<lambda()>' to 'int' [-fpermissive]
+../temp/682c1e093376d/solution.cpp:5:13: note: candidate is: main()::<lambda()>::operator void (*)()() const <near match>
+     int a =[];
+             ^
+../temp/682c1e093376d/solution.cpp:5:13: note:   no known conversion from 'void (*)()' to 'int'
+../temp/682c1e093376d/solution.cpp:6:33: error: invalid types 'int[int]' for array subscript
+     int n = sizeof(a)/sizeof(a[0]);
+                                 ^
+../temp/682c1e093376d/solution.cpp:7:5: error: 'p' was not declared in this scope
+     p =0;
+     ^
+../temp/682c1e093376d/solution.cpp:9:5: error: 'sum' was not declared in this scope
+     sum = a[i] + p;
+     ^~~
+../temp/682c1e093376d/solution.cpp:9:14: error: invalid types 'int[int]' for array subscript
+     sum = a[i] + p;
+              ^
+../temp/682c1e093376d/solution.cpp:12:13: error: 'sum' was not declared in this scope
+     cout << sum;
+             ^~~
+
+[2025-05-20 08:16:54] Saved code to: ../temp/682c1e56903f1/solution.cpp
+[2025-05-20 08:16:54] Compile command: g++ "../temp/682c1e56903f1/solution.cpp" -o "../temp/682c1e56903f1/solution.exe"
+[2025-05-20 08:16:55] Compilation error: ../temp/682c1e56903f1/solution.cpp: In function 'int main()':
+../temp/682c1e56903f1/solution.cpp:7:16: error: expected primary-expression before ',' token
+      int sum = , num;
+                ^
+../temp/682c1e56903f1/solution.cpp:9:19: error: 'num' was not declared in this scope
+             cin>> num;
+                   ^~~
+
+[2025-05-20 08:16:56] Saved code to: ../temp/682c1e587cdd2/solution.cpp
+[2025-05-20 08:16:56] Compile command: g++ "../temp/682c1e587cdd2/solution.cpp" -o "../temp/682c1e587cdd2/solution.exe"
+[2025-05-20 08:16:57] Compilation error: ../temp/682c1e587cdd2/solution.cpp: In function 'int main()':
+../temp/682c1e587cdd2/solution.cpp:7:16: error: expected primary-expression before ',' token
+      int sum = , num;
+                ^
+../temp/682c1e587cdd2/solution.cpp:9:19: error: 'num' was not declared in this scope
+             cin>> num;
+                   ^~~
+
+[2025-05-20 08:17:59] Saved code to: ../temp/682c1e97aaff5/solution.cpp
+[2025-05-20 08:17:59] Compile command: g++ "../temp/682c1e97aaff5/solution.cpp" -o "../temp/682c1e97aaff5/solution.exe"
+[2025-05-20 08:18:00] Run command: "../temp/682c1e97aaff5/solution.exe" < "../temp/682c1e97aaff5/input.txt" > "../temp/682c1e97aaff5/output.txt" 2>> "../temp/682c1e97aaff5/error.txt"

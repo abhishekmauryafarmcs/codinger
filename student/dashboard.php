@@ -475,7 +475,7 @@ $stmt_completed->close();
                                     <p class="card-text time-remaining countdown-timer" data-seconds-remaining="<?php echo $contest['seconds_remaining']; ?>">
                                         <i class="bi bi-hourglass-split"></i> Time Remaining: <span id="timer-<?php echo $contest['id']; ?>"></span>
                                     </p>
-                                    <a href="contest.php?id=<?php echo $contest['id']; ?>" class="btn btn-danger w-100"><i class="bi bi-arrow-right-square"></i> Enter Contest</a>
+                                    <a href="#" class="btn btn-danger w-100" onclick="showContestInfoModal(<?php echo $contest['id']; ?>); return false;"><i class="bi bi-arrow-right-square"></i> Enter Contest</a>
                                 </div>
                             </div>
                         </div>
@@ -604,7 +604,7 @@ $stmt_completed->close();
                         const upcomingButton = countdownElement.closest('.contest-card').querySelector('button[disabled]');
                         if(upcomingButton) {
                             const contestId = elementId.replace('timer-upcoming-', '');
-                            upcomingButton.outerHTML = `<a href="contest.php?id=${contestId}" class="btn btn-success w-100"><i class="bi bi-arrow-right-square"></i> Join Now</a>`;
+                            upcomingButton.outerHTML = `<a href="#" onclick="showContestInfoModal(${contestId}); return false;" class="btn btn-success w-100"><i class="bi bi-arrow-right-square"></i> Join Now</a>`;
                             location.reload(); // Refresh the page to update contest sections
                         }
                     }
@@ -637,7 +637,109 @@ $stmt_completed->close();
                 startCountdown('timer-upcoming-' + contestId, secondsToStart, true);
             });
         });
+
+        let currentContestId = null;
+
+        function showContestInfoModal(contestId) {
+            currentContestId = contestId;
+            const contestInfoModal = new bootstrap.Modal(document.getElementById('contestInfoModal'));
+            contestInfoModal.show();
+            
+            // Set up the proceed button event handler
+            document.getElementById('proceedToContestBtn').onclick = function() {
+                window.location.href = 'contest.php?id=' + currentContestId;
+            };
+        }
     </script>
+    
+    <!-- Contest Information Modal -->
+    <div class="modal fade" id="contestInfoModal" tabindex="-1" aria-labelledby="contestInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contestInfoModalLabel"><i class="bi bi-info-circle-fill me-2"></i>Important Contest Information</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="p-2">
+                        <div class="alert alert-primary">
+                            <h4 class="alert-heading"><i class="bi bi-star-fill text-warning"></i> Welcome to the Contest!</h4>
+                            <p>Please read the following information carefully before proceeding.</p>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header bg-info text-white">
+                                <h5><i class="bi bi-trophy"></i> Scoring System</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> Each problem has a specific point value based on its difficulty.</li>
+                                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> Points are awarded only for solutions that pass all test cases.</li>
+                                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> Partial solutions (passing some test cases) may receive partial credits.</li>
+                                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> The final ranking is determined by total points earned.</li>
+                                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> In case of tied points, the contestant who completed challenges in less time will receive a higher rank.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header bg-danger text-white">
+                                <h5><i class="bi bi-exclamation-triangle"></i> Important Rules & Violations</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-danger">
+                                    <p><strong>The following actions are strictly prohibited and may result in disqualification:</strong></p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex">
+                                        <div class="me-3 text-danger"><i class="bi bi-x-circle-fill"></i></div>
+                                        <div><strong>DO NOT</strong> switch tabs or navigate away from the contest window</div>
+                                    </li>
+                                    <li class="list-group-item d-flex">
+                                        <div class="me-3 text-danger"><i class="bi bi-x-circle-fill"></i></div>
+                                        <div><strong>DO NOT</strong> copy code from external sources or use AI tools</div>
+                                    </li>
+                                    <li class="list-group-item d-flex">
+                                        <div class="me-3 text-danger"><i class="bi bi-x-circle-fill"></i></div>
+                                        <div><strong>DO NOT</strong> communicate with others during the contest</div>
+                                    </li>
+                                    <li class="list-group-item d-flex">
+                                        <div class="me-3 text-danger"><i class="bi bi-x-circle-fill"></i></div>
+                                        <div><strong>DO NOT</strong> open browser developer tools</div>
+                                    </li>
+                                    <li class="list-group-item d-flex">
+                                        <div class="me-3 text-danger"><i class="bi bi-x-circle-fill"></i></div>
+                                        <div><strong>DO NOT</strong> attempt to bypass the system's security measures</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h5><i class="bi bi-lightbulb"></i> Motivation</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="p-4 text-center bg-light rounded">
+                                    <h4 class="mb-3">You've Got This!</h4>
+                                    <p class="lead">"Believe in yourself! With dedication and focus, every challenge becomes an opportunity to shine."</p>
+                                    <p>Remember that each problem you solve is a step toward mastery. Approach each challenge methodically, remain calm, and trust in your abilities.</p>
+                                    <div class="mt-3">
+                                        <i class="bi bi-stars text-warning" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <p class="mt-3"><strong>Good luck and enjoy the contest!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="proceedToContestBtn" class="btn btn-primary">I Understand, Proceed to Contest</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Profile Modal -->
     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">

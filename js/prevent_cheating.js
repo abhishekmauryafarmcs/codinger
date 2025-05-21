@@ -777,8 +777,22 @@ document.addEventListener('DOMContentLoaded', function() {
             showWarningModal(`Page switch detected! (${pageSwitchCount}/${maxSwitches})`);
         }
         
-        // If page switches exceed the maximum allowed, terminate the contest
+        // If page switches exceed the maximum allowed, terminate the contest immediately
         if (pageSwitchCount >= maxSwitches) {
+            // Get contest name if available in the page
+            let contestName = document.querySelector('.contest-title')?.textContent || 
+                            document.title || 'This contest';
+            
+            // Mark this contest as terminated in localStorage
+            localStorage.setItem(`contest_${contestId}_terminated`, 'true');
+            localStorage.setItem(`contest_${contestId}_termination_reason`, 'Exceeded maximum allowed page switches');
+            localStorage.setItem(`contest_${contestId}_termination_time`, Date.now().toString());
+            
+            // Immediately redirect to dashboard without waiting for API call
+            const friendlyMessage = `Your access to "${contestName}" has been revoked due to excessive page switching. You used ${pageSwitchCount} switches out of the maximum allowed ${maxSwitches}.`;
+            window.location.href = `../student/dashboard.php?error=contest_terminated&reason=page_switch_violations&message=${encodeURIComponent(friendlyMessage)}`;
+            
+            // The following will only run if the redirect fails for some reason
             terminateContest('Exceeded maximum allowed page switches.');
         }
     }

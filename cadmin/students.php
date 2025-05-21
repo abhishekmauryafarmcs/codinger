@@ -24,13 +24,13 @@ $stmt = $conn->prepare("
         c.title as contest_title,
         c.start_time,
         c.end_time,
-        COUNT(DISTINCT s.user_id) as participant_count,
+        COUNT(DISTINCT COALESCE(s.user_id, ce.user_id)) as participant_count,
         GROUP_CONCAT(DISTINCT CONCAT(u.full_name, '|', u.enrollment_number, '|', u.college_name) SEPARATOR '||') as participants
     FROM contests c
-    LEFT JOIN problems p ON c.id = p.contest_id
-    LEFT JOIN submissions s ON p.id = s.problem_id
-    LEFT JOIN users u ON s.user_id = u.id
-    GROUP BY c.id
+    LEFT JOIN submissions s ON c.id = s.contest_id
+    LEFT JOIN contest_exits ce ON c.id = ce.contest_id
+    LEFT JOIN users u ON COALESCE(s.user_id, ce.user_id) = u.id
+    GROUP BY c.id, c.title, c.start_time, c.end_time
     ORDER BY c.start_time DESC
 ");
 $stmt->execute();
