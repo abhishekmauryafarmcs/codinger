@@ -107,6 +107,45 @@ if ($time_diff->i > 0) {
 }
 $time_taken .= $time_diff->s . ' second' . ($time_diff->s != 1 ? 's' : '');
 
+// Get the first time the student accessed this problem
+$problem_access_stmt = $conn->prepare("
+    SELECT MIN(access_time) as first_access
+    FROM problem_access_logs
+    WHERE user_id = ? AND problem_id = ? AND contest_id = ?
+");
+
+// If problem_access_logs table doesn't exist or has no data, 
+// we'll continue using the contest start time as fallback
+$actual_time_taken = $time_taken;
+$has_accurate_time = false;
+
+if ($problem_access_stmt) {
+    $problem_access_stmt->bind_param("iii", $submission['user_id'], $submission['problem_id'], $submission['contest_id']);
+    $problem_access_stmt->execute();
+    $access_result = $problem_access_stmt->get_result();
+    
+    if ($access_result && $access_result->num_rows > 0) {
+        $access_data = $access_result->fetch_assoc();
+        if ($access_data['first_access']) {
+            $problem_start = new DateTime($access_data['first_access']);
+            $actual_time_diff = $problem_start->diff($submission_time);
+            
+            $actual_time_taken = '';
+            if ($actual_time_diff->h > 0) {
+                $actual_time_taken .= $actual_time_diff->h . ' hour' . ($actual_time_diff->h > 1 ? 's' : '') . ' ';
+            }
+            if ($actual_time_diff->i > 0) {
+                $actual_time_taken .= $actual_time_diff->i . ' minute' . ($actual_time_diff->i > 1 ? 's' : '') . ' ';
+            }
+            $actual_time_taken .= $actual_time_diff->s . ' second' . ($actual_time_diff->s != 1 ? 's' : '');
+            
+            $has_accurate_time = true;
+        }
+    }
+}
+
+// If we couldn't get accurate time, we'll display a note in the UI
+
 // Calculate test case percentage
 $total_cases = $test_cases_result['total_cases'] ?? 0;
 $test_cases_passed = $submission['test_cases_passed'] ?? 0;
@@ -253,7 +292,14 @@ if ($total_cases > 0) {
                                 <span class="score-badge">
                                     Score: <?php echo number_format($score, 1); ?>/<?php echo $submission['problem_points']; ?>
                                 </span>
-                                <p><strong>Time Taken:</strong> <?php echo $time_taken; ?></p>
+                                <p>
+                                    <strong>Time Taken:</strong> 
+                                    <?php if ($has_accurate_time): ?>
+                                        <?php echo $actual_time_taken; ?>
+                                    <?php else: ?>
+                                        <?php echo $time_taken; ?> <small class="text-muted">(from contest start)</small>
+                                    <?php endif; ?>
+                                </p>
                                 <span class="status-badge <?php 
                                     $badge_class = '';
                                     if ($test_cases_passed == 0) {
@@ -344,7 +390,13 @@ if ($total_cases > 0) {
                         
                         <div>
                             <strong>Time Taken:</strong>
-                            <div><?php echo $time_taken; ?></div>
+                            <div>
+                            <?php if ($has_accurate_time): ?>
+                                <?php echo $actual_time_taken; ?>
+                            <?php else: ?>
+                                <?php echo $time_taken; ?> <small class="text-muted">(from contest start)</small>
+                            <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>

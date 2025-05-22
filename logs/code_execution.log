@@ -2671,3 +2671,12 @@ SyntaxError: unmatched ')'
 [2025-05-20 08:17:59] Saved code to: ../temp/682c1e97aaff5/solution.cpp
 [2025-05-20 08:17:59] Compile command: g++ "../temp/682c1e97aaff5/solution.cpp" -o "../temp/682c1e97aaff5/solution.exe"
 [2025-05-20 08:18:00] Run command: "../temp/682c1e97aaff5/solution.exe" < "../temp/682c1e97aaff5/input.txt" > "../temp/682c1e97aaff5/output.txt" 2>> "../temp/682c1e97aaff5/error.txt"
+[2025-05-21 14:29:51] Saved code to: ../temp/682dc73f1201d/solution.cpp
+[2025-05-21 14:29:51] Compile command: g++ "../temp/682dc73f1201d/solution.cpp" -o "../temp/682dc73f1201d/solution.exe"
+[2025-05-21 14:29:52] Run command: "../temp/682dc73f1201d/solution.exe" < "../temp/682dc73f1201d/input.txt" > "../temp/682dc73f1201d/output.txt" 2>> "../temp/682dc73f1201d/error.txt"
+[2025-05-21 15:31:47] Saved code to: ../temp/682dd5c3a9ccc/solution.cpp
+[2025-05-21 15:31:47] Compile command: g++ "../temp/682dd5c3a9ccc/solution.cpp" -o "../temp/682dd5c3a9ccc/solution.exe"
+[2025-05-21 15:31:54] Run command: "../temp/682dd5c3a9ccc/solution.exe" < "../temp/682dd5c3a9ccc/input.txt" > "../temp/682dd5c3a9ccc/output.txt" 2>> "../temp/682dd5c3a9ccc/error.txt"
+[2025-05-21 15:40:53] Saved code to: ../temp/682dd7e581258/solution.cpp
+[2025-05-21 15:40:53] Compile command: g++ "../temp/682dd7e581258/solution.cpp" -o "../temp/682dd7e581258/solution.exe"
+[2025-05-21 15:40:54] Run command: "../temp/682dd7e581258/solution.exe" < "../temp/682dd7e581258/input.txt" > "../temp/682dd7e581258/output.txt" 2>> "../temp/682dd7e581258/error.txt"

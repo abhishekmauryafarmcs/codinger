@@ -4,10 +4,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const contestId = urlParams.get('id') || document.body.getAttribute('data-contest-id') || 'unknown';
     const storageKey = `pageSwitchCount_${contestId}`;
     
+    // Check if we're loading from a refresh and clear the flag with a small delay
+    // This ensures the visibilitychange events don't count during initial page load
+    setTimeout(() => {
+        sessionStorage.removeItem('page_refreshing');
+    }, 1000);
+    
     // Check if this contest was previously terminated for this user
     // This is a client-side check that works alongside server-side validation
     const wasTerminated = localStorage.getItem(`contest_${contestId}_terminated`) === 'true';
-    if (wasTerminated) {
+    
+    // Get contest status from the page to check if contest is still active
+    const contestStatusEl = document.querySelector('meta[name="contest-status"]');
+    const contestIsCurrentlyActive = contestStatusEl && contestStatusEl.getAttribute('content') === 'active';
+    
+    // Only enforce termination if the contest is still active
+    if (wasTerminated && contestIsCurrentlyActive) {
         const reason = localStorage.getItem(`contest_${contestId}_termination_reason`) || 'Contest rules violation';
         const terminationTime = localStorage.getItem(`contest_${contestId}_termination_time`) || Date.now().toString();
         const terminationDate = new Date(parseInt(terminationTime));
@@ -128,9 +140,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Track if this is the first fullscreen prompt - Check localStorage first, defaulting to true if not found
     let isFirstFullscreenPrompt = localStorage.getItem(`contest_${contestId}_first_fullscreen`) !== 'false';
     
+    // Set a flag to bypass the countdown for the first fullscreen prompt
+    const bypassCountdownForFirstPrompt = true;
+    
     // --- Fullscreen Enforcement Variables ---
     let fullscreenEnforcerOverlay = null;
     let codeMirrorEditor = null; // Will hold the CodeMirror instance
+    
+    // Flag to track if page is being reloaded/refreshed
+    let isPageRefreshing = false;
+    
+    // Listen for beforeunload to detect page refreshes
+    window.addEventListener('beforeunload', function() {
+        isPageRefreshing = true;
+        // We store this in sessionStorage as well since isPageRefreshing variable won't persist across page loads
+        sessionStorage.setItem('page_refreshing', 'true');
+        // Give it a short timeout to be cleared
+        setTimeout(() => {
+            sessionStorage.removeItem('page_refreshing');
+        }, 2000);
+    });
+    
+    // Check if we're coming from a page refresh when the page loads
+    const wasRefreshing = sessionStorage.getItem('page_refreshing') === 'true';
+    if (wasRefreshing) {
+        // Clear the flag immediately
+        sessionStorage.removeItem('page_refreshing');
+    }
     
     // Function to be called from contest.php when timer ends
     window.setContestEnded = function() {
@@ -140,8 +176,14 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(fullscreenCountdownInterval);
             fullscreenCountdownInterval = null;
         }
-        // Optionally clear page switch count for this ended contest
-        // localStorage.removeItem(storageKey);
+        
+        // Clean up all localStorage items related to this contest to prevent issues with future contests
+        localStorage.removeItem(storageKey); // Remove page switch count
+        localStorage.removeItem(`contest_${contestId}_terminated`);
+        localStorage.removeItem(`contest_${contestId}_termination_reason`);
+        localStorage.removeItem(`contest_${contestId}_termination_time`);
+        localStorage.removeItem(`contest_${contestId}_first_fullscreen`);
+        
         // Hide violation status bar if it's still visible
         if (statusBar && statusBar.style.opacity === '1') {
             statusBar.style.opacity = '0';
@@ -284,8 +326,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const enterButton = fullscreenEnforcerOverlay.querySelector('button');
             const switchInfoElement = document.getElementById('fullscreen-switch-info');
             
-            // Only start the countdown if this is not the first fullscreen prompt
-            if (!isFirstFullscreenPrompt && !fullscreenCountdownInterval) {
+            // If it's the first prompt, enter fullscreen immediately
+            if (isFirstFullscreenPrompt && bypassCountdownForFirstPrompt) {
+                // Immediately attempt to enter fullscreen on first load
+                setTimeout(() => {
+                    requestSystemFullscreen();
+                    // Set first fullscreen flag to false to prevent re-triggering
+                    isFirstFullscreenPrompt = false;
+                    localStorage.setItem(`contest_${contestId}_first_fullscreen`, 'false');
+                }, 1000); // Small delay to allow UI to render
+            }
+            // Start countdown for non-first prompts or if immediate entry is disabled
+            else if (!isFirstFullscreenPrompt && !fullscreenCountdownInterval) {
                 fullscreenCountdownValue = 5; // Reset countdown to 5 seconds
                 
                 if (messageElement) messageElement.innerHTML = '<i class="bi bi-exclamation-triangle-fill" style="font-size: 2em; margin-bottom: 15px; color: #ffc107;"></i><br>Fullscreen Exit Detected!';
@@ -398,6 +450,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function refreshPageWithClearedCache() {
         // Store the current contest ID to preserve it
         const contestId = urlParams.get('id');
+        
+        // Mark that we're refreshing to prevent counting as tab switch
+        isPageRefreshing = true;
+        sessionStorage.setItem('page_refreshing', 'true');
         
         // Build the cache-busting URL
         const refreshUrl = window.location.pathname + 
@@ -573,7 +629,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('visibilitychange', function() {
         if (document.hidden && isContestActive) {
             pageHiddenStartTime = Date.now();
+            
+            // We don't immediately count this as a violation
+            // We'll wait to see if it's a refresh or actual tab switch
+            
+            // If page is being refreshed, don't count it as a tab switch
+            if (!isPageRefreshing) {
             handlePageSwitchViolation('Tab switched!');
+            }
         } else if (!document.hidden && isContestActive && pageHiddenStartTime > 0) {
             // Page became visible again after being hidden
             const timeHidden = Date.now() - pageHiddenStartTime;
@@ -760,6 +823,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to handle page switch violations (tab switching, window switching, etc.)
     function handlePageSwitchViolation(reason) {
         if (!isContestActive) return;
+        
+        // Don't count violations if page is refreshing
+        if (isPageRefreshing || sessionStorage.getItem('page_refreshing') === 'true') {
+            return;
+        }
         
         // Increment the counter
         pageSwitchCount++;

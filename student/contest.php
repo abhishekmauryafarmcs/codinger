@@ -213,6 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="contest-status" content="<?php echo htmlspecialchars($contest['contest_status']); ?>">
     <title><?php echo htmlspecialchars($contest['title']); ?> - Codinger</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
@@ -1324,6 +1325,20 @@ int main() {
                 console.log(`${prop}: ${typeof problem[prop]} (${problem[prop] ? problem[prop].toString().substring(0, 30) : 'null/undefined'})`);
             }
             
+            // Log problem access to track time spent on each problem
+            fetch('../api/log_problem_access.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    problem_id: problem.id,
+                    contest_id: <?php echo $contest_id; ?>
+                })
+            })
+            .then(response => response.json())
+            .catch(error => console.error('Error logging problem access:', error));
+            
             // Update submit button state based on the selected problem's submission status
             const submitBtn = document.querySelector('.btn-success[onclick="submitCode()"]');
             if (submitBtn) {
@@ -1723,22 +1738,22 @@ int main() {
         });
 
         // Function to load last submitted code or starter code
-function loadLastSubmissionOrStarterCode(problemId, language) {
-    const contestId = <?php echo $contest_id; ?>;
-    const storedCode = localStorage.getItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`);
-    if (storedCode) {
-        editor.setValue(storedCode);
-    } else {
-        editor.setValue(starterCode[language] || starterCode.cpp); // Fallback to C++ starter if language specific not found
-    }
-}
+        function loadLastSubmissionOrStarterCode(problemId, language) {
+            const contestId = <?php echo $contest_id; ?>;
+            const storedCode = localStorage.getItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`);
+            if (storedCode) {
+                editor.setValue(storedCode);
+            } else {
+                editor.setValue(starterCode[language] || starterCode.cpp); // Fallback to C++ starter if language specific not found
+            }
+        }
 
-// Function to save current editor content to localStorage
-function saveCurrentCodeToLocalStorage(problemId, language) {
-    const contestId = <?php echo $contest_id; ?>;
-    const currentCode = editor.getValue();
-    localStorage.setItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`, currentCode);
-}
+        // Function to save current editor content to localStorage
+        function saveCurrentCodeToLocalStorage(problemId, language) {
+            const contestId = <?php echo $contest_id; ?>;
+            const currentCode = editor.getValue();
+            localStorage.setItem(`problem-${problemId}-contest-${contestId}-language-${language}-code`, currentCode);
+        }
         
         // Save code to localStorage when editor content changes
         editor.on('change', function() {

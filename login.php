@@ -32,12 +32,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $enrollment = isset($_POST['enrollment']) ? trim($_POST['enrollment']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
+    // Check if enrollment number equals password
+    if ($enrollment !== $password) {
+        $error = "Your password must be the same as your enrollment number";
+        error_log("Student Login Failed - Password doesn't match enrollment number");
+    } else {
     try {
         // Check if connection exists
         if (!isset($conn) || $conn->connect_error) {
             throw new Exception("Database connection failed");
         }
 
+            // First check if this enrollment number is in any contest enrollments
+            $stmt = $conn->prepare("SELECT contest_id FROM contest_enrollments WHERE enrollment_number = ? LIMIT 1");
+            if (!$stmt) {
+                throw new Exception("Query preparation failed: " . $conn->error);
+            }
+
+            $stmt->bind_param("s", $enrollment);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows === 0) {
+                // The student is not enrolled in any contest
+                $error = "You are not part of any contest. Please contact your administrator.";
+                error_log("Student Login Failed - Enrollment not in any contest: $enrollment");
+                $stmt->close();
+            } else {
+                $stmt->close();
+                
+                // Now check if the user exists
         $stmt = $conn->prepare("SELECT id, password, full_name, enrollment_number FROM users WHERE enrollment_number = ?");
         if (!$stmt) {
             throw new Exception("Query preparation failed: " . $conn->error);
@@ -48,8 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
         
-        if ($user && password_verify($password, $user['password'])) {
-            // Set session variables
+                if ($user) {
+                    // Check if the password already matches their enrollment number
+                    if (password_verify($enrollment, $user['password'])) {
+                        // Password matches enrollment number, login directly
             $_SESSION['student']['user_id'] = $user['id'];
             $_SESSION['student']['role'] = 'student';
             $_SESSION['student']['full_name'] = $user['full_name'];
@@ -68,13 +94,79 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: student/dashboard.php");
             exit();
         } else {
-            $error = "Invalid enrollment number or password";
-            error_log("Student Login Failed - Enrollment: $enrollment");
+                        // Update the user's password to match their enrollment number
+                        $hashed_password = password_hash($enrollment, PASSWORD_DEFAULT);
+                        $update_stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+                        $update_stmt->bind_param("si", $hashed_password, $user['id']);
+                        
+                        if ($update_stmt->execute()) {
+                            // Password updated successfully, now log them in
+                            $_SESSION['student']['user_id'] = $user['id'];
+                            $_SESSION['student']['role'] = 'student';
+                            $_SESSION['student']['full_name'] = $user['full_name'];
+                            $_SESSION['student']['enrollment_number'] = $user['enrollment_number'];
+
+                            // Regenerate session ID for security
+                            session_regenerate_id(true);
+                            
+                            // Register this session as the only valid one for this user
+                            registerUserSession($user['id'], 'student');
+
+                            // Log successful login with password update
+                            error_log("Student Login Success with Password Update - User ID: {$user['id']}");
+
+                            // Redirect to student dashboard
+                            header("Location: student/dashboard.php");
+                            exit();
+                        } else {
+                            $error = "Failed to update your account password. Please try again.";
+                            error_log("Student Password Update Failed - User ID: {$user['id']}");
+                        }
+                        $update_stmt->close();
+                    }
+                } else {
+                    // User doesn't exist but is in enrollments - create a new user with the enrollment number
+                    $hashed_password = password_hash($enrollment, PASSWORD_DEFAULT);
+                    $full_name = "Student " . $enrollment; // Default name
+                    $college_name = "Auto Enrolled"; // Default college name
+                    $mobile_number = "0000000000"; // Default mobile number
+                    $email = $enrollment . "@codinger.student"; // Default email based on enrollment
+                    
+                    $stmt = $conn->prepare("INSERT INTO users (enrollment_number, full_name, password, college_name, mobile_number, email) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("ssssss", $enrollment, $full_name, $hashed_password, $college_name, $mobile_number, $email);
+                    
+                    if ($stmt->execute()) {
+                        $user_id = $conn->insert_id;
+                        
+                        // Set session variables
+                        $_SESSION['student']['user_id'] = $user_id;
+                        $_SESSION['student']['role'] = 'student';
+                        $_SESSION['student']['full_name'] = $full_name;
+                        $_SESSION['student']['enrollment_number'] = $enrollment;
+
+                        // Regenerate session ID for security
+                        session_regenerate_id(true);
+                        
+                        // Register this session as the only valid one for this user
+                        registerUserSession($user_id, 'student');
+
+                        // Log successful login with new account
+                        error_log("New Student Account Created and Login Success - User ID: $user_id");
+
+                        // Redirect to student dashboard
+                        header("Location: student/dashboard.php");
+                        exit();
+                    } else {
+                        $error = "Failed to create your account. Please try again.";
+                        error_log("Student Account Creation Failed - Enrollment: $enrollment");
+                    }
         }
         $stmt->close();
+            }
     } catch (Exception $e) {
         error_log("Login Error: " . $e->getMessage());
         $error = 'An error occurred. Please try again.';
+        }
     }
 }
 ?>
@@ -109,9 +201,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="login.php">Student Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
                     </li>
                 </ul>
             </div>
@@ -153,9 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
             </form>
 
-            <div class="text-center mt-3">
-                Don't have an account? <a href="register.php">Register here</a>
-            </div>
+            <!-- Registration removed as per requirements -->
         </div>
     </div>
 

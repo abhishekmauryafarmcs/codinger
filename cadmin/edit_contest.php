@@ -97,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 allowed_tab_switches = ?, 
                 prevent_copy_paste = ?, 
                 prevent_right_click = ?,
-                max_submissions = ? 
+                max_submissions = ?,
+                type = 'private' 
                 WHERE id = ?");
             $stmt->bind_param("ssssiiiis", 
                 $title, 

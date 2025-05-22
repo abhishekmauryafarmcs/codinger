@@ -18,7 +18,7 @@ $form_data = [
     'description' => isset($_POST['description']) ? $_POST['description'] : 'Welcome to our first coding challenge! Test your skills with algorithmic problems.',
     'start_time' => isset($_POST['start_time']) ? $_POST['start_time'] : '',
     'end_time' => isset($_POST['end_time']) ? $_POST['end_time'] : '',
-    'type' => isset($_POST['contest_type']) ? $_POST['contest_type'] : 'public',
+    'type' => 'private', // Always set to private
     'allowed_tab_switches' => isset($_POST['allowed_tab_switches']) ? $_POST['allowed_tab_switches'] : 0,
     'prevent_copy_paste' => isset($_POST['prevent_copy_paste']) ? $_POST['prevent_copy_paste'] : 0,
     'prevent_right_click' => isset($_POST['prevent_right_click']) ? $_POST['prevent_right_click'] : 0,
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
         'description' => trim($_POST['description']),
         'start_time' => $_POST['start_time'],
         'end_time' => $_POST['end_time'],
-        'type' => $_POST['contest_type'],
+        'type' => 'private', // Always set to private
         'allowed_tab_switches' => isset($_POST['allowed_tab_switches']) ? intval($_POST['allowed_tab_switches']) : 0,
         'prevent_copy_paste' => isset($_POST['prevent_copy_paste']) ? 1 : 0,
         'prevent_right_click' => isset($_POST['prevent_right_click']) ? 1 : 0,
@@ -71,15 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
         $errors[] = "Contest type is required";
     }
 
-    // Validate enrollment file for private contests
-    if ($form_data['type'] === 'private') {
+    // Validate enrollment file (always required since contests are always private)
         if (!isset($_FILES['enrollment_file']) || $_FILES['enrollment_file']['error'] !== UPLOAD_ERR_OK) {
-            $errors[] = "Enrollment file is required for private contests";
+        $errors[] = "Enrollment file with student enrollment numbers is required";
         } else {
             $file_extension = strtolower(pathinfo($_FILES['enrollment_file']['name'], PATHINFO_EXTENSION));
             if ($file_extension !== 'xlsx' && $file_extension !== 'csv' && $file_extension !== 'txt') {
                 $errors[] = "Only CSV (.csv), Excel (.xlsx) or text (.txt) files are allowed";
-            }
         }
     }
 
@@ -340,11 +338,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="contest_type" class="form-label">Contest Type <span class="text-danger">*</span></label>
-                                                <select class="form-select" id="contest_type" name="contest_type" required>
-                                                    <option value="">Select Contest Type</option>
-                                                    <option value="public" <?php echo $form_data['type'] === 'public' ? 'selected' : ''; ?>>Public (Open to all)</option>
-                                                    <option value="private" <?php echo $form_data['type'] === 'private' ? 'selected' : ''; ?>>Private (By enrollment only)</option>
-                                                </select>
+                                                <input type="text" class="form-control" id="contest_type_display" value="Private (By enrollment only)" disabled>
+                                                <input type="hidden" name="contest_type" value="private">
                                             </div>
                                         </div>
                                     </div>
@@ -497,7 +492,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
             const description = document.getElementById('description');
             const startTime = document.getElementById('start_time');
             const endTime = document.getElementById('end_time');
-            const contestType = document.getElementById('contest_type');
+            // Contest type is now fixed as private
+            const contestType = document.querySelector('input[name="contest_type"]');
 
             // Function to remove error alerts
             function removeErrorAlerts() {
@@ -582,14 +578,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
                     hasErrors = true;
                 }
 
-                // Validate enrollment file for private contests
-                if (contestType.value === 'private') {
+                // Validate enrollment file (always required since contests are always private)
                     const enrollmentFile = document.querySelector('input[name="enrollment_file"]');
                     if (!enrollmentFile.files.length) {
                         enrollmentFile.classList.add('is-invalid');
-                        errors.push('Please upload an enrollment file for private contests');
+                    errors.push('Please upload an enrollment file with student enrollment numbers');
                         hasErrors = true;
-                    }
                 }
 
                 if (hasErrors) {
@@ -667,16 +661,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contest'])) {
             // Initial validation on page load
             validateDates();
 
-            // Show/hide enrollment file input based on contest type
-            contestType.addEventListener('change', function() {
+            // Always show enrollment file input since contest is always private
                 const enrollmentFileDiv = document.getElementById('enrollment_file_section');
-                if (this.value === 'private') {
                     enrollmentFileDiv.classList.remove('d-none');
-                } else {
-                    enrollmentFileDiv.classList.add('d-none');
-                }
-                checkForErrors();
-            });
 
             // Problem selection
             const problemCards = document.querySelectorAll('.problem-card');

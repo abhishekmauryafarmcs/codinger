@@ -371,6 +371,7 @@ $stmt_completed->close();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#" onclick="openProfileDialog(); return false;"><i class="bi bi-person-fill"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#clearTerminationDataModal"><i class="bi bi-eraser"></i> Fix Contest Access</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="../logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                         </ul>
@@ -636,6 +637,55 @@ $stmt_completed->close();
                 const secondsToStart = parseInt(timerEl.dataset.secondsToStart, 10);
                 startCountdown('timer-upcoming-' + contestId, secondsToStart, true);
             });
+            
+            // Setup Clear Termination Data functionality
+            const clearButton = document.getElementById('confirmClearTerminationData');
+            if (clearButton) {
+                clearButton.addEventListener('click', function() {
+                    // Get all localStorage keys
+                    const keys = Object.keys(localStorage);
+                    
+                    // Filter for contest-related keys
+                    const contestKeys = keys.filter(key => 
+                        key.startsWith('contest_') || 
+                        key.startsWith('pageSwitchCount_') || 
+                        key.includes('_terminated') || 
+                        key.includes('_termination_')
+                    );
+                    
+                    // Remove all contest termination-related items
+                    contestKeys.forEach(key => localStorage.removeItem(key));
+                    
+                    // Close the modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('clearTerminationDataModal'));
+                    modal.hide();
+                    
+                    // Show success alert
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = 'alert alert-success alert-dismissible fade show';
+                    alertDiv.innerHTML = `
+                        <strong>Success!</strong> Contest termination data has been cleared. 
+                        You can now try accessing your contests again.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    `;
+                    
+                    // Insert at top of container
+                    const container = document.querySelector('.container');
+                    container.insertBefore(alertDiv, container.firstChild);
+                    
+                    // Auto-dismiss after 5 seconds
+                    setTimeout(() => {
+                        if (alertDiv.parentNode) {
+                            alertDiv.classList.remove('show');
+                            setTimeout(() => {
+                                if (alertDiv.parentNode) {
+                                    alertDiv.parentNode.removeChild(alertDiv);
+                                }
+                            }, 300);
+                        }
+                    }, 5000);
+                });
+            }
         });
 
         let currentContestId = null;
@@ -736,6 +786,26 @@ $stmt_completed->close();
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" id="proceedToContestBtn" class="btn btn-primary">I Understand, Proceed to Contest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Clear Termination Data Modal -->
+    <div class="modal fade" id="clearTerminationDataModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title"><i class="bi bi-exclamation-triangle me-2"></i>Clear Contest Termination Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This will clear any saved contest termination data from your browser. Use this only if you cannot access a contest even though it's currently active and you should have access to it.</p>
+                    <p class="text-danger"><strong>Note:</strong> This will only clear client-side data. If you were permanently terminated from a contest by the system, you'll still need to contact an administrator.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmClearTerminationData">Clear Termination Data</button>
                 </div>
             </div>
         </div>
