@@ -64,11 +64,13 @@ if ($resultsPublished) {
     $stmt = $conn->prepare("
         SELECT DISTINCT u.id, u.full_name, u.enrollment_number
         FROM users u
-        JOIN submissions s ON u.id = s.user_id
-        WHERE s.contest_id = ?
+        LEFT JOIN submissions s ON u.id = s.user_id AND s.contest_id = ?
+        LEFT JOIN problem_access_logs pal ON u.id = pal.user_id AND pal.contest_id = ?
+        LEFT JOIN contest_exits ce ON u.id = ce.user_id AND ce.contest_id = ?
+        WHERE s.contest_id = ? OR pal.contest_id = ? OR ce.contest_id = ?
         ORDER BY u.full_name
     ");
-    $stmt->bind_param("i", $contest_id);
+    $stmt->bind_param("iiiiii", $contest_id, $contest_id, $contest_id, $contest_id, $contest_id, $contest_id);
     $stmt->execute();
     $students_result = $stmt->get_result();
     $students = $students_result->fetch_all(MYSQLI_ASSOC);
@@ -482,7 +484,7 @@ if ($resultsPublished) {
                         <tbody>
                             <?php if (empty($leaderboard)): ?>
                             <tr>
-                                <td colspan="<?php echo 4 + count($problems); ?>" class="text-center">No submissions found for this contest</td>
+                                <td colspan="<?php echo 4 + count($problems); ?>" class="text-center">No participants found for this contest</td>
                             </tr>
                             <?php else: ?>
                                 <?php 
@@ -498,6 +500,9 @@ if ($resultsPublished) {
                                             <?php if ($isCurrentUser): ?>
                                                 <span class="badge bg-primary">You</span>
                                             <?php endif; ?>
+                                            <?php if ($student['total_score'] == 0 && $student['total_time'] == 0): ?>
+                                                <span class="badge bg-secondary">No attempts</span>
+                                            <?php endif; ?>
                                         </div>
                                         <small class="text-muted"><?php echo htmlspecialchars($student['enrollment']); ?></small>
                                     </td>
@@ -506,46 +511,30 @@ if ($resultsPublished) {
                                     
                                     <?php foreach ($problems as $problem): ?>
                                         <?php 
-                                        $problem_result = $student['problems'][$problem['id']] ?? null;
-                                        $status_class = '';
-                                        $status_text = 'Not attempted';
+                                        $problem_data = $student['problems'][$problem['id']] ?? null;
+                                        $status = $problem_data ? $problem_data['status'] : 'not_attempted';
+                                        $score = $problem_data ? $problem_data['score'] : 0;
+                                        $max_score = $problem_data ? $problem_data['max_score'] : $problem['points'];
+                                        $test_cases = $problem_data ? "{$problem_data['test_cases_passed']}/{$problem_data['total_test_cases']}" : "0/0";
                                         
-                                        if ($problem_result) {
-                                            if ($problem_result['status'] === 'accepted') {
-                                                $status_class = 'accepted';
-                                                $status_text = 'Accepted';
-                                            } elseif ($problem_result['score'] > 0) {
-                                                $status_class = 'partial';
-                                                $status_text = 'Partial';
-                                            } elseif ($problem_result['status'] !== 'not_attempted') {
-                                                $status_class = 'rejected';
-                                                $status_text = 'Failed';
-                                            }
+                                        $cell_class = '';
+                                        if ($status === 'accepted') {
+                                            $cell_class = 'accepted';
+                                        } elseif ($status === 'wrong_answer' || $status === 'runtime_error' || $status === 'compilation_error') {
+                                            $cell_class = 'rejected';
+                                        } elseif ($score > 0) {
+                                            $cell_class = 'partial';
                                         }
                                         ?>
-                                        <td class="problem-cell <?php echo $status_class; ?>" 
+                                        <td class="problem-cell <?php echo $cell_class; ?>" 
                                             data-bs-toggle="tooltip" 
                                             data-bs-html="true"
-                                            data-bs-title="<?php 
-                                                if ($problem_result && $problem_result['status'] !== 'not_attempted') {
-                                                    echo "Status: $status_text<br>";
-                                                    echo "Score: " . round($problem_result['score'], 1) . "/" . $problem_result['max_score'] . "<br>";
-                                                    echo "Test Cases: " . $problem_result['test_cases_passed'] . "/" . $problem_result['total_test_cases'] . "<br>";
-                                                    if ($problem_result['submitted_at']) {
-                                                        echo "Submitted: " . date('M d, Y h:i:s A', strtotime($problem_result['submitted_at'])) . "<br>";
-                                                        echo "Time Taken: " . gmdate("H:i:s", $problem_result['time_taken']);
-                                                    }
-                                                } else {
-                                                    echo "Not attempted";
-                                                }
-                                            ?>">
-                                            <?php 
-                                            if ($problem_result && $problem_result['status'] !== 'not_attempted') {
-                                                echo round($problem_result['score'], 1) . "/" . $problem_result['max_score']; 
-                                            } else {
-                                                echo "-";
-                                            }
-                                            ?>
+                                            title="Score: <?php echo $score; ?>/<?php echo $max_score; ?><br>Test Cases: <?php echo $test_cases; ?>">
+                                            <?php if ($status === 'not_attempted'): ?>
+                                                -
+                                            <?php else: ?>
+                                                <?php echo round($score, 1); ?>
+                                            <?php endif; ?>
                                         </td>
                                     <?php endforeach; ?>
                                 </tr>
