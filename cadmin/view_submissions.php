@@ -198,7 +198,22 @@ uasort($students, function($a, $b) {
             padding: 15px;
             border-bottom: 1px solid #eee;
             background-color: #f8f9fa;
-            border-radius: 8px 8px 0 0;
+        }
+        .navbar {
+            background: #1a1a1a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .navbar .nav-link,
+        .navbar .navbar-brand,
+        .navbar .navbar-text {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        .navbar .nav-link:hover {
+            color: #fff !important;
         }
         .submission-item {
             padding: 12px 15px;
@@ -229,9 +244,11 @@ uasort($students, function($a, $b) {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Codinger</a>
+            <a class="navbar-brand" href="../index.php">
+                <img src="../images/LNCT-Logo.png" alt="LNCT Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>

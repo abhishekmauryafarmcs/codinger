@@ -69,11 +69,13 @@ foreach ($problems as $problem) {
 $stmt = $conn->prepare("
     SELECT DISTINCT u.id, u.full_name, u.enrollment_number
     FROM users u
-    JOIN submissions s ON u.id = s.user_id
-    WHERE s.contest_id = ?
+    LEFT JOIN submissions s ON u.id = s.user_id AND s.contest_id = ?
+    LEFT JOIN problem_access_logs pal ON u.id = pal.user_id AND pal.contest_id = ?
+    LEFT JOIN contest_exits ce ON u.id = ce.user_id AND ce.contest_id = ?
+    WHERE s.contest_id = ? OR pal.contest_id = ? OR ce.contest_id = ?
     ORDER BY u.full_name
 ");
-$stmt->bind_param("i", $contest_id);
+$stmt->bind_param("iiiiii", $contest_id, $contest_id, $contest_id, $contest_id, $contest_id, $contest_id);
 $stmt->execute();
 $students_result = $stmt->get_result();
 $students = $students_result->fetch_all(MYSQLI_ASSOC);
@@ -84,7 +86,7 @@ foreach ($students as $student) {
     $debug['students'][] = ['id' => $student['id'], 'name' => $student['full_name']];
 }
 
-// If no students have submissions for this contest, show debug info and exit
+// If no students have entered this contest, show debug info and exit
 if (empty($students)) {
     $leaderboard = [];
 } else {
@@ -223,6 +225,22 @@ usort($leaderboard, function($a, $b) {
     <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
     <style>
+        .navbar {
+            background: #1a1a1a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .navbar .nav-link,
+        .navbar .navbar-brand,
+        .navbar .navbar-text {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        .navbar .nav-link:hover {
+            color: #fff !important;
+        }
         .leaderboard {
             background: #fff;
             border-radius: 8px;
@@ -292,12 +310,37 @@ usort($leaderboard, function($a, $b) {
             max-width: 300px;
             text-align: left;
         }
+        /* Search styles */
+        .input-group {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        #enrollmentSearch {
+            border-right: none;
+        }
+        #enrollmentSearch:focus {
+            box-shadow: none;
+            border-color: #ced4da;
+        }
+        .input-group .btn-outline-secondary {
+            border-left: none;
+            background: white;
+        }
+        .input-group .btn-outline-secondary:hover {
+            background: #f8f9fa;
+        }
+        .search-highlight {
+            background-color: #ffc107;
+            padding: 0.1em 0;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Codinger</a>
+            <a class="navbar-brand" href="../index.php">
+                <img src="../images/LNCT-Logo.png" alt="LNCT Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -393,32 +436,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-        <div class="contest-info">
-            <h2 class="contest-title"><?php echo htmlspecialchars($contest['title']); ?></h2>
-            <div class="contest-dates">
-                Start: <?php echo date('M d, Y h:i A', strtotime($contest['start_time'])); ?> | 
-                End: <?php echo date('M d, Y h:i A', strtotime($contest['end_time'])); ?>
-            </div>
-            <div class="mt-2">
-                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#scoringInfo" aria-expanded="false" aria-controls="scoringInfo">
-                    Scoring System <i class="bi bi-info-circle"></i>
-                </button>
-                <div class="collapse mt-2" id="scoringInfo">
-                    <div class="card card-body">
-                        <ul class="mb-0">
-                            <li><strong>Submission criteria:</strong> Only the most recent submission per problem is counted</li>
-                            <li><strong>Points per problem:</strong> Each problem has its own point value</li>
-                            <li><strong>Points per test case:</strong> Problem points divided by the number of test cases</li>
-                            <li><strong>Bonus points:</strong> +50 points for passing all test cases of a problem</li>
-                            <li><strong>Ranking criteria:</strong>
-                                <ol class="mb-0">
-                                    <li>Number of successfully submitted problems (all test cases passed)</li>
-                                    <li>Total score across all problems (including bonus points)</li>
-                                    <li>Total time taken (less time is better)</li>
-                                </ol>
-                            </li>
-                        </ul>
+        <div class="mt-2">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" id="enrollmentSearch" class="form-control" placeholder="Search by Enrollment Number">
+                        <button class="btn btn-outline-secondary" type="button" onclick="clearSearch()">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
                     </div>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#scoringInfo" aria-expanded="false" aria-controls="scoringInfo">
+                Scoring System <i class="bi bi-info-circle"></i>
+            </button>
+            <div class="collapse mt-2" id="scoringInfo">
+                <div class="card card-body">
+                    <ul class="mb-0">
+                        <li><strong>Submission criteria:</strong> Only the most recent submission per problem is counted</li>
+                        <li><strong>Points per problem:</strong> Each problem has its own point value</li>
+                        <li><strong>Points per test case:</strong> Problem points divided by the number of test cases</li>
+                        <li><strong>Bonus points:</strong> +50 points for passing all test cases of a problem</li>
+                        <li><strong>Ranking criteria:</strong>
+                            <ol class="mb-0">
+                                <li>Number of successfully submitted problems (all test cases passed)</li>
+                                <li>Total score across all problems (including bonus points)</li>
+                                <li>Total time taken (less time is better)</li>
+                            </ol>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -450,14 +496,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <tbody>
                             <?php if (empty($leaderboard)): ?>
                             <tr>
-                                <td colspan="<?php echo 4 + count($problems); ?>" class="text-center">No submissions found for this contest</td>
+                                <td colspan="<?php echo 4 + count($problems); ?>" class="text-center">No participants found for this contest</td>
                             </tr>
                             <?php else: ?>
                                 <?php foreach ($leaderboard as $rank => $student): ?>
                                 <tr class="<?php echo $rank < 3 ? 'rank-' . ($rank + 1) : ''; ?>">
-                                    <td class="<?php echo $rank < 3 ? 'top-rank' : ''; ?>"><?php echo $rank + 1; ?></td>
+                                    <td class="<?php echo $rank < 3 ? 'top-rank' : ''; ?>">
+                                        <?php echo ($student['total_score'] > 0 || $student['total_time'] > 0) ? ($rank + 1) : '-'; ?>
+                                    </td>
                                     <td>
-                                        <div><?php echo htmlspecialchars($student['name']); ?></div>
+                                        <div>
+                                            <?php echo htmlspecialchars($student['name']); ?>
+                                            <?php if ($student['total_score'] == 0 && $student['total_time'] == 0): ?>
+                                                <span class="badge bg-warning">No submissions</span>
+                                            <?php endif; ?>
+                                        </div>
                                         <small class="text-muted"><?php echo htmlspecialchars($student['enrollment']); ?></small>
                                     </td>
                                     <td class="<?php echo $rank < 3 ? 'top-rank' : ''; ?>"><?php echo round($student['total_score'], 1); ?></td>
@@ -500,7 +553,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             ?>">
                                             <?php 
                                             if ($problem_result && $problem_result['status'] !== 'not_attempted') {
-                                                echo round($problem_result['score'], 1) . "/" . $problem_result['max_score']; 
+                                                echo round($problem_result['score'], 1); 
                                             } else {
                                                 echo "-";
                                             }
@@ -525,6 +578,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
+            
+            // Search functionality
+            const searchInput = document.getElementById('enrollmentSearch');
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                const tableRows = document.querySelectorAll('.leaderboard tbody tr');
+                
+                tableRows.forEach(row => {
+                    const enrollmentCell = row.querySelector('td:nth-child(2) small');
+                    if (enrollmentCell) {
+                        const enrollment = enrollmentCell.textContent.toLowerCase();
+                        if (enrollment.includes(searchValue)) {
+                            row.style.display = '';
+                            // Highlight the matching text
+                            if (searchValue) {
+                                const regex = new RegExp(`(${searchValue})`, 'gi');
+                                enrollmentCell.innerHTML = enrollmentCell.textContent.replace(
+                                    regex, 
+                                    '<span class="bg-warning">$1</span>'
+                                );
+                            } else {
+                                enrollmentCell.innerHTML = enrollmentCell.textContent;
+                            }
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            
+            // Clear search function
+            window.clearSearch = function() {
+                searchInput.value = '';
+                searchInput.dispatchEvent(new Event('input'));
+            }
             
             // Export to Excel functionality
             document.getElementById('exportExcel').addEventListener('click', function() {

@@ -409,7 +409,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             left: 0;
             right: 0;
             z-index: 1030;
-            background-color: #212529;
+            background: #1a1a1a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .navbar .nav-link,
+        .navbar .navbar-brand,
+        .navbar .navbar-text {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        .navbar .nav-link:hover {
+            color: #fff !important;
         }
         .navbar-timer {
             position: absolute;
@@ -539,12 +552,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
       data-allow-copy-paste="<?php echo $contest['prevent_copy_paste'] ? '0' : '1'; ?>"
       data-prevent-right-click="<?php echo $contest['prevent_right_click'] ? '1' : '0'; ?>"
       data-user-id="<?php echo htmlspecialchars($_SESSION['student']['user_id']); ?>">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <span class="navbar-brand">Codinger</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="../index.php">
+                <img src="../images/LNCT-Logo.png" alt="LNCT Logo">
+            </a>
             
             <!-- Centered Timer -->
             <div class="navbar-timer">
@@ -664,6 +676,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             </div>
         </div>
     </div>
+
+    <footer class="text-center py-4 bg-white mt-4 border-top">
+        <img src="../images/lnct-logo-footer-300x106-1.png" alt="LNCT Footer Logo" style="height:40px;">
+        <div class="mt-2 text-muted" style="font-size:0.95rem;">&copy; <?php echo date('Y'); ?> LNCT Group of Colleges. All rights reserved.</div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>

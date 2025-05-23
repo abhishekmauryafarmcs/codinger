@@ -181,6 +181,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="css/auth_style.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
+        /* Add navbar styles */
+        .navbar {
+            background: #1a1a1a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .navbar .nav-link,
+        .navbar .navbar-brand,
+        .navbar .navbar-text {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        .navbar .nav-link:hover {
+            color: #fff !important;
+        }
         .session-expired {
             animation: fadeInOut 0.5s ease-in-out;
         }
@@ -191,9 +208,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body class="auth-page">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark auth-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark auth-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.php"><i class="bi bi-code-slash"></i> Codinger</a>
+            <a class="navbar-brand" href="index.php">
+                <img src="images/LNCT-Logo.png" alt="LNCT Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -246,8 +265,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <footer class="auth-footer">
-        <p>&copy; <?php echo date("Y"); ?> Codinger. All Rights Reserved.</p>
+    <footer class="text-center py-4 bg-white mt-4 border-top">
+        <img src="images/lnct-logo-footer-300x106-1.png" alt="LNCT Footer Logo" style="height:40px;">
+        <div class="mt-2 text-muted" style="font-size:0.95rem;">&copy; <?php echo date('Y'); ?> LNCT Group of Colleges. All rights reserved.</div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

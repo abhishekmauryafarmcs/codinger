@@ -207,11 +207,27 @@ if ($resultsPublished) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($contest['title']); ?> - Results - Codinger</title>
+    <title><?php echo htmlspecialchars($contest['title']); ?> - Results - LNCT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <style>
+        .navbar {
+            background: #1a1a1a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .navbar .nav-link,
+        .navbar .navbar-brand,
+        .navbar .navbar-text {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        .navbar .nav-link:hover {
+            color: #fff !important;
+        }
         .leaderboard {
             background: #fff;
             border-radius: 8px;
@@ -289,9 +305,11 @@ if ($resultsPublished) {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="dashboard.php">Codinger</a>
+            <a class="navbar-brand" href="dashboard.php">
+                <img src="../images/LNCT-Logo.png" alt="LNCT Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -299,9 +317,6 @@ if ($resultsPublished) {
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.php">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contests.php">All Contests</a>
                     </li>
                     <li class="nav-item">
                         <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['student']['full_name']); ?></span>
