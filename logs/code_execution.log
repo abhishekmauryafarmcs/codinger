@@ -2680,3 +2680,50 @@ SyntaxError: unmatched ')'
 [2025-05-21 15:40:53] Saved code to: ../temp/682dd7e581258/solution.cpp
 [2025-05-21 15:40:53] Compile command: g++ "../temp/682dd7e581258/solution.cpp" -o "../temp/682dd7e581258/solution.exe"
 [2025-05-21 15:40:54] Run command: "../temp/682dd7e581258/solution.exe" < "../temp/682dd7e581258/input.txt" > "../temp/682dd7e581258/output.txt" 2>> "../temp/682dd7e581258/error.txt"
+[2025-05-23 18:12:48] Saved code to: ../temp/68309e80205ac/solution.cpp
+[2025-05-23 18:12:48] Compile command: g++ "../temp/68309e80205ac/solution.cpp" -o "../temp/68309e80205ac/solution.exe"
+[2025-05-23 18:12:54] Run command: "../temp/68309e80205ac/solution.exe" < "../temp/68309e80205ac/input.txt" > "../temp/68309e80205ac/output.txt" 2>> "../temp/68309e80205ac/error.txt"
+[2025-05-23 18:52:24] Saved code to: ../temp/6830a7c8abb0a/solution.cpp
+[2025-05-23 18:52:24] Compile command: g++ "../temp/6830a7c8abb0a/solution.cpp" -o "../temp/6830a7c8abb0a/solution.exe"
+[2025-05-23 18:52:27] Compilation error: ../temp/6830a7c8abb0a/solution.cpp: In function 'int main()':
+../temp/6830a7c8abb0a/solution.cpp:5:11: error: expected initializer before 'b'
+     int a b;
+           ^
+../temp/6830a7c8abb0a/solution.cpp:6:10: error: 'a' was not declared in this scope
+     cin>>a>>b;
+          ^
+../temp/6830a7c8abb0a/solution.cpp:6:13: error: 'b' was not declared in this scope
+     cin>>a>>b;
+             ^
+
+[2025-05-23 18:52:27] Saved code to: ../temp/6830a7cbb34e8/solution.cpp
+[2025-05-23 18:52:27] Compile command: g++ "../temp/6830a7cbb34e8/solution.cpp" -o "../temp/6830a7cbb34e8/solution.exe"
+[2025-05-23 18:52:28] Compilation error: ../temp/6830a7cbb34e8/solution.cpp: In function 'int main()':
+../temp/6830a7cbb34e8/solution.cpp:5:11: error: expected initializer before 'b'
+     int a b;
+           ^
+../temp/6830a7cbb34e8/solution.cpp:6:10: error: 'a' was not declared in this scope
+     cin>>a>>b;
+          ^
+../temp/6830a7cbb34e8/solution.cpp:6:13: error: 'b' was not declared in this scope
+     cin>>a>>b;
+             ^
+
+[2025-05-23 18:52:39] Saved code to: ../temp/6830a7d7be7fb/solution.cpp
+[2025-05-23 18:52:39] Compile command: g++ "../temp/6830a7d7be7fb/solution.cpp" -o "../temp/6830a7d7be7fb/solution.exe"
+[2025-05-23 18:52:41] Run command: "../temp/6830a7d7be7fb/solution.exe" < "../temp/6830a7d7be7fb/input.txt" > "../temp/6830a7d7be7fb/output.txt" 2>> "../temp/6830a7d7be7fb/error.txt"
+[2025-05-23 18:52:41] Saved code to: ../temp/6830a7d9c2f1b/solution.cpp
+[2025-05-23 18:52:41] Compile command: g++ "../temp/6830a7d9c2f1b/solution.cpp" -o "../temp/6830a7d9c2f1b/solution.exe"
+[2025-05-23 18:52:42] Run command: "../temp/6830a7d9c2f1b/solution.exe" < "../temp/6830a7d9c2f1b/input.txt" > "../temp/6830a7d9c2f1b/output.txt" 2>> "../temp/6830a7d9c2f1b/error.txt"
+[2025-05-23 19:11:06] Saved code to: ../temp/6830ac2a38d4e/solution.cpp
+[2025-05-23 19:11:06] Compile command: g++ "../temp/6830ac2a38d4e/solution.cpp" -o "../temp/6830ac2a38d4e/solution.exe"
+[2025-05-23 19:11:07] Run command: "../temp/6830ac2a38d4e/solution.exe" < "../temp/6830ac2a38d4e/input.txt" > "../temp/6830ac2a38d4e/output.txt" 2>> "../temp/6830ac2a38d4e/error.txt"
+[2025-05-23 19:11:07] Saved code to: ../temp/6830ac2ba413a/solution.cpp
+[2025-05-23 19:11:07] Compile command: g++ "../temp/6830ac2ba413a/solution.cpp" -o "../temp/6830ac2ba413a/solution.exe"
+[2025-05-23 19:11:08] Run command: "../temp/6830ac2ba413a/solution.exe" < "../temp/6830ac2ba413a/input.txt" > "../temp/6830ac2ba413a/output.txt" 2>> "../temp/6830ac2ba413a/error.txt"
+[2025-05-23 19:14:59] Saved code to: ../temp/6830ad1329a3f/solution.cpp
+[2025-05-23 19:14:59] Compile command: g++ "../temp/6830ad1329a3f/solution.cpp" -o "../temp/6830ad1329a3f/solution.exe"
+[2025-05-23 19:15:00] Run command: "../temp/6830ad1329a3f/solution.exe" < "../temp/6830ad1329a3f/input.txt" > "../temp/6830ad1329a3f/output.txt" 2>> "../temp/6830ad1329a3f/error.txt"
+[2025-05-23 19:15:00] Saved code to: ../temp/6830ad145706d/solution.cpp
+[2025-05-23 19:15:00] Compile command: g++ "../temp/6830ad145706d/solution.cpp" -o "../temp/6830ad145706d/solution.exe"
+[2025-05-23 19:15:01] Run command: "../temp/6830ad145706d/solution.exe" < "../temp/6830ad145706d/input.txt" > "../temp/6830ad145706d/output.txt" 2>> "../temp/6830ad145706d/error.txt"

@@ -2,7 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the contest ID from the URL or data attribute
     const urlParams = new URLSearchParams(window.location.search);
     const contestId = urlParams.get('id') || document.body.getAttribute('data-contest-id') || 'unknown';
-    const storageKey = `pageSwitchCount_${contestId}`;
+    const userId = document.body.getAttribute('data-user-id'); // Get user ID from body attribute
+    const storageKey = `pageSwitchCount_${contestId}_${userId}`; // Include user ID in storage key
+    
+    // Clear any previous user's data for this contest
+    Object.keys(localStorage).forEach(key => {
+        if (key.includes(`problem-${contestId}`) || // Clear previous code
+            key.includes(`pageSwitchCount_${contestId}`) || // Clear previous switch counts
+            (key.includes(`contest_${contestId}`) && !key.includes('_terminated'))) { // Clear contest data but keep termination status
+            localStorage.removeItem(key);
+        }
+    });
     
     // Check if we're loading from a refresh and clear the flag with a small delay
     // This ensures the visibilitychange events don't count during initial page load
@@ -125,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isContestActive = true;
     let warningTimeout;
     let lastViolationTime = 0;
-    let debugMode = false; // Set to true to enable console logging
+    let debugMode = true; // Set to true to enable console logging for development
     
     // Track clipboard state to detect external copying
     let internalClipboardContent = null;
@@ -196,10 +206,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }    
     };
     
-    // Debug helper function
+    // Debug helper function - enabled for development
     function debug(message) {
         if (debugMode) {
-            // Console logging removed
+            console.log(message);
         }
     }
     
@@ -754,55 +764,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Function to detect if developer tools are open
-    function detectDeveloperTools() {
-        const threshold = 160; // Time in ms. If execution takes longer, dev tools likely open.
-        let devToolsOpen = false;
-
-        // Technique 1: Check console.toString()
-        // This is a common technique, but can be fragile.
-        const element = new Image();
-        Object.defineProperty(element, 'id', {
-            get: function () {
-                devToolsOpen = true;
-                return 'devtools';
-            }
-        });
-        // console.dirxml will trigger the getter if devtools are open and it tries to display the element properties
-        // We need to be careful not to log this to the actual console during normal operation.
-        // So, we'll wrap it in a way that it only has an effect if devtools are truly inspecting it.
-        
-        const devToolsChecker = {
-            open: false,
-            toString: function() {
-                this.open = true;
-                return 'devtools_opened';
-            }
-        };
-        // Using console.log with a custom toString object.
-        // If devtools are open, it might try to introspect the object, calling toString().
-        // console.log('%c', devToolsChecker); 
-        // This line above is tricky because if devtools are NOT open, it might still log. 
-        // A more reliable direct check is the debugger statement approach.
-
-        // Technique 2: Debugger statement timing
-        const startTime = performance.now();
-        debugger; // This statement will pause if dev tools are open
-        const endTime = performance.now();
-
-        if (endTime - startTime > threshold) {
-            devToolsOpen = true;
-        }
-
-        // Technique 3: Check if specific console functions are native code
-        // This is less reliable as browsers change and users can override these too.
-        // if (typeof console.log !== 'function' || console.log.toString().indexOf('native code') === -1) {
-        // devToolsOpen = true;
-        // }
-
-        return devToolsOpen;
-    }
-
     // Function to handle developer tools violations
     function handleDevToolsViolation() {
         if (!isContestActive) return;
@@ -1064,6 +1025,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Redirect to the dashboard with appropriate error parameters
         window.location.href = `../student/dashboard.php?error=contest_terminated&reason=${encodeURIComponent(reason)}&message=${encodeURIComponent(friendlyMessage)}`;
     }
+
+    // DevTools check - periodically check if dev tools are open
+    // Commented out for development as per user request
+    /*
+    if (isContestActive && detectDeveloperTools()) {
+        handleDevToolsViolation();
+    }
+    setInterval(() => {
+        if (isContestActive && detectDeveloperTools()) {
+            handleDevToolsViolation();
+        }
+    }, 2000); // Check every 2 seconds
+    */
 
     // Periodically check for developer tools
     // We need to be careful with setInterval and debugger statements, as they can be disruptive.

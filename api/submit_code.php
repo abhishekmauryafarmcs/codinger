@@ -353,7 +353,20 @@ try {
     $allPassed = true;
     $testCasesPassed = 0;
     $totalTestCases = count($testCases);
+    $visibleTestCasesPassed = 0;
+    $totalVisibleTestCases = 0;
+    $hiddenTestCasesPassed = 0;
+    $totalHiddenTestCases = 0;
+
     foreach ($testCases as $index => $testCase) {
+        $isVisible = isset($testCase['is_visible']) ? $testCase['is_visible'] : 1;
+        
+        if ($isVisible) {
+            $totalVisibleTestCases++;
+        } else {
+            $totalHiddenTestCases++;
+        }
+
         // Save test input
         file_put_contents($inputFile, $testCase['test_input']);
 
@@ -383,6 +396,11 @@ try {
 
         if ($passed) {
             $testCasesPassed++;
+            if ($isVisible) {
+                $visibleTestCasesPassed++;
+            } else {
+                $hiddenTestCasesPassed++;
+            }
         }
 
         $results[] = [
@@ -390,8 +408,8 @@ try {
             'time' => $executionTime,
             'expected' => $passed ? null : $expected,
             'actual' => $passed ? null : $output,
-            'input' => $testCase['test_input'], // Include input for better debugging
-            'is_visible' => isset($testCase['is_visible']) ? $testCase['is_visible'] : 1
+            'input' => $testCase['test_input'],
+            'is_visible' => $isVisible
         ];
     }
 
@@ -400,7 +418,10 @@ try {
     $score = $testCasesPassed * ($problem['points'] / $totalTestCases);
     
     // Log submission details before saving to database
-    error_log("Saving submission: User ID=$user_id, Problem ID=$problem_id, Contest ID=$contest_id, Status=$status, Passed=$testCasesPassed/$totalTestCases");
+    error_log("Saving submission: User ID=$user_id, Problem ID=$problem_id, Contest ID=$contest_id, Status=$status");
+    error_log("Test Cases Summary: Total=$totalTestCases, Passed=$testCasesPassed");
+    error_log("Visible Test Cases: Total=$totalVisibleTestCases, Passed=$visibleTestCasesPassed");
+    error_log("Hidden Test Cases: Total=$totalHiddenTestCases, Passed=$hiddenTestCasesPassed");
     
     $stmt = $conn->prepare("INSERT INTO submissions (user_id, problem_id, contest_id, code, language, status, test_cases_passed, total_test_cases, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     if (!$stmt) {
@@ -427,8 +448,31 @@ try {
     
     // Return the result as JSON
     echo json_encode([
-        'status' => $status,
-        'testCases' => $results
+        'status' => 'success',
+        'test_results' => array_map(function($result) {
+            return [
+                'status' => $result['passed'] ? 'passed' : 'failed',
+                'input' => $result['input'],
+                'expected' => $result['expected'],
+                'actual' => $result['actual'],
+                'execution_time' => $result['time'],
+                'error' => null
+            ];
+        }, array_filter($results, function($result) {
+            // Only return visible test cases
+            return $result['is_visible'] == 1;
+        })),
+        'summary' => [
+            'visible_test_cases' => [
+                'total' => $totalVisibleTestCases,
+                'passed' => $visibleTestCasesPassed
+            ],
+            'hidden_test_cases' => [
+                'total' => $totalHiddenTestCases,
+                'passed' => $hiddenTestCasesPassed
+            ],
+            'all_test_cases_passed' => $allPassed
+        ]
     ]);
 
 } catch (Exception $e) {

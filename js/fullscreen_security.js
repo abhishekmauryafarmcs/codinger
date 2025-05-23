@@ -8,16 +8,16 @@
     // Configuration
     const config = {
         // Whether to clear clipboard on fullscreen enter
-        clearClipboardOnFullscreen: true,
+        clearClipboardOnFullscreen: false, // Disabled for development
         
         // Whether to periodically check clipboard when in fullscreen
-        periodicClipboardCheck: true,
+        periodicClipboardCheck: false, // Disabled for development
         
         // Interval in ms for clipboard checks when in fullscreen
         clipboardCheckInterval: 5000,
         
         // Whether to log events
-        logEvents: true,
+        logEvents: true, // Enabled for development
         
         // Whether to show notifications to user
         showNotifications: true,
@@ -368,12 +368,11 @@
     }
     
     /**
-     * Log messages if logging is enabled
-     * @param {string} message - The message to log
+     * Log function - enabled for development
      */
     function log(message) {
         if (config.logEvents) {
-            console.log('[Security]', message);
+            console.log('[FullscreenSecurity] ' + message);
         }
     }
     
