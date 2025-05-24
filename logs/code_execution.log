@@ -2733,3 +2733,150 @@ SyntaxError: unmatched ')'
 [2025-05-23 20:37:59] Saved code to: ../temp/6830c0870b96d/solution.cpp
 [2025-05-23 20:37:59] Compile command: g++ "../temp/6830c0870b96d/solution.cpp" -o "../temp/6830c0870b96d/solution.exe"
 [2025-05-23 20:38:00] Run command: "../temp/6830c0870b96d/solution.exe" < "../temp/6830c0870b96d/input.txt" > "../temp/6830c0870b96d/output.txt" 2>> "../temp/6830c0870b96d/error.txt"
+[2025-05-23 21:09:42] Detected Java class name: Solution - Will use Solution instead
+[2025-05-23 21:09:42] Java code will be saved as: ../temp/6830c7f637d4a/Solution.java
+[2025-05-23 21:09:42] Java code saved to: ../temp/6830c7f637d4a/Solution.java with class name: Solution
+[2025-05-23 21:09:42] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6830c7f637d4a/Solution.java"
+[2025-05-23 21:09:43] Compilation error: ..\temp\6830c7f637d4a\Solution.java:4: error: not a statement
+        sout{
+        ^
+..\temp\6830c7f637d4a\Solution.java:4: error: ';' expected
+        sout{
+            ^
+2 errors
+
+[2025-05-23 21:09:51] Saved code to: ../temp/6830c7ff0beeb/solution.cpp
+[2025-05-23 21:09:51] Compile command: g++ "../temp/6830c7ff0beeb/solution.cpp" -o "../temp/6830c7ff0beeb/solution.exe"
+[2025-05-23 21:09:52] Run command: "../temp/6830c7ff0beeb/solution.exe" < "../temp/6830c7ff0beeb/input.txt" > "../temp/6830c7ff0beeb/output.txt" 2>> "../temp/6830c7ff0beeb/error.txt"
+[2025-05-23 21:13:15] Saved code to: ../temp/6830c8cb2a319/solution.cpp
+[2025-05-23 21:13:15] Compile command: g++ "../temp/6830c8cb2a319/solution.cpp" -o "../temp/6830c8cb2a319/solution.exe"
+[2025-05-23 21:13:16] Run command: "../temp/6830c8cb2a319/solution.exe" < "../temp/6830c8cb2a319/input.txt" > "../temp/6830c8cb2a319/output.txt" 2>> "../temp/6830c8cb2a319/error.txt"
+[2025-05-23 21:13:16] Saved code to: ../temp/6830c8cc56096/solution.cpp
+[2025-05-23 21:13:16] Compile command: g++ "../temp/6830c8cc56096/solution.cpp" -o "../temp/6830c8cc56096/solution.exe"
+[2025-05-23 21:13:17] Run command: "../temp/6830c8cc56096/solution.exe" < "../temp/6830c8cc56096/input.txt" > "../temp/6830c8cc56096/output.txt" 2>> "../temp/6830c8cc56096/error.txt"
+[2025-05-23 21:22:01] Detected Java class name: Solution - Will use Solution instead
+[2025-05-23 21:22:02] Java code will be saved as: ../temp/6830cad9d7981/Solution.java
+[2025-05-23 21:22:02] Java code saved to: ../temp/6830cad9d7981/Solution.java with class name: Solution
+[2025-05-23 21:22:02] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6830cad9d7981/Solution.java"
+[2025-05-23 21:22:03] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6830cad9d7981" Solution < "../temp/6830cad9d7981/input.txt" > "../temp/6830cad9d7981/output.txt" 2>> "../temp/6830cad9d7981/error.txt"
+[2025-05-23 21:22:03] Detected Java class name: Solution - Will use Solution instead
+[2025-05-23 21:22:04] Java code will be saved as: ../temp/6830cadbe6f76/Solution.java
+[2025-05-23 21:22:04] Java code saved to: ../temp/6830cadbe6f76/Solution.java with class name: Solution
+[2025-05-23 21:22:04] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6830cadbe6f76/Solution.java"
+[2025-05-23 21:22:06] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6830cadbe6f76" Solution < "../temp/6830cadbe6f76/input.txt" > "../temp/6830cadbe6f76/output.txt" 2>> "../temp/6830cadbe6f76/error.txt"
+[2025-05-23 21:22:50] Detected Java class name: Solution - Will use Solution instead
+[2025-05-23 21:22:50] Java code will be saved as: ../temp/6830cb0a24528/Solution.java
+[2025-05-23 21:22:50] Java code saved to: ../temp/6830cb0a24528/Solution.java with class name: Solution
+[2025-05-23 21:22:50] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6830cb0a24528/Solution.java"
+[2025-05-23 21:22:51] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6830cb0a24528" Solution < "../temp/6830cb0a24528/input.txt" > "../temp/6830cb0a24528/output.txt" 2>> "../temp/6830cb0a24528/error.txt"
+[2025-05-23 21:22:52] Detected Java class name: Solution - Will use Solution instead
+[2025-05-23 21:22:52] Java code will be saved as: ../temp/6830cb0c32270/Solution.java
+[2025-05-23 21:22:52] Java code saved to: ../temp/6830cb0c32270/Solution.java with class name: Solution
+[2025-05-23 21:22:52] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/6830cb0c32270/Solution.java"
+[2025-05-23 21:22:54] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/6830cb0c32270" Solution < "../temp/6830cb0c32270/input.txt" > "../temp/6830cb0c32270/output.txt" 2>> "../temp/6830cb0c32270/error.txt"
+[2025-05-23 21:32:25] Saved code to: ../temp/6830cd4950de3/solution.cpp
+[2025-05-23 21:32:25] Compile command: g++ "../temp/6830cd4950de3/solution.cpp" -o "../temp/6830cd4950de3/solution.exe"
+[2025-05-23 21:32:26] Run command: "../temp/6830cd4950de3/solution.exe" < "../temp/6830cd4950de3/input.txt" > "../temp/6830cd4950de3/output.txt" 2>> "../temp/6830cd4950de3/error.txt"
+[2025-05-23 21:32:26] Saved code to: ../temp/6830cd4a805bd/solution.cpp
+[2025-05-23 21:32:26] Compile command: g++ "../temp/6830cd4a805bd/solution.cpp" -o "../temp/6830cd4a805bd/solution.exe"
+[2025-05-23 21:32:27] Run command: "../temp/6830cd4a805bd/solution.exe" < "../temp/6830cd4a805bd/input.txt" > "../temp/6830cd4a805bd/output.txt" 2>> "../temp/6830cd4a805bd/error.txt"
+[2025-05-23 21:32:59] Saved code to: ../temp/6830cd6bd098d/solution.cpp
+[2025-05-23 21:32:59] Compile command: g++ "../temp/6830cd6bd098d/solution.cpp" -o "../temp/6830cd6bd098d/solution.exe"
+[2025-05-23 21:33:00] Run command: "../temp/6830cd6bd098d/solution.exe" < "../temp/6830cd6bd098d/input.txt" > "../temp/6830cd6bd098d/output.txt" 2>> "../temp/6830cd6bd098d/error.txt"
+[2025-05-23 21:33:01] Saved code to: ../temp/6830cd6d200ca/solution.cpp
+[2025-05-23 21:33:01] Compile command: g++ "../temp/6830cd6d200ca/solution.cpp" -o "../temp/6830cd6d200ca/solution.exe"
+[2025-05-23 21:33:02] Run command: "../temp/6830cd6d200ca/solution.exe" < "../temp/6830cd6d200ca/input.txt" > "../temp/6830cd6d200ca/output.txt" 2>> "../temp/6830cd6d200ca/error.txt"
+[2025-05-23 21:37:31] Saved code to: ../temp/6830ce7b2f779/solution.cpp
+[2025-05-23 21:37:31] Compile command: g++ "../temp/6830ce7b2f779/solution.cpp" -o "../temp/6830ce7b2f779/solution.exe"
+[2025-05-23 21:37:32] Run command: "../temp/6830ce7b2f779/solution.exe" < "../temp/6830ce7b2f779/input.txt" > "../temp/6830ce7b2f779/output.txt" 2>> "../temp/6830ce7b2f779/error.txt"
+[2025-05-23 21:37:32] Saved code to: ../temp/6830ce7c8dc58/solution.cpp
+[2025-05-23 21:37:32] Compile command: g++ "../temp/6830ce7c8dc58/solution.cpp" -o "../temp/6830ce7c8dc58/solution.exe"
+[2025-05-23 21:37:33] Run command: "../temp/6830ce7c8dc58/solution.exe" < "../temp/6830ce7c8dc58/input.txt" > "../temp/6830ce7c8dc58/output.txt" 2>> "../temp/6830ce7c8dc58/error.txt"
+[2025-05-23 21:40:24] Saved code to: ../temp/6830cf2820488/solution.cpp
+[2025-05-23 21:40:24] Compile command: g++ "../temp/6830cf2820488/solution.cpp" -o "../temp/6830cf2820488/solution.exe"
+[2025-05-23 21:40:25] Run command: "../temp/6830cf2820488/solution.exe" < "../temp/6830cf2820488/input.txt" > "../temp/6830cf2820488/output.txt" 2>> "../temp/6830cf2820488/error.txt"
+[2025-05-23 21:40:25] Saved code to: ../temp/6830cf296f318/solution.cpp
+[2025-05-23 21:40:25] Compile command: g++ "../temp/6830cf296f318/solution.cpp" -o "../temp/6830cf296f318/solution.exe"
+[2025-05-23 21:40:26] Run command: "../temp/6830cf296f318/solution.exe" < "../temp/6830cf296f318/input.txt" > "../temp/6830cf296f318/output.txt" 2>> "../temp/6830cf296f318/error.txt"
+[2025-05-24 07:49:53] Detected Java class name: Solution - Will use Solution instead
+[2025-05-24 07:49:54] Java code will be saved as: ../temp/68315e01a6e24/Solution.java
+[2025-05-24 07:49:54] Java code saved to: ../temp/68315e01a6e24/Solution.java with class name: Solution
+[2025-05-24 07:49:54] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/68315e01a6e24/Solution.java"
+[2025-05-24 07:49:56] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/68315e01a6e24" Solution < "../temp/68315e01a6e24/input.txt" > "../temp/68315e01a6e24/output.txt" 2>> "../temp/68315e01a6e24/error.txt"
+[2025-05-24 07:49:56] Detected Java class name: Solution - Will use Solution instead
+[2025-05-24 07:49:56] Java code will be saved as: ../temp/68315e04555c1/Solution.java
+[2025-05-24 07:49:56] Java code saved to: ../temp/68315e04555c1/Solution.java with class name: Solution
+[2025-05-24 07:49:56] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/68315e04555c1/Solution.java"
+[2025-05-24 07:49:58] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/68315e04555c1" Solution < "../temp/68315e04555c1/input.txt" > "../temp/68315e04555c1/output.txt" 2>> "../temp/68315e04555c1/error.txt"
+[2025-05-24 07:51:03] Saved code to: ../temp/68315e4749286/solution.cpp
+[2025-05-24 07:51:03] Compile command: g++ "../temp/68315e4749286/solution.cpp" -o "../temp/68315e4749286/solution.exe"
+[2025-05-24 07:51:06] Run command: "../temp/68315e4749286/solution.exe" < "../temp/68315e4749286/input.txt" > "../temp/68315e4749286/output.txt" 2>> "../temp/68315e4749286/error.txt"
+[2025-05-24 07:51:06] Saved code to: ../temp/68315e4aa4f05/solution.cpp
+[2025-05-24 07:51:06] Compile command: g++ "../temp/68315e4aa4f05/solution.cpp" -o "../temp/68315e4aa4f05/solution.exe"
+[2025-05-24 07:51:07] Run command: "../temp/68315e4aa4f05/solution.exe" < "../temp/68315e4aa4f05/input.txt" > "../temp/68315e4aa4f05/output.txt" 2>> "../temp/68315e4aa4f05/error.txt"
+[2025-05-24 08:55:13] Saved code to: ../temp/68316d516370c/solution.cpp
+[2025-05-24 08:55:13] Compile command: g++ "../temp/68316d516370c/solution.cpp" -o "../temp/68316d516370c/solution.exe"
+[2025-05-24 08:55:14] Run command: "../temp/68316d516370c/solution.exe" < "../temp/68316d516370c/input.txt" > "../temp/68316d516370c/output.txt" 2>> "../temp/68316d516370c/error.txt"
+[2025-05-24 08:55:15] Saved code to: ../temp/68316d53ced00/solution.cpp
+[2025-05-24 08:55:15] Compile command: g++ "../temp/68316d53ced00/solution.cpp" -o "../temp/68316d53ced00/solution.exe"
+[2025-05-24 08:55:16] Run command: "../temp/68316d53ced00/solution.exe" < "../temp/68316d53ced00/input.txt" > "../temp/68316d53ced00/output.txt" 2>> "../temp/68316d53ced00/error.txt"
+[2025-05-24 10:14:52] Saved code to: ../temp/68317ffc43758/solution.cpp
+[2025-05-24 10:14:52] Compile command: g++ "../temp/68317ffc43758/solution.cpp" -o "../temp/68317ffc43758/solution.exe"
+[2025-05-24 10:14:53] Run command: "../temp/68317ffc43758/solution.exe" < "../temp/68317ffc43758/input.txt" > "../temp/68317ffc43758/output.txt" 2>> "../temp/68317ffc43758/error.txt"
+[2025-05-24 10:14:53] Saved code to: ../temp/68317ffd72695/solution.cpp
+[2025-05-24 10:14:53] Compile command: g++ "../temp/68317ffd72695/solution.cpp" -o "../temp/68317ffd72695/solution.exe"
+[2025-05-24 10:14:54] Run command: "../temp/68317ffd72695/solution.exe" < "../temp/68317ffd72695/input.txt" > "../temp/68317ffd72695/output.txt" 2>> "../temp/68317ffd72695/error.txt"
+[2025-05-24 10:16:07] Saved code to: ../temp/68318047734af/solution.cpp
+[2025-05-24 10:16:07] Compile command: g++ "../temp/68318047734af/solution.cpp" -o "../temp/68318047734af/solution.exe"
+[2025-05-24 10:16:08] Run command: "../temp/68318047734af/solution.exe" < "../temp/68318047734af/input.txt" > "../temp/68318047734af/output.txt" 2>> "../temp/68318047734af/error.txt"
+[2025-05-24 10:16:09] Saved code to: ../temp/68318048eb2bd/solution.cpp
+[2025-05-24 10:16:09] Compile command: g++ "../temp/68318048eb2bd/solution.cpp" -o "../temp/68318048eb2bd/solution.exe"
+[2025-05-24 10:16:10] Run command: "../temp/68318048eb2bd/solution.exe" < "../temp/68318048eb2bd/input.txt" > "../temp/68318048eb2bd/output.txt" 2>> "../temp/68318048eb2bd/error.txt"
+[2025-05-24 10:16:13] Saved code to: ../temp/6831804dc1e1b/solution.cpp
+[2025-05-24 10:16:13] Compile command: g++ "../temp/6831804dc1e1b/solution.cpp" -o "../temp/6831804dc1e1b/solution.exe"
+[2025-05-24 10:16:14] Run command: "../temp/6831804dc1e1b/solution.exe" < "../temp/6831804dc1e1b/input.txt" > "../temp/6831804dc1e1b/output.txt" 2>> "../temp/6831804dc1e1b/error.txt"
+[2025-05-24 10:16:15] Saved code to: ../temp/6831804f1d960/solution.cpp
+[2025-05-24 10:16:15] Compile command: g++ "../temp/6831804f1d960/solution.cpp" -o "../temp/6831804f1d960/solution.exe"
+[2025-05-24 10:16:16] Run command: "../temp/6831804f1d960/solution.exe" < "../temp/6831804f1d960/input.txt" > "../temp/6831804f1d960/output.txt" 2>> "../temp/6831804f1d960/error.txt"
+[2025-05-24 10:16:18] Saved code to: ../temp/6831805220b82/solution.cpp
+[2025-05-24 10:16:18] Compile command: g++ "../temp/6831805220b82/solution.cpp" -o "../temp/6831805220b82/solution.exe"
+[2025-05-24 10:16:19] Run command: "../temp/6831805220b82/solution.exe" < "../temp/6831805220b82/input.txt" > "../temp/6831805220b82/output.txt" 2>> "../temp/6831805220b82/error.txt"
+[2025-05-24 10:16:19] Saved code to: ../temp/683180536a8f2/solution.cpp
+[2025-05-24 10:16:19] Compile command: g++ "../temp/683180536a8f2/solution.cpp" -o "../temp/683180536a8f2/solution.exe"
+[2025-05-24 10:16:20] Run command: "../temp/683180536a8f2/solution.exe" < "../temp/683180536a8f2/input.txt" > "../temp/683180536a8f2/output.txt" 2>> "../temp/683180536a8f2/error.txt"
+[2025-05-24 10:22:56] Saved code to: ../temp/683181e0b078d/solution.py
+[2025-05-24 10:22:56] Run command: python "../temp/683181e0b078d/solution.py" < "../temp/683181e0b078d/input.txt" > "../temp/683181e0b078d/output.txt" 2>> "../temp/683181e0b078d/error.txt"
+[2025-05-24 10:22:57] Saved code to: ../temp/683181e16ad42/solution.py
+[2025-05-24 10:22:57] Run command: python "../temp/683181e16ad42/solution.py" < "../temp/683181e16ad42/input.txt" > "../temp/683181e16ad42/output.txt" 2>> "../temp/683181e16ad42/error.txt"
+[2025-05-24 10:27:40] Saved code to: ../temp/683182fca8a8a/solution.py
+[2025-05-24 10:27:40] Run command: python "../temp/683182fca8a8a/solution.py" < "../temp/683182fca8a8a/input.txt" > "../temp/683182fca8a8a/output.txt" 2>> "../temp/683182fca8a8a/error.txt"
+[2025-05-24 10:27:41] Saved code to: ../temp/683182fce5e92/solution.py
+[2025-05-24 10:27:41] Run command: python "../temp/683182fce5e92/solution.py" < "../temp/683182fce5e92/input.txt" > "../temp/683182fce5e92/output.txt" 2>> "../temp/683182fce5e92/error.txt"
+[2025-05-24 10:28:08] Saved code to: ../temp/683183188c259/solution.cpp
+[2025-05-24 10:28:08] Compile command: g++ "../temp/683183188c259/solution.cpp" -o "../temp/683183188c259/solution.exe"
+[2025-05-24 10:28:09] Run command: "../temp/683183188c259/solution.exe" < "../temp/683183188c259/input.txt" > "../temp/683183188c259/output.txt" 2>> "../temp/683183188c259/error.txt"
+[2025-05-24 10:28:10] Saved code to: ../temp/68318319e7756/solution.cpp
+[2025-05-24 10:28:10] Compile command: g++ "../temp/68318319e7756/solution.cpp" -o "../temp/68318319e7756/solution.exe"
+[2025-05-24 10:28:10] Run command: "../temp/68318319e7756/solution.exe" < "../temp/68318319e7756/input.txt" > "../temp/68318319e7756/output.txt" 2>> "../temp/68318319e7756/error.txt"
+[2025-05-24 10:28:39] Saved code to: ../temp/683183373af65/solution.py
+[2025-05-24 10:28:39] Run command: python "../temp/683183373af65/solution.py" < "../temp/683183373af65/input.txt" > "../temp/683183373af65/output.txt" 2>> "../temp/683183373af65/error.txt"
+[2025-05-24 10:28:39] Saved code to: ../temp/68318337787ff/solution.py
+[2025-05-24 10:28:39] Run command: python "../temp/68318337787ff/solution.py" < "../temp/68318337787ff/input.txt" > "../temp/68318337787ff/output.txt" 2>> "../temp/68318337787ff/error.txt"
+[2025-05-24 10:29:24] Saved code to: ../temp/68318364c76e1/solution.cpp
+[2025-05-24 10:29:24] Compile command: g++ "../temp/68318364c76e1/solution.cpp" -o "../temp/68318364c76e1/solution.exe"
+[2025-05-24 10:29:25] Run command: "../temp/68318364c76e1/solution.exe" < "../temp/68318364c76e1/input.txt" > "../temp/68318364c76e1/output.txt" 2>> "../temp/68318364c76e1/error.txt"
+[2025-05-24 10:42:42] Detected Java class name: Solution - Will use Solution instead
+[2025-05-24 10:42:43] Java code will be saved as: ../temp/68318682a5744/Solution.java
+[2025-05-24 10:42:43] Java code saved to: ../temp/68318682a5744/Solution.java with class name: Solution
+[2025-05-24 10:42:43] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/68318682a5744/Solution.java"
+[2025-05-24 10:42:44] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/68318682a5744" Solution < "../temp/68318682a5744/input.txt" > "../temp/68318682a5744/output.txt" 2>> "../temp/68318682a5744/error.txt"
+[2025-05-24 10:42:45] Detected Java class name: Solution - Will use Solution instead
+[2025-05-24 10:42:46] Java code will be saved as: ../temp/683186858550f/Solution.java
+[2025-05-24 10:42:46] Java code saved to: ../temp/683186858550f/Solution.java with class name: Solution
+[2025-05-24 10:42:46] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/683186858550f/Solution.java"
+[2025-05-24 10:42:47] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/683186858550f" Solution < "../temp/683186858550f/input.txt" > "../temp/683186858550f/output.txt" 2>> "../temp/683186858550f/error.txt"
+[2025-05-24 10:42:47] Detected Java class name: Solution - Will use Solution instead
+[2025-05-24 10:42:48] Java code will be saved as: ../temp/68318687d7c19/Solution.java
+[2025-05-24 10:42:48] Java code saved to: ../temp/68318687d7c19/Solution.java with class name: Solution
+[2025-05-24 10:42:48] Compile command: "C:\Program Files\Java\jdk-17\bin\javac" "../temp/68318687d7c19/Solution.java"
+[2025-05-24 10:42:50] Run command: "C:\Program Files\Java\jdk-17\bin\java" -classpath "../temp/68318687d7c19" Solution < "../temp/68318687d7c19/input.txt" > "../temp/68318687d7c19/output.txt" 2>> "../temp/68318687d7c19/error.txt"

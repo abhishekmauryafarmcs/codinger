@@ -6,10 +6,10 @@
 (function() {
     // Configuration
     const config = {
-        debugMode: true, // Enable debug mode for development
-        clearOnLoad: false, // Disable clipboard clearing on load for development
-        clearOnFocus: false, // Disable clipboard clearing on focus for development
-        clearOnVisibilityChange: false, // Disable clipboard clearing on visibility change for development
+        debugMode: false, // Disable debug mode for production
+        clearOnLoad: true, // Enable clipboard clearing on load
+        clearOnFocus: true, // Enable clipboard clearing on focus
+        clearOnVisibilityChange: true, // Enable clipboard clearing on visibility change
         refreshThreshold: 5000 // Time in ms after which page will refresh when returning from hidden
     };
     

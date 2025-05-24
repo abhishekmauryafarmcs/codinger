@@ -5,14 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const userId = document.body.getAttribute('data-user-id'); // Get user ID from body attribute
     const storageKey = `pageSwitchCount_${contestId}_${userId}`; // Include user ID in storage key
     
-    // Clear any previous user's data for this contest
+    // Save the current page switch count before clearing
+    const currentPageSwitchCount = parseInt(localStorage.getItem(storageKey) || '0');
+    
+    // Clear any previous user's data for this contest, except the page switch count
     Object.keys(localStorage).forEach(key => {
-        if (key.includes(`problem-${contestId}`) || // Clear previous code
-            key.includes(`pageSwitchCount_${contestId}`) || // Clear previous switch counts
-            (key.includes(`contest_${contestId}`) && !key.includes('_terminated'))) { // Clear contest data but keep termination status
+        if ((key.includes(`problem-${contestId}`) || // Clear previous code
+            (key.includes(`contest_${contestId}`) && !key.includes('_terminated'))) && // Clear contest data but keep termination status
+            key !== storageKey) { // Don't clear the current page switch count
             localStorage.removeItem(key);
         }
     });
+    
+    // Restore the page switch count
+    if (currentPageSwitchCount > 0) {
+        localStorage.setItem(storageKey, currentPageSwitchCount.toString());
+    }
     
     // Check if we're loading from a refresh and clear the flag with a small delay
     // This ensures the visibilitychange events don't count during initial page load
@@ -123,8 +131,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Initialize from localStorage if available, otherwise start at 0
-    let pageSwitchCount = parseInt(localStorage.getItem(storageKey) || '0');
+    // Initialize from localStorage using the preserved count
+    let pageSwitchCount = currentPageSwitchCount;
     
     // Instead of hardcoding maxSwitches, get it from the data attribute we'll add to the page
     const maxSwitches = parseInt(document.body.getAttribute('data-max-tab-switches') || 3);
@@ -159,6 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Flag to track if page is being reloaded/refreshed
     let isPageRefreshing = false;
+    let isTabSwitchPending = false; // New flag to track pending tab switches
+    let tabSwitchTimeout = null; // Timeout to handle tab switch debouncing
     
     // Listen for beforeunload to detect page refreshes
     window.addEventListener('beforeunload', function() {
@@ -336,18 +346,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const enterButton = fullscreenEnforcerOverlay.querySelector('button');
             const switchInfoElement = document.getElementById('fullscreen-switch-info');
             
-            // If it's the first prompt, enter fullscreen immediately
-            if (isFirstFullscreenPrompt && bypassCountdownForFirstPrompt) {
-                // Immediately attempt to enter fullscreen on first load
+            // If it's the first prompt, enter fullscreen immediately without countdown
+            if (isFirstFullscreenPrompt) {
+                if (countdownDisplay) countdownDisplay.style.display = 'none';
+                if (messageElement) messageElement.innerHTML = '<i class="bi bi-arrows-fullscreen" style="font-size: 2em; margin-bottom: 15px;"></i><br>Fullscreen Required';
+                if (subMessageElement) subMessageElement.textContent = 'Please enter fullscreen mode to access the contest and write your code.';
+                if (enterButton) enterButton.innerHTML = '<i class="bi bi-arrows-angle-expand"></i> Enter Fullscreen';
+                
+                // Attempt to enter fullscreen automatically
                 setTimeout(() => {
                     requestSystemFullscreen();
-                    // Set first fullscreen flag to false to prevent re-triggering
-                    isFirstFullscreenPrompt = false;
-                    localStorage.setItem(`contest_${contestId}_first_fullscreen`, 'false');
-                }, 1000); // Small delay to allow UI to render
+                }, 1000);
             }
-            // Start countdown for non-first prompts or if immediate entry is disabled
-            else if (!isFirstFullscreenPrompt && !fullscreenCountdownInterval) {
+            // Start countdown for non-first prompts
+            else if (!fullscreenCountdownInterval) {
                 fullscreenCountdownValue = 5; // Reset countdown to 5 seconds
                 
                 if (messageElement) messageElement.innerHTML = '<i class="bi bi-exclamation-triangle-fill" style="font-size: 2em; margin-bottom: 15px; color: #ffc107;"></i><br>Fullscreen Exit Detected!';
@@ -390,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (codeMirrorEditor) {
                 codeMirrorEditor.setOption("readOnly", true);
                 codeMirrorEditor.refresh(); // Refresh editor state
-                 if (codeMirrorEditor.getWrapperElement()) {
+                if (codeMirrorEditor.getWrapperElement()) {
                     codeMirrorEditor.getWrapperElement().style.opacity = '0.7'; // Visually indicate disabled
                     codeMirrorEditor.getWrapperElement().style.pointerEvents = 'none';
                 }
@@ -790,40 +802,66 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Increment the counter
-        pageSwitchCount++;
-        
-        // Store the new count in localStorage
-        localStorage.setItem(storageKey, pageSwitchCount.toString());
-        
-        // Update UI elements if they exist
-        updateViolationIndicators();
-        
-        // Display warning message if not already showing a warning
-        const now = Date.now();
-        if (now - lastViolationTime > 2000) {
-            lastViolationTime = now;
-            showWarningModal(`Page switch detected! (${pageSwitchCount}/${maxSwitches})`);
+        // Clear any pending tab switch timeout
+        if (tabSwitchTimeout) {
+            clearTimeout(tabSwitchTimeout);
         }
         
-        // If page switches exceed the maximum allowed, terminate the contest immediately
-        if (pageSwitchCount >= maxSwitches) {
-            // Get contest name if available in the page
-            let contestName = document.querySelector('.contest-title')?.textContent || 
-                            document.title || 'This contest';
-            
-            // Mark this contest as terminated in localStorage
-            localStorage.setItem(`contest_${contestId}_terminated`, 'true');
-            localStorage.setItem(`contest_${contestId}_termination_reason`, 'Exceeded maximum allowed page switches');
-            localStorage.setItem(`contest_${contestId}_termination_time`, Date.now().toString());
-            
-            // Immediately redirect to dashboard without waiting for API call
-            const friendlyMessage = `Your access to "${contestName}" has been revoked due to excessive page switching. You used ${pageSwitchCount} switches out of the maximum allowed ${maxSwitches}.`;
-            window.location.href = `../student/dashboard.php?error=contest_terminated&reason=page_switch_violations&message=${encodeURIComponent(friendlyMessage)}`;
-            
-            // The following will only run if the redirect fails for some reason
-            terminateContest('Exceeded maximum allowed page switches.');
-        }
+        // Set a flag to indicate a pending tab switch
+        isTabSwitchPending = true;
+        
+        // Use a timeout to debounce multiple rapid tab switches
+        tabSwitchTimeout = setTimeout(() => {
+            if (isTabSwitchPending) {
+                // Increment the counter
+                pageSwitchCount++;
+                
+                // Store the new count in localStorage
+                localStorage.setItem(storageKey, pageSwitchCount.toString());
+                
+                // Update UI elements if they exist
+                updateViolationIndicators();
+                
+                // Display warning message if not already showing a warning
+                const now = Date.now();
+                if (now - lastViolationTime > 2000) {
+                    lastViolationTime = now;
+                    showWarningModal(`Page switch detected! (${pageSwitchCount}/${maxSwitches})`);
+                }
+                
+                // Reset the pending flag
+                isTabSwitchPending = false;
+                
+                // If page switches exceed the maximum allowed, terminate the contest immediately
+                if (pageSwitchCount >= maxSwitches) {
+                    // Get contest name if available in the page
+                    let contestName = document.querySelector('.contest-title')?.textContent || 
+                                    document.title || 'This contest';
+                    
+                    // Mark this contest as terminated in localStorage
+                    localStorage.setItem(`contest_${contestId}_terminated`, 'true');
+                    localStorage.setItem(`contest_${contestId}_termination_reason`, 'Exceeded maximum allowed page switches');
+                    localStorage.setItem(`contest_${contestId}_termination_time`, Date.now().toString());
+                    
+                    // Send termination to server before redirecting
+                    fetch('../api/record_contest_exit.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            contest_id: contestId,
+                            reason: 'page_switch_violations',
+                            permanent: true
+                        })
+                    }).finally(() => {
+                        // Redirect to dashboard with termination message
+                        const friendlyMessage = `Your access to "${contestName}" has been revoked due to excessive page switching. You used ${pageSwitchCount} switches out of the maximum allowed ${maxSwitches}.`;
+                        window.location.href = `../student/dashboard.php?error=contest_terminated&reason=page_switch_violations&message=${encodeURIComponent(friendlyMessage)}`;
+                    });
+                }
+            }
+        }, 300); // Debounce time of 300ms
     }
     
     // Function to show warning modal or status bar
@@ -1026,9 +1064,28 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = `../student/dashboard.php?error=contest_terminated&reason=${encodeURIComponent(reason)}&message=${encodeURIComponent(friendlyMessage)}`;
     }
 
+    // Function to detect developer tools
+    function detectDeveloperTools() {
+        // Method 1: Check window dimensions
+        const widthThreshold = window.outerWidth - window.innerWidth > 160;
+        const heightThreshold = window.outerHeight - window.innerHeight > 160;
+        
+        // Method 2: Check for Firebug
+        const isFirebug = window.console && (window.console.firebug || (window.console.exception && window.console.table));
+        
+        // Method 3: Check for dev tools object
+        const isDevToolsOpen = window.devtools && window.devtools.open;
+        
+        // Method 4: Check for dev tools in Chrome/Firefox
+        const isDevToolsOpenChrome = window.chrome && 
+            (window.chrome.devtools || 
+             window.chrome.runtime && 
+             window.chrome.runtime.connect);
+        
+        return widthThreshold || heightThreshold || isFirebug || isDevToolsOpen || isDevToolsOpenChrome;
+    }
+
     // DevTools check - periodically check if dev tools are open
-    // Commented out for development as per user request
-    /*
     if (isContestActive && detectDeveloperTools()) {
         handleDevToolsViolation();
     }
@@ -1037,18 +1094,7 @@ document.addEventListener('DOMContentLoaded', function() {
             handleDevToolsViolation();
         }
     }, 2000); // Check every 2 seconds
-    */
 
-    // Periodically check for developer tools
-    // We need to be careful with setInterval and debugger statements, as they can be disruptive.
-    // A better approach might be to check on focus or specific interactions.
-    // For now, a gentle interval check.
-    let devToolsCheckInterval = setInterval(() => {
-        if (isContestActive && detectDeveloperTools()) {
-            handleDevToolsViolation();
-        }
-    }, 5000); // Check every 5 seconds
-    
     // Function to show a beautiful success overlay when all test cases pass
     window.showSuccessOverlay = function(problemName) {
         // Create overlay container

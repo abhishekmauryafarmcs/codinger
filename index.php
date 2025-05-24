@@ -414,7 +414,10 @@ $isLoggedIn = isset($_SESSION['student']['user_id']); // Check if student is log
             <span class="navbar-text ms-2 fw-bold text-primary" id="brandText">LNCT Group of Colleges</span>
             <?php endif; ?>
             <?php if ($isLoggedIn): ?>
-                <a href="student/dashboard.php" class="btn btn-success login-btn ms-auto" id="loginBtn">Dashboard</a>
+                <div class="ms-auto d-flex gap-2">
+                    <a href="student/dashboard.php" class="btn btn-success login-btn" id="loginBtn" style="display: none;">Dashboard</a>
+                    <a href="logout.php" class="btn btn-danger login-btn" id="logoutBtn" style="display: none;">Logout</a>
+                </div>
             <?php else: ?>
                 <a href="login.php" class="btn btn-primary login-btn ms-auto" id="loginBtn" style="display: none;">Student Login</a>
             <?php endif; ?>
@@ -592,10 +595,13 @@ $isLoggedIn = isset($_SESSION['student']['user_id']); // Check if student is log
                 }, 2000);
             }, 1500);
             <?php else: ?>
-            // If logged in, show the dashboard button immediately
+            // If logged in, show both dashboard and logout buttons immediately
             const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
             loginBtn.style.display = 'block';
+            logoutBtn.style.display = 'block';
             loginBtn.classList.add('show');
+            logoutBtn.classList.add('show');
             <?php endif; ?>
         });
     </script>

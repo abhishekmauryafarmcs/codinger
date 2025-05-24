@@ -8,16 +8,16 @@
     // Configuration
     const config = {
         // Whether to clear clipboard on fullscreen enter
-        clearClipboardOnFullscreen: false, // Disabled for development
+        clearClipboardOnFullscreen: true, // Enable for production
         
         // Whether to periodically check clipboard when in fullscreen
-        periodicClipboardCheck: false, // Disabled for development
+        periodicClipboardCheck: true, // Enable for production
         
         // Interval in ms for clipboard checks when in fullscreen
-        clipboardCheckInterval: 5000,
+        clipboardCheckInterval: 3000, // Check more frequently (every 3 seconds)
         
         // Whether to log events
-        logEvents: true, // Enabled for development
+        logEvents: false, // Disable for production
         
         // Whether to show notifications to user
         showNotifications: true,

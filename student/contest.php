@@ -233,8 +233,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
     <meta name="contest-status" content="<?php echo htmlspecialchars($contest['contest_status']); ?>">
     <title><?php echo htmlspecialchars($contest['title']); ?> - Codinger</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <style>
         .CodeMirror {
@@ -246,11 +249,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             height: calc(100vh - 156px);
             overflow-y: auto;
             position: relative;
+            scroll-behavior: smooth;
         }
         .problem-content {
             padding: 20px;
             background: #fff;
             border-radius: 8px;
+            min-height: calc(100vh - 156px);
         }
         .problems-navigation-wrapper {
             position: sticky;
@@ -260,6 +265,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             padding: 10px;
             border-bottom: 1px solid #dee2e6;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 156px);
+            overflow-y: auto;
         }
         .problems-navigation-wrapper .list-group {
             margin-bottom: 0;
@@ -554,9 +561,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
       data-user-id="<?php echo htmlspecialchars($_SESSION['student']['user_id']); ?>">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="../index.php">
+            <span class="navbar-brand">
                 <img src="../images/LNCT-Logo.png" alt="LNCT Logo">
-            </a>
+            </span>
             
             <!-- Centered Timer -->
             <div class="navbar-timer">
@@ -593,6 +600,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
                                     <option value="java">Java</option>
                                     <option value="python">Python</option>
                                 </select>
+                                <!-- Add info icon with popover -->
+                                <button type="button" 
+                                        class="btn btn-link text-info mt-2" 
+                                        data-bs-toggle="popover" 
+                                        data-bs-placement="right"
+                                        data-bs-html="true"
+                                        data-bs-trigger="focus"
+                                        title="Editor Shortcuts & Snippets"
+                                        data-bs-content="
+                                            <ul class='list-unstyled mb-0'>
+                                                <li><i class='bi bi-lightning-charge'></i> Type a snippet keyword + Space/Tab:
+                                                    <ul>
+                                                        <li><code>for</code> - For loop</li>
+                                                        <li><code>while</code> - While loop</li>
+                                                        <li><code>if</code> - If statement</li>
+                                                    </ul>
+                                                </li>
+                                                <li><i class='bi bi-keyboard'></i> Keyboard shortcuts:
+                                                    <ul>
+                                                        <li><code>Ctrl+Space</code> - Auto-completion</li>
+                                                        <li><code>Ctrl+/</code> - Comment/Uncomment</li>
+                                                        <li><code>Ctrl+Alt+L</code> - Format code</li>
+                                                    </ul>
+                                                </li>
+                                                <li><i class='bi bi-braces'></i> Auto-closing brackets and quotes</li>
+                                            </ul>">
+                                    <i class="bi bi-info-circle"></i> Editor Tips
+                                </button>
                                 <!-- Java class information text -->
                                 <div class="text-muted mt-1" id="javaHelperText" style="display: none; font-size: 0.8rem;">
                                     <i class="bi bi-info-circle"></i> Java submissions must use <code>public class Solution</code>
@@ -686,6 +721,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/brace-fold.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/anyword-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/comment/comment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="../js/prevent_cheating.js?v=<?php echo time(); ?>"></script>
     <script src="../js/fullscreen_security.js?v=<?php echo time(); ?>"></script>
@@ -760,7 +804,132 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
             indentUnit: 4,
             autoCloseBrackets: true,
             matchBrackets: true,
-            lineWrapping: true
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            extraKeys: {
+                "Ctrl-Space": "autocomplete",
+                "Ctrl-Q": function(cm) {
+                    cm.foldCode(cm.getCursor());
+                },
+                "Ctrl-/": "toggleComment",
+                "Cmd-/": "toggleComment",
+                "Tab": function(cm) {
+                    if (cm.somethingSelected()) {
+                        cm.indentSelection("add");
+                    } else {
+                        cm.replaceSelection(cm.getOption("indentWithTabs")? "\t":
+                            Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input");
+                    }
+                }
+            },
+            autoCloseTags: true,
+            matchTags: true,
+            autoComplete: true,
+            styleActiveLine: true,
+            smartIndent: true,
+            electricChars: true
+        });
+
+        // Enable real-time auto-completion
+        editor.on("inputRead", function(cm, change) {
+            if (change.origin !== "+input") return;
+            const cur = cm.getCursor();
+            const token = cm.getTokenAt(cur);
+            if (token.string.length > 2) {
+                CodeMirror.commands.autocomplete(cm);
+            }
+        });
+
+        // Custom key mappings for common code patterns
+        editor.addKeyMap({
+            "Ctrl-Enter": function(cm) {
+                const cur = cm.getCursor();
+                const line = cm.getLine(cur.line);
+                if (line.trim().endsWith("{")) {
+                    cm.replaceRange("\n\n}", {line: cur.line, ch: line.length});
+                    cm.setCursor({line: cur.line + 1, ch: cm.getLine(cur.line + 1).length});
+                }
+            },
+            "Ctrl-Alt-L": function(cm) {
+                // Auto-format code (basic indentation)
+                const totalLines = cm.lineCount();
+                for (let i = 0; i < totalLines; i++) {
+                    cm.indentLine(i);
+                }
+            }
+        });
+
+        // Auto-close specific patterns
+        editor.on("beforeChange", function(cm, change) {
+            if (change.origin === "+input") {
+                const patterns = {
+                    "(": ")",
+                    "[": "]",
+                    "{": "}",
+                    '"': '"',
+                    "'": "'",
+                    "`": "`"
+                };
+                
+                if (change.text.length === 1 && patterns[change.text[0]]) {
+                    const cur = cm.getCursor();
+                    const line = cm.getLine(cur.line);
+                    const nextChar = line[cur.ch];
+                    
+                    // Don't auto-close if the next character is a word character
+                    if (nextChar && /\w/.test(nextChar)) return;
+                    
+                    change.update(null, null, [change.text[0], patterns[change.text[0]]]);
+                    cm.setCursor({line: cur.line, ch: cur.ch + 1});
+                }
+            }
+        });
+
+        // Language-specific snippets
+        const snippets = {
+            cpp: {
+                "for": "for (int i = 0; i < n; i++) {\n\t\n}",
+                "while": "while () {\n\t\n}",
+                "if": "if () {\n\t\n}",
+                "else": "else {\n\t\n}",
+                "cout": "cout << << endl;",
+                "cin": "cin >> ;",
+            },
+            java: {
+                "for": "for (int i = 0; i < n; i++) {\n\t\n}",
+                "while": "while () {\n\t\n}",
+                "if": "if () {\n\t\n}",
+                "else": "else {\n\t\n}",
+                "sout": "System.out.println();",
+                "psvm": "public static void main(String[] args) {\n\t\n}"
+            },
+            python: {
+                "for": "for i in range():\n\t",
+                "while": "while :\n\t",
+                "if": "if :\n\t",
+                "else": "else:\n\t",
+                "def": "def ():\n\t",
+                "print": "print()"
+            }
+        };
+
+        // Add snippet support
+        editor.on("keyup", function(cm, event) {
+            if (event.key === " " || event.key === "Tab") {
+                const cur = cm.getCursor();
+                const line = cm.getLine(cur.line);
+                const word = line.slice(0, cur.ch).split(/\s/).pop();
+                
+                const language = document.getElementById("language").value;
+                if (snippets[language] && snippets[language][word]) {
+                    cm.replaceRange(
+                        snippets[language][word],
+                        {line: cur.line, ch: cur.ch - word.length},
+                        {line: cur.line, ch: cur.ch}
+                    );
+                }
+            }
         });
 
         // Apply anti-cheating measures to CodeMirror
@@ -951,38 +1120,44 @@ int main() {
                 // If custom tab is active, run with custom input
                 document.getElementById("customOutput").innerHTML = "Running...";
 
-            fetch('../api/run_code.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    code: code,
-                    language: language,
-                    input: customInput
+                fetch('../api/run_code.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        language: language,
+                        input: customInput
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
                         document.getElementById("customOutput").innerHTML = 
-                        `<div class="error-output">${data.error}</div>`;
-                } else {
+                            `<div class="error-output">${data.error}</div>`;
+                    } else {
                         document.getElementById("customOutput").innerHTML = 
-                        `<div class="success-output">
-                            <div class="mb-2">Output:</div>
-                            <div class="output-content">${data.output || '(no output)'}</div>
-                            <div class="execution-time mt-2">Execution Time: ${data.executionTime}ms</div>
-                        </div>`;
-                }
-            })
-            .catch(error => {
+                            `<div class="success-output">
+                                <div class="mb-2">Output:</div>
+                                <div class="output-content">${data.output || '(no output)'}</div>
+                                <div class="execution-time mt-2">Execution Time: ${data.executionTime}ms</div>
+                            </div>`;
+                    }
+                })
+                .catch(error => {
                     document.getElementById("customOutput").innerHTML = 
-                    `<div class="error-output">Error: ${error.message}</div>`;
-            });
+                        `<div class="error-output">Error: ${error.message}</div>`;
+                });
             } else {
                 // Show loading state in test cases tab
-                document.getElementById("testCaseResults").innerHTML = "Running test cases...";
+                document.getElementById("testCaseResults").innerHTML = `
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="mt-2">Running test cases...</div>
+                    </div>`;
 
                 // Get visible test cases for current problem
                 fetch(`../student/get_test_cases.php?id=${currentProblemId}`)
@@ -1019,19 +1194,35 @@ int main() {
                                     let allPassed = true;
 
                                     results.forEach(({testCase, result, index}) => {
-                                        const passed = !result.error && result.output.trim() === testCase.output.trim();
+                                        // Use exact string comparison
+                                        const passed = !result.error && result.output === testCase.output;
                                         allPassed = allPassed && passed;
 
                                         testCasesHtml += `
                                             <div class="test-case ${passed ? 'passed' : 'failed'}">
                                                 <strong>Test Case ${index + 1}</strong>
-                                                <div>Status: ${passed ? 'Passed' : 'Failed'}</div>
+                                                <div>Status: ${passed ? 'Passed ✅' : 'Failed ❌'}</div>
                                                 <div>Input:</div>
                                                 <pre>${testCase.input}</pre>
-                                                <div>Expected Output:</div>
-                                                <pre>${testCase.output}</pre>
-                                                <div>Your Output:</div>
-                                                <pre>${result.error ? result.error : result.output}</pre>
+                                                ${!passed ? `
+                                                    <div>Expected Output:</div>
+                                                    <pre>${testCase.output}</pre>
+                                                    <div>Your Output:</div>
+                                                    <pre>${result.output || '(no output)'}</pre>
+                                                    <div class="alert alert-info mt-2">
+                                                        <small>
+                                                            <i class="bi bi-info-circle"></i> 
+                                                            Note: Output must match exactly as specified, including:
+                                                            <ul class="mb-0">
+                                                                <li>Spaces and tabs</li>
+                                                                <li>Line breaks</li>
+                                                                <li>Case sensitivity</li>
+                                                                <li>Trailing spaces and newlines</li>
+                                                            </ul>
+                                                        </small>
+                                                    </div>
+                                                ` : ''}
+                                                ${result.error ? `<div class="error-output">Error: ${result.error}</div>` : ''}
                                                 <div>Time: ${result.executionTime}ms</div>
                                             </div>
                                         `;
@@ -1051,10 +1242,8 @@ int main() {
                                         `<div class="error-output">Error running test cases: ${error.message}</div>`;
                                 });
                         } else {
-                            // If no visible test cases, show message
                             document.getElementById("testCaseResults").innerHTML = 
                                 '<div class="alert alert-info">No test cases available. Use custom input to test your code.</div>';
-                            // Switch to custom input tab
                             document.querySelector('a[href="#custom"]').click();
                         }
                     })
@@ -1127,6 +1316,57 @@ int main() {
         // Improved submit code function with better error handling
         let isSubmitting = false; // Prevent multiple simultaneous submissions
         
+        // Function to handle submission response
+        function handleSubmissionResponse(data) {
+            try {
+                // Validate response format
+                if (!data || typeof data !== 'object') {
+                    throw new Error('Invalid response format from server');
+                }
+
+                // Check for error field
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Ensure test_results is an array
+                if (!Array.isArray(data.test_results)) {
+                    // If test_results is an object with numbered keys, convert to array
+                    if (data.test_results && typeof data.test_results === 'object') {
+                        data.test_results = Object.values(data.test_results);
+                    } else {
+                        data.test_results = [];
+                    }
+                }
+
+                // Initialize summary if not present
+                if (!data.summary) {
+                    data.summary = {
+                        all_test_cases_passed: false,
+                        visible_test_cases: { passed: 0, total: data.test_results.length },
+                        hidden_test_cases: { passed: 0, total: 0 }
+                    };
+                }
+
+                // Show test results
+                showTestResults(data);
+
+                // Update submission limit info
+                displaySubmissionLimitInfo();
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                document.getElementById("testCaseResults").innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        ${error.message}
+                        ${error.stack ? `<br><small class="text-muted">Details: ${error.stack}</small>` : ''}
+                    </div>
+                `;
+            }
+        }
+
+        // Update submit code function
         function submitCode() {
             if (isSubmitting) {
                 console.log("Submission already in progress");
@@ -1222,7 +1462,7 @@ int main() {
                 return limitData;
             })
             .then(limitData => {
-                showTestResultsLoading('Running test cases...');
+                showTestResultsLoading('Submitting your solution...');
                 
                 // Proceed with submission
                 return fetch('../api/submit_code.php', {
@@ -1247,19 +1487,7 @@ int main() {
                 return response.json();
             })
             .then(data => {
-                if (data.error) {
-                    throw new Error(data.error);
-                }
-
-                if (!data.test_results || !Array.isArray(data.test_results)) {
-                    throw new Error('Invalid response format from server');
-                }
-
-                // Use the new showTestResults function
-                showTestResults(data);
-
-                // Update submission limit info
-                displaySubmissionLimitInfo();
+                handleSubmissionResponse(data);
             })
             .catch(error => {
                 console.error('Submission error:', error);
@@ -1501,7 +1729,7 @@ int main() {
 
         // Update the problems navigation creation code
         function createProblemNavigation(problems) {
-            const problemsNav = document.createElement('div');
+        const problemsNav = document.createElement('div');
             problemsNav.className = 'list-group';
 
             problems.forEach((problem, index) => {
@@ -1523,8 +1751,8 @@ int main() {
                     button.classList.add('active');
                     loadProblem(problem);
 
-                    // Smooth scroll to top of problem content
-                    document.querySelector('.problem-content').scrollIntoView({ behavior: 'smooth' });
+                    // Remove the scrollIntoView behavior
+                    // Let the user control the scrolling
                 };
                 problemsNav.appendChild(button);
             });
@@ -1626,6 +1854,25 @@ int main() {
         
         // Initialize page components when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all popovers
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, {
+                    sanitize: false // Allow HTML in popover content
+                });
+            });
+            
+            // Close popover when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('[data-bs-toggle="popover"]')) {
+                    popoverList.forEach(popover => {
+                        if (popover._element !== e.target) {
+                            popover.hide();
+                        }
+                    });
+                }
+            });
+
             // Start contest timer
             updateTimer();
             
@@ -1810,50 +2057,103 @@ int main() {
             }, 5000);
         }
 
-        // Update the showTestResults function to include celebration
+        // Update the showTestResults function to use exact matching
         function showTestResults(data) {
-            let testCasesHtml = '';
-            let visibleResults = data.test_results;
-            let summary = data.summary;
+            try {
+                let testCasesHtml = '';
+                
+                // Ensure visibleResults is an array
+                let visibleResults = [];
+                if (Array.isArray(data.test_results)) {
+                    visibleResults = data.test_results;
+                } else if (data.test_results && typeof data.test_results === 'object') {
+                    visibleResults = Object.values(data.test_results);
+                }
 
-            // Add overall summary at the top
-            testCasesHtml = `
-                <div class="overall-result ${summary.all_test_cases_passed ? 'passed' : 'failed'}">
-                    <h4>${summary.all_test_cases_passed ? '✅ All Test Cases Passed!' : '❌ Some Test Cases Failed'}</h4>
-                    <div class="mt-3">
-                        <strong>Visible Test Cases:</strong> ${summary.visible_test_cases.passed} / ${summary.visible_test_cases.total} passed<br>
-                        <strong>Hidden Test Cases:</strong> ${summary.hidden_test_cases.passed} / ${summary.hidden_test_cases.total} passed
-                    </div>
-                </div>
-            `;
+                let summary = data.summary || {
+                    all_test_cases_passed: false,
+                    visible_test_cases: { passed: 0, total: visibleResults.length },
+                    hidden_test_cases: { passed: 0, total: 0 }
+                };
 
-            // Add visible test case details
-            visibleResults.forEach((result, index) => {
-                testCasesHtml += `
-                    <div class="test-case ${result.status === 'passed' ? 'passed' : 'failed'}">
-                        <strong>Test Case ${index + 1}</strong>
-                        <div>Status: ${result.status === 'passed' ? 'Passed ✅' : 'Failed ❌'}</div>
-                        <div>Input:</div>
-                        <pre>${result.input}</pre>
-                        ${result.status !== 'passed' ? `
-                            <div>Expected Output:</div>
-                            <pre>${result.expected || '(no output)'}</pre>
-                            <div>Your Output:</div>
-                            <pre>${result.actual || '(no output)'}</pre>
-                        ` : ''}
-                        ${result.error ? `<div class="error-output">Error: ${result.error}</div>` : ''}
-                        <div>Time: ${result.execution_time}ms</div>
+                // Add overall summary at the top
+                testCasesHtml = `
+                    <div class="overall-result ${summary.all_test_cases_passed ? 'passed' : 'failed'}">
+                        <h4>${summary.all_test_cases_passed ? '✅ All Test Cases Passed!' : '❌ Some Test Cases Failed'}</h4>
+                        <div class="mt-3">
+                            <strong>Visible Test Cases:</strong> ${summary.visible_test_cases.passed} / ${summary.visible_test_cases.total} passed<br>
+                            ${summary.hidden_test_cases.total > 0 ? 
+                                `<strong>Hidden Test Cases:</strong> ${summary.hidden_test_cases.passed} / ${summary.hidden_test_cases.total} passed` : ''}
+                        </div>
                     </div>
                 `;
-            });
 
-            document.getElementById("testCaseResults").innerHTML = testCasesHtml;
+                // Add visible test case details
+                if (visibleResults.length > 0) {
+                    visibleResults.forEach((result, index) => {
+                        // Ensure result is an object
+                        result = result || {};
+                        
+                        const isPassed = result.status === 'passed';
+                        const output = result.output || result.actual || ''; // Handle both run and submit response formats
+                        const expected = result.expected || (result.testCase ? result.testCase.output : '') || '';
+                        const input = result.input || (result.testCase ? result.testCase.input : '') || '';
 
-            // If all test cases passed (both visible and hidden), trigger celebration
-            if (summary.all_test_cases_passed) {
-                const problemName = document.getElementById("problemTitle").textContent;
-                triggerCelebration();
-                showSuccessMessage(problemName);
+                        testCasesHtml += `
+                            <div class="test-case ${isPassed ? 'passed' : 'failed'}">
+                                <strong>Test Case ${index + 1}</strong>
+                                <div>Status: ${isPassed ? 'Passed ✅' : 'Failed ❌'}</div>
+                                <div>Input:</div>
+                                <pre>${input}</pre>
+                                ${!isPassed ? `
+                                    <div>Expected Output:</div>
+                                    <pre>${expected}</pre>
+                                    <div>Your Output:</div>
+                                    <pre>${output}</pre>
+                                    <div class="alert alert-info mt-2">
+                                        <small>
+                                            <i class="bi bi-info-circle"></i> 
+                                            Note: Output must match exactly as specified, including:
+                                            <ul class="mb-0">
+                                                <li>Spaces and tabs</li>
+                                                <li>Line breaks</li>
+                                                <li>Case sensitivity</li>
+                                                <li>Trailing spaces and newlines</li>
+                                            </ul>
+                                        </small>
+                                    </div>
+                                ` : ''}
+                                ${result.error ? `<div class="error-output">Error: ${result.error}</div>` : ''}
+                                <div>Time: ${result.execution_time || result.executionTime || 0}ms</div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    testCasesHtml += `
+                        <div class="alert alert-warning mt-3">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            No test results available.
+                        </div>
+                    `;
+                }
+
+                document.getElementById("testCaseResults").innerHTML = testCasesHtml;
+
+                // If all test cases passed (both visible and hidden), trigger celebration
+                if (summary.all_test_cases_passed) {
+                    const problemName = document.getElementById("problemTitle").textContent;
+                    triggerCelebration();
+                    showSuccessMessage(problemName);
+                }
+            } catch (error) {
+                console.error('Error showing test results:', error);
+                document.getElementById("testCaseResults").innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        Error displaying test results: ${error.message}
+                        ${error.stack ? `<br><small class="text-muted">Details: ${error.stack}</small>` : ''}
+                    </div>
+                `;
             }
         }
     </script>
